@@ -78,3 +78,6 @@ Route::get('iconget', 'ServicioAdicionalController@iconget')->name('iconget');
 
 
 
+
+
+Route::resource('productos', 'productosAPIController');
