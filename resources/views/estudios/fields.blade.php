@@ -42,7 +42,7 @@
         <!-- H Iniciales Field -->
         <div class="form-group col-sm-4">
             <label for=""><b>Iniciales:</b></label>
-            {!! Form::text('h_iniciales', null, ['maxlength'=> '2', 'class' => 'form-control'. ( $errors->has('h_iniciales') ? ' is-invalid' : '' )]) !!}
+            {!! Form::text('h_iniciales', null, ['class' => 'form-control'. ( $errors->has('h_iniciales') ? ' is-invalid' : '' )]) !!}
             {!! $errors->first('h_iniciales', '<span class="invalid-feedback"><strong>:message</strong></span>') !!}
         </div>
     @if(!isset($estudios))

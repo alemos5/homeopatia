@@ -216,20 +216,27 @@ class EstudiosController extends AppBaseController
         }
 
 
-//        $AnalisisCombinados = $this->calcularAnalisisCombinado(
-//                                                                $remedios,
-//                                                                $data,
-//                                                                $predominante
-//                                                            );
+        $AnalisisCombinados = $this->calcularAnalisisCombinado(
+                                                                $remedios,
+                                                                $data,
+                                                                $predominante
+                                                            );
 
-//        $AnalisisCombinados = collect($AnalisisCombinados)->sortByDesc('suma')->toArray();
+        $AnalisisCombinados = collect($AnalisisCombinados)->sortByDesc('suma')->toArray();
 
         //$analisis = $this->calcularAnalisis($remedios, $data, $predominante);
         //$analisis = collect($analisis)->sortBy('remedio')->toArray();
 
         //return view('estudios.show', compact('estudios', 'result', 'remedios', 'AnalisisCombinados', 'analisis'));
 
-        return view('estudios.show', compact('estudios', 'result', 'remedios', 'data', 'predominante'));
+        $isAdmin = 0;
+        foreach(Auth::user()->perfiles AS $perfil) {
+            if($perfil->rol->id==1){
+                $isAdmin = 1;
+            }
+        }
+
+        return view('estudios.show', compact('estudios', 'result', 'remedios', 'data', 'predominante', 'AnalisisCombinados', 'isAdmin'));
 
     }
 
@@ -301,7 +308,7 @@ class EstudiosController extends AppBaseController
 
         $data['id_usuario'] = Auth::user()->id_cliente;
 
-        $estudios = $this->estudiosRepository->update($request->all(), $id);
+        $estudios = $this->estudiosRepository->update($data, $id);
 
         Flash::success('Estudio Guardado Satisfactoriamente.');
 
@@ -1471,21 +1478,19 @@ class EstudiosController extends AppBaseController
         return $analisisCombinadoXremedio;
     }
 
-//    public function calcularAnalisisCombinado($remedios, $data, $predominante)
-//    {
-//
-//        $rsm9 = $this->existenRsm9($remedios, $data);
-//
-//        $analisisCombinado = array();
-//
-//        foreach ($remedios as $index => $remedio) {
-//
-//            $analisisCombinado[$index]       = $this->calcularAnalisisCombinadoXremedio($remedio, $data, $predominante, $rsm9);
-//
-//        }
-//
-//        return $analisisCombinado;
-//    }
+    public function calcularAnalisisCombinado($remedios, $data, $predominante)
+    {
+
+        $rsm9 = $this->existenRsm9($remedios, $data);
+
+        $analisisCombinado = array();
+
+        foreach ($remedios as $index => $remedio) {
+            $analisisCombinado[$index]       = $this->calcularAnalisisCombinadoXremedio($remedio, $data, $predominante, $rsm9,1,1,1,1,1);
+        }
+
+        return $analisisCombinado;
+    }
 
     public function calcularAnalisis(Request $request)
     {

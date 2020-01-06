@@ -84,7 +84,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     public function perfiles()
     {
-        return $this->belongsTo(RoleUser::class, 'id_cliente', 'user_id_cliente');
+        return $this->hasMany(RoleUser::class, 'user_id_cliente', 'id_cliente');
     }
 
 

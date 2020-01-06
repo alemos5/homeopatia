@@ -1,23 +1,23 @@
 <h2>Análisis Combinado</h2><hr>
 
-<div class="row">
-    <div class="col-sm-2">Filtrar:</div>
-    <div class="col-sm-2">
-        <button class="btn btn-success btn-sm btn-round btn-block" id="btnRMS1" type="button">RMS</button>
-    </div>
-    <div class="col-sm-2">
-        <button class="btn btn-success btn-sm btn-round btn-block" id="btnImpregnancia1" type="button">Impregnancia</button>
-    </div>
-    <div class="col-sm-2">
-        <button class="btn btn-success btn-sm btn-round btn-block" id="btnSecuencia1" type="button">Secuencia</button>
-    </div>
-    <div class="col-sm-2">
-        <button class="btn btn-success btn-sm btn-round btn-block" id="btnConsonante1" type="button">Consonante</button>
-    </div>
-    <div class="col-sm-2">
-        <button class="btn btn-success btn-sm btn-round btn-block" id="btnClave1" type="button">Clave</button>
-    </div>
-</div>
+{{--<div class="row">--}}
+    {{--<div class="col-sm-2">Filtrar:</div>--}}
+    {{--<div class="col-sm-2">--}}
+        {{--<button class="btn btn-success btn-sm btn-round btn-block" id="btnRMS1" type="button">RMS</button>--}}
+    {{--</div>--}}
+    {{--<div class="col-sm-2">--}}
+        {{--<button class="btn btn-success btn-sm btn-round btn-block" id="btnImpregnancia1" type="button">Impregnancia</button>--}}
+    {{--</div>--}}
+    {{--<div class="col-sm-2">--}}
+        {{--<button class="btn btn-success btn-sm btn-round btn-block" id="btnSecuencia1" type="button">Secuencia</button>--}}
+    {{--</div>--}}
+    {{--<div class="col-sm-2">--}}
+        {{--<button class="btn btn-success btn-sm btn-round btn-block" id="btnConsonante1" type="button">Consonante</button>--}}
+    {{--</div>--}}
+    {{--<div class="col-sm-2">--}}
+        {{--<button class="btn btn-success btn-sm btn-round btn-block" id="btnClave1" type="button">Clave</button>--}}
+    {{--</div>--}}
+{{--</div>--}}
 
 <div class="row">
     <div class="table-responsive">

@@ -63,7 +63,7 @@ function cargarAnalisis (orden, filtro1, filtro2, filtro3, filtro4, filtro5) {
                             "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                         }
                     },
-                    "pageLength": 10,
+                    "pageLength": 100,
                     "bDestroy": true
                 });
             }

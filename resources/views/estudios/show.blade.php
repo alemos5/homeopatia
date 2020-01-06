@@ -29,12 +29,13 @@
         .events li a {
             top: -35px;
         }
+
         .modal-body {
             max-height: calc(100vh - 210px);
             overflow-y: auto;
         }
 
-        .imagenRemedio{
+        .imagenRemedio {
             position: fixed !important;
             width: 14em !important;
         }
@@ -62,20 +63,30 @@
         </div>
         <div class="col-sm-6">
             @include('estudios.show_barra')
+            <div class="row mt-4">
+                <div class="col-sm-6">
+                    <a href="{{asset('pdf/dinamica_simetrias.pdf')}}" target="_blank" class="btn btn-outline-info btn-block">Vea la Dinámica</a>
+                </div>
+                <div class="col-sm-6">
+                    <a href="{{asset('pdf/interrogatorio_simetria.pdf')}}" target="_blank" class="btn btn-outline-info btn-block">Interrogatorio Dirigido</a>
+                </div>
+            </div>
         </div>
     </div>
 
-    {{--<div class="row mt-4">--}}
-        {{--<div class="col-sm-12">--}}
-            {{--@include('estudios.show_analisis_combinado')--}}
-        {{--</div>--}}
-    {{--</div>--}}
+    @if($isAdmin)
+        <div class="row mt-4">
+            <div class="col-sm-12">
+                @include('estudios.show_analisis_combinado')
+            </div>
+        </div>
 
-    {{--<div class="row mt-4">--}}
-        {{--<div class="col-sm-12">--}}
-            {{--@include('estudios.show_remedio')--}}
-        {{--</div>--}}
-    {{--</div>--}}
+        <div class="row mt-4">
+            <div class="col-sm-12">
+                @include('estudios.show_remedio')
+            </div>
+        </div>
+    @endif
 
     <div class="row mt-4">
         <div class="col-sm-12">
@@ -116,7 +127,7 @@
 
     <script>
         $(document).ready(function () {
-            cargarAnalisis(1,1,1,1,1,1);
+            cargarAnalisis(1, 1, 1, 1, 1, 1);
         });
 
     </script>
