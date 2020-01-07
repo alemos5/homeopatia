@@ -33,7 +33,7 @@ class EstudiosController extends AppBaseController
             'h_nombre' => 'required',
             'h_apellido' => 'required',
             'h_identifica' => 'required',
-            'h_iniciales' => 'required|max: 2',
+            'h_iniciales' => 'required',
             'pais_id' => 'required',
             'fecha_humano' => 'required',
         ];
@@ -59,7 +59,7 @@ class EstudiosController extends AppBaseController
             'a_especie' => 'required',
             'a_duenio' => 'required',
             'a_animal' => 'required',
-            'a_iniciales' => 'required|max: 2',
+            'a_iniciales' => 'required',
             'fecha_animal' => 'required',
         ];
 
@@ -179,10 +179,10 @@ class EstudiosController extends AppBaseController
 
         if ($estudios->tipo == 'humano') {
             $data = array(
-                'nombre' => $estudios->h_nombre,//'marcelo eugenio',
-                'apellido' => $estudios->h_apellido,//'candegabe',
-                'apodo' => $estudios->h_identifica,//'marcelo',
-                'iniciales' => $estudios->h_iniciales,//'AL',
+                'nombre' => $this->limpia_espacios(strtoupper($estudios->h_nombre)),//'marcelo eugenio',
+                'apellido' => $this->limpia_espacios(strtoupper($estudios->h_apellido)),//'candegabe',
+                'apodo' => $this->limpia_espacios(strtoupper($estudios->h_identifica)),//'marcelo',
+                'iniciales' => $this->limpia_espacios(strtoupper($estudios->h_iniciales)),//'AL',
                 'dia' => $estudios->h_dia,//'26',
                 'mes' => $estudios->h_mes,//'09',
                 'anio' => $estudios->h_anio,//'1950',
@@ -190,10 +190,10 @@ class EstudiosController extends AppBaseController
             );
         } else {
             $data = array(
-                'nombre' => strtoupper($estudios->a_especie), //'marcelo eugenio',
-                'apellido' => strtoupper($estudios->a_duenio), //'candegabe',
-                'apodo' => strtoupper($estudios->a_animal), //'marcelo',
-                'iniciales' => strtoupper($estudios->a_iniciales), //'AL',
+                'nombre' => $this->limpia_espacios(strtoupper($estudios->a_especie)), //'marcelo eugenio',
+                'apellido' => $this->limpia_espacios(strtoupper($estudios->a_duenio)), //'candegabe',
+                'apodo' => $this->limpia_espacios(strtoupper($estudios->a_animal)), //'marcelo',
+                'iniciales' => $this->limpia_espacios(strtoupper($estudios->a_iniciales)), //'AL',
                 'dia' => $estudios->a_dia, //'26',
                 'mes' => $estudios->a_mes, //'09',
                 'anio' => $estudios->a_anio, //'1950',
@@ -215,12 +215,33 @@ class EstudiosController extends AppBaseController
             $remedios = Remedios::where('id_cremedios', 'like', $result['general']['clave'] . "%")->get();
         }
 
-
+///////////////////        pruebas
+//        foreach ($remedios as $remedio){
+//            if($remedio->id==5653){ //Trombidium muscae domesticae
+//                echo $remedio->nombre;
+//            }
+//            $rsm = $this->getRsm(
+//                $remedio->id,
+//                $data['iniciales'],
+//                $data['dia'],
+//                $data['mes'],
+//                $data['anio'],
+//                $data['nombre'],
+//                $data['apellido']
+//            );
+//            if($remedio->id==5653){ //Trombidium muscae domesticae
+//
+//                dd($rsm);
+//            }
+//        }
+//
+//        dd('termino');
+//////////////////////////
         $AnalisisCombinados = $this->calcularAnalisisCombinado(
-                                                                $remedios,
-                                                                $data,
-                                                                $predominante
-                                                            );
+            $remedios,
+            $data,
+            $predominante
+        );
 
         $AnalisisCombinados = collect($AnalisisCombinados)->sortByDesc('suma')->toArray();
 
@@ -230,11 +251,13 @@ class EstudiosController extends AppBaseController
         //return view('estudios.show', compact('estudios', 'result', 'remedios', 'AnalisisCombinados', 'analisis'));
 
         $isAdmin = 0;
-        foreach(Auth::user()->perfiles AS $perfil) {
-            if($perfil->rol->id==1){
+        foreach (Auth::user()->perfiles AS $perfil) {
+            if ($perfil->rol->id == 1) {
                 $isAdmin = 1;
             }
         }
+
+
 
         return view('estudios.show', compact('estudios', 'result', 'remedios', 'data', 'predominante', 'AnalisisCombinados', 'isAdmin'));
 
@@ -1039,8 +1062,14 @@ class EstudiosController extends AppBaseController
         return $reino;
     }
 
+    public static function limpia_espacios($cadena){
+        $cadena = str_replace(' ', '', $cadena);
+        return $cadena;
+    }
+
     public static function getRsm($id, $iniciales, $dia, $mes, $anio, $nombre, $last)
     {
+
         $letras1 = 'A I P Y Z';
         $letras2 = 'B J Q';
         $letras3 = 'C K R';
@@ -1050,9 +1079,11 @@ class EstudiosController extends AppBaseController
         $letras7 = 'F N V W';
         $letras8 = 'G &ntilde; X';
         $letras9 = 'H O';
+
         $vocales = 'A E I O U Y';
         $vocanum = '1 6 1 9 6 1';
         $consonantes = 'B C CH D F G H J K L LL M P Q R R S T V X Y Z';
+
         $tabla1_1 = explode(' ', $letras1);
         $tabla1_2 = explode(' ', $letras2);
         $tabla1_3 = explode(' ', $letras3);
@@ -1062,19 +1093,25 @@ class EstudiosController extends AppBaseController
         $tabla1_7 = explode(' ', $letras7);
         $tabla1_8 = explode(' ', $letras8);
         $tabla1_9 = explode(' ', $letras9);
+
         $fecha = $dia . $mes . $anio;
-        $einiciales = strtoupper($iniciales);
+        $einiciales = $iniciales;
         $apodolast = $nombre . $last;
         $tope = strlen($fecha);
         $tope++;
+        $apodolast;
         $sumatodo = 0;
 
         $col_1 = 0;
         $col_2 = 0;
         $col_3 = 0;
 
+        //modificacion manuel
+        $tope = strlen($apodolast);
+        //////////////
         for ($i = 0; $i < $tope; $i++) {
             $letra = substr($apodolast, $i, 1);
+
             if (in_array($letra, $tabla1_1)) {
                 $sumatodo = $sumatodo + 1;
             }
@@ -1103,7 +1140,7 @@ class EstudiosController extends AppBaseController
                 $sumatodo = $sumatodo + 9;
             }
         }
-
+//dd($sumatodo);
         $tope = strlen($einiciales);
         $tope++;
         $iniciales = 0;
@@ -1138,13 +1175,13 @@ class EstudiosController extends AppBaseController
                 $iniciales = $iniciales + 9;
             }
         }
-
         if ($iniciales > 9) {
             $trinomio11 = substr($iniciales, 0, 1);
             $trinomio12 = substr($iniciales, 1, 1);
             $trinomio13 = substr($iniciales, 2, 1);
             $iniciales = intval($trinomio11) + intval($trinomio12) + intval($trinomio13);
         }
+//dd($iniciales);
         $col_i1 = 0;
         $col_i2 = 0;
         $col_i3 = 0;
@@ -1217,6 +1254,7 @@ class EstudiosController extends AppBaseController
             }
         }
         $sumatodo = $sumatodo - $tengoch - $tengoll;
+//dd($sumatodo);
         if ($sumatodo > 9) {
             $trinomio11 = substr($sumatodo, 0, 1);
             $trinomio12 = substr($sumatodo, 1, 1);
@@ -1229,6 +1267,7 @@ class EstudiosController extends AppBaseController
             $trinomio13 = substr($sumatodo, 2, 1);
             $sumatodo = intval($trinomio11) + intval($trinomio12) + intval($trinomio13);
         }
+//dd($sumatodo);
         Switch ($sumatodo) {
             case 1 :
                 $col_1 = 4;
@@ -1282,6 +1321,7 @@ class EstudiosController extends AppBaseController
         $haycolc = false;
         $haycold = false;
         $haycole = false;
+
         Switch ($registro->col_c) {
             case $col_1 :
                 $haycolc = true;
@@ -1293,6 +1333,7 @@ class EstudiosController extends AppBaseController
                 $haycolc = true;
                 break;
         }
+
         Switch ($registro->col_d) {
             case $col_1 :
                 $haycold = true;
@@ -1304,7 +1345,8 @@ class EstudiosController extends AppBaseController
                 $haycold = true;
                 break;
         }
-        Switch ($registro->col_c) {
+
+        Switch ($registro->col_e) {
             case $col_i1 :
                 $haycole = true;
                 break;
@@ -1322,9 +1364,11 @@ class EstudiosController extends AppBaseController
         if ($haycolc AND $haycold && !$haycole) {
             return 8;
         }
+
         if ($haycolc AND $haycole && !$haycold) {
             return 7;
         }
+
         if ($haycolc && !$haycold && !$haycole) {
             return 6;
         }
