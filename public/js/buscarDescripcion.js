@@ -18,3 +18,16 @@ $(document).on('click', '.btnDescripcion', function () {
     });
 });
 
+$(document).on('click', '#btnDoc1', function () {
+
+    $('#tituloModal2').html('Dinámica');
+    $('#iframeDoc').attr('src', '/pdf/dinamica_simetrias.pdf');
+
+});
+
+$(document).on('click', '#btnDoc2', function () {
+
+    $('#tituloModal2').html('Interrogatorio Dirigido');
+    $('#iframeDoc').attr('src', '/pdf/interrogatorio_simetria.pdf');
+
+});

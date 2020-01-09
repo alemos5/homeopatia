@@ -30,12 +30,12 @@
             top: -35px;
         }
 
-        .modal-body {
+        #ModalDescripcion .modal-body {
             max-height: calc(100vh - 210px);
             overflow-y: auto;
         }
 
-        .imagenRemedio {
+        #ModalDescripcion .imagenRemedio {
             position: fixed !important;
             width: 14em !important;
         }
@@ -65,21 +65,22 @@
             @include('estudios.show_barra')
             <div class="row mt-4">
                 <div class="col-sm-6">
-                    <a href="{{asset('pdf/dinamica_simetrias.pdf')}}" target="_blank" class="btn btn-outline-info btn-block">Vea la Dinámica</a>
+                    <button type="button" class="btn btn-outline-info btn-block" id="btnDoc1" data-target="#ModalDocumento" data-toggle="modal">Vea la Dinámica</button>
                 </div>
                 <div class="col-sm-6">
-                    <a href="{{asset('pdf/interrogatorio_simetria.pdf')}}" target="_blank" class="btn btn-outline-info btn-block">Interrogatorio Dirigido</a>
+                    <button type="button" class="btn btn-outline-info btn-block" id="btnDoc2" data-target="#ModalDocumento" data-toggle="modal">Interrogatorio Dirigido</button>
                 </div>
             </div>
         </div>
     </div>
 
-    @if($isAdmin)
-        <div class="row mt-4">
-            <div class="col-sm-12">
-                @include('estudios.show_analisis_combinado')
-            </div>
+    <div class="row mt-4">
+        <div class="col-sm-12">
+            @include('estudios.show_analisis_combinado')
         </div>
+    </div>
+
+    @if($isAdmin)
 
         <div class="row mt-4">
             <div class="col-sm-12">
@@ -100,6 +101,7 @@
     </div>
 
     @include('estudios.modal_descripcion')
+    @include('estudios.modal_documento')
 @endsection
 
 @section('js')
@@ -128,6 +130,18 @@
     <script>
         $(document).ready(function () {
             cargarAnalisis(1, 1, 1, 1, 1, 1);
+            let mostrar = 1;
+            $('#btnVerAnalisisC').click(function () {
+               if(mostrar){
+                   mostrar = 0;
+                   $('#btnVerAnalisisC').html('Ocultar');
+                   $('#cuadroAnalisisC').css('display', 'block');
+               }else{
+                   $('#btnVerAnalisisC').html('Mostrar');
+                   mostrar = 1;
+                   $('#cuadroAnalisisC').css('display', 'none');
+               }
+            });
         });
 
     </script>

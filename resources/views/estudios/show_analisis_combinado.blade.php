@@ -1,4 +1,8 @@
-<h2>Análisis Combinado</h2><hr>
+<h2>
+    Análisis Combinado
+    <button class="btn btn-success" type="button" id="btnVerAnalisisC">Mostrar</button>
+</h2>
+<hr>
 
 {{--<div class="row">--}}
     {{--<div class="col-sm-2">Filtrar:</div>--}}
@@ -19,7 +23,7 @@
     {{--</div>--}}
 {{--</div>--}}
 
-<div class="row">
+<div class="row" id="cuadroAnalisisC" style="display: none">
     <div class="table-responsive">
     <table class="table table-striped table-bordered table-sm ml-3 mt-3" id="data-table-analisis-combinado">
         <thead class="thead-light">
