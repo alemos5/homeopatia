@@ -40,15 +40,17 @@
                 {{$remedio->nombre}}
             </td>
             <td>
-                <?php echo \App\Http\Controllers\EstudiosController::getRsm(
-                        $remedio->id,
-                        $estudios->h_iniciales,
-                        $estudios->h_dia,
-                        $estudios->h_mes,
-                        $estudios->h_anio,
-                        $estudios->h_nombre,
-                        $estudios->h_apellido
-                    ); ?>
+                <?php
+                echo \App\Http\Controllers\EstudiosController::getRsm(
+                    $remedio->id,
+                    $data['iniciales'],
+                    $data['dia'],
+                    $data['mes'],
+                    $data['anio'],
+                    $data['nombre'],
+                    $data['apellido']
+                );
+                ?>
             </td>
 
             <td>
@@ -72,7 +74,7 @@
             <td>
                 
                     <?php
-                    $secuencia = \App\Http\Controllers\EstudiosController::getSecuencia($remedio->id, $estudios->h_identifica);
+                    $secuencia = \App\Http\Controllers\EstudiosController::getSecuencia($remedio->id, $data['apodo']);
                     if ($secuencia) {
                     ?><i class="fas fa-star"></i><?php
                     }

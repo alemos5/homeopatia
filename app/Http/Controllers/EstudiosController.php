@@ -1107,6 +1107,7 @@ class EstudiosController extends AppBaseController
         $col_3 = 0;
 
         //modificacion manuel
+        //dd($apodolast);
         $tope = strlen($apodolast);
         //////////////
         for ($i = 0; $i < $tope; $i++) {
@@ -1140,7 +1141,7 @@ class EstudiosController extends AppBaseController
                 $sumatodo = $sumatodo + 9;
             }
         }
-//dd($sumatodo);
+
         $tope = strlen($einiciales);
         $tope++;
         $iniciales = 0;
@@ -1254,7 +1255,7 @@ class EstudiosController extends AppBaseController
             }
         }
         $sumatodo = $sumatodo - $tengoch - $tengoll;
-//dd($sumatodo);
+
         if ($sumatodo > 9) {
             $trinomio11 = substr($sumatodo, 0, 1);
             $trinomio12 = substr($sumatodo, 1, 1);
@@ -1321,7 +1322,10 @@ class EstudiosController extends AppBaseController
         $haycolc = false;
         $haycold = false;
         $haycole = false;
-
+//        if($registro->id==5653){ //Trombidium muscae domesticae
+//
+//            dd($registro);
+//        }
         Switch ($registro->col_c) {
             case $col_1 :
                 $haycolc = true;
@@ -1358,6 +1362,8 @@ class EstudiosController extends AppBaseController
                 break;
         }
 
+
+
         if ($haycolc AND $haycold AND $haycole) {
             return 9;
         }
@@ -1366,6 +1372,7 @@ class EstudiosController extends AppBaseController
         }
 
         if ($haycolc AND $haycole && !$haycold) {
+
             return 7;
         }
 
