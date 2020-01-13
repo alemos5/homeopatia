@@ -1,23 +1,23 @@
-$(document).on('click', '.btnGuardarNota', function (event) {
+$(document).on('click', '.btnGuardarNota', function () {
 
-    let remedio_id = $(this).data('remedioid');
-    let estudio_id = $('#estudio_id').val();
-    let nota = $(`#nota${remedio_id}`).val();
+    let remedioId = $(this).data('remedioid');
+    let estudioId = $('#estudio_id').val();
+    let nota = $(`#nota${remedioId}`).val();
 
-    $(`#msg${remedio_id}`).html('');
+    $(`#msg${remedioId}`).html('');
 
     $.ajax({
         type:'POST',
         url:'/guardarNota',
         headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
         data:{
-            estudio_id:estudio_id,
-            remedio_id:remedio_id,
-            nota:nota
+            estudio_id: estudioId,
+            remedio_id: remedioId,
+            nota: nota
         },
-        success:function(respuesta){
+        success:function(){
 
-            $(`#msg${remedio_id}`).html('<i class="fas fa-check-circle fa-2x text-success"></i>');
+            $(`#msg${remedioId}`).html('<i class="fas fa-check-circle fa-2x text-success"></i>');
 
         }
     });
