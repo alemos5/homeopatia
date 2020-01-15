@@ -13,7 +13,7 @@ $(document).on('click', '.btnDescripcion', function () {
         $('#tituloModal').html(respuesta.nombre_completo);
         let descripcion = respuesta.descripcion.replace(new RegExp('\n','g'), '<br>');
         $('#descripcionRemedio').html(descripcion);
-        $('#imagenRemedio').html(`<img src="/images/fotos_remedios/${respuesta.imagen}" class="img-responsive radius imagenRemedio" alt="">`);
+        // $('#imagenRemedio').html(`<img src="/images/fotos_remedios/${respuesta.imagen}" class="img-responsive radius imagenRemedio" alt="">`);
 
     });
 });
