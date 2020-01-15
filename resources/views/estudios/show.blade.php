@@ -100,11 +100,11 @@
         </div>
     </div>
 
-    @include('estudios.modal_descripcion')
-    @include('estudios.modal_documento')
 @endsection
 
 @section('js')
+    @include('estudios.modal_descripcion')
+    @include('estudios.modal_documento')
 
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
