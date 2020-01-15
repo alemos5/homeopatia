@@ -100,8 +100,6 @@
         </div>
     </div>
 
-    @include('estudios.modal_descripcion')
-    @include('estudios.modal_documento')
 @endsection
 
 @section('js')
@@ -145,4 +143,7 @@
         });
 
     </script>
+
+    @include('estudios.modal_descripcion')
+    @include('estudios.modal_documento')
 @endsection
