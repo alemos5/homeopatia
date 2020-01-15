@@ -33,7 +33,7 @@
                     {!! Form::open(['route' => 'creditos.store', 'style'=>'width: 100%']) !!}
                     @include('creditos.partials.form')
                     <hr>
-                    <a href="{{ URL::previous() }}" class="btn btn-outline-secondary float-right">{{__('Regresar')}}</a>
+                    <a href="{{ URL::previous() }}" class="btn btn-outline-secondary float-right">{{_i('Regresar')}}</a>
                     {{ Form::submit('Abonar', ['class' => 'btn btn-outline-success float-right mr-1'])}}
 
                     {!! Form::close() !!}

@@ -177,6 +177,14 @@
             $('#NavBarUserProfile').addClass('show');
         }
     });
+    $(".BarIdioma").on("click", function () {
+
+        if ($("#BarIdioma").hasClass("show")) {
+            $('#BarIdioma').removeClass('show');
+        } else {
+            $('#BarIdioma').addClass('show');
+        }
+    });
 </script>
 </body>
 

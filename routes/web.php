@@ -70,6 +70,9 @@ Route::get('/directorio/', function () {
 Route::get('searchState/{pais_id}', 'EstadoController@searchState')->name('searchState');
 Route::get('searchCity/{estado_id}', 'CiudadController@searchCity')->name('searchCity');
 
+#Multilenguaje
+Route::get('/lang/{locale?}', 'Auth\LoginController@changeLang')->name('lang');
+
 #--------------------------------------------------------------------------------------
 #RUTAS PROTEGIDAS POR LA AUTENTICACION Y VERIFICACION DE EMAIL AL MOMENTO DEL REGISTRO
 #--------------------------------------------------------------------------------------

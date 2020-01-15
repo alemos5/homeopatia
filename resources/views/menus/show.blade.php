@@ -24,7 +24,7 @@
                 <p><strong>Nivel:</strong> {{$menu->nivel}}</p>
 
                 <hr>
-                <a href="{{ URL::previous() }}" class="btn btn-outline-success float-right">{{__('Regresar')}}</a>
+                <a href="{{ URL::previous() }}" class="btn btn-outline-success float-right">{{_i('Regresar')}}</a>
             </div>
         </div>
     </div>
