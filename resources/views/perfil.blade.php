@@ -28,7 +28,12 @@
                             <img src="/vendor/wrappixel/material-pro/4.2.1/assets/images/users/1.jpg" alt="user" class="img-circle" width="150"/>
                         @endif
                         <h4 class="card-title m-t-10">{{$user->nombre}}</h4>
-                        <h6 class="card-subtitle">Rol: {{$user->perfiles->rol->name}}</h6>
+                            <h6 class="card-subtitle">
+                                Rol:
+                                @foreach($user->perfiles AS $perfil)
+                                    {{$perfil->rol->name}}.
+                                @endforeach
+                            </h6>
                         <div class="row text-center justify-content-md-center">
                             <div class="col-4">
                                 <a href="{{route('estudios.index')}}" class="link">

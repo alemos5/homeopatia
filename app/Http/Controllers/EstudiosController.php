@@ -1605,7 +1605,7 @@ class EstudiosController extends AppBaseController
             //<button class="btn btn-secondary" type="button" data-target="#ModalAdd" data-toggle="modal">Agregar Nuevo Producto</button>
 
             $htmltabla .= '<tr>';
-            $htmltabla .= '<td><a href="#" onclick="return false" data-target="#ModalDescripcion" data-toggle="modal" class="btnDescripcion" data-idremedio="'.$item['remedio_id'].'">'.$item['remedio'].'</a></td >';
+            $htmltabla .= '<td><a href="#ex1" rel="modal:open" class="btnDescripcion" data-idremedio="'.$item['remedio_id'].'">'.$item['remedio'].'</a></td >';
             $htmltabla .= '<td>' . $item['suma_analisis_combinado'] . '</td >';
             $htmltabla .= '<td>' . $item['reino'] . '</td >';
             $htmltabla .= '<td align="center">' . $clave . '</td >';
