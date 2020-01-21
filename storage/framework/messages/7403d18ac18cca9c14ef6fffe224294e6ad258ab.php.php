@@ -2,16 +2,17 @@
 <?php $__env->startPush('before-scripts'); ?>
     <script src="<?php echo e(mix('/js/home-one.js')); ?>"></script>
 <?php $__env->stopPush(); ?>
-<?php $__env->startSection('nombre_modulo', 'Estudios'); ?>
+<?php $__env->startSection('nombre_modulo', _i('Estudios')); ?>
 <?php $__env->startSection('breadcrumb'); ?>
-    <li class="breadcrumb-item"><a href="<?php echo e(route('home-one')); ?>">Inicio</a></li>
-    <li class="breadcrumb-item"><a href="<?php echo e(route('estudios.index')); ?>">Estudios</a></li>
-    <li class="breadcrumb-item active">Editar</li>
+    <li class="breadcrumb-item"><a href="<?php echo e(route('home-one')); ?>"><?php echo e(_i('Inicio')); ?></a></li>
+    <li class="breadcrumb-item"><a href="<?php echo e(route('estudios.index')); ?>"><?php echo e(_i('Estudios')); ?></a></li>
+<li class="breadcrumb-item active"><?php echo e(_i('Editar')); ?></li>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
     <section class="content-header">
         <h1>
-            Estudios
+        <?php echo e(_i('Estudios')); ?>
+
         </h1>
     </section>
     <div class="content">

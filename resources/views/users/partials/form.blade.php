@@ -21,9 +21,9 @@
 
 <div class="row mt-4">
     <div class="col-md-4">
-        <label for="pais_id" class="mb-0">{{ _i('Pais') }}</label>
+        <label for="pais_id" class="mb-0">{{ _i('País') }}</label>
         <select class="form-control {{ $errors->has('pais_id') ? ' is-invalid' : '' }}" name="pais_id" id="pais_id" required>
-            <option value="">Seleccione un Pais</option>
+        <option value="">:: {{ _i('Seleccione un País') }} ::</option>
             @foreach($paises AS $pais)
                 <option value="{{$pais->id}}" @isset($user) @if($pais->id==$user->pais_id) selected @endif @endisset @if(@old("pais_id")==$pais->id) selected @endif>{{$pais->name}}</option>
             @endforeach
@@ -37,7 +37,7 @@
     <div class="col-md-4">
         <label for="estado_id" class="mb-0">{{ _i('Estado') }}</label>
         <select class="form-control {{ $errors->has('estado_id') ? ' is-invalid' : '' }}" name="estado_id" id="estado_id">
-            <option value="">Seleccione un Estado</option>
+            <option value="">:: {{ _i('Seleccione un Estado') }} ::</option>
         </select>
         @if ($errors->has('estado_id'))
             <span class="invalid-feedback" role="alert">
@@ -48,7 +48,7 @@
     <div class="col-sm-4">
         <label for="ciudad_id" class="mb-0">{{ _i('Ciudad') }}</label>
         <select class="form-control {{ $errors->has('ciudad_id') ? ' is-invalid' : '' }}" name="ciudad_id" id="ciudad_id">
-            <option value="" selected>Seleccione una Ciudad</option>
+            <option value="" selected>:: {{ _i('Seleccione una Ciudad') }} ::</option>
         </select>
         @if ($errors->has('ciudad_id'))
             <span class="invalid-feedback" role="alert">
@@ -72,7 +72,7 @@
 
 <div class="row mt-4">
     <div class="col-sm-6">
-        <label for="telefono" class="mb-0">{{ _i('Telefono') }}</label>
+        <label for="telefono" class="mb-0">{{ _i('Teléfono') }}</label>
         <input id="telefono" name="telefono" type="text" class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}" required
                value="{{ @old("telefono", $user->telefono) }}" value="{{ @old("telefono", $user->telefono) }}">
         @if ($errors->has('telefono'))
@@ -97,7 +97,7 @@
         <label for="password" class="mb-0">{{ _i('Clave') }}</label>
         <input id="password" name="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" @if(!isset($user)) required @endif>
         @if(isset($user))
-            <p class="small">Llene este campo solamente si desea cambiar la clave</p>
+            <p class="small">{{ _i('Llene este campo solamente si desea cambiar la clave') }}</p>
         @endif
         @if ($errors->has('password'))
             <span class="invalid-feedback" role="alert">
@@ -119,14 +119,14 @@
     @endif
 </div>
 
-<h4 class="mt-4">Lista de Roles</h4>
+<h4 class="mt-4">{{ _i('Lista de Roles') }}</h4>
 <div class="form-group">
     <div class="col-sm-10">
         @foreach($roles AS $item)
             <div class="form-check">
                 {{ Form::checkbox('roles[]', $item->id, null, ['id'=>$item->id]) }}
                 <label class="form-check-label" for="{{$item->id}}">
-                    {{ $item->name }} ({{$item->description ?: 'Sin descripcion' }})
+                    {{ $item->name }} ({{$item->description ?: _i('Sin descripcion') }})
                 </label>
             </div>
         @endforeach

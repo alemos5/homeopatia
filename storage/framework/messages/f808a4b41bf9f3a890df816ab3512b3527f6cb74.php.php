@@ -29,9 +29,9 @@
                 </div>
             </li>
             <li role="separator" class="divider"></li>
-            <li><a href="/perfil"><i class="ti-user"></i> Perfil</a></li>
+            <li><a href="/perfil"><i class="ti-user"></i> <?php echo e(_i('Perfil')); ?></a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="/logout"><i class="fa fa-power-off"></i> Cerrar Sesión</a></li>
+        <li><a href="/logout"><i class="fa fa-power-off"></i> <?php echo e(_i('Cerrar Sesión')); ?></a></li>
         </ul>
     </div>
 </li>

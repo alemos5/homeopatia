@@ -13,7 +13,7 @@
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('nombre_modulo', 'Créditos'); ?>
 <?php $__env->startSection('breadcrumb'); ?>
-    <li class="breadcrumb-item"><a href="<?php echo e(route('home-one')); ?>">Inicio</a></li>
+    <li class="breadcrumb-item"><a href="<?php echo e(route('home-one')); ?>"><?php echo e(_i('Inicio')); ?></a></li>
     <li class="breadcrumb-item active"><a href="<?php echo e(route('estudios.index')); ?>">Estudios</a></li>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
@@ -21,7 +21,7 @@
         <h1 class="pull-left">
             Estudios
             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('estudios.create')): ?>
-                <a href="<?php echo e(route('estudios.create')); ?>" class="btn btn-outline-success float-right"> <i class="fas fa-plus"></i> Crear</a>
+                <a href="<?php echo e(route('estudios.create')); ?>" class="btn btn-outline-success float-right"> <i class="fas fa-plus"></i> <?php echo e(_i('Crear')); ?></a>
             <?php endif; ?>
         </h1>
     </section>

@@ -11,24 +11,25 @@
     <link rel="stylesheet" href="/vendor/wrappixel/material-pro/4.2.1/assets/plugins/toast-master/css/jquery.toast.css">
 
 <?php $__env->stopSection(); ?>
-<?php $__env->startSection('nombre_modulo', 'Estudios'); ?>
+<?php $__env->startSection('nombre_modulo', _i('Estudios')); ?>
 <?php $__env->startSection('breadcrumb'); ?>
-    <li class="breadcrumb-item"><a href="<?php echo e(route('home-one')); ?>">Inicio</a></li>
-    <li class="breadcrumb-item active"><a href="<?php echo e(route('estudios.index')); ?>">Estudios</a></li>
+    <li class="breadcrumb-item"><a href="<?php echo e(route('home-one')); ?>"><?php echo e(_i('Inicio')); ?></a></li>
+    <li class="breadcrumb-item active"><a href="<?php echo e(route('estudios.index')); ?>"><?php echo e(_i('Estudios')); ?></a></li>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
     <section class="content-header">
         <h1 class="pull-left">
-            Estudios Médicos
+            <?php echo e(_i('Estudios Médicos')); ?>
+
             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('estudios.create')): ?>
                 <?php if(Auth::user()->creditos->sum('cantidad')>0): ?>
-                    <a href="<?php echo e(route('estudios.create')); ?>" class="btn btn-outline-success float-right"> <i class="fas fa-plus"></i> Crear</a>
+                    <a href="<?php echo e(route('estudios.create')); ?>" class="btn btn-outline-success float-right"> <i class="fas fa-plus"></i> <?php echo e(_i('Crear')); ?></a>
                 <?php endif; ?>
             <?php endif; ?>
         </h1>
         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('estudios.create')): ?>
             <?php if(Auth::user()->creditos->sum('cantidad')==0): ?>
-                <div class="alert alert-danger">Debe abonar créditos a su cuenta para poder crear estudios médicos.</div>
+                <div class="alert alert-danger"><?php echo e(_i('Debe abonar créditos a su cuenta para poder crear estudios médicos.')); ?></div>
             <?php endif; ?>
         <?php endif; ?>
 

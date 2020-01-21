@@ -10,6 +10,7 @@ use App\User;
 use Session;
 use Xinax\LaravelGettext\Facades\LaravelGettext;
 
+
 class LoginController extends Controller
 {
     /*

@@ -11,17 +11,17 @@
     <link rel="stylesheet" href="/vendor/wrappixel/material-pro/4.2.1/assets/plugins/toast-master/css/jquery.toast.css">
 
 <?php $__env->stopSection(); ?>
-<?php $__env->startSection('nombre_modulo', 'Medicamentos'); ?>
+<?php $__env->startSection('nombre_modulo', _i('Medicamentos')); ?>
 <?php $__env->startSection('breadcrumb'); ?>
-    <li class="breadcrumb-item"><a href="<?php echo e(route('home-one')); ?>">Inicio</a></li>
-    <li class="breadcrumb-item active"><a href="<?php echo e(route('medicamentos.index')); ?>">Medicamentos</a></li>
+    <li class="breadcrumb-item"><a href="<?php echo e(route('home-one')); ?>"><?php echo e(_i('Inicio')); ?></a></li>
+    <li class="breadcrumb-item active"><a href="<?php echo e(route('medicamentos.index')); ?>"><?php echo e(_i('Medicamentos')); ?></a></li>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
             <section class="content-header">
-                <h1 class="pull-left">Medicamentos</h1>
+                <h1 class="pull-left"><?php echo e(_i('Medicamentos')); ?></h1>
                 <div class="pull-right">
 
-                        <a href="<?php echo route('medicamentos.create'); ?>" class="btn btn-outline-success" > <i class="fas fa-plus"></i> Crear</a>
+                        <a href="<?php echo route('medicamentos.create'); ?>" class="btn btn-outline-success" > <i class="fas fa-plus"></i> <?php echo e(_i('Crear')); ?></a>
 
                 </div>
             </section>
@@ -37,10 +37,10 @@
                         <table style="width: 100%; font-size: 14px;" id="data-table" class="table table-striped table-bordered dt-responsive nowrap">
                             <thead>
                                 <tr>
-                                    <th>Nombre</th>
-                                    <th>Descripcion</th>
-                                    <th>Image</th>
-                                    <th style="width: auto">Acciones</th>
+                                    <th><?php echo e(_i('Nombre')); ?></th>
+                                    <th><?php echo e(_i('Descripción')); ?></th>
+                                    <th><?php echo e(_i('Imagen')); ?></th>
+                                    <th style="width: auto"><?php echo e(_i('Acciones')); ?></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -60,7 +60,7 @@
                                                 <a href="<?php echo route('medicamentos.edit', [$medicamento->id]); ?>">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
-                                                <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure?')">
+                                                <button type="submit" class="btn btn-danger btn-xs" onclick="return confirm(<?php echo e(_i('Are you sure?')); ?>)">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </button>
 

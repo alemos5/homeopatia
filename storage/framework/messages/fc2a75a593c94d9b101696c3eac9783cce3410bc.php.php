@@ -12,17 +12,18 @@
 
 <?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('nombre_modulo', 'Remedios'); ?>
+<?php $__env->startSection('nombre_modulo', _i('Remedios')); ?>
 <?php $__env->startSection('breadcrumb'); ?>
-    <li class="breadcrumb-item"><a href="<?php echo e(route('home-one')); ?>">Inicio</a></li>
-    <li class="breadcrumb-item active"><a href="<?php echo e(route('remedios.index')); ?>">Remedios</a></li>
+    <li class="breadcrumb-item"><a href="<?php echo e(route('home-one')); ?>"><?php echo e(_i('Inicio')); ?></a></li>
+    <li class="breadcrumb-item active"><a href="<?php echo e(route('remedios.index')); ?>"><?php echo e(_i('Remedios')); ?></a></li>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
     <section class="content-header">
         <h1 class="pull-left">
-            Remedios
+            <?php echo e(_i('Remedios')); ?>
+
             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('remedios.create')): ?>
-                <a href="<?php echo e(route('remedios.create')); ?>" class="btn btn-outline-success float-right"> <i class="fas fa-plus"></i> Crear</a>
+                <a href="<?php echo e(route('remedios.create')); ?>" class="btn btn-outline-success float-right"> <i class="fas fa-plus"></i> <?php echo e(_i('Crear')); ?></a>
             <?php endif; ?>
         </h1>
     </section>

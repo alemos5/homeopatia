@@ -3,12 +3,11 @@
 @push('before-scripts')
     <script src="{{ mix('/js/home-one.js') }}"></script>
 @endpush
-@section('nombre_modulo', 'Credito Abonado')
+@section('nombre_modulo', 'Crédito Abonado')
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{route('home-one')}}">Inicio</a></li>
-    <li class="breadcrumb-item"><a href="{{route('creditos.index')}}">Creditos</a></li>
-    <li class="breadcrumb-item"><a href="{{route('creditos.promociones')}}">Obtenga su Abono</a></li>
-    <li class="breadcrumb-item active">Credito Abonado</li>
+    <li class="breadcrumb-item"><a href="{{route('home-one')}}">{{ _i('Inicio') }}</a></li>
+    <li class="breadcrumb-item"><a href="{{route('creditos.pricing')}}">{{ _i('Obtenga su Abono') }}</a></li>
+    <li class="breadcrumb-item active">{{ _i('Crédito Abonado') }}</li>
 @endsection
 @section('content')
     <div class="content">
@@ -34,18 +33,18 @@
                                 <h2 class="text-center">{{$credito->cantidad}}</h2>
                                 <p class="text-center">
                                     @if ($credito->cantidad>1)
-                                        Créditos Abonados
+                                        {{ _i('Créditos Abonados') }}
                                     @else
-                                        Crédito Abonado
+                                        {{ _i('Crédito Abonado') }}
                                     @endif
                                 </p>
                                 <div class="price-table-content text-center">
                                     <div class="price-row"><h4>US$ {{number_format($credito->costo,0,'','.')}}</h4></div>
-                                    <div class="price-row">Operación: <h5>{{$credito->operacion}}</h5></div>
+                                    <div class="price-row">{{ _i('Operación') }}: <h5>{{$credito->operacion}}</h5></div>
                                     <div class="price-row">
                                         @if (Auth::user()->creditos->sum('cantidad')>0)
                                             <a href="{{route('estudios.create')}}" class="btn btn-success">
-                                                Crear un Nuevo Estudio Médico
+                                                {{ _i('Crear un Nuevo Estudio Médico') }}
                                             </a>
                                         @endif
                                     </div>
@@ -53,23 +52,6 @@
                             </div>
                         </div>
                     </div>
-                    {{--<div class="col-sm-3">--}}
-                        {{--<div class="row text-center mt-5">--}}
-                            {{--<div class="col-sm-12">--}}
-                                {{--<a href="#" class="btn btn-success">Ir a su Estado de Cuenta</a>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        {{--<hr>--}}
-                        {{--<div class="row text-center">--}}
-                            {{--<div class="col-sm-12">--}}
-                                {{--@if (Auth::user()->creditos->sum('cantidad')>0)--}}
-                                    {{--<a href="{{route('estudios.create')}}" class="btn btn-success">--}}
-                                        {{--Crear un Nuevo Estudio Médico--}}
-                                    {{--</a>--}}
-                                {{--@endif--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
                 </div>
             </div>
         </div>

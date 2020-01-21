@@ -1,6 +1,6 @@
 <!-- Idmatmed Field -->
 <div class="form-group col-sm-12">
-    <?php echo Form::label('idMatMed', 'Idmatmed:'); ?>
+    <?php echo Form::label('idMatMed',_i('Idmatmed')); ?>
 
     <?php echo Form::number('idMatMed', null, ['class' => 'form-control']); ?>
 
@@ -9,7 +9,7 @@
 
 <!-- Id Cremedios Field -->
 <div class="form-group col-sm-12">
-    <?php echo Form::label('id_cremedios', 'Id Cremedios:'); ?>
+    <?php echo Form::label('id_cremedios',_i('Id Cremedios')); ?>
 
     <?php echo Form::number('id_cremedios', null, ['class' => 'form-control']); ?>
 
@@ -18,7 +18,7 @@
 
 <!-- Col C Field -->
 <div class="form-group col-sm-12">
-    <?php echo Form::label('col_c', 'Col C:'); ?>
+    <?php echo Form::label('col_c',_i('Col C')); ?>
 
     <?php echo Form::number('col_c', null, ['class' => 'form-control']); ?>
 
@@ -27,7 +27,7 @@
 
 <!-- Col D Field -->
 <div class="form-group col-sm-12">
-    <?php echo Form::label('col_d', 'Col D:'); ?>
+    <?php echo Form::label('col_d', _i('Col D')); ?>
 
     <?php echo Form::number('col_d', null, ['class' => 'form-control']); ?>
 
@@ -36,7 +36,7 @@
 
 <!-- Col E Field -->
 <div class="form-group col-sm-12">
-    <?php echo Form::label('col_e', 'Col E:'); ?>
+    <?php echo Form::label('col_e', _i('Col E:')); ?>
 
     <?php echo Form::number('col_e', null, ['class' => 'form-control']); ?>
 
@@ -45,7 +45,7 @@
 
 <!-- Pregnancia Field -->
 <div class="form-group col-sm-12">
-    <?php echo Form::label('pregnancia', 'Pregnancia:'); ?>
+    <?php echo Form::label('pregnancia', _i('Pregnancia:')); ?>
 
     <?php echo Form::number('pregnancia', null, ['class' => 'form-control']); ?>
 
@@ -54,7 +54,7 @@
 
 <!-- Nombre Field -->
 <div class="form-group col-sm-12">
-    <?php echo Form::label('nombre', 'Nombre:'); ?>
+    <?php echo Form::label('nombre', _i('Nombre:')); ?>
 
     <?php echo Form::text('nombre', null, ['class' => 'form-control']); ?>
 
@@ -63,7 +63,7 @@
 
 <!-- Tipoclasico Field -->
 <div class="form-group col-sm-12">
-    <?php echo Form::label('tipoClasico', 'Tipoclasico:'); ?>
+    <?php echo Form::label('tipoClasico', _i('Tipoclasico:')); ?>
 
     <?php echo Form::number('tipoClasico', null, ['class' => 'form-control']); ?>
 
@@ -72,7 +72,7 @@
 
 <!-- Tipopolicresto Field -->
 <div class="form-group col-sm-12">
-    <?php echo Form::label('tipoPolicresto', 'Tipopolicresto:'); ?>
+    <?php echo Form::label('tipoPolicresto', _i('Tipopolicresto:')); ?>
 
     <?php echo Form::number('tipoPolicresto', null, ['class' => 'form-control']); ?>
 
@@ -81,7 +81,7 @@
 
 <!-- Tipoavanzado Field -->
 <div class="form-group col-sm-12">
-    <?php echo Form::label('tipoAvanzado', 'Tipoavanzado:'); ?>
+    <?php echo Form::label('tipoAvanzado', _i('Tipoavanzado:')); ?>
 
     <?php echo Form::number('tipoAvanzado', null, ['class' => 'form-control']); ?>
 
@@ -90,7 +90,7 @@
 
 <!-- Tiporemedioclave Field -->
 <div class="form-group col-sm-12">
-    <?php echo Form::label('tipoRemedioClave', 'Tiporemedioclave:'); ?>
+    <?php echo Form::label('tipoRemedioClave', _i('Tiporemedioclave:')); ?>
 
     <?php echo Form::number('tipoRemedioClave', null, ['class' => 'form-control']); ?>
 
@@ -99,7 +99,7 @@
 
 <!-- Puros Field -->
 <div class="form-group col-sm-12">
-    <?php echo Form::label('puros', 'Puros:'); ?>
+    <?php echo Form::label('puros', _i('Puros:')); ?>
 
     <?php echo Form::number('puros', null, ['class' => 'form-control']); ?>
 
@@ -108,7 +108,7 @@
 
 <!-- Secuencia Field -->
 <div class="form-group col-sm-12">
-    <?php echo Form::label('secuencia', 'Secuencia:'); ?>
+    <?php echo Form::label('secuencia', _i('Secuencia:')); ?>
 
     <?php echo Form::text('secuencia', null, ['class' => 'form-control']); ?>
 

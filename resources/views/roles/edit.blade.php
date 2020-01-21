@@ -5,14 +5,14 @@
 @endpush
 @section('nombre_modulo', 'Roles')
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{route('home-one')}}">Inicio</a></li>
-    <li class="breadcrumb-item"><a href="{{route('roles.index')}}">Roles</a></li>
-    <li class="breadcrumb-item active">Editar</li>
+    <li class="breadcrumb-item"><a href="{{route('home-one')}}">{{ _i('Inicio') }}</a></li>
+    <li class="breadcrumb-item"><a href="{{route('roles.index')}}">{{ _i('Roles') }}</a></li>
+    <li class="breadcrumb-item active">{{ _i('Editar') }}</li>
 @endsection
 @section('content')
     <section class="content-header">
         <h1>
-            Rol# <b>{{str_pad($role->id, 6, '0', STR_PAD_LEFT)}}</b>
+            {{ _i('Rol') }}# <b>{{str_pad($role->id, 6, '0', STR_PAD_LEFT)}}</b>
         </h1>
     </section>
     <div class="content">
@@ -33,7 +33,7 @@
                     @include('roles.partials.form')
                     <hr>
                     <a href="{{ URL::previous() }}" class="btn btn-outline-secondary float-right">{{_i('Regresar')}}</a>
-                    {{ Form::submit('Guardar', ['class' => 'btn btn-outline-success float-right mr-1'])}}
+                    {{ Form::submit(_i('Guardar'), ['class' => 'btn btn-outline-success float-right mr-1'])}}
                     {!! Form::close() !!}
                 </div>
             </div>

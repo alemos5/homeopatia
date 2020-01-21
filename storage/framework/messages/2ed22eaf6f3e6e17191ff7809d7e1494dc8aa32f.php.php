@@ -14,7 +14,7 @@
                     <li>
                         <a href="<?php echo e(route('home-one')); ?>" aria-expanded="false">
                             <i class="fas fa-home"></i>
-                            <span class="hide-menu">Inicio</span>
+                            <span class="hide-menu"><?php echo e(_i('Inicio')); ?></span>
                         </a>
                     </li>
                     <?php if(\App\Menu::menus()!=''): ?>
@@ -33,7 +33,7 @@
     <!-- Bottom points-->
     <div class="sidebar-footer">
     
-    <!-- item-->  <a href="/logout" class="link" data-toggle="tooltip" title="Cerrar sesión"><i class="mdi mdi-power"></i></a>
+    <!-- item-->  <a href="/logout" class="link" data-toggle="tooltip" title="<?php echo e(_i('Cerrar sesión')); ?>"><i class="mdi mdi-power"></i></a>
     </div>
     <!-- End Bottom points-->
 </aside>

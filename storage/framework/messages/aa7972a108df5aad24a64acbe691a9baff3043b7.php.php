@@ -2,10 +2,10 @@
     <table id="data-table" class="table table-striped table-bordered dt-responsive nowrap">
         <thead>
             <tr>
-                <th>Nombre</th>
-                <th>Descripcion</th>
-                <th>Image</th>
-                <th colspan="3">Action</th>
+            <th><?php echo e(_i('Nombre')); ?></th>
+            <th><?php echo e(_i('Descripción')); ?></th>
+            <th><?php echo e(_i('Imagen')); ?></th>
+            <th colspan="3"><?php echo e(_i('Acción')); ?></th>
             </tr>
         </thead>
         <tbody>
@@ -20,7 +20,7 @@
                     <div class='btn-group'>
                         <a href="<?php echo route('medicamentos.show', [$medicamento->id]); ?>" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
                         <a href="<?php echo route('medicamentos.edit', [$medicamento->id]); ?>" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
-                        <?php echo Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]); ?>
+                        <?php echo Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm("._i('Are you sure?').")"]); ?>
 
                     </div>
                     <?php echo Form::close(); ?>

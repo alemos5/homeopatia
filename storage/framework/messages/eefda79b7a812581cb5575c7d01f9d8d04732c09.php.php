@@ -10,7 +10,7 @@
     </div>
     <div class="col-sm-6">
         <label for="padre" class="mb-0"><?php echo e(_i('Padre')); ?></label>
-        <?php echo e(Form::select('padre', ['0' => 'Sin Padre'] + $menus, null, ['required', 'class' => 'form-control', 'placeholder' => ':: Seleccione ::'])); ?>
+        <?php echo e(Form::select('padre', ['0' => 'Sin Padre'] + $menus, null, ['required', 'class' => 'form-control', 'placeholder' => _i(':: Seleccione ::')])); ?>
 
         <?php if($errors->has('padre')): ?>
             <span class="invalid-feedback" role="alert">
@@ -42,7 +42,7 @@
 <div class="row mt-4">
     <div class="col-md-6">
         <label for="icono" class="mb-0"><?php echo e(_i('Icono')); ?></label>
-        <small>Ej: fas fa-pills - (<a href="https://fontawesome.com/" target="_blank">Más Iconos</a>)</small>
+        <small>Ej: fas fa-pills - (<a href="https://fontawesome.com/" target="_blank"><?php echo e(_i('Más Iconos')); ?></a>)</small>
         <input id="icono" name="icono" type="text" value="<?php echo e(@old("icono", $menu->icono)); ?>" class="form-control <?php echo e($errors->has('icono') ? ' is-invalid' : ''); ?>" required>
         <?php if($errors->has('icono')): ?>
             <span class="invalid-feedback" role="alert">

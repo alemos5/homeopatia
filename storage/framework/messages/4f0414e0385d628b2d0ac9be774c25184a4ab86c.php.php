@@ -4,8 +4,8 @@
 <?php $__env->stopPush(); ?>
 <?php $__env->startSection('nombre_modulo', 'Abonar Creditos'); ?>
 <?php $__env->startSection('breadcrumb'); ?>
-    <li class="breadcrumb-item"><a href="<?php echo e(route('home-one')); ?>">Inicio</a></li>
-    <li class="breadcrumb-item"><a href="<?php echo e(route('users.index')); ?>">Usuarios</a></li>
+    <li class="breadcrumb-item"><a href="<?php echo e(route('home-one')); ?>"><?php echo e(_i('Inicio')); ?></a></li>
+    <li class="breadcrumb-item"><a href="<?php echo e(route('users.index')); ?>"><?php echo e(_i('Usuarios')); ?></a></li>
     <li class="breadcrumb-item active">Abonar Creditos</li>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>

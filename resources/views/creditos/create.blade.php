@@ -5,8 +5,8 @@
 @endpush
 @section('nombre_modulo', 'Abonar Creditos')
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{route('home-one')}}">Inicio</a></li>
-    <li class="breadcrumb-item"><a href="{{route('users.index')}}">Usuarios</a></li>
+    <li class="breadcrumb-item"><a href="{{route('home-one')}}">{{ _i('Inicio') }}</a></li>
+    <li class="breadcrumb-item"><a href="{{route('users.index')}}">{{ _i('Usuarios') }}</a></li>
     <li class="breadcrumb-item active">Abonar Creditos</li>
 @endsection
 @section('content')

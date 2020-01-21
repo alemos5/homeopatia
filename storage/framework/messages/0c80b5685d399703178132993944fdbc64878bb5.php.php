@@ -2,17 +2,18 @@
 <?php $__env->startPush('before-scripts'); ?>
     <script src="<?php echo e(mix('/js/home-one.js')); ?>"></script>
 <?php $__env->stopPush(); ?>
-<?php $__env->startSection('nombre_modulo', 'Medicamentos'); ?>
+<?php $__env->startSection('nombre_modulo', _i('Medicamentos')); ?>
 <?php $__env->startSection('breadcrumb'); ?>
-    <li class="breadcrumb-item"><a href="<?php echo e(route('home-one')); ?>">Inicio</a></li>
-    <li class="breadcrumb-item"><a href="<?php echo e(route('medicamentos.index')); ?>">Medicamentos</a></li>
-    <li class="breadcrumb-item active">Crear</li>
+    <li class="breadcrumb-item"><a href="<?php echo e(route('home-one')); ?>"><?php echo e(_i('Inicio')); ?></a></li>
+    <li class="breadcrumb-item"><a href="<?php echo e(route('medicamentos.index')); ?>"><?php echo e(_i('Medicamentos')); ?></a></li>
+    <li class="breadcrumb-item active"><?php echo e(_i('Crear')); ?></li>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 
     <section class="content-header">
         <h1>
-            Medicamento
+            <?php echo e(_i('Medicamento')); ?>
+
         </h1>
     </section>
     <div class="content">

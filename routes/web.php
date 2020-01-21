@@ -171,6 +171,7 @@ Route::group(['middleware' => array('auth', 'verified')], function () {
     #Creditos
     Route::resource('creditos', 'CreditosController');
     Route::post('promociones', 'CreditosController@promociones')->name('creditos.promociones');
+    Route::get('promociones', 'CreditosController@promociones')->name('creditos.pricing');
     Route::get('abonar/{cliente_id}', 'CreditosController@abonar')->name('creditos.abonar');
 
     #Paypal
@@ -183,12 +184,12 @@ Route::group(['middleware' => array('auth', 'verified')], function () {
     Route::post('guardarNota', 'EstudiosController@guardarNota')->name('guardarNota');
 });
 
-Route::group(['middleware' => 'admin'], function () {
-    //Rutas para los usuarios
-    Route::get('/usuarios', 'UsuariosController@index')->name('usuarios');
-    Route::get('/listado-ordenes', 'OrderController@list')->name('listado-ordenes');
-    Route::get('/promociones', function () {
-        return view('promocion.index');
-    })->name('promociones');
-
-});
+//Route::group(['middleware' => 'admin'], function () {
+//    //Rutas para los usuarios
+//    Route::get('/usuarios', 'UsuariosController@index')->name('usuarios');
+//    Route::get('/listado-ordenes', 'OrderController@list')->name('listado-ordenes');
+//    Route::get('/promociones', function () {
+//        return view('promocion.index');
+//    })->name('promociones');
+//
+//});

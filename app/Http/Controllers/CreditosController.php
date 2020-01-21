@@ -26,6 +26,15 @@ class CreditosController extends Controller
             ->with('info','Abono de '.$cantidad.' Créditos realizado satisfactoriamente.');
     }
 
+    public function pricing()
+    {
+        $promocion = Pricing::where('promocion','=','1')->first();
+        $princings = Pricing::where('promocion','!=','1')->get();
+        $sincard = 1;
+
+        return view('creditos.promociones', compact('promocion', 'princings', 'sincard'));
+    }
+
     public function promociones()
     {
         $promocion = Pricing::where('promocion','=','1')->first();

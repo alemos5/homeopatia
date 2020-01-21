@@ -5,6 +5,7 @@
     <!-- Timeline CSS -->
     <link href="{{asset('/vendor/wrappixel/material-pro/4.2.1/assets/plugins/horizontal-timeline/css/horizontal-timeline.css')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('/vendor/wrappixel/material-pro/4.2.1/assets/plugins/switchery/dist/switchery.min.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('css/shadowbox-js-src.3.0.3/src/shadowbox.css')}}"/>
     <style>
         table.dataTable thead .sorting:after {
             content: "\F0DC";
@@ -30,14 +31,23 @@
             top: -35px;
         }
 
-        #ModalDescripcion .modal-body {
-            max-height: calc(100vh - 210px);
+        .modal {
+            max-width: 800px !important;
+            height: auto !important;
+        }
+
+        #ex1 #descripcionRemedio {
+            max-height: calc(101vh - 210px);
             overflow-y: auto;
         }
 
-        #ModalDescripcion .imagenRemedio {
-            position: fixed !important;
-            width: 14em !important;
+        .blocker {
+            z-index: 99 !important;
+        }
+
+        .modal a.close-modal {
+            top: 5px !important;
+            right: 5px !important;
         }
     </style>
 
@@ -45,11 +55,11 @@
 @push('before-scripts')
     <script src="{{ mix('/js/home-one.js') }}"></script>
 @endpush
-@section('nombre_modulo', 'Estudios')
+@section('nombre_modulo', _i('Estudios'))
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{route('home-one')}}">Inicio</a></li>
-    <li class="breadcrumb-item"><a href="{{route('estudios.index')}}">Estudios</a></li>
-    <li class="breadcrumb-item active">Detalle</li>
+    <li class="breadcrumb-item"><a href="{{route('home-one')}}">{{ _i('Inicio') }}</a></li>
+    <li class="breadcrumb-item"><a href="{{route('estudios.index')}}">{{ _i('Estudios') }}</a></li>
+    <li class="breadcrumb-item active">{{ _i('Detalle') }}</li>
 @endsection
 @section('content')
     <?php
@@ -65,10 +75,10 @@
             @include('estudios.show_barra')
             <div class="row mt-4">
                 <div class="col-sm-6">
-                    <button type="button" class="btn btn-outline-info btn-block" id="btnDoc1" data-target="#ModalDocumento" data-toggle="modal">Vea la Dinámica</button>
+                    <a href="#ex2" rel="modal:open" class="btn btn-outline-info btn-block btnDoc1">{{ _i('Vea la Dinámica') }}</a>
                 </div>
                 <div class="col-sm-6">
-                    <button type="button" class="btn btn-outline-info btn-block" id="btnDoc2" data-target="#ModalDocumento" data-toggle="modal">Interrogatorio Dirigido</button>
+                    <a href="#ex2" rel="modal:open" class="btn btn-outline-info btn-block btnDoc2">{{ _i('Interrogatorio Dirigido') }}</a>
                 </div>
             </div>
         </div>
@@ -100,12 +110,12 @@
         </div>
     </div>
 
+    @include('estudios.modal_descripcion')
+    @include('estudios.modal_documento')
+
 @endsection
 
 @section('js')
-
-    @include('estudios.modal_descripcion')
-    @include('estudios.modal_documento')
 
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
@@ -122,11 +132,16 @@
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 
+    <!-- jQuery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
     <script src="{{asset('/vendor/wrappixel/material-pro/4.2.1/assets/plugins/switchery/dist/switchery.min.js')}}" type="text/javascript"></script>
     <script src="{{ asset('js/cargarAnalisis.js') }}"></script>
     <script src="{{ asset('js/btnes_ordenacion_filtrado.js') }}"></script>
     <script src="{{ asset('js/guardar_nota.js') }}"></script>
     <script src="{{ asset('js/buscarDescripcion.js') }}"></script>
+
 
     <script>
         $(document).ready(function () {
@@ -146,6 +161,4 @@
         });
 
     </script>
-
-
 @endsection

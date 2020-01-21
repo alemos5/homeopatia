@@ -1,6 +1,6 @@
 <!-- Nombre Field -->
 <div class="form-group col-sm-12">
-    <?php echo Form::label('nombre', 'Nombre:'); ?>
+    <?php echo Form::label('nombre', _i('Nombre:')); ?>
 
     <?php echo Form::text('nombre', null, ['class' => 'form-control form-control-line']); ?>
 
@@ -8,7 +8,7 @@
 
 <!-- Descripcion Field -->
 <div class="form-group col-sm-12 col-lg-12">
-    <?php echo Form::label('descripcion', 'Descripcion:'); ?>
+    <?php echo Form::label('descripcion', _i('Descripción:')); ?>
 
     <?php echo Form::textarea('descripcion', null, ['class' => 'form-control']); ?>
 
@@ -16,7 +16,7 @@
 
 <!-- Image Field -->
 <div class="form-group col-sm-12">
-    <?php echo Form::label('image', 'Image:'); ?>
+    <?php echo Form::label('image', _i('Imagen:')); ?>
 
     <?php echo Form::file('image'); ?>
 
@@ -25,7 +25,7 @@
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    <?php echo Form::submit('Actualizar', ['class' => 'btn btn-primary']); ?>
+    <?php echo Form::submit(_i('Actualizar'), ['class' => 'btn btn-primary']); ?>
 
-    <a href="<?php echo route('medicamentos.index'); ?>" class="btn btn-default">Cancel</a>
+    <a href="<?php echo route('medicamentos.index'); ?>" class="btn btn-default"><?php echo e(_i('Cancelar')); ?></a>
 </div>

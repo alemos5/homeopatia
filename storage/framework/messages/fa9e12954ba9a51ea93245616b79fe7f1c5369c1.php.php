@@ -1,7 +1,7 @@
 <?php $__env->startSection('nombre_modulo', 'Perfil del Usuario'); ?>
 <?php $__env->startSection('breadcrumb'); ?>
-    <li class="breadcrumb-item"><a href="<?php echo e(route('home-one')); ?>">Inicio</a></li>
-    <li class="breadcrumb-item active"><a href="<?php echo e(route('perfil')); ?>">Perfil del Usuario</a></li>
+    <li class="breadcrumb-item"><a href="<?php echo e(route('home-one')); ?>"><?php echo e(_i('Inicio')); ?></a></li>
+    <li class="breadcrumb-item active"><a href="<?php echo e(route('perfil')); ?>"><?php echo e(_i('Perfil del Usuario')); ?></a></li>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 
@@ -26,18 +26,23 @@
                             <img src="/vendor/wrappixel/material-pro/4.2.1/assets/images/users/1.jpg" alt="user" class="img-circle" width="150"/>
                         <?php endif; ?>
                         <h4 class="card-title m-t-10"><?php echo e($user->nombre); ?></h4>
-                        <h6 class="card-subtitle">Rol: <?php echo e($user->perfiles->rol->name); ?></h6>
+                            <h6 class="card-subtitle">
+                                <?php echo e(_i('Rol')); ?>:
+                                <?php $__currentLoopData = $user->perfiles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $perfil): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php echo e($perfil->rol->name); ?>.
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            </h6>
                         <div class="row text-center justify-content-md-center">
                             <div class="col-4">
                                 <a href="<?php echo e(route('estudios.index')); ?>" class="link">
-                                    Estudios</br>
+                                    <?php echo e(_i('Estudios')); ?></br>
                                     <i class="fas fa-user-md"></i>
                                     <font class="font-medium"><?php echo e($user->estudios->count()); ?></font>
                                 </a>
                             </div>
                             <div class="col-4">
                                 <a href="<?php echo e(route('creditos.promociones')); ?>" class="link">
-                                    Créditos</br>
+                                    <?php echo e(_i('Créditos')); ?></br>
                                     <i class="fas fa-wallet"></i>
                                     <font class="font-medium"><?php echo e($user->creditos->sum('cantidad')); ?></font>
                                 </a>
@@ -50,16 +55,16 @@
                 </div>
                 <div class="card-body">
 
-                    <small class="text-muted">Email:</small>
+                    <small class="text-muted"><?php echo e(_i('Email')); ?>:</small>
                     <h6><?php echo e($user->email); ?></h6>
 
-                    <small class="text-muted p-t-10 db">Telefóno:</small>
+                    <small class="text-muted p-t-10 db"><?php echo e(_i('Telefóno')); ?>:</small>
                     <h6><?php echo e($user->telefono); ?></h6>
 
-                    <small class="text-muted p-t-10 db">Fax:</small>
+                    <small class="text-muted p-t-10 db"><?php echo e(_i('Fax')); ?>:</small>
                     <h6><?php echo e($user->fax); ?></h6>
 
-                    <small class="text-muted p-t-10 db">Dirección:</small>
+                    <small class="text-muted p-t-10 db"><?php echo e(_i('Dirección')); ?>:</small>
                     <h6><?php echo e($user->direccion); ?></h6>
                 </div>
             </div>
@@ -69,7 +74,7 @@
         <div class="col-lg-8 col-xlg-9 col-md-7">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Editar Datos</h3>
+                    <h3 class="card-title"><?php echo e(_i('Editar Datos')); ?></h3>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="<?php echo e(route('storeperfil')); ?>">
@@ -77,21 +82,21 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for=""><b>Nombre</b></label>
+                                    <label for=""><b><?php echo e(_i('Nombre')); ?></b></label>
                                     <input type="text" name="nombre" value="<?php echo e($user->nombre); ?>" class="form-control" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for=""><b>Email</b></label>
+                                    <label for=""><b><?php echo e(_i('Email')); ?></b></label>
                                     <input type="text" name="email" value="<?php echo e($user->email); ?>" class="form-control" readonly>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="pais_id" class="mb-0"><b><?php echo e(_i('Pais')); ?></b></label>
+                                    <label for="pais_id" class="mb-0"><b><?php echo e(_i('País')); ?></b></label>
                                     <select class="form-control <?php echo e($errors->has('pais_id') ? ' is-invalid' : ''); ?>" name="pais_id" id="pais_id" required>
-                                        <option value="">Seleccione un Pais</option>
+                                        <option value=""><?php echo e(_i('Seleccione un País')); ?></option>
                                         <?php $__currentLoopData = $paises; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $pais): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <option value="<?php echo e($pais->id); ?>" <?php if(isset($user)): ?> <?php if($pais->id==$user->pais_id): ?> selected
                                                     <?php endif; ?> <?php endif; ?> <?php if(@old("pais_id")==$pais->id): ?> selected <?php endif; ?>><?php echo e($pais->name); ?></option>
@@ -108,7 +113,7 @@
                                 <div class="form-group">
                                     <label for="estado_id" class="mb-0"><b><?php echo e(_i('Estado')); ?></b></label>
                                     <select class="form-control <?php echo e($errors->has('estado_id') ? ' is-invalid' : ''); ?>" name="estado_id" id="estado_id">
-                                        <option value="">Seleccione un Estado</option>
+                                        <option value=""><?php echo e(_i('Seleccione un Estado')); ?></option>
                                     </select>
                                     <?php if($errors->has('estado_id')): ?>
                                         <span class="invalid-feedback" role="alert">
@@ -121,7 +126,7 @@
                                 <div class="form-group">
                                     <label for="ciudad_id" class="mb-0"><b><?php echo e(_i('Ciudad')); ?></b></label>
                                     <select class="form-control <?php echo e($errors->has('ciudad_id') ? ' is-invalid' : ''); ?>" name="ciudad_id" id="ciudad_id">
-                                        <option value="" selected>Seleccione una Ciudad</option>
+                                        <option value="" selected><?php echo e(_i('Seleccione una Ciudad')); ?></option>
                                     </select>
                                     <?php if($errors->has('ciudad_id')): ?>
                                         <span class="invalid-feedback" role="alert">
@@ -132,7 +137,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for=""><b>Dirección</b></label>
+                                    <label for=""><b><?php echo e(_i('Dirección')); ?></b></label>
                                     <textarea name="direccion" id="direccion" class="form-control"><?php echo e(@old("direccion", $user->direccion)); ?></textarea>
                                     <?php if($errors->has('direccion')): ?>
                                         <span class="invalid-feedback" role="alert">
@@ -172,7 +177,7 @@
                                 <input id="password" name="password" type="password" class="form-control<?php echo e($errors->has('password') ? ' is-invalid' : ''); ?>"
                                        <?php if(!isset($user)): ?> required <?php endif; ?>>
                                 <?php if(isset($user)): ?>
-                                    <p class="small">Llene este campo solamente si desea cambiar la clave</p>
+                                    <p class="small"><?php echo e(_i('Llene este campo solamente si desea cambiar la clave')); ?></p>
                                 <?php endif; ?>
                                 <?php if($errors->has('password')): ?>
                                     <span class="invalid-feedback" role="alert">
@@ -187,7 +192,7 @@
                 <input type="hidden" name="estado_select" id="estado_select" value="<?php echo e($user->estado_id); ?>">
                 <input type="hidden" name="ciudad_select" id="ciudad_select" value="<?php echo e($user->ciudad_id); ?>">
 
-                <button type="submit" class="btn btn-outline-success">Actualizar</button>
+                <button type="submit" class="btn btn-outline-success"><?php echo e(_i('Actualizar')); ?></button>
                 </form>
             </div>
         </div>

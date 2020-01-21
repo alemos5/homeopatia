@@ -2,8 +2,18 @@
 #Listado de Etiquetas del Menu para que sean incluidas en la traduccion debido a que son valores de BD
 _i('Sistema');
 _i('Configuración');
+_i('Remedios');
+_i('Medicamentos');
+_i('Realizar un Estudio');
+_i('Menú');
+_i('Roles');
+_i('Permisos');
+_i('Usuarios');
+_i('Más Utilizado');
+_i('Mejor Precio');
 
 ?>
+
 <?php if($item['submenu'] == []): ?>
     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check($item['ruta'])): ?>
         <li>

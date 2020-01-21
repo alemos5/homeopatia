@@ -1,6 +1,7 @@
 <h2>
-    Análisis Combinado
-    <button class="btn btn-success" type="button" id="btnVerAnalisisC">Mostrar</button>
+    <?php echo e(_i('Análisis Combinado')); ?>
+
+    <button class="btn btn-success" type="button" id="btnVerAnalisisC"><?php echo e(_i('Mostrar')); ?></button>
 </h2>
 <hr>
 
@@ -36,7 +37,7 @@
         </thead>
         <tbody>
             <tr style="border-bottom: 5px #CCC solid;">
-                <th>Suma</th>
+            <th><?php echo e(_i('Suma')); ?></th>
                 <?php $__currentLoopData = $AnalisisCombinados; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $AnalisisCombinado): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <th style="text-align: center !important;"><?php echo e($AnalisisCombinado['suma']); ?></th>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

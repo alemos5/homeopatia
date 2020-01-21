@@ -16,7 +16,7 @@
     <section class="content-header">
         <h1 class="pull-left">Cremedios</h1>
         <br>
-        <a href="{!! route('cremedios.create') !!}" class="btn btn-outline-success" > <i class="fas fa-plus"></i> Crear</a>
+        <a href="{!! route('cremedios.create') !!}" class="btn btn-outline-success" > <i class="fas fa-plus"></i> {{ _i('Crear') }}</a>
         <br>
     </section>
     <div class="content">

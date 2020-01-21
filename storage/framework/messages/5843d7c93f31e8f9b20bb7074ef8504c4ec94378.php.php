@@ -2,12 +2,11 @@
 <?php $__env->startPush('before-scripts'); ?>
     <script src="<?php echo e(mix('/js/home-one.js')); ?>"></script>
 <?php $__env->stopPush(); ?>
-<?php $__env->startSection('nombre_modulo', 'Credito Abonado'); ?>
+<?php $__env->startSection('nombre_modulo', 'Crédito Abonado'); ?>
 <?php $__env->startSection('breadcrumb'); ?>
-    <li class="breadcrumb-item"><a href="<?php echo e(route('home-one')); ?>">Inicio</a></li>
-    <li class="breadcrumb-item"><a href="<?php echo e(route('creditos.index')); ?>">Creditos</a></li>
-    <li class="breadcrumb-item"><a href="<?php echo e(route('creditos.promociones')); ?>">Obtenga su Abono</a></li>
-    <li class="breadcrumb-item active">Credito Abonado</li>
+    <li class="breadcrumb-item"><a href="<?php echo e(route('home-one')); ?>"><?php echo e(_i('Inicio')); ?></a></li>
+    <li class="breadcrumb-item"><a href="<?php echo e(route('creditos.pricing')); ?>"><?php echo e(_i('Obtenga su Abono')); ?></a></li>
+    <li class="breadcrumb-item active"><?php echo e(_i('Crédito Abonado')); ?></li>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
     <div class="content">
@@ -33,18 +32,21 @@
                                 <h2 class="text-center"><?php echo e($credito->cantidad); ?></h2>
                                 <p class="text-center">
                                     <?php if($credito->cantidad>1): ?>
-                                        Créditos Abonados
+                                        <?php echo e(_i('Créditos Abonados')); ?>
+
                                     <?php else: ?>
-                                        Crédito Abonado
+                                        <?php echo e(_i('Crédito Abonado')); ?>
+
                                     <?php endif; ?>
                                 </p>
                                 <div class="price-table-content text-center">
                                     <div class="price-row"><h4>US$ <?php echo e(number_format($credito->costo,0,'','.')); ?></h4></div>
-                                    <div class="price-row">Operación: <h5><?php echo e($credito->operacion); ?></h5></div>
+                                    <div class="price-row"><?php echo e(_i('Operación')); ?>: <h5><?php echo e($credito->operacion); ?></h5></div>
                                     <div class="price-row">
                                         <?php if(Auth::user()->creditos->sum('cantidad')>0): ?>
                                             <a href="<?php echo e(route('estudios.create')); ?>" class="btn btn-success">
-                                                Crear un Nuevo Estudio Médico
+                                                <?php echo e(_i('Crear un Nuevo Estudio Médico')); ?>
+
                                             </a>
                                         <?php endif; ?>
                                     </div>
@@ -52,23 +54,6 @@
                             </div>
                         </div>
                     </div>
-                    
-                        
-                            
-                                
-                            
-                        
-                        
-                        
-                            
-                                
-                                    
-                                        
-                                    
-                                
-                            
-                        
-                    
                 </div>
             </div>
         </div>

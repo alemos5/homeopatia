@@ -11,17 +11,18 @@
     <link rel="stylesheet" href="/vendor/wrappixel/material-pro/4.2.1/assets/plugins/toast-master/css/jquery.toast.css">
 
 <?php $__env->stopSection(); ?>
-<?php $__env->startSection('nombre_modulo', 'Usuarios'); ?>
+<?php $__env->startSection('nombre_modulo', _i('Usuarios')); ?>
 <?php $__env->startSection('breadcrumb'); ?>
-    <li class="breadcrumb-item"><a href="<?php echo e(route('home-one')); ?>">Inicio</a></li>
-    <li class="breadcrumb-item active"><a href="<?php echo e(route('users.index')); ?>">Usuarios</a></li>
+    <li class="breadcrumb-item"><a href="<?php echo e(route('home-one')); ?>"><?php echo e(_i('Inicio')); ?></a></li>
+<li class="breadcrumb-item active"><a href="<?php echo e(route('users.index')); ?>"><?php echo e(_i('Usuarios')); ?></a></li>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
     <section class="content-header">
         <h1>
-            Usuarios
+        <?php echo e(_i('Usuarios')); ?>
+
             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('users.create')): ?>
-                <a href="<?php echo e(route('users.create')); ?>" class="btn btn-outline-success float-right"> <i class="fas fa-plus"></i> Crear</a>
+                <a href="<?php echo e(route('users.create')); ?>" class="btn btn-outline-success float-right"> <i class="fas fa-plus"></i> <?php echo e(_i('Crear')); ?></a>
             <?php endif; ?>
         </h1>
     </section>
@@ -40,11 +41,11 @@
                 <table class="table table-striped table-bordered nowrap" id="data-table">
                     <thead class="text-primary">
                     <tr>
-                        <th width="10px">ID</th>
-                        <th>Code Cliente</th>
-                        <th>Nombre</th>
-                        <th>Email</th>
-                        <th>Telefono</th>
+                        <th width="10px"><?php echo e(_i('ID')); ?></th>
+                        <th><?php echo e(_i('Code Cliente')); ?></th>
+                        <th><?php echo e(_i('Nombre')); ?></th>
+                        <th><?php echo e(_i('Email')); ?></th>
+                        <th><?php echo e(_i('Teléfono')); ?></th>
                         <th>&nbsp;</th>
                     </tr>
                     </thead>
@@ -58,7 +59,7 @@
                             <td><?php echo e($item->telefono); ?></td>
                             <td class="td-actions text-right">
                                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('creditos.create')): ?>
-                                    <a href="<?php echo e(route('creditos.abonar', $item->id_cliente)); ?>" class="btn btn-outline-success btn-round btn-sm" title="Abonar Crédito">
+                                    <a href="<?php echo e(route('creditos.abonar', $item->id_cliente)); ?>" class="btn btn-outline-success btn-round btn-sm" title="<?php echo e(_i('Abonar Crédito')); ?>">
                                         <i class="fas fa-wallet"></i>
                                     </a>
                                 <?php endif; ?>

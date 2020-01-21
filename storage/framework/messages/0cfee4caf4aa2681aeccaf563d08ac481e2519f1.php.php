@@ -1,4 +1,4 @@
-<h2>Impregnancia Simetría</h2><hr>
+<h2><?php echo e(_i('Impregnancia Simetría')); ?></h2><hr>
 <div class="row">
     
     <div style="width: 100%; height:55px;" class="progress">
@@ -11,13 +11,16 @@
 <div class="row">
     
     <div style="width: <?php echo $result['reino']["animal"]; ?>%; color: red; font-weight: bold">
-        <?php echo $result['reino']["animal"]; ?>% Animal
+        <?php echo $result['reino']["animal"]; ?>% <?php echo e(_i('Animal')); ?>
+
     </div>
     <div style="width: <?php echo $result['reino']["vegetal"]; ?>%; color: green; font-weight: bold">
-        <?php echo $result['reino']["vegetal"]; ?>% Vegetal
+        <?php echo $result['reino']["vegetal"]; ?>% <?php echo e(_i('Vegetal')); ?>
+
     </div>
     <div style="width: <?php echo $result['reino']["mineral"]; ?>%; color: blue; font-weight: bold">
-        <?php echo $result['reino']["mineral"]; ?>% Mineral
+        <?php echo $result['reino']["mineral"]; ?>% <?php echo e(_i('Mineral')); ?>
+
     </div>
     
 </div>

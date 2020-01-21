@@ -1605,12 +1605,12 @@ class EstudiosController extends AppBaseController
             //<button class="btn btn-secondary" type="button" data-target="#ModalAdd" data-toggle="modal">Agregar Nuevo Producto</button>
 
             $htmltabla .= '<tr>';
-            $htmltabla .= '<td><a href="#" onclick="return false" data-target="#ModalDescripcion" data-toggle="modal" class="btnDescripcion" data-idremedio="'.$item['remedio_id'].'">'.$item['remedio'].'</a></td >';
+            $htmltabla .= '<td><a href="#ex1" rel="modal:open" class="btnDescripcion" data-idremedio="'.$item['remedio_id'].'">'.$item['remedio'].'</a></td >';
             $htmltabla .= '<td>' . $item['suma_analisis_combinado'] . '</td >';
             $htmltabla .= '<td>' . $item['reino'] . '</td >';
             $htmltabla .= '<td align="center">' . $clave . '</td >';
             $htmltabla .= '<td><div class="input-group" >';
-            $htmltabla .= '<input id="nota'.$item['remedio_id'].'" type = "text" class="form-control" placeholder = "Escriba una nota" value="'.$notavalue.'" ><div class="input-group-append" >';
+            $htmltabla .= '<input id="nota'.$item['remedio_id'].'" type = "text" class="form-control" placeholder = "'._i('Escriba una nota').'" value="'.$notavalue.'" ><div class="input-group-append" >';
             $htmltabla .= '<button class="btn btn-success btnGuardarNota" data-remedioid="'.$item['remedio_id'].'" type = "button" ><i class="fas fa-save" ></i ></button >';
             $htmltabla .= '&nbsp;<div id="msg'.$item['remedio_id'].'"></div></div ></div ></td >';
             $htmltabla .= '</tr>';

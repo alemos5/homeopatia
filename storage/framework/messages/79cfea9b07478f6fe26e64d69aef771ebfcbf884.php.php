@@ -1,6 +1,7 @@
     <section class="content-header">
         <h1>
-            Cambio de Contraseña
+            <?php echo e(_i('Cambio de Contraseña')); ?>
+
         </h1>
     </section>
     <div class="content">
@@ -8,7 +9,7 @@
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row">
-                    <p>Su clave ha sido cambiada por el administrador del sistema, le recomendamos cambie dicha contraseña en virtud de mantener la seguridad de los datos.</p>
+                    <p><?php echo e(_i('Su clave ha sido cambiada por el administrador del sistema, le recomendamos cambie dicha contraseña en virtud de mantener la seguridad de los datos.')); ?></p>
 
                     <?php echo Form::model($user, ['route' => ['users.cambioClave', $user->id_cliente], 'method'=>'POST', 'style'=>'width: 100%']); ?>
 
@@ -36,7 +37,7 @@
                     </div>
 
                     <hr>
-                    <?php echo e(Form::submit('Guardar', ['class' => 'btn btn-outline-success float-right mr-1'])); ?>
+                    <?php echo e(Form::submit(_i('Guardar'), ['class' => 'btn btn-outline-success float-right mr-1'])); ?>
 
 
                     <?php echo Form::close(); ?>

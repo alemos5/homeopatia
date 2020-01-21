@@ -13,17 +13,17 @@
 
 @endsection
 
-@section('nombre_modulo', 'Remedios')
+@section('nombre_modulo', _i('Remedios'))
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{route('home-one')}}">Inicio</a></li>
-    <li class="breadcrumb-item active"><a href="{{route('remedios.index')}}">Remedios</a></li>
+    <li class="breadcrumb-item"><a href="{{route('home-one')}}">{{ _i('Inicio') }}</a></li>
+    <li class="breadcrumb-item active"><a href="{{route('remedios.index')}}">{{ _i('Remedios') }}</a></li>
 @endsection
 @section('content')
     <section class="content-header">
         <h1 class="pull-left">
-            Remedios
+            {{ _i('Remedios') }}
             @can('remedios.create')
-                <a href="{{route('remedios.create')}}" class="btn btn-outline-success float-right"> <i class="fas fa-plus"></i> Crear</a>
+                <a href="{{route('remedios.create')}}" class="btn btn-outline-success float-right"> <i class="fas fa-plus"></i> {{ _i('Crear') }}</a>
             @endcan
         </h1>
     </section>

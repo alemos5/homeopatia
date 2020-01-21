@@ -1,26 +1,26 @@
 <table style="width: 100%; font-size: 14px;" id="data-table" class="table table-striped table-bordered dt-responsive nowrap">
     <thead>
         <tr>
-            <th>Id Usuario</th>
-        <th>Tipo</th>
-        <th>H Nombre</th>
-        <th>H Apellido</th>
-        <th>H Identifica</th>
-        <th>H Iniciales</th>
-        <th>H Dia</th>
-        <th>H Mes</th>
-        <th>H Anio</th>
-        <th>H Pais</th>
-        <th>A Especie</th>
-        <th>A Duenio</th>
-        <th>A Animal</th>
-        <th>A Iniciales</th>
-        <th>A Dia</th>
-        <th>A Mes</th>
-        <th>A Anio</th>
-        <th>Ip</th>
-        <th>User Agent</th>
-        <th>Fecha</th>
+            <th><?php echo e(_i('Id Usuario')); ?></th>
+        <th><?php echo e(_i('Tipo')); ?></th>
+        <th><?php echo e(_i('H Nombre')); ?></th>
+        <th><?php echo e(_i('H Apellido')); ?></th>
+        <th><?php echo e(_i('H Identifica')); ?></th>
+        <th><?php echo e(_i('H Iniciales')); ?></th>
+        <th><?php echo e(_i('H Dia')); ?></th>
+        <th><?php echo e(_i('H Mes')); ?></th>
+        <th><?php echo e(_i('H Anio')); ?></th>
+        <th><?php echo e(_i('H Pais')); ?></th>
+        <th><?php echo e(_i('A Especie')); ?></th>
+        <th><?php echo e(_i('A Duenio')); ?></th>
+        <th><?php echo e(_i('A Animal')); ?></th>
+        <th><?php echo e(_i('A Iniciales')); ?></th>
+        <th><?php echo e(_i('A Dia')); ?></th>
+        <th><?php echo e(_i('A Mes')); ?></th>
+        <th><?php echo e(_i('A Anio')); ?></th>
+        <th><?php echo e(_i('Ip')); ?></th>
+        <th><?php echo e(_i('User Agent')); ?></th>
+        <th><?php echo e(_i('Fecha')); ?></th>
             <th style="width: auto">Acciones</th>
         </tr>
     </thead>
@@ -61,7 +61,7 @@
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('estudios.destroy')): ?>
                     <?php echo Form::open(['route' => ['estudios.destroy', $estudios->id], 'method' => 'delete','class' => 'd-inline']); ?>
 
-                    <button class="btn btn-outline-success btn-round btn-sm" onclick="return confirm('¿Realmente desea eliminar el elemento seleccionado?')">
+                    <button class="btn btn-outline-success btn-round btn-sm" onclick="return confirm(<?php echo e(_i('¿Realmente desea eliminar el elemento seleccionado?')); ?>)">
                         <i class="fas fa-trash-alt"></i>
                     </button>
                     <?php echo Form::close(); ?>

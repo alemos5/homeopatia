@@ -4,6 +4,7 @@
     <!-- Timeline CSS -->
     <link href="<?php echo e(asset('/vendor/wrappixel/material-pro/4.2.1/assets/plugins/horizontal-timeline/css/horizontal-timeline.css')); ?>" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/vendor/wrappixel/material-pro/4.2.1/assets/plugins/switchery/dist/switchery.min.css')); ?>"/>
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('css/shadowbox-js-src.3.0.3/src/shadowbox.css')); ?>"/>
     <style>
         table.dataTable thead .sorting:after {
             content: "\F0DC";
@@ -29,14 +30,23 @@
             top: -35px;
         }
 
-        #ModalDescripcion .modal-body {
-            max-height: calc(100vh - 210px);
+        .modal {
+            max-width: 800px !important;
+            height: auto !important;
+        }
+
+        #ex1 #descripcionRemedio {
+            max-height: calc(101vh - 210px);
             overflow-y: auto;
         }
 
-        #ModalDescripcion .imagenRemedio {
-            position: fixed !important;
-            width: 14em !important;
+        .blocker {
+            z-index: 99 !important;
+        }
+
+        .modal a.close-modal {
+            top: 5px !important;
+            right: 5px !important;
         }
     </style>
 
@@ -44,11 +54,11 @@
 <?php $__env->startPush('before-scripts'); ?>
     <script src="<?php echo e(mix('/js/home-one.js')); ?>"></script>
 <?php $__env->stopPush(); ?>
-<?php $__env->startSection('nombre_modulo', 'Estudios'); ?>
+<?php $__env->startSection('nombre_modulo', _i('Estudios')); ?>
 <?php $__env->startSection('breadcrumb'); ?>
-    <li class="breadcrumb-item"><a href="<?php echo e(route('home-one')); ?>">Inicio</a></li>
-    <li class="breadcrumb-item"><a href="<?php echo e(route('estudios.index')); ?>">Estudios</a></li>
-    <li class="breadcrumb-item active">Detalle</li>
+    <li class="breadcrumb-item"><a href="<?php echo e(route('home-one')); ?>"><?php echo e(_i('Inicio')); ?></a></li>
+    <li class="breadcrumb-item"><a href="<?php echo e(route('estudios.index')); ?>"><?php echo e(_i('Estudios')); ?></a></li>
+    <li class="breadcrumb-item active"><?php echo e(_i('Detalle')); ?></li>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
     <?php
@@ -64,10 +74,10 @@
             <?php echo $__env->make('estudios.show_barra', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             <div class="row mt-4">
                 <div class="col-sm-6">
-                    <button type="button" class="btn btn-outline-info btn-block" id="btnDoc1" data-target="#ModalDocumento" data-toggle="modal">Vea la Dinámica</button>
+                    <a href="#ex2" rel="modal:open" class="btn btn-outline-info btn-block btnDoc1"><?php echo e(_i('Vea la Dinámica')); ?></a>
                 </div>
                 <div class="col-sm-6">
-                    <button type="button" class="btn btn-outline-info btn-block" id="btnDoc2" data-target="#ModalDocumento" data-toggle="modal">Interrogatorio Dirigido</button>
+                    <a href="#ex2" rel="modal:open" class="btn btn-outline-info btn-block btnDoc2"><?php echo e(_i('Interrogatorio Dirigido')); ?></a>
                 </div>
             </div>
         </div>
@@ -101,6 +111,7 @@
 
     <?php echo $__env->make('estudios.modal_descripcion', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
     <?php echo $__env->make('estudios.modal_documento', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('js'); ?>
@@ -120,11 +131,16 @@
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 
+    <!-- jQuery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
     <script src="<?php echo e(asset('/vendor/wrappixel/material-pro/4.2.1/assets/plugins/switchery/dist/switchery.min.js')); ?>" type="text/javascript"></script>
     <script src="<?php echo e(asset('js/cargarAnalisis.js')); ?>"></script>
     <script src="<?php echo e(asset('js/btnes_ordenacion_filtrado.js')); ?>"></script>
     <script src="<?php echo e(asset('js/guardar_nota.js')); ?>"></script>
     <script src="<?php echo e(asset('js/buscarDescripcion.js')); ?>"></script>
+
 
     <script>
         $(document).ready(function () {

@@ -115,10 +115,10 @@
                     <div class="blog-image">
                         <i class="fas fa-user-md fa-3x"></i>
                     </div>
-                    <h3>Estudio Médico</br>&nbsp;</h3>
+                    <h3><?php echo e(_i('Estudio Médico')); ?></br>&nbsp;</h3>
                 </div>
                 <div class="card-footer text-center">
-                    <a href="<?php echo e(route('estudios.create')); ?>" class="btn btn-success">Crear Nuevo</a>
+                    <a href="<?php echo e(route('estudios.create')); ?>" class="btn btn-success"><?php echo e(_i('Crear Nuevo')); ?></a>
                 </div>
             </div>
         </div>
@@ -128,11 +128,11 @@
                     <div class="blog-image">
                         <i class="fas fa-wallet fa-3x"></i>
                     </div>
-                    <h3>Abono Promocional</br> <?php echo e($promocion->creditos); ?> Créditos</h3>
+                    <h3><?php echo e(_i('Abono Promocional')); ?></br> <?php echo e($promocion->creditos); ?> <?php echo e(_i('Créditos')); ?></h3>
                 </div>
                 <div class="card-footer text-center">
                     <a href="<?php echo e(route('payment', $promocion->id)); ?>" class="btn btn-warning">
-                        Comprar por US$ <?php echo e(number_format($promocion->costo,2,',','.')); ?>
+                        <?php echo e(_i('Comprar por US$')); ?> <?php echo e(number_format($promocion->costo,2,',','.')); ?>
 
                     </a>
                 </div>
@@ -144,10 +144,10 @@
                     <div class="blog-image">
                         <i class="fas fa-chalkboard-teacher fa-3x"></i>
                     </div>
-                    <h3>Instrucciones de </br>Uso</h3>
+                    <h3><?php echo e(_i('Instrucciones de')); ?> </br><?php echo e(_i('Uso')); ?></h3>
                 </div>
                 <div class="card-footer text-center">
-                    <a href="#" class="btn btn-success">Mostrar</a>
+                    <a href="#" class="btn btn-success"><?php echo e(_i('Mostrar')); ?></a>
                 </div>
             </div>
         </div>
@@ -157,16 +157,17 @@
         <div class="card-body">
             <section class="content-header">
                 <h1 class="pull-left">
-                    Estudios Médicos
+                    <?php echo e(_i('Estudios Médicos')); ?>
+
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('estudios.create')): ?>
                         <?php if(Auth::user()->creditos->sum('cantidad')>0): ?>
-                            <a href="<?php echo e(route('estudios.create')); ?>" class="btn btn-outline-success float-right"> <i class="fas fa-plus"></i> Crear</a>
+                            <a href="<?php echo e(route('estudios.create')); ?>" class="btn btn-outline-success float-right"> <i class="fas fa-plus"></i> <?php echo e(_i('Crear')); ?></a>
                         <?php endif; ?>
                     <?php endif; ?>
                 </h1>
                 <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('estudios.create')): ?>
                     <?php if(Auth::user()->creditos->sum('cantidad')==0): ?>
-                        <div class="alert alert-danger">Debe abonar créditos a su cuenta para poder crear estudios médicos.</div>
+                        <div class="alert alert-danger"><?php echo e(_i('Debe abonar créditos a su cuenta para poder crear estudios médicos.')); ?></div>
                     <?php endif; ?>
                 <?php endif; ?>
 

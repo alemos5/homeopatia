@@ -12,17 +12,17 @@
     <link rel="stylesheet" href="/vendor/wrappixel/material-pro/4.2.1/assets/plugins/toast-master/css/jquery.toast.css">
 
 @endsection
-@section('nombre_modulo', 'Usuarios')
+@section('nombre_modulo', _i('Usuarios'))
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{route('home-one')}}">Inicio</a></li>
-    <li class="breadcrumb-item active"><a href="{{route('users.index')}}">Usuarios</a></li>
+    <li class="breadcrumb-item"><a href="{{route('home-one')}}">{{ _i('Inicio') }}</a></li>
+<li class="breadcrumb-item active"><a href="{{route('users.index')}}">{{ _i('Usuarios') }}</a></li>
 @endsection
 @section('content')
     <section class="content-header">
         <h1>
-            Usuarios
+        {{ _i('Usuarios') }}
             @can('users.create')
-                <a href="{{route('users.create')}}" class="btn btn-outline-success float-right"> <i class="fas fa-plus"></i> Crear</a>
+                <a href="{{route('users.create')}}" class="btn btn-outline-success float-right"> <i class="fas fa-plus"></i> {{ _i('Crear') }}</a>
             @endcan
         </h1>
     </section>
@@ -41,11 +41,11 @@
                 <table class="table table-striped table-bordered nowrap" id="data-table">
                     <thead class="text-primary">
                     <tr>
-                        <th width="10px">ID</th>
-                        <th>Code Cliente</th>
-                        <th>Nombre</th>
-                        <th>Email</th>
-                        <th>Telefono</th>
+                        <th width="10px">{{ _i('ID') }}</th>
+                        <th>{{ _i('Code Cliente') }}</th>
+                        <th>{{ _i('Nombre') }}</th>
+                        <th>{{ _i('Email') }}</th>
+                        <th>{{ _i('Teléfono') }}</th>
                         <th>&nbsp;</th>
                     </tr>
                     </thead>
@@ -59,7 +59,7 @@
                             <td>{{$item->telefono}}</td>
                             <td class="td-actions text-right">
                                 @can('creditos.create')
-                                    <a href="{{route('creditos.abonar', $item->id_cliente)}}" class="btn btn-outline-success btn-round btn-sm" title="Abonar Crédito">
+                                    <a href="{{route('creditos.abonar', $item->id_cliente)}}" class="btn btn-outline-success btn-round btn-sm" title="{{ _i('Abonar Crédito') }}">
                                         <i class="fas fa-wallet"></i>
                                     </a>
                                 @endcan
