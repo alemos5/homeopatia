@@ -116,10 +116,10 @@
                     <div class="blog-image">
                         <i class="fas fa-user-md fa-3x"></i>
                     </div>
-                    <h3>Estudio Médico</br>&nbsp;</h3>
+                    <h3>{{ _i('Estudio Médico') }}</br>&nbsp;</h3>
                 </div>
                 <div class="card-footer text-center">
-                    <a href="{{route('estudios.create')}}" class="btn btn-success">Crear Nuevo</a>
+                    <a href="{{route('estudios.create')}}" class="btn btn-success">{{ _i('Crear Nuevo') }}</a>
                 </div>
             </div>
         </div>
@@ -129,11 +129,11 @@
                     <div class="blog-image">
                         <i class="fas fa-wallet fa-3x"></i>
                     </div>
-                    <h3>Abono Promocional</br> {{$promocion->creditos}} Créditos</h3>
+                    <h3>{{ _i('Abono Promocional') }}</br> {{$promocion->creditos}} {{ _i('Créditos') }}</h3>
                 </div>
                 <div class="card-footer text-center">
                     <a href="{{ route('payment', $promocion->id) }}" class="btn btn-warning">
-                        Comprar por US$ {{number_format($promocion->costo,2,',','.')}}
+                        {{ _i('Comprar por US$') }} {{number_format($promocion->costo,2,',','.')}}
                     </a>
                 </div>
             </div>
@@ -144,10 +144,10 @@
                     <div class="blog-image">
                         <i class="fas fa-chalkboard-teacher fa-3x"></i>
                     </div>
-                    <h3>Instrucciones de </br>Uso</h3>
+                    <h3>{{ _i('Instrucciones de') }} </br>{{ _i('Uso') }}</h3>
                 </div>
                 <div class="card-footer text-center">
-                    <a href="#" class="btn btn-success">Mostrar</a>
+                    <a href="#" class="btn btn-success">{{ _i('Mostrar') }}</a>
                 </div>
             </div>
         </div>
@@ -157,16 +157,16 @@
         <div class="card-body">
             <section class="content-header">
                 <h1 class="pull-left">
-                    Estudios Médicos
+                    {{ _i('Estudios Médicos') }}
                     @can('estudios.create')
                         @if (Auth::user()->creditos->sum('cantidad')>0)
-                            <a href="{{route('estudios.create')}}" class="btn btn-outline-success float-right"> <i class="fas fa-plus"></i> Crear</a>
+                            <a href="{{route('estudios.create')}}" class="btn btn-outline-success float-right"> <i class="fas fa-plus"></i> {{ _i('Crear') }}</a>
                         @endif
                     @endcan
                 </h1>
                 @can('estudios.create')
                     @if (Auth::user()->creditos->sum('cantidad')==0)
-                        <div class="alert alert-danger">Debe abonar créditos a su cuenta para poder crear estudios médicos.</div>
+                        <div class="alert alert-danger">{{ _i('Debe abonar créditos a su cuenta para poder crear estudios médicos.') }}</div>
                     @endif
                 @endcan
 

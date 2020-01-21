@@ -1,16 +1,16 @@
-<h2>Análisis desplegado</h2>
+<h2>{{ _i('Análisis desplegado') }}</h2>
 <hr>
 <table style="width: 100%; font-size: 14px;" id="data-table" class="table table-striped table-bordered dt-responsive nowrap">
     <thead>
     <tr>
-        <th>ID</th>
-        <th>Reino</th>
-        <th>Medicamento</th>
-        <th>RSM</th>
-        <th>Consonantes</th>
-        <th>Clave</th>
-        <th>Secuencia</th>
-        <th>Recetado</th>
+        <th>{{ _i('ID') }}</th>
+        <th>{{ _i('Reino') }}</th>
+        <th>{{ _i('Medicamento') }}</th>
+        <th>{{ _i('RSM') }}</th>
+        <th>{{ _i('Consonantes') }}</th>
+        <th>{{ _i('Clave') }}</th>
+        <th>{{ _i('Secuencia') }}</th>
+        <th>{{ _i('Recetado') }}</th>
     </tr>
     </thead> <?php  ?>
     <tbody>

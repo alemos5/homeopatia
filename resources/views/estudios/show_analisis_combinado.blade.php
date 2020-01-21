@@ -1,6 +1,6 @@
 <h2>
-    Análisis Combinado
-    <button class="btn btn-success" type="button" id="btnVerAnalisisC">Mostrar</button>
+    {{ _i('Análisis Combinado') }}
+    <button class="btn btn-success" type="button" id="btnVerAnalisisC">{{ _i('Mostrar') }}</button>
 </h2>
 <hr>
 
@@ -36,7 +36,7 @@
         </thead>
         <tbody>
             <tr style="border-bottom: 5px #CCC solid;">
-                <th>Suma</th>
+            <th>{{ _i('Suma') }}</th>
                 @foreach($AnalisisCombinados AS $AnalisisCombinado)
                     <th style="text-align: center !important;">{{$AnalisisCombinado['suma']}}</th>
                 @endforeach

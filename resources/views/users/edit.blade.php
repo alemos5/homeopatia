@@ -3,16 +3,16 @@
 @push('before-scripts')
     <script src="{{ mix('/js/home-one.js') }}"></script>
 @endpush
-@section('nombre_modulo', 'Usuarios')
+@section('nombre_modulo', _i('Usuarios'))
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{route('home-one')}}">Inicio</a></li>
-    <li class="breadcrumb-item"><a href="{{route('users.index')}}">Usuarios</a></li>
-    <li class="breadcrumb-item active">Editar</li>
+    <li class="breadcrumb-item"><a href="{{route('home-one')}}">{{ _i('Inicio') }}</a></li>
+    <li class="breadcrumb-item"><a href="{{route('users.index')}}">{{ _i('Usuarios') }}</a></li>
+    <li class="breadcrumb-item active">{{ _i('Editar ') }}</li>
 @endsection
 @section('content')
     <section class="content-header">
         <h1>
-            Usuario# <b>{{str_pad($user->id_cliente, 6, '0', STR_PAD_LEFT)}}</b>
+            {{ _i('Usuario') }}# <b>{{str_pad($user->id_cliente, 6, '0', STR_PAD_LEFT)}}</b>
         </h1>
     </section>
     <div class="content">
@@ -32,8 +32,8 @@
                     {!! Form::model($user, ['route' => ['users.update', $user->id_cliente], 'method'=>'PUT', 'style'=>'width: 100%']) !!}
                     @include('users.partials.form')
                     <hr>
-                    <a href="{{ URL::previous() }}" class="btn btn-outline-secondary float-right">{{__('Regresar')}}</a>
-                    {{ Form::submit('Guardar', ['class' => 'btn btn-outline-success float-right mr-1'])}}
+                    <a href="{{ URL::previous() }}" class="btn btn-outline-secondary float-right">{{_i('Regresar')}}</a>
+                    {{ Form::submit(_i('Guardar'), ['class' => 'btn btn-outline-success float-right mr-1'])}}
                     {!! Form::close() !!}
                 </div>
             </div>

@@ -9,6 +9,6 @@
         <div class="col-sm-4" id="imagenRemedio"></div>
     </div>
     <hr>
-    <a href="#" rel="modal:close" class="btn btn-success waves-effect float-right">Cerrar</a>
+    <a href="#" rel="modal:close" class="btn btn-success waves-effect float-right">{{ _i('Cerrar') }}</a>
 </div>
 <!--************************************************************-->

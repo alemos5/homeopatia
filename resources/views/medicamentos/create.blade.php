@@ -3,17 +3,17 @@
 @push('before-scripts')
     <script src="{{ mix('/js/home-one.js') }}"></script>
 @endpush
-@section('nombre_modulo', 'Medicamentos')
+@section('nombre_modulo', _i('Medicamentos'))
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{route('home-one')}}">Inicio</a></li>
-    <li class="breadcrumb-item"><a href="{{route('medicamentos.index')}}">Medicamentos</a></li>
-    <li class="breadcrumb-item active">Crear</li>
+    <li class="breadcrumb-item"><a href="{{route('home-one')}}">{{ _i('Inicio') }}</a></li>
+    <li class="breadcrumb-item"><a href="{{route('medicamentos.index')}}">{{ _i('Medicamentos') }}</a></li>
+    <li class="breadcrumb-item active">{{ _i('Crear') }}</li>
 @endsection
 @section('content')
 
     <section class="content-header">
         <h1>
-            Medicamento
+            {{ _i('Medicamento') }}
         </h1>
     </section>
     <div class="content">

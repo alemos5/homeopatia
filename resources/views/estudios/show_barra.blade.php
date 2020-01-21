@@ -1,4 +1,4 @@
-<h2>Impregnancia Simetría</h2><hr>
+<h2>{{ _i('Impregnancia Simetría') }}</h2><hr>
 <div class="row">
     {{--                <div class="col-sm-12">--}}
     <div style="width: 100%; height:55px;" class="progress">
@@ -11,13 +11,13 @@
 <div class="row">
     {{--                <div style="width: 100%" class="col-sm-12">--}}
     <div style="width: <?php echo $result['reino']["animal"]; ?>%; color: red; font-weight: bold">
-        <?php echo $result['reino']["animal"]; ?>% Animal
+        <?php echo $result['reino']["animal"]; ?>% {{ _i('Animal') }}
     </div>
     <div style="width: <?php echo $result['reino']["vegetal"]; ?>%; color: green; font-weight: bold">
-        <?php echo $result['reino']["vegetal"]; ?>% Vegetal
+        <?php echo $result['reino']["vegetal"]; ?>% {{ _i('Vegetal') }}
     </div>
     <div style="width: <?php echo $result['reino']["mineral"]; ?>%; color: blue; font-weight: bold">
-        <?php echo $result['reino']["mineral"]; ?>% Mineral
+        <?php echo $result['reino']["mineral"]; ?>% {{ _i('Mineral') }}
     </div>
     {{--                </div>--}}
 </div>

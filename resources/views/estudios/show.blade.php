@@ -55,11 +55,11 @@
 @push('before-scripts')
     <script src="{{ mix('/js/home-one.js') }}"></script>
 @endpush
-@section('nombre_modulo', 'Estudios')
+@section('nombre_modulo', _i('Estudios'))
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{route('home-one')}}">Inicio</a></li>
-    <li class="breadcrumb-item"><a href="{{route('estudios.index')}}">Estudios</a></li>
-    <li class="breadcrumb-item active">Detalle</li>
+    <li class="breadcrumb-item"><a href="{{route('home-one')}}">{{ _i('Inicio') }}</a></li>
+    <li class="breadcrumb-item"><a href="{{route('estudios.index')}}">{{ _i('Estudios') }}</a></li>
+    <li class="breadcrumb-item active">{{ _i('Detalle') }}</li>
 @endsection
 @section('content')
     <?php
@@ -75,10 +75,10 @@
             @include('estudios.show_barra')
             <div class="row mt-4">
                 <div class="col-sm-6">
-                    <a href="#ex2" rel="modal:open" class="btn btn-outline-info btn-block btnDoc1">Vea la Dinámica</a>
+                    <a href="#ex2" rel="modal:open" class="btn btn-outline-info btn-block btnDoc1">{{ _i('Vea la Dinámica') }}</a>
                 </div>
                 <div class="col-sm-6">
-                    <a href="#ex2" rel="modal:open" class="btn btn-outline-info btn-block btnDoc2">Interrogatorio Dirigido</a>
+                    <a href="#ex2" rel="modal:open" class="btn btn-outline-info btn-block btnDoc2">{{ _i('Interrogatorio Dirigido') }}</a>
                 </div>
             </div>
         </div>

@@ -1,16 +1,16 @@
 <table style="width: 100%; font-size: 14px;" id="data-table" class="table table-striped table-bordered dt-responsive nowrap">
     <thead>
     <tr>
-        <th>Tipo</th>
-        <th>Nombre/Especie</th>
-        <th>Apellido/Dueño</th>
-        <th>Identifica/Animal</th>
-        <th>Iniciales</th>
-        <th>Dia</th>
-        <th>Mes</th>
-        <th>Año</th>
-        <th>Pais</th>
-        <th style="width: auto">Acciones</th>
+        <th>{{ _i('Tipo') }}</th>
+        <th>{{ _i('Nombre/Especie') }}</th>
+        <th>{{ _i('Apellido/Dueño') }}</th>
+        <th>{{ _i('Identifica/Animal') }}</th>
+        <th>{{ _i('Iniciales') }}</th>
+        <th>{{ _i('Dia') }}</th>
+        <th>{{ _i('Mes') }}</th>
+        <th>{{ _i('Año') }}</th>
+        <th>{{ _i('Pais') }}</th>
+        <th style="width: auto">{{ _i('Acciones') }}</th>
     </tr>
     </thead>
     <tbody>
@@ -50,7 +50,7 @@
                 @endcan
                 @can('estudios.destroy')
                     {!! Form::open(['route' => ['estudios.destroy', $estudio->id], 'method' => 'delete','class' => 'd-inline']) !!}
-                    <button class="btn btn-outline-success btn-round btn-sm" onclick="return confirm('¿Realmente desea eliminar el elemento seleccionado?')">
+                    <button class="btn btn-outline-success btn-round btn-sm" onclick="return confirm('{{_i('¿Realmente desea eliminar el elemento seleccionado?')}}')">
                         <i class="fas fa-trash-alt"></i>
                     </button>
                     {!! Form::close() !!}

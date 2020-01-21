@@ -8,6 +8,6 @@
         <iframe id="iframeDoc" src="" frameborder="0" width="100%" height="600"></iframe>
     </div>
     <hr>
-    <a href="#" rel="modal:close" class="btn btn-success waves-effect float-right">Cerrar</a>
+    <a href="#" rel="modal:close" class="btn btn-success waves-effect float-right">{{ _i('Cerrar') }}</a>
 </div>
 <!--************************************************************-->

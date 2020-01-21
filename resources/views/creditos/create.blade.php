@@ -5,8 +5,8 @@
 @endpush
 @section('nombre_modulo', 'Abonar Creditos')
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{route('home-one')}}">Inicio</a></li>
-    <li class="breadcrumb-item"><a href="{{route('users.index')}}">Usuarios</a></li>
+    <li class="breadcrumb-item"><a href="{{route('home-one')}}">{{ _i('Inicio') }}</a></li>
+    <li class="breadcrumb-item"><a href="{{route('users.index')}}">{{ _i('Usuarios') }}</a></li>
     <li class="breadcrumb-item active">Abonar Creditos</li>
 @endsection
 @section('content')
@@ -33,7 +33,7 @@
                     {!! Form::open(['route' => 'creditos.store', 'style'=>'width: 100%']) !!}
                     @include('creditos.partials.form')
                     <hr>
-                    <a href="{{ URL::previous() }}" class="btn btn-outline-secondary float-right">{{__('Regresar')}}</a>
+                    <a href="{{ URL::previous() }}" class="btn btn-outline-secondary float-right">{{_i('Regresar')}}</a>
                     {{ Form::submit('Abonar', ['class' => 'btn btn-outline-success float-right mr-1'])}}
 
                     {!! Form::close() !!}

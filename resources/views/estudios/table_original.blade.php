@@ -1,26 +1,26 @@
 <table style="width: 100%; font-size: 14px;" id="data-table" class="table table-striped table-bordered dt-responsive nowrap">
     <thead>
         <tr>
-            <th>Id Usuario</th>
-        <th>Tipo</th>
-        <th>H Nombre</th>
-        <th>H Apellido</th>
-        <th>H Identifica</th>
-        <th>H Iniciales</th>
-        <th>H Dia</th>
-        <th>H Mes</th>
-        <th>H Anio</th>
-        <th>H Pais</th>
-        <th>A Especie</th>
-        <th>A Duenio</th>
-        <th>A Animal</th>
-        <th>A Iniciales</th>
-        <th>A Dia</th>
-        <th>A Mes</th>
-        <th>A Anio</th>
-        <th>Ip</th>
-        <th>User Agent</th>
-        <th>Fecha</th>
+            <th>{{ _i('Id Usuario') }}</th>
+        <th>{{ _i('Tipo') }}</th>
+        <th>{{ _i('H Nombre') }}</th>
+        <th>{{ _i('H Apellido') }}</th>
+        <th>{{ _i('H Identifica') }}</th>
+        <th>{{ _i('H Iniciales') }}</th>
+        <th>{{ _i('H Dia') }}</th>
+        <th>{{ _i('H Mes') }}</th>
+        <th>{{ _i('H Anio') }}</th>
+        <th>{{ _i('H Pais') }}</th>
+        <th>{{ _i('A Especie') }}</th>
+        <th>{{ _i('A Duenio') }}</th>
+        <th>{{ _i('A Animal') }}</th>
+        <th>{{ _i('A Iniciales') }}</th>
+        <th>{{ _i('A Dia') }}</th>
+        <th>{{ _i('A Mes') }}</th>
+        <th>{{ _i('A Anio') }}</th>
+        <th>{{ _i('Ip') }}</th>
+        <th>{{ _i('User Agent') }}</th>
+        <th>{{ _i('Fecha') }}</th>
             <th style="width: auto">Acciones</th>
         </tr>
     </thead>
@@ -60,7 +60,7 @@
                 @endcan
                 @can('estudios.destroy')
                     {!! Form::open(['route' => ['estudios.destroy', $estudios->id], 'method' => 'delete','class' => 'd-inline']) !!}
-                    <button class="btn btn-outline-success btn-round btn-sm" onclick="return confirm('¿Realmente desea eliminar el elemento seleccionado?')">
+                    <button class="btn btn-outline-success btn-round btn-sm" onclick="return confirm({{_i('¿Realmente desea eliminar el elemento seleccionado?')}})">
                         <i class="fas fa-trash-alt"></i>
                     </button>
                     {!! Form::close() !!}

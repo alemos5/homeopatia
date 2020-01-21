@@ -12,24 +12,24 @@
     <link rel="stylesheet" href="/vendor/wrappixel/material-pro/4.2.1/assets/plugins/toast-master/css/jquery.toast.css">
 
 @endsection
-@section('nombre_modulo', 'Estudios')
+@section('nombre_modulo', _i('Estudios'))
 @section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{route('home-one')}}">Inicio</a></li>
-    <li class="breadcrumb-item active"><a href="{{route('estudios.index')}}">Estudios</a></li>
+    <li class="breadcrumb-item"><a href="{{route('home-one')}}">{{ _i('Inicio') }}</a></li>
+    <li class="breadcrumb-item active"><a href="{{route('estudios.index')}}">{{ _i('Estudios') }}</a></li>
 @endsection
 @section('content')
     <section class="content-header">
         <h1 class="pull-left">
-            Estudios Médicos
+            {{ _i('Estudios Médicos') }}
             @can('estudios.create')
                 @if (Auth::user()->creditos->sum('cantidad')>0)
-                    <a href="{{route('estudios.create')}}" class="btn btn-outline-success float-right"> <i class="fas fa-plus"></i> Crear</a>
+                    <a href="{{route('estudios.create')}}" class="btn btn-outline-success float-right"> <i class="fas fa-plus"></i> {{ _i('Crear') }}</a>
                 @endif
             @endcan
         </h1>
         @can('estudios.create')
             @if (Auth::user()->creditos->sum('cantidad')==0)
-                <div class="alert alert-danger">Debe abonar créditos a su cuenta para poder crear estudios médicos.</div>
+                <div class="alert alert-danger">{{ _i('Debe abonar créditos a su cuenta para poder crear estudios médicos.') }}</div>
             @endif
         @endcan
 

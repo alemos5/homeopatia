@@ -15,23 +15,23 @@
                     <hr>
                     @if(session('resent'))
                         <div class="alert alert-success text-center">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
+                            {{ _i('A fresh verification link has been sent to your email address.') }}
                         </div>
                     @else
                         <div class="alert alert-info text-center">
-                            {{ __('Verifique su dirección de correo.') }}
+                            {{ _i('Verifique su dirección de correo.') }}
                         </div>
                     @endif
 
                     <p class="text-center">
-                        {{ __('Before proceeding, please check your email for a verification link.') }}
-                        {{ __('If you did not receive the email') }}, <a href="{{ route('verification.resend') }}">{{ __('click here to request another') }}</a>.
+                        {{ _i('Before proceeding, please check your email for a verification link.') }}
+                        {{ _i('If you did not receive the email') }}, <a href="{{ route('verification.resend') }}">{{ _i('click here to request another') }}</a>.
                     </p>
 
                     <hr>
                     <div class="form-group m-b-0">
                         <div class="col-sm-12 text-center">
-                            <p>{{__('¿Ya posees una cuenta verificada?')}} <a href="{{ route('logout') }}" class="text-info m-l-5"><b>{{__('Inicia sesión')}}</b></a></p>
+                            <p>{{_i('¿Ya posees una cuenta verificada?')}} <a href="{{ route('logout') }}" class="text-info m-l-5"><b>{{_i('Inicia sesión')}}</b></a></p>
                         </div>
                     </div>
                 </div>

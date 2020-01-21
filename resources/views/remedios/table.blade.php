@@ -1,20 +1,20 @@
 <table style="width: 100%; font-size: 14px;" id="data-table" class="table table-striped table-bordered dt-responsive nowrap">
     <thead>
     <tr>
-        <th>Idmatmed</th>
-        <th>Id Cremedios</th>
-        <th>Col C</th>
-        <th>Col D</th>
-        <th>Col E</th>
-        <th>Pregnancia</th>
-        <th>Nombre</th>
-        <th>Tipoclasico</th>
-        <th>Tipopolicresto</th>
-        <th>Tipoavanzado</th>
-        <th>Tiporemedioclave</th>
-        <th>Puros</th>
-        <th>Secuencia</th>
-        <th>Acciones</th>
+        <th>{{ _i('Idmatmed') }}</th>
+        <th>{{ _i('Id Cremedios') }}</th>
+        <th>{{ _i('Col C') }}</th>
+        <th>{{ _i('Col D') }}</th>
+        <th>{{ _i('Col E') }}</th>
+        <th>{{ _i('Pregnancia') }}</th>
+        <th>{{ _i('Nombre') }}</th>
+        <th>{{ _i('Tipoclasico') }}</th>
+        <th>{{ _i('Tipopolicresto') }}</th>
+        <th>{{ _i('Tipoavanzado') }}</th>
+        <th>{{ _i('Tiporemedioclave') }}</th>
+        <th>{{ _i('Puros') }}</th>
+        <th>{{ _i('Secuencia') }}</th>
+        <th>{{ _i('Acciones') }}</th>
     </tr>
     </thead>
     <tbody>
