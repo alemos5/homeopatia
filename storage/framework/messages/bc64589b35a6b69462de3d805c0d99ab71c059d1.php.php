@@ -258,7 +258,6 @@ class EstudiosController extends AppBaseController
         }
 
 
-
         return view('estudios.show', compact('estudios', 'result', 'remedios', 'data', 'predominante', 'AnalisisCombinados', 'isAdmin'));
 
     }

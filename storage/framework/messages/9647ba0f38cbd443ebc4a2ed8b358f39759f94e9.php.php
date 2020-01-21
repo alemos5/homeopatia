@@ -10,7 +10,7 @@
             <a class="navbar-brand" href="/">
                 <!-- Logo icon -->
                 <b class="text-white">
-                    <img style="width: 55px;"  src="<?php echo e(asset('images/logo2.png')); ?>"
+                    <img style="width: 55px;"  src="<?php echo e(asset('images/logo-web-casillero.png')); ?>"
                     alt="homepage"
                     />
                    

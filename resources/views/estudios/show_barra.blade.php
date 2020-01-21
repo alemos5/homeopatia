@@ -1,10 +1,10 @@
-<h2>{{ _i('Impregnancia Simetría') }}</h2><hr>
+<h2>{{ _i('Impregnancia') }}</h2><hr>
 <div class="row">
     {{--                <div class="col-sm-12">--}}
     <div style="width: 100%; height:55px;" class="progress">
-        <div class="progress-bar" role="progressbar" style="background-color: #ff465f;width: <?php echo $result['reino']["animal"]; ?>%; font-size: 30px; " aria-valuenow="<?php echo $result['reino']["animal"]; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $result['reino']["animal"]; ?>%</div>
-        <div class="progress-bar" role="progressbar" style="background-color: #35d238 ;width: <?php echo $result['reino']["vegetal"]; ?>%; font-size: 30px; " aria-valuenow="<?php echo $result['reino']["vegetal"]; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $result['reino']["vegetal"]; ?>%</div>
-        <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $result['reino']["mineral"]; ?>%; font-size: 30px; " aria-valuenow="<?php echo $result['reino']["mineral"]; ?>" aria-valuemin="0" aria-valuemax="100"><?php echo $result['reino']["mineral"]; ?>%</div>
+        <div class="progress-bar" role="progressbar" style="background-color: #ff465f;width: <?php echo $result['reino']["animal"]; ?>%;" aria-valuenow="<?php echo $result['reino']["animal"]; ?>" aria-valuemin="0" aria-valuemax="100"><h3 class="font-weight-bold text-left text-white pl-3">{{ _i('Simetría') }}: <?=$result['general']['pregnancia']?></h3></div>
+        <div class="progress-bar" role="progressbar" style="background-color: #35d238 ;width: <?php echo $result['reino']["vegetal"]; ?>%; font-size: 30px; " aria-valuenow="<?php echo $result['reino']["vegetal"]; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+        <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $result['reino']["mineral"]; ?>%; font-size: 30px; " aria-valuenow="<?php echo $result['reino']["mineral"]; ?>" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
     {{--                </div>--}}
 </div>

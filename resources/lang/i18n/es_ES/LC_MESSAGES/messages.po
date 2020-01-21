@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MultilanguageLaravelApplication\n"
-"POT-Creation-Date: 2020-01-21 00:38-0400\n"
-"PO-Revision-Date: 2020-01-21 00:38-0400\n"
+"POT-Creation-Date: 2020-01-21 14:54-0400\n"
+"PO-Revision-Date: 2020-01-21 14:54-0400\n"
 "Last-Translator: James Translator <james@translations.colm>\n"
 "Language-Team: James Translator <james@translations.colm>\n"
 "Language: es_ES\n"
@@ -286,8 +286,13 @@ msgid "Medicamento"
 msgstr "Medicamento"
 
 #: ../storage/framework/messages/0cfee4caf4aa2681aeccaf563d08ac481e2519f1.php.php:1
-msgid "Impregnancia Simetría"
-msgstr "Impregnancia Simetría"
+#: ../storage/framework/messages/5b296ce5a8aa8d54db54e0312ff7804f3d7848e2.php.php:23
+msgid "Impregnancia"
+msgstr "Impregnancia"
+
+#: ../storage/framework/messages/0cfee4caf4aa2681aeccaf563d08ac481e2519f1.php.php:5
+msgid "Simetría"
+msgstr "Simetría"
 
 #: ../storage/framework/messages/0cfee4caf4aa2681aeccaf563d08ac481e2519f1.php.php:14
 #: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:8
@@ -383,7 +388,7 @@ msgstr "Código Cliente"
 #: ../storage/framework/messages/2c5724591e835e87b844eca029d859101ca59372.php.php:40
 #: ../storage/framework/messages/435a350f300112806d890ce5df1d03c3a2664258.php.php:45
 #: ../storage/framework/messages/85210138ead75b448d5eb827cb9fda8ba0ca5771.php.php:20
-#: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:9
+#: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:14
 #: ../storage/framework/messages/a191fcf6be275815f4eda921323dcaeaed3beac7.php.php:21
 #: ../storage/framework/messages/a643cec68dadfca95c22f668cfec5d7481c120f3.php.php:10
 #: ../storage/framework/messages/aa7972a108df5aad24a64acbe691a9baff3043b7.php.php:5
@@ -601,10 +606,6 @@ msgstr "Filtrar por"
 #: ../storage/framework/messages/5b296ce5a8aa8d54db54e0312ff7804f3d7848e2.php.php:20
 msgid "RMS"
 msgstr "RMS"
-
-#: ../storage/framework/messages/5b296ce5a8aa8d54db54e0312ff7804f3d7848e2.php.php:23
-msgid "Impregnancia"
-msgstr "Impregnancia"
 
 #: ../storage/framework/messages/5b296ce5a8aa8d54db54e0312ff7804f3d7848e2.php.php:26
 #: ../storage/framework/messages/8bee3e029dbe49c27668c0f91456858609de7925.php.php:12
@@ -895,52 +896,57 @@ msgstr "Cantidad de Créditos"
 msgid "Datos Personales"
 msgstr "Datos Personales"
 
-#: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:4
+#: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:8
 msgid "Tipo de Estudio"
 msgstr "Tipo de Estudio"
 
-#: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:13
+#: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:18
 #: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:30
 msgid "Apellido"
 msgstr "Apellido"
 
-#: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:17
+#: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:22
 #: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:39
 msgid "Apodo"
 msgstr "Apodo"
 
-#: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:21
-#: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:47
+#: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:26
+#: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:52
 #: ../storage/framework/messages/bc6c3d93152689dbe1b8c9dd97b41124563f47b1.php.php:8
 #: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:51
 #: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:120
 msgid "Iniciales"
 msgstr "Iniciales"
 
-#: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:25
-#: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:51
+#: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:30
+#: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:56
 #: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:128
 msgid "Fecha de Nacimiento"
 msgstr "Fecha de Nacimiento"
 
-#: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:29
+#: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:34
 msgid "País de Nacimiento"
 msgstr "País de Nacimiento"
 
-#: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:35
+#: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:40
 #: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:87
 msgid "Especie"
 msgstr "Especie"
 
-#: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:39
+#: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:44
 #: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:97
 msgid "Nombre del Dueño"
 msgstr "Nombre del Dueño"
 
-#: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:43
+#: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:48
 #: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:107
 msgid "Nombre del Animal"
 msgstr "Nombre del Animal"
+
+#: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:64
+#| msgid "Actualizar"
+msgid "Actualizar Datos"
+msgstr "Actualizar Datos"
 
 #: ../storage/framework/messages/95c2a9c74772b158471237d1ea5d72a58ff93c50.php.php:4
 msgid "Id Usuario"
@@ -1148,8 +1154,8 @@ msgstr ""
 "Lo sentimos, estamos haciendo un poco de mantenimiento. Por favor, revise "
 "luego."
 
-#: ../storage/framework/messages/bc64589b35a6b69462de3d805c0d99ab71c059d1.php.php:1613
-#: Http/Controllers/EstudiosController.php:1613
+#: ../storage/framework/messages/bc64589b35a6b69462de3d805c0d99ab71c059d1.php.php:1612
+#: Http/Controllers/EstudiosController.php:1612
 msgid "Escriba una nota"
 msgstr "Escriba una nota"
 
@@ -1401,3 +1407,6 @@ msgstr "Editar Datos"
 #: ../storage/framework/messages/fa9e12954ba9a51ea93245616b79fe7f1c5369c1.php.php:153
 msgid "Telefono"
 msgstr "Telefono"
+
+#~ msgid "Impregnancia Simetría"
+#~ msgstr "Impregnancia Simetría"
