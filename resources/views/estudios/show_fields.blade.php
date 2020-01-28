@@ -58,12 +58,12 @@
             </div>
         @endif
 
-        <hr>
-        <div class="row">
-            <div class="col-sm-12">
-                <a href="{{route('estudios.edit', $estudios->id)}}" class="btn btn-info btn-sm">{{ _i('Actualizar Datos') }}</a>
+            <hr>
+            <div class="row">
+                <div class="col-sm-12">
+                    <a href="{{route('estudios.edit', $estudios->id)}}" class="btn btn-info btn-sm">{{ _i('Actualizar Datos') }}</a>
+                </div>
             </div>
-        </div>
 
     </div>
 </div>
