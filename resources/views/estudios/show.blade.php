@@ -82,7 +82,7 @@
                 </div>
                 <div class="col-sm-4">
                     {{--href="{{route('estudios.estudioPDF', $estudios,$remedios,$result['general']['clave'],$result['general']['pregnancia'],$result['reino']['vegetal'],$result['reino']['mineral'],$result['reino']['animal']])}}">--}}
-                    <a class="btn btn-outline-info btn-block"
+                    <a class="btn btn-outline-info btn-block" target="_blank"
                        href="{{url('estudioPDF', ['estudios'=>$estudios, 'clave'=>$result['general']['clave'], 'pregnancia'=>$result['general']['pregnancia'], 'vegetal'=>$result['reino']['vegetal'], 'mineral'=>$result['reino']['mineral'], 'animal'=>$result['reino']['animal'] ])}}">
                         {{ _i('Imprimir Estudio') }}
                     </a>

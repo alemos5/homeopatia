@@ -45,6 +45,11 @@
         #tablaMedicamentos tr:nth-child(even) {
             background-color: #f2f4f8;
         }
+        
+        .bgGris{
+            background-color: rgba(15, 15, 20, 0.67);
+            color: #FFF;
+        }
     </style>
 </head>
 
@@ -147,11 +152,11 @@
 <table id="tablaMedicamentos" border="1" cellspacing="0" width="100%" style="font-size: 12px">
     <thead>
     <tr>
-        <th style="padding: 5px">{{ _i('Medicamento') }}</th>
-        <th>{{ _i('Análisis Combinado') }}#</th>
-        <th>{{ _i('Reino') }}</th>
-        <th>{{ _i('Remedios Clave') }}</th>
-        <th>{{ _i('Notas') }}</th>
+        <th style="padding: 5px" class="bgGris">{{ _i('Medicamento') }}</th>
+        <th class="bgGris">{{ _i('Análisis Combinado') }}#</th>
+        <th class="bgGris">{{ _i('Reino') }}</th>
+        <th class="bgGris">{{ _i('Remedios Clave') }}</th>
+        <th class="bgGris">{{ _i('Notas') }}</th>
     </tr>
     </thead>
     <tbody>

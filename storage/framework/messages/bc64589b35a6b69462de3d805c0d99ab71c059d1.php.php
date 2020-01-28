@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Creditos;
 use App\EstudioNota;
+use App\Models\Estudios;
 use App\Models\Remedios;
 use App\Repositories\EstudiosRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use Auth;
+use Dompdf\Adapter\PDFLib;
 
 class EstudiosController extends AppBaseController
 {
@@ -85,11 +88,28 @@ class EstudiosController extends AppBaseController
     public function index(Request $request)
     {
 
+        $isAdmin = 0;
+        foreach (Auth::user()->perfiles AS $perfil) {
+            if ($perfil->role_id == '1') {
+                $isAdmin = 1;
+            }
+        }
+
         $this->estudiosRepository->pushCriteria(new RequestCriteria($request));
-        $estudios = $this->estudiosRepository
-            ->orderBy('id', 'DESC')
-            ->limit(200)
-            ->get();
+
+        if ($isAdmin) {
+            $estudios = $this->estudiosRepository
+                ->orderBy('id', 'DESC')
+                ->limit(200)
+                ->get();
+        } else {
+            $estudios = $this->estudiosRepository
+                ->where('id_usuario', Auth::user()->id_cliente)
+                ->orderBy('id', 'DESC')
+                ->limit(200)
+                ->get();
+        }
+
 
         return view('estudios.index')
             ->with('estudios', $estudios);
@@ -104,7 +124,7 @@ class EstudiosController extends AppBaseController
     {
         if (Auth::user()->creditos->sum('cantidad') > 0) {
             $paises = \App\Pais::all();
-            $fecha='';
+            $fecha = '';
             return view('estudios.create', compact('paises', 'fecha'));
         } else {
             return redirect(route('estudios.index'));
@@ -279,10 +299,10 @@ class EstudiosController extends AppBaseController
             return redirect(route('estudios.index'));
         }
 
-        if($estudios->tipo=='humano'){
-            $fecha = $estudios->h_anio.'-'.$estudios->h_mes.'-'.$estudios->h_dia;
-        }else{
-            $fecha = $estudios->a_anio.'-'.$estudios->a_mes.'-'.$estudios->a_dia;
+        if ($estudios->tipo == 'humano') {
+            $fecha = $estudios->h_anio . '-' . $estudios->h_mes . '-' . $estudios->h_dia;
+        } else {
+            $fecha = $estudios->a_anio . '-' . $estudios->a_mes . '-' . $estudios->a_dia;
         }
 
         $paises = \App\Pais::all();
@@ -312,7 +332,7 @@ class EstudiosController extends AppBaseController
         if ($estudios->tipo == 'humano') {
             $request['tipo'] = $estudios->tipo;
             $request['pais_id'] = $estudios->pais_id;
-            $request['fecha_humano'] = $estudios->h_anio.'-'.$estudios->h_mes.'-'.$estudios->h_dia ;
+            $request['fecha_humano'] = $estudios->h_anio . '-' . $estudios->h_mes . '-' . $estudios->h_dia;
 
             $data = $this->ValidationH($request);
             $data['h_dia'] = date("d", strtotime($data['fecha_humano']));
@@ -320,7 +340,7 @@ class EstudiosController extends AppBaseController
             $data['h_anio'] = date("Y", strtotime($data['fecha_humano']));
         } else {
             $request['tipo'] = $estudios->tipo;
-            $request['fecha_animal'] = $estudios->a_anio.'-'.$estudios->a_mes.'-'.$estudios->a_dia ;
+            $request['fecha_animal'] = $estudios->a_anio . '-' . $estudios->a_mes . '-' . $estudios->a_dia;
 
             $data = $this->ValidationA($request);
             $data['a_dia'] = date("d", strtotime($data['fecha_animal']));
@@ -1061,7 +1081,8 @@ class EstudiosController extends AppBaseController
         return $reino;
     }
 
-    public static function limpia_espacios($cadena){
+    public static function limpia_espacios($cadena)
+    {
         $cadena = str_replace(' ', '', $cadena);
         return $cadena;
     }
@@ -1362,7 +1383,6 @@ class EstudiosController extends AppBaseController
         }
 
 
-
         if ($haycolc AND $haycold AND $haycole) {
             return 9;
         }
@@ -1536,7 +1556,7 @@ class EstudiosController extends AppBaseController
         $analisisCombinado = array();
 
         foreach ($remedios as $index => $remedio) {
-            $analisisCombinado[$index]       = $this->calcularAnalisisCombinadoXremedio($remedio, $data, $predominante, $rsm9,1,1,1,1,1);
+            $analisisCombinado[$index] = $this->calcularAnalisisCombinadoXremedio($remedio, $data, $predominante, $rsm9, 1, 1, 1, 1, 1);
         }
 
         return $analisisCombinado;
@@ -1593,25 +1613,25 @@ class EstudiosController extends AppBaseController
             }
 
             $nota = EstudioNota::select('nota')
-                                ->where('estudio_id','=',$estudio_id)
-                                ->where('remedio_id','=',$item['remedio_id'])
-                                ->first();
+                ->where('estudio_id', '=', $estudio_id)
+                ->where('remedio_id', '=', $item['remedio_id'])
+                ->first();
             $notavalue = '';
-            if($nota) {
+            if ($nota) {
                 $notavalue = $nota->nota;
             }
 
             //<button class="btn btn-secondary" type="button" data-target="#ModalAdd" data-toggle="modal">Agregar Nuevo Producto</button>
 
             $htmltabla .= '<tr>';
-            $htmltabla .= '<td><a href="#ex1" rel="modal:open" class="btnDescripcion" data-idremedio="'.$item['remedio_id'].'">'.$item['remedio'].'</a></td >';
+            $htmltabla .= '<td><a href="#ex1" rel="modal:open" class="btnDescripcion" data-idremedio="' . $item['remedio_id'] . '">' . $item['remedio'] . '</a></td >';
             $htmltabla .= '<td>' . $item['suma_analisis_combinado'] . '</td >';
             $htmltabla .= '<td>' . $item['reino'] . '</td >';
             $htmltabla .= '<td align="center">' . $clave . '</td >';
             $htmltabla .= '<td><div class="input-group" >';
-            $htmltabla .= '<input id="nota'.$item['remedio_id'].'" type = "text" class="form-control" placeholder = "'._i('Escriba una nota').'" value="'.$notavalue.'" ><div class="input-group-append" >';
-            $htmltabla .= '<button class="btn btn-success btnGuardarNota" data-remedioid="'.$item['remedio_id'].'" type = "button" ><i class="fas fa-save" ></i ></button >';
-            $htmltabla .= '&nbsp;<div id="msg'.$item['remedio_id'].'"></div></div ></div ></td >';
+            $htmltabla .= '<input id="nota' . $item['remedio_id'] . '" type = "text" class="form-control" placeholder = "' . _i('Escriba una nota') . '" value="' . $notavalue . '" ><div class="input-group-append" >';
+            $htmltabla .= '<button class="btn btn-success btnGuardarNota" data-remedioid="' . $item['remedio_id'] . '" type = "button" ><i class="fas fa-save" ></i ></button >';
+            $htmltabla .= '&nbsp;<div id="msg' . $item['remedio_id'] . '"></div></div ></div></td>';
             $htmltabla .= '</tr>';
         }
 
@@ -1696,5 +1716,96 @@ class EstudiosController extends AppBaseController
         }
 
         return $secuenciaPaciente;
+    }
+
+    public function estudioPDF(Estudios $estudios, $clave, $pregnancia, $vegetal, $mineral, $animal)
+    {
+
+        if ($clave) {
+            $remedios = Remedios::where('id_cremedios', 'like', $clave . "%")->get();
+        }
+
+        if ($estudios->tipo == 'humano') {
+            $data = array(
+                'nombre' => $this->limpia_espacios(strtoupper($estudios->h_nombre)),//'marcelo eugenio',
+                'apellido' => $this->limpia_espacios(strtoupper($estudios->h_apellido)),//'candegabe',
+                'apodo' => $this->limpia_espacios(strtoupper($estudios->h_identifica)),//'marcelo',
+                'iniciales' => $this->limpia_espacios(strtoupper($estudios->h_iniciales)),//'AL',
+                'dia' => $estudios->h_dia,//'26',
+                'mes' => $estudios->h_mes,//'09',
+                'anio' => $estudios->h_anio,//'1950',
+                'pais' => $estudios->pais->name,//'Argentina'
+            );
+        } else {
+            $data = array(
+                'nombre' => $this->limpia_espacios(strtoupper($estudios->a_especie)), //'marcelo eugenio',
+                'apellido' => $this->limpia_espacios(strtoupper($estudios->a_duenio)), //'candegabe',
+                'apodo' => $this->limpia_espacios(strtoupper($estudios->a_animal)), //'marcelo',
+                'iniciales' => $this->limpia_espacios(strtoupper($estudios->a_iniciales)), //'AL',
+                'dia' => $estudios->a_dia, //'26',
+                'mes' => $estudios->a_mes, //'09',
+                'anio' => $estudios->a_anio, //'1950',
+                'pais' => '' //'Argentina'
+            );
+        }
+
+        $predominante = $this->getImpregnaciaPredominante($animal, $vegetal, $mineral);
+
+//inicio ********************************
+
+        $estudio_id = $estudios->id;
+        $rsm9 = $this->existenRsm9($remedios, $data);
+        $analisis = array();
+
+        foreach ($remedios as $index => $remedio) {
+
+            $analisisCombinado = $this->calcularAnalisisCombinadoXremedio($remedio, $data, $predominante, $rsm9, 1, 1, 1, 1, 1);
+            $remedioReino = $this->getImgReino($remedio->pregnancia);
+
+            $analisis[$index]['remedio_id'] = $remedio->id;
+            $analisis[$index]['remedio'] = $remedio->nombre;
+            $analisis[$index]['suma_analisis_combinado'] = $analisisCombinado['suma'];
+            $analisis[$index]['reino'] = $remedioReino['reino'];
+            $analisis[$index]['clave'] = $remedio->tipoRemedioClave;
+        }
+
+        $analisis = collect($analisis)->sortBy('remedio')->toArray();
+
+        $htmltabla = '';
+        foreach ($analisis AS $item) {
+
+            $clave = '';
+            if ($item['clave']) {
+                $clave = '<img src="./images/estrella.png" alt="">';
+//                $clave = '*';
+            }
+
+            $nota = EstudioNota::select('nota')
+                ->where('estudio_id', '=', $estudio_id)
+                ->where('remedio_id', '=', $item['remedio_id'])
+                ->first();
+            $notavalue = '';
+            if ($nota) {
+                $notavalue = $nota->nota;
+            }
+
+            $htmltabla .= '<tr>';
+            $htmltabla .= '<td style="padding: 5px">' . $item['remedio'] . '</td >';
+            $htmltabla .= '<td>' . $item['suma_analisis_combinado'] . '</td >';
+            $htmltabla .= '<td>' . $item['reino'] . '</td >';
+            $htmltabla .= '<td align="center"><span style="font-size: 20px; color: #0b67cd">' . $clave . '</span></td >';
+            $htmltabla .= '<td>' . $notavalue . '</td>';
+            $htmltabla .= '</tr>';
+        }
+
+
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->setOptions(['defaultFont' => 'sans-serif']);
+
+        $pdf->loadView('estudios.estudioPDF', compact('estudios', 'remedios', 'clave', 'pregnancia', 'vegetal', 'mineral', 'animal', 'data', 'predominante', 'htmltabla'));
+        return $pdf->stream();
+
+
+//        return view('estudios.estudioPDF', compact('estudios', 'remedios', 'clave', 'pregnancia', 'vegetal', 'mineral', 'animal', 'data', 'predominante', 'htmltabla'));
     }
 }

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MultilanguageLaravelApplication\n"
-"POT-Creation-Date: 2020-01-21 14:54-0400\n"
-"PO-Revision-Date: 2020-01-21 14:54-0400\n"
+"POT-Creation-Date: 2020-01-28 16:49-0400\n"
+"PO-Revision-Date: 2020-01-28 16:49-0400\n"
 "Last-Translator: James Translator <james@translations.colm>\n"
 "Language-Team: James Translator <james@translations.colm>\n"
 "Language: es_ES\n"
@@ -282,28 +282,34 @@ msgstr "Crear"
 #: ../storage/framework/messages/463d351c626797bdde37bce3c7a8e251d813256e.php.php:14
 #: ../storage/framework/messages/5b296ce5a8aa8d54db54e0312ff7804f3d7848e2.php.php:42
 #: ../storage/framework/messages/8bee3e029dbe49c27668c0f91456858609de7925.php.php:8
+#: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:156
 msgid "Medicamento"
 msgstr "Medicamento"
 
 #: ../storage/framework/messages/0cfee4caf4aa2681aeccaf563d08ac481e2519f1.php.php:1
 #: ../storage/framework/messages/5b296ce5a8aa8d54db54e0312ff7804f3d7848e2.php.php:23
+#: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:70
 msgid "Impregnancia"
 msgstr "Impregnancia"
 
-#: ../storage/framework/messages/0cfee4caf4aa2681aeccaf563d08ac481e2519f1.php.php:5
+#: ../storage/framework/messages/0cfee4caf4aa2681aeccaf563d08ac481e2519f1.php.php:8
+#: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:135
 msgid "Simetría"
 msgstr "Simetría"
 
-#: ../storage/framework/messages/0cfee4caf4aa2681aeccaf563d08ac481e2519f1.php.php:14
+#: ../storage/framework/messages/0cfee4caf4aa2681aeccaf563d08ac481e2519f1.php.php:19
+#: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:142
 #: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:8
 msgid "Animal"
 msgstr "Animal"
 
-#: ../storage/framework/messages/0cfee4caf4aa2681aeccaf563d08ac481e2519f1.php.php:18
+#: ../storage/framework/messages/0cfee4caf4aa2681aeccaf563d08ac481e2519f1.php.php:23
+#: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:143
 msgid "Vegetal"
 msgstr "Vegetal"
 
-#: ../storage/framework/messages/0cfee4caf4aa2681aeccaf563d08ac481e2519f1.php.php:22
+#: ../storage/framework/messages/0cfee4caf4aa2681aeccaf563d08ac481e2519f1.php.php:27
+#: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:144
 msgid "Mineral"
 msgstr "Mineral"
 
@@ -393,6 +399,7 @@ msgstr "Código Cliente"
 #: ../storage/framework/messages/a643cec68dadfca95c22f668cfec5d7481c120f3.php.php:10
 #: ../storage/framework/messages/aa7972a108df5aad24a64acbe691a9baff3043b7.php.php:5
 #: ../storage/framework/messages/c845a8afb47cae7c827a9154d92fc87d919b4f5c.php.php:3
+#: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:83
 #: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:21
 #: ../storage/framework/messages/fa9e12954ba9a51ea93245616b79fe7f1c5369c1.php.php:85
 msgid "Nombre"
@@ -626,20 +633,24 @@ msgid "Clave"
 msgstr "Clave"
 
 #: ../storage/framework/messages/5b296ce5a8aa8d54db54e0312ff7804f3d7848e2.php.php:43
+#: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:157
 #: ../storage/framework/messages/debbdbe4c95d61ae0350e52042cf8963a1ee6dfd.php.php:2
 msgid "Análisis Combinado"
 msgstr "Análisis Combinado"
 
 #: ../storage/framework/messages/5b296ce5a8aa8d54db54e0312ff7804f3d7848e2.php.php:44
 #: ../storage/framework/messages/8bee3e029dbe49c27668c0f91456858609de7925.php.php:7
+#: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:158
 msgid "Reino"
 msgstr "Reino"
 
 #: ../storage/framework/messages/5b296ce5a8aa8d54db54e0312ff7804f3d7848e2.php.php:45
+#: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:159
 msgid "Remedios Clave"
 msgstr "Remedios Clave"
 
 #: ../storage/framework/messages/5b296ce5a8aa8d54db54e0312ff7804f3d7848e2.php.php:46
+#: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:160
 msgid "Notas"
 msgstr "Notas"
 
@@ -893,19 +904,23 @@ msgid "Cantidad de Créditos"
 msgstr "Cantidad de Créditos"
 
 #: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:2
+#: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:66
 msgid "Datos Personales"
 msgstr "Datos Personales"
 
 #: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:8
+#: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:79
 msgid "Tipo de Estudio"
 msgstr "Tipo de Estudio"
 
 #: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:18
+#: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:87
 #: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:30
 msgid "Apellido"
 msgstr "Apellido"
 
 #: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:22
+#: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:91
 #: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:39
 msgid "Apodo"
 msgstr "Apodo"
@@ -913,6 +928,8 @@ msgstr "Apodo"
 #: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:26
 #: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:52
 #: ../storage/framework/messages/bc6c3d93152689dbe1b8c9dd97b41124563f47b1.php.php:8
+#: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:95
+#: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:122
 #: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:51
 #: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:120
 msgid "Iniciales"
@@ -920,31 +937,36 @@ msgstr "Iniciales"
 
 #: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:30
 #: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:56
+#: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:99
+#: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:126
 #: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:128
 msgid "Fecha de Nacimiento"
 msgstr "Fecha de Nacimiento"
 
 #: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:34
+#: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:103
 msgid "País de Nacimiento"
 msgstr "País de Nacimiento"
 
 #: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:40
+#: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:110
 #: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:87
 msgid "Especie"
 msgstr "Especie"
 
 #: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:44
+#: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:114
 #: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:97
 msgid "Nombre del Dueño"
 msgstr "Nombre del Dueño"
 
 #: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:48
+#: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:118
 #: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:107
 msgid "Nombre del Animal"
 msgstr "Nombre del Animal"
 
 #: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:64
-#| msgid "Actualizar"
 msgid "Actualizar Datos"
 msgstr "Actualizar Datos"
 
@@ -1154,8 +1176,8 @@ msgstr ""
 "Lo sentimos, estamos haciendo un poco de mantenimiento. Por favor, revise "
 "luego."
 
-#: ../storage/framework/messages/bc64589b35a6b69462de3d805c0d99ab71c059d1.php.php:1612
-#: Http/Controllers/EstudiosController.php:1612
+#: ../storage/framework/messages/bc64589b35a6b69462de3d805c0d99ab71c059d1.php.php:1632
+#: Http/Controllers/EstudiosController.php:1632
 msgid "Escriba una nota"
 msgstr "Escriba una nota"
 
@@ -1300,6 +1322,11 @@ msgstr "Oh no"
 msgid "Go Home"
 msgstr "Ir al Inicio"
 
+#: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:151
+#| msgid "Análisis"
+msgid "Analisis"
+msgstr "Analisis"
+
 #: ../storage/framework/messages/d973ae3bdf67fb3e6fe8ad72823c718068d1ad2f.php.php:9
 msgid "Editar "
 msgstr "Editar "
@@ -1323,6 +1350,10 @@ msgstr "Vea la Dinámica"
 #: ../storage/framework/messages/de73e65b38595035afdaad7476798dd3a395f93c.php.php:80
 msgid "Interrogatorio Dirigido"
 msgstr "Interrogatorio Dirigido"
+
+#: ../storage/framework/messages/de73e65b38595035afdaad7476798dd3a395f93c.php.php:86
+msgid "Imprimir Estudio"
+msgstr "Imprimir Estudio"
 
 #: ../storage/framework/messages/debbdbe4c95d61ae0350e52042cf8963a1ee6dfd.php.php:40
 msgid "Suma"
