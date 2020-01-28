@@ -73,11 +73,19 @@
         <div class="col-sm-6">
             <?php echo $__env->make('estudios.show_barra', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             <div class="row mt-4">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <a href="#ex2" rel="modal:open" class="btn btn-outline-info btn-block btnDoc1"><?php echo e(_i('Vea la Dinámica')); ?></a>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <a href="#ex2" rel="modal:open" class="btn btn-outline-info btn-block btnDoc2"><?php echo e(_i('Interrogatorio Dirigido')); ?></a>
+                </div>
+                <div class="col-sm-4">
+                    
+                    <a class="btn btn-outline-info btn-block" target="_blank"
+                       href="<?php echo e(url('estudioPDF', ['estudios'=>$estudios, 'clave'=>$result['general']['clave'], 'pregnancia'=>$result['general']['pregnancia'], 'vegetal'=>$result['reino']['vegetal'], 'mineral'=>$result['reino']['mineral'], 'animal'=>$result['reino']['animal'] ])); ?>">
+                        <?php echo e(_i('Imprimir Estudio')); ?>
+
+                    </a>
                 </div>
             </div>
         </div>

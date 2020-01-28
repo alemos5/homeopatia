@@ -58,12 +58,12 @@
             </div>
         <?php endif; ?>
 
-        <hr>
-        <div class="row">
-            <div class="col-sm-12">
-                <a href="<?php echo e(route('estudios.edit', $estudios->id)); ?>" class="btn btn-info btn-sm"><?php echo e(_i('Actualizar Datos')); ?></a>
+            <hr>
+            <div class="row">
+                <div class="col-sm-12">
+                    <a href="<?php echo e(route('estudios.edit', $estudios->id)); ?>" class="btn btn-info btn-sm"><?php echo e(_i('Actualizar Datos')); ?></a>
+                </div>
             </div>
-        </div>
 
     </div>
 </div>
