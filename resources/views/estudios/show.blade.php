@@ -74,11 +74,18 @@
         <div class="col-sm-6">
             @include('estudios.show_barra')
             <div class="row mt-4">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <a href="#ex2" rel="modal:open" class="btn btn-outline-info btn-block btnDoc1">{{ _i('Vea la Dinámica') }}</a>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <a href="#ex2" rel="modal:open" class="btn btn-outline-info btn-block btnDoc2">{{ _i('Interrogatorio Dirigido') }}</a>
+                </div>
+                <div class="col-sm-4">
+                    {{--href="{{route('estudios.estudioPDF', $estudios,$remedios,$result['general']['clave'],$result['general']['pregnancia'],$result['reino']['vegetal'],$result['reino']['mineral'],$result['reino']['animal']])}}">--}}
+                    <a class="btn btn-outline-info btn-block"
+                       href="{{url('estudioPDF', ['estudios'=>$estudios, 'clave'=>$result['general']['clave'], 'pregnancia'=>$result['general']['pregnancia'], 'vegetal'=>$result['reino']['vegetal'], 'mineral'=>$result['reino']['mineral'], 'animal'=>$result['reino']['animal'] ])}}">
+                        {{ _i('Imprimir Estudio') }}
+                    </a>
                 </div>
             </div>
         </div>
