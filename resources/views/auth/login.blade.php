@@ -29,7 +29,7 @@
                     <form class="form-horizontal form-material" id="loginform" method="POST" action="{{ route('login.post') }}">
                         @csrf
                         <a href="javascript:void(0)" class="text-center db">
-                            <img src="{{asset('images/logo-web-casillero.jpg')}}" alt="Home" style="height: 15em"/>
+                            <img src="{{asset('images/logo-web-casillero.jpg')}}" alt="Home" style="height: 8em"/>
                             <br/>
                         </a>
 
