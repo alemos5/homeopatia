@@ -70,7 +70,7 @@
                                                 <div class="pricing-body @if (!$princing->etiqueta) b-l @endif">
                                                     <div class="pricing-header">
                                                         @if ($princing->etiqueta)
-                                                            <h4 class="price-lable text-white bg-warning"> {{ _i($princing->etiqueta) }}</h4>
+                                                            <h3 class="price-lable text-white bg-warning"> {{ _i($princing->etiqueta) }}</h3>
                                                         @endif
                                                         <h3 class="text-center">{{$princing->creditos}}</h3>
                                                         <p class="uppercase">{{ _i('Crédito') }}</p>
@@ -81,7 +81,7 @@
                                                         <div class="price-row">{{ _i('Precio por') }} <br>{{ _i('Crédito') }} <h4>US$ {{number_format($princing->precioxc,2,',','.')}}</h4></div>
                                                         <div class="price-row">
                                                             <a href="{{ route('payment', $princing->id) }}" class="btn btn-warning">
-                                                                {{ _i('Comprar') }} <i class="fab fa-cc-paypal fa-2x"></i>
+                                                                {{ _i('Comprar') }} 
                                                             </a>
                                                         </div>
                                                     </div>
