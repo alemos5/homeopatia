@@ -16,13 +16,13 @@
 <div class="row">
     {{--                <div style="width: 100%" class="col-sm-12">--}}
     <div style="width: <?php echo $result['reino']["animal"]; ?>%; color: #ff465f; font-weight: bold">
-        <?php echo $result['reino']["animal"]; ?>% {{ _i('Animal') }}
+        <?php echo $result['reino']["animal"]; ?>% <br>{{ _i('Animal') }}
     </div>
     <div style="width: <?php echo $result['reino']["vegetal"]; ?>%; color: #35d238; font-weight: bold">
-        <?php echo $result['reino']["vegetal"]; ?>% {{ _i('Vegetal') }}
+        <?php echo $result['reino']["vegetal"]; ?>% <br>{{ _i('Vegetal') }}
     </div>
     <div class="text-info" style="width: <?php echo $result['reino']["mineral"]; ?>%; font-weight: bold">
-        <?php echo $result['reino']["mineral"]; ?>% {{ _i('Mineral') }}
+        <?php echo $result['reino']["mineral"]; ?>% <br>{{ _i('Mineral') }}
     </div>
     {{--                </div>--}}
 </div>
