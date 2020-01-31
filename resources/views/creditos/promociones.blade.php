@@ -39,8 +39,8 @@
                                     <div class="price-row"><i class="fas fa-piggy-bank"></i> {{ _i('Ud. Ahorra') }} US$ {{number_format($promocion->ahorro,0,'','.')}}</div>
                                     <div class="price-row"> {{ _i('Precio por Cŕedito') }} US$ {{number_format($promocion->precioxc,2,',','.')}}</div>
                                     <div class="price-row">
-                                        <a href="{{ route('payment', $promocion->id) }}" class="btn btn-warning">
-                                            {{ _i('Comprar') }} <i class="fab fa-cc-paypal fa-2x"></i>
+                                        <a href="{{ route('payment', $promocion->id) }}" class="btn btn-warning btn-sm">
+                                            {{ _i('Comprar') }}
                                         </a>
                                     </div>
                                 </div>
@@ -70,7 +70,7 @@
                                                 <div class="pricing-body @if (!$princing->etiqueta) b-l @endif">
                                                     <div class="pricing-header">
                                                         @if ($princing->etiqueta)
-                                                            <h4 class="price-lable text-white bg-warning"> {{ _i($princing->etiqueta) }}</h4>
+                                                            <h5 class="price-lable text-white bg-warning"> {{ _i($princing->etiqueta) }}</h5>
                                                         @endif
                                                         <h3 class="text-center">{{$princing->creditos}}</h3>
                                                         <p class="uppercase">{{ _i('Crédito') }}</p>
@@ -80,7 +80,7 @@
                                                         <div class="price-row">{{ _i('Ud. Ahorra') }} <h4>{{number_format($princing->ahorro,0,'','.')}}</h4></div>
                                                         <div class="price-row">{{ _i('Precio por') }} <br>{{ _i('Crédito') }} <h4>US$ {{number_format($princing->precioxc,2,',','.')}}</h4></div>
                                                         <div class="price-row">
-                                                            <a href="{{ route('payment', $princing->id) }}" class="btn btn-warning">
+                                                            <a href="{{ route('payment', $princing->id) }}" class="btn btn-warning btn-sm">
                                                                 {{ _i('Comprar') }}
                                                             </a>
                                                         </div>
