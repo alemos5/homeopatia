@@ -36,6 +36,7 @@
 <div class="row mt-4">
 
     <div class="col-sm-12">
+        <div class="table-responsive">
         <table id="cuadro" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
             <tr>
@@ -48,6 +49,7 @@
             </thead>
             <tbody></tbody>
         </table>
+        </div>
     </div>
 
 </div>
