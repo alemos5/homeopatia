@@ -70,14 +70,14 @@
                                                 <div class="pricing-body @if (!$princing->etiqueta) b-l @endif">
                                                     <div class="pricing-header">
                                                         @if ($princing->etiqueta)
-                                                            <h3 class="price-lable text-white bg-warning"> {{ _i($princing->etiqueta) }}</h3>
+                                                            <h4 class="price-lable text-white bg-warning"> {{ _i($princing->etiqueta) }}</h4>
                                                         @endif
                                                         <h3 class="text-center">{{$princing->creditos}}</h3>
                                                         <p class="uppercase">{{ _i('Crédito') }}</p>
                                                     </div>
                                                     <div class="price-table-content">
                                                         <div class="price-row"><h5>US$ {{number_format($princing->costo,0,'','.')}}</h5></div>
-                                                        <div class="price-row"><i class="fas fa-piggy-bank hidden-sm-down"></i> {{ _i('Ud. Ahorra') }} <h4>{{number_format($princing->ahorro,0,'','.')}}</h4></div>
+                                                        <div class="price-row">{{ _i('Ud. Ahorra') }} <h4>{{number_format($princing->ahorro,0,'','.')}}</h4></div>
                                                         <div class="price-row">{{ _i('Precio por') }} <br>{{ _i('Crédito') }} <h4>US$ {{number_format($princing->precioxc,2,',','.')}}</h4></div>
                                                         <div class="price-row">
                                                             <a href="{{ route('payment', $princing->id) }}" class="btn btn-warning">
