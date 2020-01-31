@@ -70,7 +70,7 @@
                                                 <div class="pricing-body @if (!$princing->etiqueta) b-l @endif">
                                                     <div class="pricing-header">
                                                         @if ($princing->etiqueta)
-                                                            <h5 class="price-lable text-white bg-warning"> {{ _i($princing->etiqueta) }}</h5>
+                                                            <h5 class="price-lable text-white bg-warning" style="width: 70px"> {{ _i($princing->etiqueta) }}</h5>
                                                         @endif
                                                         <h3 class="text-center">{{$princing->creditos}}</h3>
                                                         <p class="uppercase">{{ _i('Crédito') }}</p>
