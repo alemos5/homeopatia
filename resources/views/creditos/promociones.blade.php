@@ -81,7 +81,7 @@
                                                         <div class="price-row">{{ _i('Precio por') }} <br>{{ _i('Crédito') }} <h4>US$ {{number_format($princing->precioxc,2,',','.')}}</h4></div>
                                                         <div class="price-row">
                                                             <a href="{{ route('payment', $princing->id) }}" class="btn btn-warning">
-                                                                {{ _i('Comprar') }} 
+                                                                {{ _i('Comprar') }}
                                                             </a>
                                                         </div>
                                                     </div>
