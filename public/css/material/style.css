@@ -13036,9 +13036,9 @@ use profile section
 }
 
 .user-profile .profile-img {
-  width: 50px;
-  margin-left: 30px;
-  padding: 35px 0;
+  width: 70px;
+  margin-left: 70px;
+  padding: 25px 0;
   border-radius: 100%;
 }
 
@@ -13047,9 +13047,9 @@ use profile section
   animation: 2.5s blow 0s linear infinite;
   position: absolute;
   content: "";
-  width: 50px;
-  height: 50px;
-  top: 35px;
+  width: 70px;
+  height: 70px;
+  top: 25px;
   margin: 0 auto;
   border-radius: 50%;
   z-index: 0;

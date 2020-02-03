@@ -1,5 +1,5 @@
 <h2>
-    {{ _i('Análisis Combinado') }}
+    {{ _i('SAC') }}
     <button class="btn btn-success" type="button" id="btnVerAnalisisC">{{ _i('Mostrar') }}</button>
 </h2>
 <hr>

@@ -153,9 +153,9 @@
     <thead>
     <tr>
         <th style="padding: 5px" class="bgGris">{{ _i('Medicamento') }}</th>
-        <th class="bgGris">{{ _i('Análisis Combinado') }}#</th>
+        <th class="bgGris">{{ _i('SAC') }}</th>
         <th class="bgGris">{{ _i('Reino') }}</th>
-        <th class="bgGris">{{ _i('Remedios Clave') }}</th>
+        <th class="bgGris">{{ _i('Claves') }}</th>
         <th class="bgGris">{{ _i('Notas') }}</th>
     </tr>
     </thead>

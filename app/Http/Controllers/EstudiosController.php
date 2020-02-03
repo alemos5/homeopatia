@@ -1637,8 +1637,8 @@ class EstudiosController extends AppBaseController
 
             $htmltabla .= '<tr>';
             $htmltabla .= '<td><a href="#ex1" rel="modal:open" class="btnDescripcion" data-idremedio="' . $item['remedio_id'] . '">' . $item['remedio'] . '</a></td >';
-            $htmltabla .= '<td>' . $item['suma_analisis_combinado'] . '</td >';
-            $htmltabla .= '<td>' . $item['reino'] . '</td >';
+            $htmltabla .= '<td class="font-weight-bold" align="center">' . $item['suma_analisis_combinado'] . '</td >';
+            $htmltabla .= '<td align="center">' . $item['reino'] . '</td >';
             $htmltabla .= '<td align="center">' . $clave . '</td >';
             $htmltabla .= '<td><div class="input-group" >';
             $htmltabla .= '<input id="nota' . $item['remedio_id'] . '" type = "text" class="form-control" placeholder = "' . _i('Escriba una nota') . '" value="' . $notavalue . '" ><div class="input-group-append" >';
