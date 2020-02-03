@@ -75,12 +75,14 @@ $(document).ready(function () {
     // Filtros
     $('#btnRMS1').click(function () {
         if(filtro1==1) {
+            $('#divRSM').css('display','none');
             $(this).blur();
             $(this).removeClass('btn-success');
             $(this).addClass('btn-outline-success');
             filtro1 = 0;
             cargarAnalisis(varOrden1,varOrden2,varOrden3,filtro1,filtro2,filtro3,filtro4,filtro5);
         }else {
+            $('#divRSM').css('display','table-row');
             $(this).removeClass('btn-outline-success');
             $(this).addClass('btn-success');
             filtro1 = 1;
@@ -89,12 +91,14 @@ $(document).ready(function () {
     });
     $('#btnImpregnancia1').click(function () {
         if(filtro2==1) {
+            $('#divImpregnancia').css('display','none');
             $(this).blur();
             $(this).removeClass('btn-success');
             $(this).addClass('btn-outline-success');
             filtro2 = 0;
             cargarAnalisis(varOrden1,varOrden2,varOrden3,filtro1,filtro2,filtro3,filtro4,filtro5);
         }else {
+            $('#divImpregnancia').css('display','table-row');
             $(this).removeClass('btn-outline-success');
             $(this).addClass('btn-success');
             filtro2 = 1;
@@ -104,12 +108,14 @@ $(document).ready(function () {
 
     $('#btnSecuencia1').click(function () {
         if(filtro3==1) {
+            $('#divSecuencia').css('display','none');
             $(this).blur();
             $(this).removeClass('btn-success');
             $(this).addClass('btn-outline-success');
             filtro3 = 0;
             cargarAnalisis(varOrden1,varOrden2,varOrden3,filtro1,filtro2,filtro3,filtro4,filtro5);
         }else {
+            $('#divSecuencia').css('display','table-row');
             $(this).removeClass('btn-outline-success');
             $(this).addClass('btn-success');
             filtro3 = 1;
@@ -119,12 +125,14 @@ $(document).ready(function () {
 
     $('#btnConsonante1').click(function () {
         if(filtro4==1) {
+            $('#divConsonantes').css('display','none');
             $(this).blur();
             $(this).removeClass('btn-success');
             $(this).addClass('btn-outline-success');
             filtro4 = 0;
             cargarAnalisis(varOrden1,varOrden2,varOrden3,filtro1,filtro2,filtro3,filtro4,filtro5);
         }else {
+            $('#divConsonantes').css('display','table-row');
             $(this).removeClass('btn-outline-success');
             $(this).addClass('btn-success');
             filtro4 = 1;
@@ -134,12 +142,14 @@ $(document).ready(function () {
 
     $('#btnClave1').click(function () {
         if(filtro5==1) {
+            $('#divClaves').css('display','none');
             $(this).blur();
             $(this).removeClass('btn-success');
             $(this).addClass('btn-outline-success');
             filtro5 = 0;
             cargarAnalisis(varOrden1,varOrden2,varOrden3,filtro1,filtro2,filtro3,filtro4,filtro5);
         }else {
+            $('#divClaves').css('display','table-row');
             $(this).removeClass('btn-outline-success');
             $(this).addClass('btn-success');
             filtro5 = 1;
