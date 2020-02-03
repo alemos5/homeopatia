@@ -143,7 +143,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+    <script src="{{asset('vendor/wrappixel/material-pro/4.2.1/assets/plugins/styleswitcher/jQuery.style.switcher.js')}}"></script>
     <script src="{{asset('/vendor/wrappixel/material-pro/4.2.1/assets/plugins/switchery/dist/switchery.min.js')}}" type="text/javascript"></script>
+
     <script src="{{ asset('js/cargarAnalisis.js') }}"></script>
     <script src="{{ asset('js/btnes_ordenacion_filtrado.js') }}"></script>
     <script src="{{ asset('js/guardar_nota.js') }}"></script>
@@ -152,7 +157,7 @@
 
     <script>
         $(document).ready(function () {
-            cargarAnalisis(1, 1, 1, 1, 1, 1);
+            cargarAnalisis(1, 0, 0, 1, 1, 1, 1, 1);
             let mostrar = 1;
             $('#btnVerAnalisisC').click(function () {
                if(mostrar){

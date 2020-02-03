@@ -1592,16 +1592,30 @@ class EstudiosController extends AppBaseController
             $analisis[$index]['clave'] = $remedio->tipoRemedioClave;
         }
 
-        switch ($input['orden']) {
-            case "1":
-                $analisis = collect($analisis)->sortBy('remedio')->toArray();
-                break;
-            case "2":
-                $analisis = collect($analisis)->sortByDesc('suma_analisis_combinado')->toArray();
-                break;
-            case "3":
-                $analisis = collect($analisis)->sortBy('reino')->toArray();
-                break;
+
+        foreach ($analisis as $clave => $fila) {
+            $ordenarSumas[$clave] = $fila['suma_analisis_combinado'];
+            $ordenarRemedio[$clave] = $fila['remedio'];
+            $ordenarReino[$clave] = $fila['reino'];
+        }
+
+
+        if ($input['orden1'] and $input['orden2'] and $input['orden3']) { //Todos
+            array_multisort($ordenarSumas, SORT_DESC, $ordenarRemedio, SORT_ASC, $ordenarReino, SORT_ASC, $analisis);
+        } elseif ($input['orden1'] and $input['orden2'] and !$input['orden3']) { //Todos menos el reino
+            array_multisort($ordenarSumas, SORT_DESC, $ordenarRemedio, SORT_ASC, $analisis);
+        } elseif ($input['orden1'] and !$input['orden2'] and !$input['orden3']) { //Solo las sumas
+            array_multisort($ordenarSumas, SORT_DESC, $analisis);
+
+        } elseif (!$input['orden1'] and $input['orden2'] and $input['orden3']) { //Todos menos suma
+            array_multisort($ordenarRemedio, SORT_ASC, $ordenarReino, SORT_ASC, $analisis);
+
+        } elseif (!$input['orden1'] and $input['orden2'] and !$input['orden3']) { //Solo Remedio
+            array_multisort($ordenarRemedio, SORT_ASC, $analisis);
+        } elseif ($input['orden1'] and !$input['orden2'] and $input['orden3']) { //Todos menos remedio
+            array_multisort($ordenarSumas, SORT_DESC, $ordenarReino, SORT_ASC, $analisis);
+        } elseif (!$input['orden1'] and !$input['orden2'] and $input['orden3']) { //Todos menos el reino
+            array_multisort($ordenarReino, SORT_ASC, $analisis);
         }
 
         $htmltabla = '';
@@ -1620,8 +1634,6 @@ class EstudiosController extends AppBaseController
             if ($nota) {
                 $notavalue = $nota->nota;
             }
-
-            //<button class="btn btn-secondary" type="button" data-target="#ModalAdd" data-toggle="modal">Agregar Nuevo Producto</button>
 
             $htmltabla .= '<tr>';
             $htmltabla .= '<td><a href="#ex1" rel="modal:open" class="btnDescripcion" data-idremedio="' . $item['remedio_id'] . '">' . $item['remedio'] . '</a></td >';

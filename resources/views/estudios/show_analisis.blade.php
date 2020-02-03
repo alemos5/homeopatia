@@ -1,16 +1,47 @@
 <h2>{{ _i('Análisis') }}</h2>
 <hr>
 
+{{--<div class="row">--}}
+    {{--<div class="col-sm-2">{{ _i('Ordenar') }}:</div>--}}
+    {{--<div class="col-sm-4">--}}
+        {{--<button class="btn btn-success btn-sm btn-round btn-block" id="btnOrden2" type="button">{{ _i('Por Análisis Combinado') }}</button>--}}
+    {{--</div>--}}
+    {{--<div class="col-sm-3">--}}
+        {{--<button class="btn btn-outline-success btn-sm btn-round btn-block" id="btnOrden1" type="button">{{ _i('Alfabeticamente') }}</button>--}}
+    {{--</div>--}}
+    {{--<div class="col-sm-3">--}}
+        {{--<button class="btn btn-outline-success btn-sm btn-round btn-block" id="btnOrden3" type="button">{{ _i('Por Reino') }}</button>--}}
+    {{--</div>--}}
+{{--</div>--}}
+
 <div class="row">
     <div class="col-sm-2">{{ _i('Ordenar') }}:</div>
-    <div class="col-sm-3">
-        <button class="btn btn-success btn-sm btn-round btn-block" id="btnOrden1" type="button">{{ _i('Alfabeticamente') }}</button>
-    </div>
     <div class="col-sm-4">
-        <button class="btn btn-outline-success btn-sm btn-round btn-block" id="btnOrden2" type="button">{{ _i('Por Análisis Combinado') }}</button>
+        <div class="switch">
+            <label for="orden1">
+                {{ _i('Por Análisis Combinado') }}
+                <input type="checkbox" name="orden1" id="orden1" value="1" checked class="ordenar">
+                <span class="lever"></span>
+            </label>
+        </div>
     </div>
     <div class="col-sm-3">
-        <button class="btn btn-outline-success btn-sm btn-round btn-block" id="btnOrden3" type="button">{{ _i('Por Reino') }}</button>
+        <div class="switch">
+            <label for="orden2">
+                {{ _i('Alfabeticamente') }}
+                <input type="checkbox" name="orden2" id="orden2" value="1" class="ordenar">
+                <span class="lever"></span>
+            </label>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="switch">
+            <label for="orden3">
+                {{ _i('Por Reino') }}
+                <input type="checkbox" name="orden3" id="orden3" value="1" class="ordenar">
+                <span class="lever"></span>
+            </label>
+        </div>
     </div>
 </div>
 
@@ -53,3 +84,4 @@
     </div>
 
 </div>
+
