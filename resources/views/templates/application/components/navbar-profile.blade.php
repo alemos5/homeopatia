@@ -2,7 +2,7 @@
     <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark NavBarUserProfile" href="#" onclick="return false">
         <span class="text-white">{{Auth::user()->nombre}}</span>
         @if (Auth::user()->avatar)
-            <img src="{{Auth::user()->avatar}}" alt="user" class="profile-pic"/>
+            <img src="{{ Storage::url(Auth::user()->avatar) }}" alt="user" class="profile-pic"/>
         @else
             <img src="/vendor/wrappixel/material-pro/4.2.1/assets/images/users/1.jpg" alt="user" class="profile-pic"/>
         @endif
@@ -13,7 +13,7 @@
                 <div class="dw-user-box">
                     <div class="text-center">
                         @if (Auth::user()->avatar)
-                            <img src="{{Auth::user()->avatar}}" alt="user" class="profile-pic" style="width: 5em"/>
+                            <img src="{{ Storage::url(Auth::user()->avatar) }}" alt="user" class="profile-pic" style="width: 5em"/>
                         @else
                             <img src="/vendor/wrappixel/material-pro/4.2.1/assets/images/users/1.jpg" alt="user" class="profile-pic" style="width: 5em"/>
                         @endif

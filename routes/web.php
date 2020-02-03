@@ -90,6 +90,7 @@ Route::group(['middleware' => array('auth', 'verified')], function () {
     #Rutas del Perfil
     Route::get('/perfil', 'HomeController@perfil')->name('perfil');
     Route::post('/storeperfil', 'HomeController@storeperfil')->name('storeperfil');
+    Route::post('/fotoPerfil', 'HomeController@fotoPerfil')->name('fotoPerfil');
 
     //Rutas de prealertas
     Route::get('/pre-alertas', 'PrealertaController@index')->name('pre-alertas');

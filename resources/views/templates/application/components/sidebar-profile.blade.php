@@ -3,7 +3,7 @@
     <a href="/perfil">
         <div class="profile-img">
             @if (Auth::user()->avatar)
-                <img src="{{Auth::user()->avatar}}" alt="user"/>
+                <img src="{{ Storage::url(Auth::user()->avatar) }}" alt="user"/>
             @else
                 <img src="/vendor/wrappixel/material-pro/4.2.1/assets/images/users/1.jpg" alt="user"/>
             @endif

@@ -192,4 +192,20 @@ class HomeController extends Controller
         return back()->with('info', 'Datos Guardados Satisfactoriamente');
 
     }
+
+    public function fotoPerfil(Request $data)
+    {
+
+        $user = User::where('id_cliente',Auth::user()->id_cliente)->first();
+
+        if ($data->hasFile('fotoPerfil')) {
+            $foto = $data->file('fotoPerfil')->store('public');
+
+            $user->avatar = $foto;
+            $user->save();
+        }
+
+        return back()->with('info', 'Datos Guardados Satisfactoriamente');
+
+    }
 }

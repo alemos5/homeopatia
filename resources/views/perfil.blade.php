@@ -22,9 +22,9 @@
             <div class="card">
                 <div class="card-body">
                     <center class="m-t-30">
-                        <a href="#">
+                        <a href="#" data-target="#ModalFotoPerfil" data-toggle="modal">
                             @if($user->avatar)
-                                <img src="{{$user->avatar}}" class="img-circle" width="150">
+                                <img src="{{ Storage::url($user->avatar) }}" class="img-circle" width="150">
                             @else
                                 <img src="/vendor/wrappixel/material-pro/4.2.1/assets/images/users/1.jpg" alt="user" class="img-circle" width="150"/>
                             @endif
@@ -204,6 +204,8 @@
         </div>
     </div>
     <!-- Column -->
+
+    @include('users.modalFoto')
 
 @endsection
 
