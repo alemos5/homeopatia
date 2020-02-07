@@ -42,7 +42,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input id="email" type="email" placeholder="{{ _i('Email') }}" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autofocus>
+                                <input id="username" type="text" placeholder="{{ _i('Usuario') }}" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autofocus>
                             </div>
                         </div>
                         <div class="form-group">
