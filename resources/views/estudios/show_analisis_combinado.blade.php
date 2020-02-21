@@ -1,5 +1,5 @@
 <h2>
-    {{ _i('SAC') }}
+    {{ _i('Análisis Combinado') }}
     <button class="btn btn-success" type="button" id="btnVerAnalisisC">{{ _i('Mostrar') }}</button>
 </h2>
 <hr>
@@ -34,44 +34,7 @@
                 @endforeach
             </tr>
         </thead>
-        <tbody>
-            <tr style="border-bottom: 5px #CCC solid;">
-            <th>{{ _i('Suma') }}</th>
-                @foreach($AnalisisCombinados AS $AnalisisCombinado)
-                    <th style="text-align: center !important;">{{$AnalisisCombinado['suma']}}</th>
-                @endforeach
-            </tr>
-            <tr id="divRSM">
-                <td>RSM</td>
-                @foreach($AnalisisCombinados AS $AnalisisCombinado)
-                    <td style="text-align: center !important;">{{$AnalisisCombinado['rsm']}}</td>
-                @endforeach
-            </tr>
-            <tr id="divImpregnancia">
-                <td>Impregnancia</td>
-                @foreach($AnalisisCombinados AS $AnalisisCombinado)
-                    <td style="text-align: center !important;">{{$AnalisisCombinado['Impregnancia']}}</td>
-                @endforeach
-            </tr>
-            <tr id="divSecuencia">
-                <td>Secuencia</td>
-                @foreach($AnalisisCombinados AS $AnalisisCombinado)
-                    <td style="text-align: center !important;">{{$AnalisisCombinado['Secuencia']}}</td>
-                @endforeach
-            </tr>
-            <tr id="divConsonantes">
-                <td>Consonantes</td>
-                @foreach($AnalisisCombinados AS $AnalisisCombinado)
-                    <td style="text-align: center !important;">{{$AnalisisCombinado['Consonantes']}}</td>
-                @endforeach
-            </tr>
-            <tr id="divClaves">
-                <td>Claves</td>
-                @foreach($AnalisisCombinados AS $AnalisisCombinado)
-                    <td style="text-align: center !important;">{{$AnalisisCombinado['Claves']}}</td>
-                @endforeach
-            </tr>
-        </tbody>
+        <tbody></tbody>
     </table>
     </div>
 </div>

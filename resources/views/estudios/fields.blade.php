@@ -4,9 +4,8 @@
         <div class="form-group col-sm-12">
             <label for=""><b>{{ _i('Tipo') }}:</b></label>
             <select class="form-control" name="tipo" id="tipo" required>
-                <option value="" disabled selected>{{ _i(':: Seleccione un Tipo ::') }}</option>
-                <option value="12" @if(@old("tipo")==12) selected @endif>{{ _i('Animal') }}</option>
                 <option value="97" @if(@old("tipo")==97) selected @endif>{{ _i('Humano') }}</option>
+                <option value="12" @if(@old("tipo")==12) selected @endif>{{ _i('Animal') }}</option>
             </select>
             {!! $errors->first('tipo', '<span class="invalid-feedback"><strong>:message</strong></span>') !!}
         </div>
@@ -17,14 +16,14 @@
     <div class="row">
         <!-- H Nombre Field -->
         <div class="form-group col-sm-4">
-            <label for=""><b>{{ _i('Nombre') }}:</b></label>
+            <label for=""><b>{{ _i('Nombre/s') }}:</b></label>
             {!! Form::text('h_nombre', null, ['class' => 'form-control'. ( $errors->has('h_nombre') ? ' is-invalid' : '' )]) !!}
             {!! $errors->first('h_nombre', '<span class="invalid-feedback"><strong>:message</strong></span>') !!}
         </div>
 
         <!-- H Apellido Field -->
         <div class="form-group col-sm-4">
-            <label for=""><b>{{ _i('Apellido') }}:</b></label>
+            <label for=""><b>{{ _i('Apellido/s') }}:</b></label>
             {!! Form::text('h_apellido', null, ['class' => 'form-control'. ( $errors->has('h_apellido') ? ' is-invalid' : '' )]) !!}
             {!! $errors->first('h_apellido', '<span class="invalid-feedback"><strong>:message</strong></span>') !!}
         </div>
@@ -120,7 +119,7 @@
     <input type="hidden" id="ip" name="ip" value="127.0.0.1">
     <input type="hidden" id="user_agent" name="user_agent" value="Firefox">
 
-    {!! Form::submit(_i('Guardar'), ['class' => 'btn btn-success']) !!}
+    {!! Form::submit(_i('Realizar Estudio'), ['class' => 'btn btn-success']) !!}
     <a href="{!! route('estudios.index') !!}" class="btn btn-success">{{ _i('Cancelar') }}</a>
 </div>
 

@@ -74,13 +74,15 @@
         <div class="col-sm-6">
             @include('estudios.show_barra')
             <div class="row mt-4">
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                     <a href="#ex2" rel="modal:open" class="btn btn-outline-info btn-block btnDoc1">{{ _i('Vea la Dinámica') }}</a>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                     <a href="#ex2" rel="modal:open" class="btn btn-outline-info btn-block btnDoc2">{{ _i('Interrogatorio Dirigido') }}</a>
                 </div>
-                <div class="col-sm-4">
+            </div>
+            <div class="row mt-3">
+                <div class="col-sm-12">
                     {{--href="{{route('estudios.estudioPDF', $estudios,$remedios,$result['general']['clave'],$result['general']['pregnancia'],$result['reino']['vegetal'],$result['reino']['mineral'],$result['reino']['animal']])}}">--}}
                     <a class="btn btn-outline-info btn-block" target="_blank"
                        href="{{url('estudioPDF', ['estudios'=>$estudios, 'clave'=>$result['general']['clave'], 'pregnancia'=>$result['general']['pregnancia'], 'vegetal'=>$result['reino']['vegetal'], 'mineral'=>$result['reino']['mineral'], 'animal'=>$result['reino']['animal'] ])}}">
@@ -97,7 +99,7 @@
         </div>
     </div>
 
-    @if($isAdmin)
+    @if($isAdmin==9)
 
         <div class="row mt-4">
             <div class="col-sm-12">
@@ -149,6 +151,7 @@
     <script src="{{asset('vendor/wrappixel/material-pro/4.2.1/assets/plugins/styleswitcher/jQuery.style.switcher.js')}}"></script>
     <script src="{{asset('/vendor/wrappixel/material-pro/4.2.1/assets/plugins/switchery/dist/switchery.min.js')}}" type="text/javascript"></script>
 
+    <script src="{{ asset('js/cargarAnalisisC.js') }}"></script>
     <script src="{{ asset('js/cargarAnalisis.js') }}"></script>
     <script src="{{ asset('js/btnes_ordenacion_filtrado.js') }}"></script>
     <script src="{{ asset('js/guardar_nota.js') }}"></script>
@@ -157,6 +160,7 @@
 
     <script>
         $(document).ready(function () {
+            cargarAnalisisC(1, 1, 1, 1, 1);
             cargarAnalisis(1, 0, 0, 1, 1, 1, 1, 1);
             let mostrar = 1;
             $('#btnVerAnalisisC').click(function () {

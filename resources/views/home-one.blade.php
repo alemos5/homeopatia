@@ -110,35 +110,20 @@
     @endif
 
     <div class="row">
-        <div class="col-lg-4 col-xlg-4 col-md-4">
+        <div class="col-lg-5 col-xlg-5 col-md-5">
             <div class="card blog-widget">
                 <div class="card-body text-center">
                     <div class="blog-image">
                         <i class="fas fa-user-md fa-3x"></i>
                     </div>
-                    <h3>{{ _i('Estudio Médico') }}</br>&nbsp;</h3>
+                    <h3>{{ _i('Estudios') }}</br>&nbsp;</h3>
                 </div>
                 <div class="card-footer text-center">
-                    <a href="{{route('estudios.create')}}" class="btn btn-success">{{ _i('Crear Nuevo') }}</a>
+                    <a href="{{route('estudios.create')}}" class="btn btn-warning">{{ _i('Crear Nuevo Estudio') }}</a>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-xlg-4 col-md-4">
-            <div class="card blog-widget">
-                <div class="card-body text-center">
-                    <div class="blog-image">
-                        <i class="fas fa-wallet fa-3x"></i>
-                    </div>
-                    <h3>{{ _i('Abono Promocional') }}</br> {{$promocion->creditos}} {{ _i('Créditos') }}</h3>
-                </div>
-                <div class="card-footer text-center">
-                    <a href="{{ route('payment', $promocion->id) }}" class="btn btn-warning">
-                        {{ _i('Comprar por US$') }} {{number_format($promocion->costo,2,',','.')}}
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-xlg-4 col-md-4">
+        <div class="col-lg-5 col-xlg-5 col-md-5">
             <div class="card blog-widget">
                 <div class="card-body text-center">
                     <div class="blog-image">
@@ -147,7 +132,22 @@
                     <h3>{{ _i('Instrucciones de') }} </br>{{ _i('Uso') }}</h3>
                 </div>
                 <div class="card-footer text-center">
-                    <a href="#" class="btn btn-success">{{ _i('Mostrar') }}</a>
+                    <a href="#" class="btn btn-warning">{{ _i('Mostrar') }}</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-xlg-2 col-md-2">
+            <div class="card blog-widget">
+                <div class="card-body text-center">
+                    <div class="blog-image">
+                        <i class="fas fa-wallet fa-3x"></i>
+                    </div>
+                    <h3>{{ _i('Mis') }}<br>{{_i('Abonos')}}</h3>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="{{ route('payment', $promocion->id) }}" class="btn btn-success">
+                        {{ _i('Historial') }}
+                    </a>
                 </div>
             </div>
         </div>

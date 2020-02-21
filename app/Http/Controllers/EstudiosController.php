@@ -260,7 +260,12 @@ class EstudiosController extends AppBaseController
         $AnalisisCombinados = $this->calcularAnalisisCombinado(
             $remedios,
             $data,
-            $predominante
+            $predominante,
+            1,
+            1,
+            1,
+            1,
+            1
         );
 
         $AnalisisCombinados = collect($AnalisisCombinados)->sortByDesc('suma')->toArray();
@@ -1548,7 +1553,7 @@ class EstudiosController extends AppBaseController
         return $analisisCombinadoXremedio;
     }
 
-    public function calcularAnalisisCombinado($remedios, $data, $predominante)
+    public function calcularAnalisisCombinado($remedios, $data, $predominante, $filtro1,$filtro2,$filtro3,$filtro4,$filtro5)
     {
 
         $rsm9 = $this->existenRsm9($remedios, $data);
@@ -1556,7 +1561,7 @@ class EstudiosController extends AppBaseController
         $analisisCombinado = array();
 
         foreach ($remedios as $index => $remedio) {
-            $analisisCombinado[$index] = $this->calcularAnalisisCombinadoXremedio($remedio, $data, $predominante, $rsm9, 1, 1, 1, 1, 1);
+            $analisisCombinado[$index] = $this->calcularAnalisisCombinadoXremedio($remedio, $data, $predominante, $rsm9, $filtro1,$filtro2,$filtro3,$filtro4,$filtro5);
         }
 
         return $analisisCombinado;
@@ -1647,6 +1652,74 @@ class EstudiosController extends AppBaseController
             $htmltabla .= '</tr>';
         }
 
+        return $htmltabla;
+    }
+
+    public function calcularAnalisisC(Request $request)
+    {
+        $input = $request->all();
+
+        $remedios = json_decode($input['remedios']);
+        $data = (array)json_decode($input['data']);
+        $predominante = json_decode($input['predominante']);
+
+
+        $AnalisisCombinados = $this->calcularAnalisisCombinado(
+            $remedios,
+            $data,
+            $predominante,
+            $input['filtro1'],
+            $input['filtro2'],
+            $input['filtro3'],
+            $input['filtro4'],
+            $input['filtro5']
+        );
+
+        $AnalisisCombinados = collect($AnalisisCombinados)->sortByDesc('suma')->toArray();
+
+        $htmltabla = '';
+
+        $htmltabla .= '<tr style="border-bottom: 5px #CCC solid;">';
+        $htmltabla .= '<th>' . _i('Suma') . '</th>';
+        foreach ($AnalisisCombinados AS $AnalisisCombinado) {
+            $htmltabla .= '<th style="text-align: center !important;">' . $AnalisisCombinado['suma'] . '</th>';
+        }
+        $htmltabla .= '</tr>';
+        if($input['filtro1']) {
+            $htmltabla .= '<tr id="divRSM"><td>RSM</td>';
+            foreach ($AnalisisCombinados AS $AnalisisCombinado) {
+                $htmltabla .= '<td style="text-align: center !important;">' . $AnalisisCombinado['rsm'] . '</td>';
+            }
+            $htmltabla .= '</tr>';
+        }
+        if($input['filtro2']) {
+            $htmltabla .= '<tr id = "divImpregnancia" ><td > Impregnancia</td >';
+            foreach ($AnalisisCombinados AS $AnalisisCombinado) {
+                $htmltabla .= '<td style = "text-align: center !important;" > ' . $AnalisisCombinado['Impregnancia'] . ' </td > ';
+            }
+            $htmltabla .= '</tr>';
+        }
+        if($input['filtro3']) {
+            $htmltabla .= '<tr id="divSecuencia"><td>Secuencia</td>';
+            foreach ($AnalisisCombinados AS $AnalisisCombinado) {
+                $htmltabla .= '<td style="text-align: center !important;">' . $AnalisisCombinado['Secuencia'] . '</td>';
+            }
+            $htmltabla .= '</tr>';
+        }
+        if($input['filtro4']) {
+            $htmltabla .= '<tr id = "divConsonantes"><td>Consonantes</td>';
+            foreach ($AnalisisCombinados AS $AnalisisCombinado) {
+                $htmltabla .= '<td style = "text-align: center !important;">' . $AnalisisCombinado['Consonantes'] . '</td>';
+            }
+            $htmltabla .= '</tr>';
+        }
+        if($input['filtro5']) {
+            $htmltabla .= '<tr id="divClaves"><td>Claves</td>';
+            foreach ($AnalisisCombinados AS $AnalisisCombinado) {
+                $htmltabla .= '<td style="text-align: center !important;">' . $AnalisisCombinado['Claves'] . '</td>';
+            }
+            $htmltabla .= '</tr>';
+        }
         return $htmltabla;
     }
 

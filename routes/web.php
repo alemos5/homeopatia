@@ -183,6 +183,7 @@ Route::group(['middleware' => array('auth', 'verified')], function () {
     Route::get('pagado/{credito_id}', 'PaypalController@pagado')->name('pagado');
 
     #Sobre el Calculo del Analisis del Estudio Medico
+    Route::post('calcularAnalisisC', 'EstudiosController@calcularAnalisisC')->name('calcularAnalisisC');
     Route::post('calcularAnalisis', 'EstudiosController@calcularAnalisis')->name('calcularAnalisis');
     Route::post('guardarNota', 'EstudiosController@guardarNota')->name('guardarNota');
 });

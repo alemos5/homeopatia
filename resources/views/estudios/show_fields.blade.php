@@ -4,10 +4,6 @@
 <div class="card">
     <div class="card-body">
 
-        <div class="row">
-            <div class="col-sm-6"><b style="font-weight: 900">{{ _i('Tipo de Estudio') }}</b></div>
-            <div class="col-sm-6">{!! $estudios->tipo !!}</div>
-        </div>
 
         @if($estudios->tipo=='humano')
             <div class="row">
