@@ -66,7 +66,21 @@ function cargarAnalisis (orden1,orden2,orden3, filtro1, filtro2, filtro3, filtro
                         }
                     },
                     "pageLength": 100,
-                    "bDestroy": true
+                    "bDestroy": true,
+                    'rowCallback': function(row, data, index){
+                        if(data[2] == 'Animal'){
+                            console.log( 'anima'  );
+                            $(row).css('background-color', 'rgba(255,70,95,0.35)');
+                        }
+                        if(data[2] == 'Mineral'){
+                            console.log( 'anima'  );
+                            $(row).css('background-color', 'rgba(30,136,229,0.35)');
+                        }
+                        if(data[2] == 'Vegetal'){
+                            console.log( 'anima'  );
+                            $(row).css('background-color', 'rgba(53,210,56,0.35)');
+                        }
+                    }
                 });
             }
         }

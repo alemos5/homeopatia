@@ -58,7 +58,7 @@
 
                     <?php
                     if ($remedio->puros == 1) {
-                    ?><i class="fas fa-star"></i><?php
+                    ?><i class="fas fa-circle small"></i><?php
                     }
                     ?>
 
@@ -67,7 +67,7 @@
 
                     <?php
                     if ($remedio->tipoRemedioClave == 1) {
-                    ?><i class="fas fa-star"></i><?php
+                    ?><i class="fas fa-circle small"></i><?php
                     }
                     ?>
 
@@ -77,7 +77,7 @@
                     <?php
                     $secuencia = \App\Http\Controllers\EstudiosController::getSecuencia($remedio->id, $data['apodo']);
                     if ($secuencia) {
-                    ?><i class="fas fa-star"></i><?php
+                    ?><i class="fas fa-circle small"></i><?php
                     }
                     ?>
 

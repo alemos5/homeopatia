@@ -1597,16 +1597,14 @@ class EstudiosController extends AppBaseController
             $analisis[$index]['clave'] = $remedio->tipoRemedioClave;
         }
 
-
         foreach ($analisis as $clave => $fila) {
             $ordenarSumas[$clave] = $fila['suma_analisis_combinado'];
             $ordenarRemedio[$clave] = $fila['remedio'];
             $ordenarReino[$clave] = $fila['reino'];
         }
 
-
         if ($input['orden1'] and $input['orden2'] and $input['orden3']) { //Todos
-            array_multisort($ordenarSumas, SORT_DESC, $ordenarRemedio, SORT_ASC, $ordenarReino, SORT_ASC, $analisis);
+            array_multisort($ordenarReino, SORT_ASC, $ordenarRemedio, SORT_ASC, $ordenarSumas, SORT_DESC, $analisis);
         } elseif ($input['orden1'] and $input['orden2'] and !$input['orden3']) { //Todos menos el reino
             array_multisort($ordenarSumas, SORT_DESC, $ordenarRemedio, SORT_ASC, $analisis);
         } elseif ($input['orden1'] and !$input['orden2'] and !$input['orden3']) { //Solo las sumas
@@ -1619,7 +1617,7 @@ class EstudiosController extends AppBaseController
             array_multisort($ordenarRemedio, SORT_ASC, $analisis);
         } elseif ($input['orden1'] and !$input['orden2'] and $input['orden3']) { //Todos menos remedio
             array_multisort($ordenarSumas, SORT_DESC, $ordenarReino, SORT_ASC, $analisis);
-        } elseif (!$input['orden1'] and !$input['orden2'] and $input['orden3']) { //Todos menos el reino
+        } elseif (!$input['orden1'] and !$input['orden2'] and $input['orden3']) { //Solo el reino
             array_multisort($ordenarReino, SORT_ASC, $analisis);
         }
 
@@ -1628,7 +1626,7 @@ class EstudiosController extends AppBaseController
 
             $clave = '';
             if ($item['clave']) {
-                $clave = '<i class="fas fa-star text-success"></i>';
+                $clave = '<i class="fas fa-circle small text-success"></i>';
             }
 
             $nota = EstudioNota::select('nota')
@@ -1640,13 +1638,14 @@ class EstudiosController extends AppBaseController
                 $notavalue = $nota->nota;
             }
 
+
             $htmltabla .= '<tr>';
             $htmltabla .= '<td><a href="#ex1" rel="modal:open" class="btnDescripcion" data-idremedio="' . $item['remedio_id'] . '">' . $item['remedio'] . '</a></td >';
             $htmltabla .= '<td class="font-weight-bold" align="center">' . $item['suma_analisis_combinado'] . '</td >';
             $htmltabla .= '<td align="center">' . $item['reino'] . '</td >';
             $htmltabla .= '<td align="center">' . $clave . '</td >';
             $htmltabla .= '<td><div class="input-group" >';
-            $htmltabla .= '<input id="nota' . $item['remedio_id'] . '" type = "text" class="form-control" placeholder = "' . _i('Escriba una nota') . '" value="' . $notavalue . '" ><div class="input-group-append" >';
+            $htmltabla .= '<input id="nota' . $item['remedio_id'] . '" type = "text" class="form-control" placeholder = "" value="' . $notavalue . '" maxlength="20"><div class="input-group-append" >';
             $htmltabla .= '<button class="btn btn-success btnGuardarNota" data-remedioid="' . $item['remedio_id'] . '" type = "button" ><i class="fas fa-save" ></i ></button >';
             $htmltabla .= '&nbsp;<div id="msg' . $item['remedio_id'] . '"></div></div ></div></td>';
             $htmltabla .= '</tr>';
@@ -1894,3 +1893,7 @@ class EstudiosController extends AppBaseController
 //        return view('estudios.estudioPDF', compact('estudios', 'remedios', 'clave', 'pregnancia', 'vegetal', 'mineral', 'animal', 'data', 'predominante', 'htmltabla'));
     }
 }
+?>
+<div style="background-color: rgba(255,70,95,0.35)"></;
+<div style="background-color: rgba(30,136,229,0.35)"></;
+<div style="background-color: rgba(53,210,56,0.35)"></;

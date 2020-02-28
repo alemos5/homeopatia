@@ -49,6 +49,11 @@
             top: 5px !important;
             right: 5px !important;
         }
+
+        #cuadro td, #cuadro th{
+            border-left: 1px solid;
+            border-right: 1px solid;
+        }
     </style>
 
 @endsection
@@ -161,8 +166,8 @@
     <script>
         $(document).ready(function () {
             cargarAnalisisC(1, 1, 1, 1, 1);
-            cargarAnalisis(1, 0, 0, 1, 1, 1, 1, 1);
-            let mostrar = 1;
+            cargarAnalisis(0, 1, 0, 1, 1, 1, 1, 1);
+            let mostrar = 0;
             $('#btnVerAnalisisC').click(function () {
                if(mostrar){
                    mostrar = 0;
