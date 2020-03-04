@@ -1595,7 +1595,11 @@ class EstudiosController extends AppBaseController
             $analisis[$index]['suma_analisis_combinado'] = $analisisCombinado['suma'];
             $analisis[$index]['reino'] = $remedioReino['reino'];
             $analisis[$index]['clave'] = $remedio->tipoRemedioClave;
+            $analisis[$index]['pregnancia'] = $remedio->pregnancia;
+
         }
+//        echo json_encode($analisis); die();
+
 
         foreach ($analisis as $clave => $fila) {
             $ordenarSumas[$clave] = $fila['suma_analisis_combinado'];
@@ -1621,6 +1625,8 @@ class EstudiosController extends AppBaseController
             array_multisort($ordenarReino, SORT_ASC, $analisis);
         }
 
+        sort($analisis);
+
         $htmltabla = '';
         foreach ($analisis AS $item) {
 
@@ -1638,11 +1644,21 @@ class EstudiosController extends AppBaseController
                 $notavalue = $nota->nota;
             }
 
+//            $item2 = json_encode($item);
+//            foreach ($item2 as $clave => $fila) {
+//                $ordenReino[$clave] = $fila['pregnancia'];
+//            }
+
+//            array_multisort($item['pregnancia'], SORT_ASC, $item);
+
+//            asort($item['pregnancia'], $item);
 
             $htmltabla .= '<tr>';
             $htmltabla .= '<td><a href="#ex1" rel="modal:open" class="btnDescripcion" data-idremedio="' . $item['remedio_id'] . '">' . $item['remedio'] . '</a></td >';
             $htmltabla .= '<td class="font-weight-bold" align="center">' . $item['suma_analisis_combinado'] . '</td >';
+//            $htmltabla .= '<td align="center">' . $item['reino'] . '.'.$item['pregnancia'].'</td >';
             $htmltabla .= '<td align="center">' . $item['reino'] . '</td >';
+            $htmltabla .= '<td style="display: none" align="center">'.$item['pregnancia'].'</td >';
             $htmltabla .= '<td align="center">' . $clave . '</td >';
             $htmltabla .= '<td><div class="input-group" >';
             $htmltabla .= '<input id="nota' . $item['remedio_id'] . '" type = "text" class="form-control" placeholder = "" value="' . $notavalue . '" maxlength="20"><div class="input-group-append" >';

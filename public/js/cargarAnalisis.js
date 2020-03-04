@@ -40,7 +40,7 @@ function cargarAnalisis (orden1,orden2,orden3, filtro1, filtro2, filtro3, filtro
                     // buttons: [
                     //     'copy', 'csv', 'excel', 'pdf', 'print'
                     // ],
-                    "order": false,
+                    "order": [ 3, 'asc' ],
                     "language": {
                         "sProcessing": "Procesando...",
                         "sLengthMenu": "Ver _MENU_",
