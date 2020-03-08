@@ -26,7 +26,7 @@
 <div class="row" id="cuadroAnalisisC">
     <div class="table-responsive">
     <table class="table table-striped table-bordered table-sm ml-3 mt-3" id="data-table-analisis-combinado">
-        <thead class="thead-light">
+        <thead style="background-color: #818181; color: #FFF">
             <tr>
                 <th>&nbsp;</th>
                 @foreach($AnalisisCombinados AS $AnalisisCombinado)
