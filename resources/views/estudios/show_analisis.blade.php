@@ -47,7 +47,8 @@
                     <th class="text-center" style="width: 20em">{{ _i('Notas') }}</th>
                 </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody>
+                </tbody>
             </table>
         </div>
     </div>

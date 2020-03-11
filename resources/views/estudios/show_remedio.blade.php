@@ -1,7 +1,7 @@
 <h2>{{ _i('Análisis desplegado') }}</h2>
 <hr>
 <div class="table-responsive">
-    <table style="width: 100%; font-size: 14px;" id="data-table" class="table table-striped table-bordered dt-responsive nowrap">
+    <table style="width: 100%; font-size: 14px;" id="data-table" class="table table-hover table-striped table-bordered dt-responsive nowrap">
         <thead>
         <tr>
             <th>{{ _i('ID') }}</th>

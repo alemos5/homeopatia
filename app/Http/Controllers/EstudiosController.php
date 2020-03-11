@@ -1596,10 +1596,7 @@ class EstudiosController extends AppBaseController
             $analisis[$index]['reino'] = $remedioReino['reino'];
             $analisis[$index]['clave'] = $remedio->tipoRemedioClave;
             $analisis[$index]['pregnancia'] = $remedio->pregnancia;
-
         }
-//        echo json_encode($analisis); die();
-
 
         foreach ($analisis as $clave => $fila) {
             $ordenarSumas[$clave] = $fila['suma_analisis_combinado'];
@@ -1625,9 +1622,26 @@ class EstudiosController extends AppBaseController
             array_multisort($ordenarReino, SORT_ASC, $analisis);
         }
 
-        sort($analisis);
-
         $htmltabla = '';
+
+        if (isset($input['orden3']) && $input['orden3'] == "1") {
+
+            $sortArray = array();
+
+            foreach ($analisis as $person) {
+                foreach ($person as $key => $value) {
+                    if (!isset($sortArray[$key])) {
+                        $sortArray[$key] = array();
+                    }
+                    $sortArray[$key][] = $value;
+                }
+            }
+
+
+            array_multisort($sortArray['pregnancia'], SORT_ASC, $analisis);
+
+        }
+        $count = 0;
         foreach ($analisis AS $item) {
 
             $clave = '';
@@ -1644,27 +1658,34 @@ class EstudiosController extends AppBaseController
                 $notavalue = $nota->nota;
             }
 
-//            $item2 = json_encode($item);
-//            foreach ($item2 as $clave => $fila) {
-//                $ordenReino[$clave] = $fila['pregnancia'];
-//            }
+            $classColor = null;
+            if ($count == 0) {
+                $classColor = 'style="background-color: rgba(30, 136, 229, 0.35);"';
+            }
+//            echo $item['reino']; die();
+            switch ($item['reino']) {
+                case "Mineral":
+                    $classColor = 'style="background-color: rgba(30, 136, 229, 0.35);"';
+                    break;
+                case "Vegetal":
+                    $classColor = 'style="background-color: rgba(53, 210, 56, 0.35);"';
+                    break;
+                case "Animal":
+                    $classColor = 'style="background-color: rgba(255, 70, 95, 0.35);"';
+                    break;
+            }
 
-//            array_multisort($item['pregnancia'], SORT_ASC, $item);
-
-//            asort($item['pregnancia'], $item);
-
-            $htmltabla .= '<tr>';
+            $htmltabla .= '<tr '.$classColor.'>';
             $htmltabla .= '<td><a href="#ex1" rel="modal:open" class="btnDescripcion" data-idremedio="' . $item['remedio_id'] . '">' . $item['remedio'] . '</a></td >';
             $htmltabla .= '<td class="font-weight-bold" align="center">' . $item['suma_analisis_combinado'] . '</td >';
-//            $htmltabla .= '<td align="center">' . $item['reino'] . '.'.$item['pregnancia'].'</td >';
             $htmltabla .= '<td align="center">' . $item['reino'] . '</td >';
-            $htmltabla .= '<td style="display: none" align="center">'.$item['pregnancia'].'</td >';
             $htmltabla .= '<td align="center">' . $clave . '</td >';
             $htmltabla .= '<td><div class="input-group" >';
             $htmltabla .= '<input id="nota' . $item['remedio_id'] . '" type = "text" class="form-control" placeholder = "" value="' . $notavalue . '" maxlength="20"><div class="input-group-append" >';
             $htmltabla .= '<button class="btn btn-success btnGuardarNota" data-remedioid="' . $item['remedio_id'] . '" type = "button" ><i class="fas fa-save" ></i ></button >';
             $htmltabla .= '&nbsp;<div id="msg' . $item['remedio_id'] . '"></div></div ></div></td>';
             $htmltabla .= '</tr>';
+            $count++;
         }
 
         return $htmltabla;
@@ -1909,7 +1930,3 @@ class EstudiosController extends AppBaseController
 //        return view('estudios.estudioPDF', compact('estudios', 'remedios', 'clave', 'pregnancia', 'vegetal', 'mineral', 'animal', 'data', 'predominante', 'htmltabla'));
     }
 }
-?>
-<div style="background-color: rgba(255,70,95,0.35)"></;
-<div style="background-color: rgba(30,136,229,0.35)"></;
-<div style="background-color: rgba(53,210,56,0.35)"></;
