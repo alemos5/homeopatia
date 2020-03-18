@@ -73,6 +73,7 @@
     {{--    <div class="progress-bar bg-success" style="width: 75%; height:15px;" role="progressbar">75%</div>--}}
 
     <div class="row">
+        <input type="hidden" name="idioma" id="idioma" value="{{LaravelGettext::getLocale()}}">
         <div class="col-sm-6">
             @include('estudios.show_fields')
         </div>
