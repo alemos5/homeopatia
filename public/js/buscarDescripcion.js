@@ -19,15 +19,25 @@ $(document).on('click', '.btnDescripcion', function () {
 });
 
 $(document).on('click', '.btnDoc1', function () {
-
+    let idioma = $('#idioma').val();
+    let dinamica = $(this).data('dinamica');
     $('#tituloModal2').html('Dinámica');
-    $('#iframeDoc').attr('src', '/pdf/dinamica_simetrias.pdf');
+    if(idioma=='es_ES') {
+        $('#iframeDoc').attr('src', '/html/es/orden-de-simetria-' + dinamica + '.html');
+    }else{
+        $('#iframeDoc').attr('src', '/html/en/orden-de-simetria-' + dinamica + '.html');
+    }
 
 });
 
 $(document).on('click', '.btnDoc2', function () {
-
+    let idioma = $('#idioma').val();
+    let interrogatorio = $(this).data('interrogatorio');
     $('#tituloModal2').html('Interrogatorio Dirigido');
-    $('#iframeDoc').attr('src', '/pdf/interrogatorio_simetria.pdf');
+    if(idioma=='es_ES') {
+        $('#iframeDoc').attr('src', '/html/es/interrogatorio-de-la-simetria-' + interrogatorio + '.html');
+    }else{
+        $('#iframeDoc').attr('src', '/html/en/interrogatorio-de-la-simetria-' + interrogatorio + '.html');
+    }
 
 });
