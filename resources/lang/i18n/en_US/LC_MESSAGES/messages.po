@@ -1432,8 +1432,6 @@ msgstr "Edit Data"
 msgid "Telefono"
 msgstr "Phone"
 
-#~ msgid "Impregnancia Simetría"
-#~ msgstr "Impregnance Symmetry"
 
 #~ msgid "Ver"
 #~ msgstr "See"

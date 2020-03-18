@@ -1,0 +1,298 @@
+<?php
+# Levantamos usuario
+$user =& JFactory::getUser();
+?>
+<div id="modal">
+    <div id="modal-content"></div>
+    <div id="modal-buttons">
+        <button id="bt-modal-ok">OK</button>
+        <button id="bt-modal-cancelar">Cancelar</button>
+    </div>
+</div>
+<div id="loading">
+    <div>
+    	<p>Procesando Datos</p>
+    </div>
+</div>
+<script type="text/javascript">
+jQuery(document).ready( function(){
+
+	/* Overlay Progress */
+	var overlay = jQuery('#loading').overlay({
+		top: 'center',
+		mask: {
+			color: '#000',
+			opacity: 0.5,
+		},
+		closeOnClick: false,
+		closeOnEsc: false,
+		load: false,
+		onLoad: function(){
+			var t = jQuery.mask;
+			if( !t.isLoaded() ){
+				t.load();
+				var ov = this.getOverlay();
+				ov.css('z-index', '9999');
+			}
+		}
+	});
+	
+	var modal = jQuery('#modal').overlay({
+		top: 'center',
+		mask: {
+			color: '#000',
+			opacity: 0.5,
+		},
+		closeOnClick: false,
+		closeOnEsc: false,
+		load: false
+	});
+	
+	/* Submit form */
+	jQuery.submitFormulario = function(){
+if( !formSubmited ){
+		if( checkLocal() ){
+			var msg = getModalMsg();
+			jQuery('#modal > #modal-content').html( msg );
+			modal.overlay().load();
+		} else {
+formSubmited = false;
+		}
+} else {
+formSubmited = true;
+}
+	}
+
+	/* Modal */
+	jQuery('#modal > #modal-buttons > #bt-modal-cancelar').live( 'click', function(){
+		modal.overlay().close();
+	} );
+	jQuery('#modal > #modal-buttons > #bt-modal-ok').live( 'click', function(){
+		modal.overlay().close();
+if( '<?php echo $user->get('usertype'); ?>' == 'Author' ){
+formSubmited = true;
+jQuery('#formAlgoritmo #submit').trigger('click');
+return 1;
+} else {
+		var jajax = jQuery.ajax( {cache: false,
+url: "dataAjax.php?u=<?php echo $user->id; ?>&m=m",
+success: function(data, textStatus, jqXHR){
+formSubmited = true;
+jQuery('#formAlgoritmo #submit').trigger('click');
+return data;
+},
+async:   false
+} );
+}
+	} );
+
+var jajax = jQuery.ajax( {cache: false,
+url: "dataAjax.php?u=<?php echo $user->id; ?>&m=c",
+success: function(data, textStatus, jqXHR){
+if( parseInt( data ) > 0 || '<?php echo $user->get('usertype'); ?>' == 'Author' ){
+jQuery('#div_formulario_candegabe').show();
+} else {
+location.href='index.php?option=com_content&view=article&id=67'; <!-- este es el artículo de los abonos al que va si no tiene suficientes créditos-->
+
+}
+}
+} );
+});
+</script>
+<div id="div_formulario_candegabe" style="display: none">
+<!-- Scipts del algoritmo-->
+<script language="JavaScript">
+
+var formSubmited = false;
+function submitFormulario(){
+jQuery.submitFormulario();
+if( formSubmited ){
+jQuery('#loading').overlay().load();
+}
+return formSubmited;
+}
+
+function checkdate( val ){
+var validformat = /^\d{2}\/\d{2}\/\d{4}$/;
+var returnval = false;
+
+if (validformat.test( val )){
+var dayfield = val.split("/")[0];
+var monthfield = val.split("/")[1];
+var yearfield = val.split("/")[2];
+var dayobj = new Date( yearfield, monthfield-1, dayfield );
+if( 
+( dayobj.getMonth() + 1 != monthfield ) ||
+( dayobj.getDate() != dayfield ) || 
+( dayobj.getFullYear() != yearfield )
+){
+returnval = false;
+} else {
+returnval = true;
+}
+}
+
+return returnval;
+
+}
+
+	function checkLocal(){		
+		var msg = "";
+		
+		if( document.getElementById('especie').value == "" ){
+			msg +=  "Por favor completar el camo ESPECIE\n";
+		}
+		if( document.getElementById('owner').value == "" ){
+			msg +=  "Por favor completar el Nombre del Dueño\n";
+		}
+		if( document.getElementById('petName').value == "" ){
+			msg +=  "Por favor completar el Nombre del Animal\n";
+		}
+		if( document.getElementById('iniciales').value == "" ){
+			msg +=  "Por favor completar las Iniciales\n";
+		}
+var dia = parseInt( document.getElementById('day').value );
+if( dia < 10 ) dia = "0" + dia;
+//document.getElementById('day').value = dia;
+var mes = parseInt( document.getElementById('month').value );
+if( mes < 10 ) mes = "0" + mes;
+//document.getElementById('month').value = mes;
+var anio = parseInt( document.getElementById('year').value );
+var fecha = dia + "/" + mes + "/" + anio;
+if( 
+document.getElementById('day').value != '' && 
+document.getElementById('month').value != '' && 
+document.getElementById('year').value != '' && 
+!checkdate( fecha ) 
+){
+	msg +=  "Por favor ingresa una fecha válida \n";
+} else if( !anio ){
+msg += "Por favor ingresa una fecha o un año válido";
+}
+		if( msg != '' ){
+			alert( msg );
+			return false;
+		}
+		return true;
+	}
+	
+	function getModalMsg(){
+		var msg = "";
+		
+		msg = '<div class="favor">Por Favor Verificar la Información Ingresada:</div><br /><br />';
+		msg += '<div class="etiqueta">Especie:</div> <div class="dato">' + document.getElementById('especie').value + '</div><br />';
+		msg += '<div class="etiqueta">Nombre del Dueño:</div> <div class="dato">' + document.getElementById('owner').value + '</div><br />';
+		msg += '<div class="etiqueta">Nombre del Animal:</div> <div class="dato">' + document.getElementById('petName').value + '</div><br />';
+		msg += '<div class="etiqueta">Iniciales:</div> <div class="dato">' + document.getElementById('iniciales').value + '</div><br />';
+		fecha = document.getElementById('day').value + "/"+ document.getElementById('month').value +"/"+ document.getElementById('year').value;
+		msg += '<div class="etiqueta">Fecha de Nacimiento:</div> <div class="dato">' + fecha + '</div><br /><br />';
+		msg += '<div class="correcto">Si Esta Información es Correcta Confirme Esta Ventana</div>';
+		msg = msg.replace( /\n/, "<br />" );
+		return msg;
+	}
+
+</script>
+<!-- inlcuye los php del  jumi 8 . Es el mismo que incluye el Formulario Humano -->
+{jumi [*8]'}
+
+<!-- comienzo del formulario -->
+<div id="formAlgo">
+
+<!-- form action START apunta al artículo que contenga el Resultado Animal-->
+<form action="http://<?php echo $_SERVER['HTTP_HOST']; ?>/index.php?option=com_content&view=article&id=69&Itemid=30" class="formulario" id="formAlgoritmo" method="post" name="formAlgoritmo" onsubmit="return submitFormulario()"> 
+
+<!-- form action END -->
+
+<!-- FORMULARIO NUEVO START -->
+<p>
+{tip Especie::Los datos deben ser cargados en la planilla de consulta sin acentos o simbolos. Debe ingresarse el texto con las letras puras correspondientes (no agregar letras con ´, ¨, ^, ', `, ~, etc.).}
+<label for="especie">Especie</label>
+ <input  name="especie" type="text" id="especie" tabindex="1" size="30" />
+{/tip} 
+</p>
+
+  
+<p>{tip Dueño::Los datos deben ser cargados en la planilla de consulta sin acentos o simbolos. Debe ingresarse el texto con las letras puras correspondientes (no agregar letras con ´, ¨, ^, ', `, ~, etc.).}
+<label for="owner" id="apodoLabel">Nombre del dueño (por el cual lo reconoce)</label>
+ <input name="owner" type="text" id="owner" tabindex="2" size="30" />
+{/tip}  
+</p>
+ 
+ <p>
+{tip Nombre del Animal::Los datos deben ser cargados en la planilla de consulta sin acentos o simbolos. Debe ingresarse el texto con las letras puras correspondientes (no agregar letras con ´, ¨, ^, ', `, ~, etc.).}
+<label for="petName">Nombre del Animal</label>
+ <input  name="petName" type="text" id="petName" tabindex="3" size="30" />
+{/tip} 
+</p>
+ 
+<p>
+{tip Iniciales::La primer letra del nombre del Dueño y la primer letra del nombre del Animal.}
+<label for="iniciales">Iniciales</label>
+ <input name="iniciales" type="text" id="iniciales" tabindex="4" size="30" />
+{/tip}  
+</p>
+  
+<fieldset>
+<legend>Fecha de Nacimiento</legend>
+{tip Dia::Ingrese valores del 1 al 31}
+    <input name="day" type="text" id="day" tabindex="5" value="DD" size="2" maxlength="2" onfocus="if (this.value == 'DD') {this.value=''}"/>{/tip}  
+
+{tip Mes::Ingrese valores del 1 al 12}
+    <input name="month" type="text" id="month" tabindex="6" value="MM" size="2" maxlength="2" onfocus="if (this.value == 'MM') {this.value=''}" />{/tip} 
+{tip Año::Ingrese los 4 digitos del año de nacimiento}
+    <input name="year" type="text" id="year" tabindex="7" value="AAAA" size="4" maxlength="4" onfocus="if (this.value == 'AAAA') {this.value=''}" />{/tip} 
+  </fieldset>
+<p>
+  <label for="submit" class="textoInvisible">enviar </label><input type="submit" tabindex="9" name="submit" id="submit" value="Realizar Consulta" />
+</p>
+<span class="extensor"></span>  <!-- FORMULARIO NUEVO END -->
+
+</form></div> <!-- formAlgo-->
+
+
+</body><!-- no borrar este tag ya que sino no funca!! -->
+ {simplepopup name=”inst_ES”}
+
+<table border="0" cellpadding="10" cellspacing="0">
+  <tr>
+    <td colspan="2" valign="top"><h1>Instrucciones de Uso</h1>
+      <p class="instr_subt">Versión para Veterinaria</p>
+      <p class="instr_dr">Supervisado por el Dr. Andrea Brancalion</p>
+    <p class="instr_dr">-Italia-</p></td>
+    <td colspan="2" valign="top"><img src="algoritmo10/resultado/images-animal/Andrea-Brancalion.jpg" alt="" name="veterinario" width="400" height="300" id="veterinario" /></td>
+  </tr>
+  <tr>
+    <td width="10%" valign="top"><h2>1</h2></td>
+    <td width="40%" rowspan="3" valign="top" class="inst_text"><p>Es de suma importancia ingresar los datos objetivos que conozca del paciente, siendo <strong>imprescindible</strong> completar los correspondientes datos como en el ejemplo siguiente:</p>
+      <ul>
+        <li><strong>Especie</strong>: (por ejemplo: Perro)</li>
+        <li><strong>Nombre del Dueño</strong>: (por el cual lo reconoce): (por ejemplo: Loli)</li>
+        <li> <strong>Nombre del Animal</strong>: (por ejemplo: Black)</li>
+        <li><strong> Iniciales: </strong>la primer letra del nombre del Dueño y la primer letra del nombre del Animal: (por ejemplo: LB)</li>
+        <li><strong> Fecha de Nacimiento: </strong>(por ejemplo: 23 del 9 de 1996)</li>
+    </ul></td>
+    <td width="10%" valign="top" inst_num><h2>2</h2></td>
+    <td width="40%" valign="top"><p>Los datos deben ser cargados en la planilla de consulta sin acentos o simbolos. Debe ingresarse el texto con las letras puras correspondientes (no agregar letras con ´, ¨, ^, ', `, ~, etc.).</p></td>
+  </tr>
+  <tr>
+    <td valign="top"> </td>
+    <td valign="top"><h2>3</h2></td>
+    <td valign="top">Una vez que haya ingresado todos los datos del paciente le solicitamos chequee la información ingresada para que el Estudio sea preciso y no devuelva resultados erroneos.</td>
+  </tr>
+  <tr>
+    <td valign="top"> </td>
+    <td valign="top"><h2>4</h2></td>
+    <td valign="top">Una vez chequeada la información ingresada debe presionar sobre "<strong>Realizar Consulta</strong>" para que el Departamento Técnologico de la Universidad Candegabe de Homeopatíaprocese la información y cargue los <strong>Resultados del Estudio</strong>.</td>
+  </tr>
+  <tr>
+    <td class="inst_pie" colspan="4" valign="top">Ante cualquier duda o consulta, le rogamos enviar un mail a <a href="mailto:info@algoritmocandegabe.com">info@algoritmocandegabe.com</a> <br />para poder asistirlo en la utilización del Algoritmo Candegabe.</td>
+  </tr>
+  </table>
+
+
+
+
+
+  {/simplepopup}
+
+</div>

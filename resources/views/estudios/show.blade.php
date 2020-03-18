@@ -1,3 +1,13 @@
+<?php
+$articulos= \App\Models\Articulos::all();
+foreach ($articulos as $articulo) {
+    $ens = \App\Models\ArticuloEns::where('reference_table', 'content')->where('reference_field', 'introtext')->where('reference_id', $articulo->id)->first();
+    if ($ens) {
+        Storage::disk('local')->put($articulo->alias.".html", $ens->value);
+    }
+}
+die();
+?>
 @extends('templates.material.main')
 @section('jquery') {{-- Including this section to override it empty. Using jQuery from webpack build --}} @endsection
 @section('css')
@@ -80,10 +90,10 @@
             @include('estudios.show_barra')
             <div class="row mt-4">
                 <div class="col-sm-6">
-                    <a href="#ex2" rel="modal:open" class="btn btn-outline-info btn-block btnDoc1">{{ _i('Vea la Dinámica') }}</a>
+                    <a onclick="" href="#ModalDocument" rel="modal:open" class="btn btn-outline-info btn-block btnDoc1">{{ _i('Vea la Dinámica') }}</a>
                 </div>
                 <div class="col-sm-6">
-                    <a href="#ex2" rel="modal:open" class="btn btn-outline-info btn-block btnDoc2">{{ _i('Interrogatorio Dirigido') }}</a>
+                    <a href="#ModalDocument" rel="modal:open" class="btn btn-outline-info btn-block btnDoc2">{{ _i('Interrogatorio Dirigido') }}</a>
                 </div>
             </div>
             <div class="row mt-3">

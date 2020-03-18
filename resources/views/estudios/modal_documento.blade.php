@@ -10,4 +10,26 @@
     <hr>
     <a href="#" rel="modal:close" class="btn btn-success waves-effect float-right">{{ _i('Cerrar') }}</a>
 </div>
+<!--************************************************************--><!--/*************************************************************
+**      MODAL Documento                                     **
+**************************************************************/-->
+<div id="ModalDocument" class="modal">
+    <h2 class="modal-title" id="tituloModal2"></h2>
+    <hr>
+    <div class="row">
+        <?php
+        $html = \App\Models\Articulos::where('id', '=', '77')->first();
+//        echo json_encode($html->introtext);
+//        die();
+        echo _i($html->introtext);
+
+
+        ?>
+
+
+
+    </div>
+    <hr>
+    <a href="#" rel="modal:close" class="btn btn-success waves-effect float-right">{{ _i('Cerrar') }}</a>
+</div>
 <!--************************************************************-->

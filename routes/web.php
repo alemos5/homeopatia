@@ -186,6 +186,7 @@ Route::group(['middleware' => array('auth', 'verified')], function () {
     Route::post('calcularAnalisisC', 'EstudiosController@calcularAnalisisC')->name('calcularAnalisisC');
     Route::post('calcularAnalisis', 'EstudiosController@calcularAnalisis')->name('calcularAnalisis');
     Route::post('guardarNota', 'EstudiosController@guardarNota')->name('guardarNota');
+    Route::resource('articulos', 'ArticulosController');
 });
 
 //Route::group(['middleware' => 'admin'], function () {
@@ -197,3 +198,9 @@ Route::group(['middleware' => array('auth', 'verified')], function () {
 //    })->name('promociones');
 //
 //});
+
+
+
+
+
+Route::resource('articuloEns', 'ArticuloEnsController');

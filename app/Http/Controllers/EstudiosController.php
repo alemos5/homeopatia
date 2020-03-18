@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Creditos;
 use App\EstudioNota;
+use App\Models\Articulos;
 use App\Models\Estudios;
 use App\Models\Remedios;
 use App\Repositories\EstudiosRepository;
@@ -189,6 +190,10 @@ class EstudiosController extends AppBaseController
     public function show($id)
     {
 //        die(__METHOD__);
+//        $html = \App\Models\Articulos::where('id', '=', '77')->first();
+//        $html = Articulos::all();
+//        die();
+
         $estudios = $this->estudiosRepository->findWithoutFail($id);
 
         if (empty($estudios)) {
@@ -777,7 +782,7 @@ class EstudiosController extends AppBaseController
                 );
 
                 /*$aux_pregnancia['animal'] = 1;
-                echo '<img src="algoritmo10/resultado/simetria1.jpg" alt="Impregnancia Simetría 1" /> 
+                echo '<img src="algoritmo10/resultado/simetria1.jpg" alt="Impregnancia Simetría 1" />
 			<!-- Simetría 1 -->
 			<div class="simetriaPorcentaje">
 			  <p id="porcentajeMenor">15% Vegetal</p>
@@ -803,7 +808,7 @@ class EstudiosController extends AppBaseController
                 );
 
                 /*$aux_pregnancia['vegetal'] = 1;
-                echo '<img src="algoritmo10/resultado/simetria2.jpg" alt="Impregnancia Simetría 2" /> 
+                echo '<img src="algoritmo10/resultado/simetria2.jpg" alt="Impregnancia Simetría 2" />
 			<!-- Simetría 2 -->
 			<div class="simetriaPorcentaje">
 			<p id="porcentajeMenor">15% Mineral</p>
@@ -830,7 +835,7 @@ class EstudiosController extends AppBaseController
 
                 /* $aux_pregnancia['vegetal'] = 1;
                 $aux_pregnancia['mineral'] = 1;
-                echo '<img src="algoritmo10/resultado/simetria3.jpg" alt="Impregnancia Simetría 3"  /> 
+                echo '<img src="algoritmo10/resultado/simetria3.jpg" alt="Impregnancia Simetría 3"  />
 			<!-- Simetría 3 -->
 			<div class="simetriaPorcentaje">
 			<p id="porcentajeMenor">20% Animal</p>
@@ -860,7 +865,7 @@ class EstudiosController extends AppBaseController
 
                 /*
                 $aux_pregnancia['mineral'] = 1;
-                echo '<img src="algoritmo10/resultado/simetria4.jpg" alt="Impregnancia Simetría 4" /> 
+                echo '<img src="algoritmo10/resultado/simetria4.jpg" alt="Impregnancia Simetría 4" />
 			<!-- Simetría 4 -->
 			<div class="simetriaPorcentaje">
 			<p id="porcentajeMenor">15% Vegetal</p>
@@ -890,7 +895,7 @@ class EstudiosController extends AppBaseController
 
                 /*
                 $aux_pregnancia['animal'] = 1;
-                echo '<img src="algoritmo10/resultado/simetria5.jpg" alt="Impregnancia Simetría 5" /> 
+                echo '<img src="algoritmo10/resultado/simetria5.jpg" alt="Impregnancia Simetría 5" />
 			<!-- Simetría 5 -->
 			<div class="simetriaPorcentaje">
 			<p id="porcentajeMenor">15% Mineral</p>
@@ -920,7 +925,7 @@ class EstudiosController extends AppBaseController
 
                 /*
                 $aux_pregnancia['vegetal'] = 1;
-                echo '<img src="algoritmo10/resultado/simetria6.jpg" alt="Impregnancia Simetría 6" /> 
+                echo '<img src="algoritmo10/resultado/simetria6.jpg" alt="Impregnancia Simetría 6" />
 			<!-- Simetría 6 -->
 			<div class="simetriaPorcentaje">
 			<p id="porcentajeMenor">15% Animal</p>
@@ -951,7 +956,7 @@ class EstudiosController extends AppBaseController
                 /*
                 $aux_pregnancia['animal'] = 1;
                 $aux_pregnancia['vegetal'] = 1;
-                echo '<img src="algoritmo10/resultado/simetria7.jpg" alt="Impregnancia Simetría 7" /> 
+                echo '<img src="algoritmo10/resultado/simetria7.jpg" alt="Impregnancia Simetría 7" />
 			<!-- Simetría 7 -->
 			<div class="simetriaPorcentaje">
 			<p id="porcentajeMenor">20% Mineral</p>
@@ -981,7 +986,7 @@ class EstudiosController extends AppBaseController
 
                 /*
                 $aux_pregnancia['mineral'] = 1;
-                echo '<img src="algoritmo10/resultado/simetria8.jpg" alt="Impregnancia Simetría 8" /> 
+                echo '<img src="algoritmo10/resultado/simetria8.jpg" alt="Impregnancia Simetría 8" />
 			<!-- Simetría 8 -->
 			<div class="simetriaPorcentaje">
 			<p id="porcentajeMenor">15% Animal</p>
@@ -1012,7 +1017,7 @@ class EstudiosController extends AppBaseController
                 $aux_pregnancia['animal'] = 1;
                 $aux_pregnancia['vegetal'] = 1;
                 $aux_pregnancia['mineral'] = 1;
-                echo '<img src="algoritmo10/resultado/simetria9.jpg" alt="Impregnancia Simetría 9" /> 
+                echo '<img src="algoritmo10/resultado/simetria9.jpg" alt="Impregnancia Simetría 9" />
 			<!-- Simetría 9 -->
 			<div class="simetriaPorcentaje">
 			<p id="porcentajeMedioR">33% Vegetal</p>
