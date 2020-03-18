@@ -19,15 +19,15 @@ $(document).on('click', '.btnDescripcion', function () {
 });
 
 $(document).on('click', '.btnDoc1', function () {
-
+    let dinamica = $(this).data('dinamica');
     $('#tituloModal2').html('Dinámica');
-    $('#iframeDoc').attr('src', '/pdf/dinamica_simetrias.pdf');
+    $('#iframeDoc').attr('src', '/html/orden-de-simetria-'+dinamica+'.html');
 
 });
 
 $(document).on('click', '.btnDoc2', function () {
-
+    let interrogatorio = $(this).data('interrogatorio');
     $('#tituloModal2').html('Interrogatorio Dirigido');
-    $('#iframeDoc').attr('src', '/pdf/interrogatorio_simetria.pdf');
+    $('#iframeDoc').attr('src', '/html/interrogatorio-de-la-simetria-'+interrogatorio+'.html');
 
 });
