@@ -260,7 +260,12 @@ class EstudiosController extends AppBaseController
         $AnalisisCombinados = $this->calcularAnalisisCombinado(
             $remedios,
             $data,
-            $predominante
+            $predominante,
+            1,
+            1,
+            1,
+            1,
+            1
         );
 
         $AnalisisCombinados = collect($AnalisisCombinados)->sortByDesc('suma')->toArray();
@@ -1548,7 +1553,7 @@ class EstudiosController extends AppBaseController
         return $analisisCombinadoXremedio;
     }
 
-    public function calcularAnalisisCombinado($remedios, $data, $predominante)
+    public function calcularAnalisisCombinado($remedios, $data, $predominante, $filtro1,$filtro2,$filtro3,$filtro4,$filtro5)
     {
 
         $rsm9 = $this->existenRsm9($remedios, $data);
@@ -1556,7 +1561,7 @@ class EstudiosController extends AppBaseController
         $analisisCombinado = array();
 
         foreach ($remedios as $index => $remedio) {
-            $analisisCombinado[$index] = $this->calcularAnalisisCombinadoXremedio($remedio, $data, $predominante, $rsm9, 1, 1, 1, 1, 1);
+            $analisisCombinado[$index] = $this->calcularAnalisisCombinadoXremedio($remedio, $data, $predominante, $rsm9, $filtro1,$filtro2,$filtro3,$filtro4,$filtro5);
         }
 
         return $analisisCombinado;
@@ -1590,26 +1595,58 @@ class EstudiosController extends AppBaseController
             $analisis[$index]['suma_analisis_combinado'] = $analisisCombinado['suma'];
             $analisis[$index]['reino'] = $remedioReino['reino'];
             $analisis[$index]['clave'] = $remedio->tipoRemedioClave;
+            $analisis[$index]['pregnancia'] = $remedio->pregnancia;
         }
 
-        switch ($input['orden']) {
-            case "1":
-                $analisis = collect($analisis)->sortBy('remedio')->toArray();
-                break;
-            case "2":
-                $analisis = collect($analisis)->sortByDesc('suma_analisis_combinado')->toArray();
-                break;
-            case "3":
-                $analisis = collect($analisis)->sortBy('reino')->toArray();
-                break;
+        foreach ($analisis as $clave => $fila) {
+            $ordenarSumas[$clave] = $fila['suma_analisis_combinado'];
+            $ordenarRemedio[$clave] = $fila['remedio'];
+            $ordenarReino[$clave] = $fila['reino'];
+        }
+
+        if ($input['orden1'] and $input['orden2'] and $input['orden3']) { //Todos
+            array_multisort($ordenarReino, SORT_ASC, $ordenarRemedio, SORT_ASC, $ordenarSumas, SORT_DESC, $analisis);
+        } elseif ($input['orden1'] and $input['orden2'] and !$input['orden3']) { //Todos menos el reino
+            array_multisort($ordenarSumas, SORT_DESC, $ordenarRemedio, SORT_ASC, $analisis);
+        } elseif ($input['orden1'] and !$input['orden2'] and !$input['orden3']) { //Solo las sumas
+            array_multisort($ordenarSumas, SORT_DESC, $analisis);
+
+        } elseif (!$input['orden1'] and $input['orden2'] and $input['orden3']) { //Todos menos suma
+            array_multisort($ordenarRemedio, SORT_ASC, $ordenarReino, SORT_ASC, $analisis);
+
+        } elseif (!$input['orden1'] and $input['orden2'] and !$input['orden3']) { //Solo Remedio
+            array_multisort($ordenarRemedio, SORT_ASC, $analisis);
+        } elseif ($input['orden1'] and !$input['orden2'] and $input['orden3']) { //Todos menos remedio
+            array_multisort($ordenarSumas, SORT_DESC, $ordenarReino, SORT_ASC, $analisis);
+        } elseif (!$input['orden1'] and !$input['orden2'] and $input['orden3']) { //Solo el reino
+            array_multisort($ordenarReino, SORT_ASC, $analisis);
         }
 
         $htmltabla = '';
+
+        if (isset($input['orden3']) && $input['orden3'] == "1") {
+
+            $sortArray = array();
+
+            foreach ($analisis as $person) {
+                foreach ($person as $key => $value) {
+                    if (!isset($sortArray[$key])) {
+                        $sortArray[$key] = array();
+                    }
+                    $sortArray[$key][] = $value;
+                }
+            }
+
+
+            array_multisort($sortArray['pregnancia'], SORT_ASC, $analisis);
+
+        }
+        $count = 0;
         foreach ($analisis AS $item) {
 
             $clave = '';
             if ($item['clave']) {
-                $clave = '<i class="fas fa-star text-success"></i>';
+                $clave = '<i class="fas fa-circle small text-success"></i>';
             }
 
             $nota = EstudioNota::select('nota')
@@ -1621,20 +1658,104 @@ class EstudiosController extends AppBaseController
                 $notavalue = $nota->nota;
             }
 
-            //<button class="btn btn-secondary" type="button" data-target="#ModalAdd" data-toggle="modal">Agregar Nuevo Producto</button>
+            $classColor = null;
+            if ($count == 0) {
+                $classColor = 'style="background-color: rgba(30, 136, 229, 0.35);"';
+            }
+//            echo $item['reino']; die();
+            switch ($item['reino']) {
+                case "Mineral":
+                    $classColor = 'style="background-color: rgba(30, 136, 229, 0.35);"';
+                    break;
+                case "Vegetal":
+                    $classColor = 'style="background-color: rgba(53, 210, 56, 0.35);"';
+                    break;
+                case "Animal":
+                    $classColor = 'style="background-color: rgba(255, 70, 95, 0.35);"';
+                    break;
+            }
 
-            $htmltabla .= '<tr>';
+            $htmltabla .= '<tr '.$classColor.'>';
             $htmltabla .= '<td><a href="#ex1" rel="modal:open" class="btnDescripcion" data-idremedio="' . $item['remedio_id'] . '">' . $item['remedio'] . '</a></td >';
-            $htmltabla .= '<td>' . $item['suma_analisis_combinado'] . '</td >';
-            $htmltabla .= '<td>' . $item['reino'] . '</td >';
+            $htmltabla .= '<td class="font-weight-bold" align="center">' . $item['suma_analisis_combinado'] . '</td >';
+            $htmltabla .= '<td align="center">' . $item['reino'] . '</td >';
             $htmltabla .= '<td align="center">' . $clave . '</td >';
             $htmltabla .= '<td><div class="input-group" >';
-            $htmltabla .= '<input id="nota' . $item['remedio_id'] . '" type = "text" class="form-control" placeholder = "' . _i('Escriba una nota') . '" value="' . $notavalue . '" ><div class="input-group-append" >';
+            $htmltabla .= '<input id="nota' . $item['remedio_id'] . '" type = "text" class="form-control" placeholder = "" value="' . $notavalue . '" maxlength="20"><div class="input-group-append" >';
             $htmltabla .= '<button class="btn btn-success btnGuardarNota" data-remedioid="' . $item['remedio_id'] . '" type = "button" ><i class="fas fa-save" ></i ></button >';
             $htmltabla .= '&nbsp;<div id="msg' . $item['remedio_id'] . '"></div></div ></div></td>';
             $htmltabla .= '</tr>';
+            $count++;
         }
 
+        return $htmltabla;
+    }
+
+    public function calcularAnalisisC(Request $request)
+    {
+        $input = $request->all();
+
+        $remedios = json_decode($input['remedios']);
+        $data = (array)json_decode($input['data']);
+        $predominante = json_decode($input['predominante']);
+
+
+        $AnalisisCombinados = $this->calcularAnalisisCombinado(
+            $remedios,
+            $data,
+            $predominante,
+            $input['filtro1'],
+            $input['filtro2'],
+            $input['filtro3'],
+            $input['filtro4'],
+            $input['filtro5']
+        );
+
+        $AnalisisCombinados = collect($AnalisisCombinados)->sortByDesc('suma')->toArray();
+
+        $htmltabla = '';
+
+        $htmltabla .= '<tr style="border-bottom: 5px #CCC solid;">';
+        $htmltabla .= '<th>' . _i('Suma') . '</th>';
+        foreach ($AnalisisCombinados AS $AnalisisCombinado) {
+            $htmltabla .= '<th style="text-align: center !important;">' . $AnalisisCombinado['suma'] . '</th>';
+        }
+        $htmltabla .= '</tr>';
+        if($input['filtro1']) {
+            $htmltabla .= '<tr id="divRSM"><td>RSM</td>';
+            foreach ($AnalisisCombinados AS $AnalisisCombinado) {
+                $htmltabla .= '<td style="text-align: center !important;">' . $AnalisisCombinado['rsm'] . '</td>';
+            }
+            $htmltabla .= '</tr>';
+        }
+        if($input['filtro2']) {
+            $htmltabla .= '<tr id = "divImpregnancia" ><td > Impregnancia</td >';
+            foreach ($AnalisisCombinados AS $AnalisisCombinado) {
+                $htmltabla .= '<td style = "text-align: center !important;" > ' . $AnalisisCombinado['Impregnancia'] . ' </td > ';
+            }
+            $htmltabla .= '</tr>';
+        }
+        if($input['filtro3']) {
+            $htmltabla .= '<tr id="divSecuencia"><td>Secuencia</td>';
+            foreach ($AnalisisCombinados AS $AnalisisCombinado) {
+                $htmltabla .= '<td style="text-align: center !important;">' . $AnalisisCombinado['Secuencia'] . '</td>';
+            }
+            $htmltabla .= '</tr>';
+        }
+        if($input['filtro4']) {
+            $htmltabla .= '<tr id = "divConsonantes"><td>Consonantes</td>';
+            foreach ($AnalisisCombinados AS $AnalisisCombinado) {
+                $htmltabla .= '<td style = "text-align: center !important;">' . $AnalisisCombinado['Consonantes'] . '</td>';
+            }
+            $htmltabla .= '</tr>';
+        }
+        if($input['filtro5']) {
+            $htmltabla .= '<tr id="divClaves"><td>Claves</td>';
+            foreach ($AnalisisCombinados AS $AnalisisCombinado) {
+                $htmltabla .= '<td style="text-align: center !important;">' . $AnalisisCombinado['Claves'] . '</td>';
+            }
+            $htmltabla .= '</tr>';
+        }
         return $htmltabla;
     }
 

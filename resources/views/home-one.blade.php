@@ -201,27 +201,27 @@
             $('#data-table').DataTable({
                 "order": false,
                 "language":{
-                    "sProcessing":     "Procesando...",
-                    "sLengthMenu":     "Ver _MENU_",
-                    "sZeroRecords":    "No se encontraron resultados",
-                    "sEmptyTable":     "Ningún dato disponible en esta tabla",
-                    "sInfo":           "_START_ al _END_ de  _TOTAL_ registros",
-                    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-                    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                    "sProcessing":     "{{_i('Procesando')}}...",
+                    "sLengthMenu":     "{{_i('Ver')}} _MENU_",
+                    "sZeroRecords":    "{{_i('No se encontraron resultados')}}",
+                    "sEmptyTable":     "{{_i('Ningún dato disponible en esta tabla')}}",
+                    "sInfo":           "_START_ {{_i('al')}} _END_ {{_i('de')}}  _TOTAL_ {{_i('registros')}}",
+                    "sInfoEmpty":      "{{_i('Mostrando registros del 0 al 0 de un total de 0 registros')}}",
+                    "sInfoFiltered":   "({{_i('filtrado de un total de')}} _MAX_ {{_i('registros')}})",
                     "sInfoPostFix":    "",
-                    "sSearch":         "Buscar:",
+                    "sSearch":         "{{_i('Buscar')}}:",
                     "sUrl":            "",
                     "sInfoThousands":  ",",
-                    "sLoadingRecords": "Cargando...",
+                    "sLoadingRecords": "{{_i('Cargando')}}...",
                     "oPaginate": {
-                        "sFirst":    "Primero",
+                        "sFirst":    "<<",
                         "sLast":     ">>",
                         "sNext":     ">",
                         "sPrevious": "<"
                     },
                     "oAria": {
-                        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                        "sSortAscending":  ": {{_i('Activar para ordenar la columna de manera ascendente')}}",
+                        "sSortDescending": ": {{_i('Activar para ordenar la columna de manera descendente')}}"
                     }
                 },
                 "pageLength": 10,

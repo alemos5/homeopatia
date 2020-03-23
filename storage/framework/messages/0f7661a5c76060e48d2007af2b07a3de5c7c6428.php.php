@@ -11,6 +11,8 @@ _i('Permisos');
 _i('Usuarios');
 _i('Más Utilizado');
 _i('Mejor Precio');
+_i('Realizar nuevo estudio');
+_i('Estudios Realizados');
 
 ?>
 

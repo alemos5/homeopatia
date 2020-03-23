@@ -4,9 +4,8 @@
         <div class="form-group col-sm-12">
             <label for=""><b><?php echo e(_i('Tipo')); ?>:</b></label>
             <select class="form-control" name="tipo" id="tipo" required>
-                <option value="" disabled selected><?php echo e(_i(':: Seleccione un Tipo ::')); ?></option>
-                <option value="12" <?php if(@old("tipo")==12): ?> selected <?php endif; ?>><?php echo e(_i('Animal')); ?></option>
                 <option value="97" <?php if(@old("tipo")==97): ?> selected <?php endif; ?>><?php echo e(_i('Humano')); ?></option>
+                <option value="12" <?php if(@old("tipo")==12): ?> selected <?php endif; ?>><?php echo e(_i('Animal')); ?></option>
             </select>
             <?php echo $errors->first('tipo', '<span class="invalid-feedback"><strong>:message</strong></span>'); ?>
 
@@ -18,7 +17,7 @@
     <div class="row">
         <!-- H Nombre Field -->
         <div class="form-group col-sm-4">
-            <label for=""><b><?php echo e(_i('Nombre')); ?>:</b></label>
+            <label for=""><b><?php echo e(_i('Nombre/s')); ?>:</b></label>
             <?php echo Form::text('h_nombre', null, ['class' => 'form-control'. ( $errors->has('h_nombre') ? ' is-invalid' : '' )]); ?>
 
             <?php echo $errors->first('h_nombre', '<span class="invalid-feedback"><strong>:message</strong></span>'); ?>
@@ -27,7 +26,7 @@
 
         <!-- H Apellido Field -->
         <div class="form-group col-sm-4">
-            <label for=""><b><?php echo e(_i('Apellido')); ?>:</b></label>
+            <label for=""><b><?php echo e(_i('Apellido/s')); ?>:</b></label>
             <?php echo Form::text('h_apellido', null, ['class' => 'form-control'. ( $errors->has('h_apellido') ? ' is-invalid' : '' )]); ?>
 
             <?php echo $errors->first('h_apellido', '<span class="invalid-feedback"><strong>:message</strong></span>'); ?>
@@ -140,7 +139,7 @@
     <input type="hidden" id="ip" name="ip" value="127.0.0.1">
     <input type="hidden" id="user_agent" name="user_agent" value="Firefox">
 
-    <?php echo Form::submit(_i('Guardar'), ['class' => 'btn btn-success']); ?>
+    <?php echo Form::submit(_i('Realizar Estudio'), ['class' => 'btn btn-success']); ?>
 
     <a href="<?php echo route('estudios.index'); ?>" class="btn btn-success"><?php echo e(_i('Cancelar')); ?></a>
 </div>

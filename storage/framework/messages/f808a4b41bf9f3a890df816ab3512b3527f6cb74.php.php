@@ -2,7 +2,7 @@
     <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark NavBarUserProfile" href="#" onclick="return false">
         <span class="text-white"><?php echo e(Auth::user()->nombre); ?></span>
         <?php if(Auth::user()->avatar): ?>
-            <img src="<?php echo e(Auth::user()->avatar); ?>" alt="user" class="profile-pic"/>
+            <img src="<?php echo e(Storage::url(Auth::user()->avatar)); ?>" alt="user" class="profile-pic"/>
         <?php else: ?>
             <img src="/vendor/wrappixel/material-pro/4.2.1/assets/images/users/1.jpg" alt="user" class="profile-pic"/>
         <?php endif; ?>
@@ -13,7 +13,7 @@
                 <div class="dw-user-box">
                     <div class="text-center">
                         <?php if(Auth::user()->avatar): ?>
-                            <img src="<?php echo e(Auth::user()->avatar); ?>" alt="user" class="profile-pic" style="width: 5em"/>
+                            <img src="<?php echo e(Storage::url(Auth::user()->avatar)); ?>" alt="user" class="profile-pic" style="width: 5em"/>
                         <?php else: ?>
                             <img src="/vendor/wrappixel/material-pro/4.2.1/assets/images/users/1.jpg" alt="user" class="profile-pic" style="width: 5em"/>
                         <?php endif; ?>

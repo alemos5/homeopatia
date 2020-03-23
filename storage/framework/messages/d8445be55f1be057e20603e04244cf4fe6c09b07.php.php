@@ -154,9 +154,9 @@
     <thead>
     <tr>
         <th style="padding: 5px" class="bgGris"><?php echo e(_i('Medicamento')); ?></th>
-        <th class="bgGris"><?php echo e(_i('Análisis Combinado')); ?>#</th>
+        <th class="bgGris"><?php echo e(_i('SAC')); ?></th>
         <th class="bgGris"><?php echo e(_i('Reino')); ?></th>
-        <th class="bgGris"><?php echo e(_i('Remedios Clave')); ?></th>
+        <th class="bgGris"><?php echo e(_i('Claves')); ?></th>
         <th class="bgGris"><?php echo e(_i('Notas')); ?></th>
     </tr>
     </thead>

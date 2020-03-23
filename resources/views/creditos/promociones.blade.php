@@ -3,7 +3,7 @@
 @push('before-scripts')
     <script src="{{ mix('/js/home-one.js') }}"></script>
 @endpush
-@section('nombre_modulo', 'Obtenga su Abono')
+@section('nombre_modulo', _i('Obtenga su Abono'))
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="{{route('home-one')}}">{{ _i('Inicio') }}</a></li>
     <li class="breadcrumb-item"><a href="{{route('creditos.index')}}">{{ _i('Créditos') }}</a></li>
