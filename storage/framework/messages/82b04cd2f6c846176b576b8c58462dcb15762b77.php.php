@@ -65,27 +65,27 @@
             $('#data-table').DataTable({
                 "order": false,
                 "language":{
-                    "sProcessing":     "Procesando...",
-                    "sLengthMenu":     "Ver _MENU_",
-                    "sZeroRecords":    "No se encontraron resultados",
-                    "sEmptyTable":     "Ningún dato disponible en esta tabla",
-                    "sInfo":           "_START_ al _END_ de  _TOTAL_ registros",
-                    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-                    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                    "sProcessing":     "<?php echo e(_i('Procesando')); ?>...",
+                    "sLengthMenu":     "<?php echo e(_i('Ver')); ?> _MENU_",
+                    "sZeroRecords":    "<?php echo e(_i('No se encontraron resultados')); ?>",
+                    "sEmptyTable":     "<?php echo e(_i('Ningún dato disponible en esta tabla')); ?>",
+                    "sInfo":           "_START_ <?php echo e(_i('al')); ?> _END_ <?php echo e(_i('de')); ?>  _TOTAL_ <?php echo e(_i('registros')); ?>",
+                    "sInfoEmpty":      "<?php echo e(_i('Mostrando registros del 0 al 0 de un total de 0 registros')); ?>",
+                    "sInfoFiltered":   "(<?php echo e(_i('filtrado de un total de')); ?> _MAX_ <?php echo e(_i('registros')); ?>)",
                     "sInfoPostFix":    "",
-                    "sSearch":         "Buscar:",
+                    "sSearch":         "<?php echo e(_i('Buscar')); ?>:",
                     "sUrl":            "",
                     "sInfoThousands":  ",",
-                    "sLoadingRecords": "Cargando...",
+                    "sLoadingRecords": "<?php echo e(_i('Cargando')); ?>...",
                     "oPaginate": {
-                        "sFirst":    "Primero",
+                        "sFirst":    "<<",
                         "sLast":     ">>",
                         "sNext":     ">",
                         "sPrevious": "<"
                     },
                     "oAria": {
-                        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                        "sSortAscending":  ": <?php echo e(_i('Activar para ordenar la columna de manera ascendente')); ?>",
+                        "sSortDescending": ": <?php echo e(_i('Activar para ordenar la columna de manera descendente')); ?>"
                     }
                 },
                 "pageLength": 10,
