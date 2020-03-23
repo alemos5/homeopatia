@@ -1,3 +1,4 @@
+<link href="../template.css" rel="stylesheet" type="text/css">
 <?php
 # Levantamos usuario
 $user =& JFactory::getUser();
@@ -36,7 +37,7 @@ jQuery(document).ready( function(){
 			}
 		}
 	});
-	
+
 	var modal = jQuery('#modal').overlay({
 		top: 'center',
 		mask: {
@@ -47,7 +48,7 @@ jQuery(document).ready( function(){
 		closeOnEsc: false,
 		load: false
 	});
-	
+
 	/* Submit form */
 	jQuery.submitFormulario = function(){
 if( !formSubmited ){
@@ -121,9 +122,9 @@ var dayfield = val.split("/")[0];
 var monthfield = val.split("/")[1];
 var yearfield = val.split("/")[2];
 var dayobj = new Date( yearfield, monthfield-1, dayfield );
-if( 
+if(
 ( dayobj.getMonth() + 1 != monthfield ) ||
-( dayobj.getDate() != dayfield ) || 
+( dayobj.getDate() != dayfield ) ||
 ( dayobj.getFullYear() != yearfield )
 ){
 returnval = false;
@@ -136,9 +137,9 @@ return returnval;
 
 }
 
-	function checkLocal(){		
+	function checkLocal(){
 		var msg = "";
-		
+
 		if( document.getElementById('especie').value == "" ){
 			msg +=  "Please Complete the 'Specie' field \n";
 		}
@@ -159,11 +160,11 @@ if( mes < 10 ) mes = "0" + mes;
 //document.getElementById('month').value = mes;
 var anio = parseInt( document.getElementById('year').value );
 var fecha = dia + "/" + mes + "/" + anio;
-if( 
-document.getElementById('day').value != '' && 
-document.getElementById('month').value != '' && 
-document.getElementById('year').value != '' && 
-!checkdate( fecha ) 
+if(
+document.getElementById('day').value != '' &&
+document.getElementById('month').value != '' &&
+document.getElementById('year').value != '' &&
+!checkdate( fecha )
 ){
 
 	msg +=  "Please enter a Valid Date \n";
@@ -178,10 +179,10 @@ if( msg != '' ){
 
 		return true;
 	}
-	
+
 	function getModalMsg(){
 		var msg = "";
-		
+
 		msg = '<div class="favor">Please Verify the Entered information:</div><br /><br />';
 		msg += '<div class="etiqueta">Specie:</div> <div class="dato">' + document.getElementById('especie').value + '</div><br />';
 		msg += '<div class="etiqueta">Owner`s Name:</div> <div class="dato">' + document.getElementById('owner').value + '</div><br />';
@@ -202,7 +203,7 @@ if( msg != '' ){
 <div id="formAlgo">
 
 <!-- form action START apunta al artículo que contenga el Resultado Animal-->
-<form action="http://www.algoritmocandegabe.com/index.php?option=com_content&view=article&id=69&Itemid=30" class="formulario" id="formAlgoritmo" method="post" name="formAlgoritmo" onsubmit="return submitFormulario()"> 
+<form action="http://www.algoritmocandegabe.com/index.php?option=com_content&view=article&id=69&Itemid=30" class="formulario" id="formAlgoritmo" method="post" name="formAlgoritmo" onsubmit="return submitFormulario()">
 
 <!-- form action END -->
 
@@ -211,38 +212,38 @@ if( msg != '' ){
 {tip Specie::The information shall be entered in the application form without symbols. Enter letters,( do not add letters with^,`,',~).}
 <label for="especie">Specie</label>
  <input  name="especie" type="text" id="especie" tabindex="1" size="30" />
-{/tip} 
+{/tip}
 </p>
 
-  
+
 <p>{tip Owner::The information shall be entered in the application form without symbols. Enter letters,( do not add letters with^,`,',~).}
 <label for="owner" id="apodoLabel">Owner's Name (by whom it is recognized)</label>
  <input name="owner" type="text" id="owner" tabindex="2" size="30" />
-{/tip}  
+{/tip}
 </p>
- 
+
  <p>
 {tip Animal`s Name::The information shall be entered in the application form without symbols. Enter letters,( do not add letters with^,`,',~).}
 <label for="petName">Animal`s Namel</label>
  <input  name="petName" type="text" id="petName" tabindex="3" size="30" />
-{/tip} 
+{/tip}
 </p>
- 
+
 <p>
 {tip Initials::Owner name's first letter and animal name's first letter.}
 <label for="iniciales">Initials</label>
  <input name="iniciales" type="text" id="iniciales" tabindex="4" size="30" />
-{/tip}  
+{/tip}
 </p>
-  
+
 <fieldset>
 <legend>Date of Birth</legend>
 {tip Month::Enter values from 1 to 12}
-    <input name="month" type="text" id="month" tabindex="6" value="MM" size="2" maxlength="2" onfocus="if (this.value == 'MM') {this.value=''}" />{/tip} 
+    <input name="month" type="text" id="month" tabindex="6" value="MM" size="2" maxlength="2" onfocus="if (this.value == 'MM') {this.value=''}" />{/tip}
 {tip Day::Enter values from 1 to 31}
-    <input name="day" type="text" id="day" tabindex="5" value="DD" size="2" maxlength="2" onfocus="if (this.value == 'DD') {this.value=''}"/>{/tip}  
+    <input name="day" type="text" id="day" tabindex="5" value="DD" size="2" maxlength="2" onfocus="if (this.value == 'DD') {this.value=''}"/>{/tip}
 {tip Year::Enter the year`s 4 digits}
-    <input name="year" type="text" id="year" tabindex="7" value="AAAA" size="4" maxlength="4" onfocus="if (this.value == 'AAAA') {this.value=''}" />{/tip} 
+    <input name="year" type="text" id="year" tabindex="7" value="AAAA" size="4" maxlength="4" onfocus="if (this.value == 'AAAA') {this.value=''}" />{/tip}
   </fieldset>
 <p>
   <label for="submit" class="textoInvisible">enviar </label><input type="submit" tabindex="9" name="submit" id="submit" value="Perform Study" />
