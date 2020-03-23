@@ -48,6 +48,7 @@ class Remedios extends Model
         'nombre',
         'nombreCompleto',
         'descripcion',
+        'descripcion_en',
         'imagen',
         'tipoClasico',
         'tipoPolicresto',

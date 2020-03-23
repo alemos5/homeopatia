@@ -11,7 +11,13 @@ $(document).on('click', '.btnDescripcion', function () {
     $.getJSON(url, respuesta => {
 
         $('#tituloModal').html(respuesta.nombre_completo);
-        let descripcion = respuesta.descripcion.replace(new RegExp('\n','g'), '<br>');
+        let idioma = $('#idioma').val();
+        let descripcion = '';
+        if(idioma=='es_ES') {
+            descripcion = respuesta.descripcion.replace(new RegExp('\n', 'g'), '<br>');
+        }else{
+            descripcion = respuesta.descripcion_en.replace(new RegExp('\n', 'g'), '<br>');
+        }
         $('#descripcionRemedio').html(descripcion);
         $('#imagenRemedio').html(`<img src="/images/fotos_remedios/${respuesta.imagen}" class="img-responsive radius imagenRemedio" alt="">`);
 
