@@ -11,15 +11,15 @@
     </div>
     <div class="col-md-7 col-4 align-self-center">
         <div class="d-flex m-t-10 justify-content-end">
-            <h2 class="text-primary font-bold"><?php echo e(_i('CRÉDITOS')); ?>: <span class="text-muted"><?php echo e(Auth::user()->creditos->sum('cantidad')); ?></span></h2>
+            <h2 class="text-primary font-bold text-right"><?php echo e(_i('CRÉDITOS')); ?>: <span class="text-muted"><?php echo e(Auth::user()->creditos->sum('cantidad')); ?></span></h2>
         </div>
         <div style="margin-top: -10px" class="d-flex justify-content-end">
-             <h4 class="card-title text-grey">
+             <h5 class="card-title text-grey">
                  <a href="<?php echo e(route('creditos.pricing')); ?>">
                  <?php echo e(_i('Obtenga su Abono')); ?>
 
                  </a>
-             </h4>
+             </h5>
         </div>
     </div>
 </div>

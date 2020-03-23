@@ -27,7 +27,7 @@
                     <form class="form-horizontal form-material" id="loginform" method="POST" action="<?php echo e(route('login.post')); ?>">
                         <?php echo csrf_field(); ?>
                         <a href="javascript:void(0)" class="text-center db">
-                            <img src="<?php echo e(asset('images/logo-web-casillero.jpg')); ?>" alt="Home" style="height: 15em"/>
+                            <img src="<?php echo e(asset('images/logo-web-casillero.jpg')); ?>" alt="Home" style="height: 7em"/>
                             <br/>
                         </a>
 
@@ -41,7 +41,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
-                                <input id="email" type="email" placeholder="<?php echo e(_i('Email')); ?>" class="form-control @error('email') is-invalid @enderror" name="email" value="<?php echo e(old('email')); ?>" required autofocus>
+                                <input id="username" type="text" placeholder="<?php echo e(_i('Usuario')); ?>" class="form-control @error('username') is-invalid @enderror" name="username" value="<?php echo e(old('username')); ?>" required autofocus>
                             </div>
                         </div>
                         <div class="form-group">

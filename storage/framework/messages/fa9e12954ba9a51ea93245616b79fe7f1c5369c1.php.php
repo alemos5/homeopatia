@@ -20,18 +20,20 @@
             <div class="card">
                 <div class="card-body">
                     <center class="m-t-30">
-                        <?php if($user->avatar): ?>
-                            <img src="<?php echo e($user->avatar); ?>" class="img-circle" width="150">
-                        <?php else: ?>
-                            <img src="/vendor/wrappixel/material-pro/4.2.1/assets/images/users/1.jpg" alt="user" class="img-circle" width="150"/>
-                        <?php endif; ?>
+                        <a href="#" data-target="#ModalFotoPerfil" data-toggle="modal">
+                            <?php if($user->avatar): ?>
+                                <img src="<?php echo e(Storage::url($user->avatar)); ?>" class="img-circle" width="150">
+                            <?php else: ?>
+                                <img src="/vendor/wrappixel/material-pro/4.2.1/assets/images/users/1.jpg" alt="user" class="img-circle" width="150"/>
+                            <?php endif; ?>
+                        </a>
                         <h4 class="card-title m-t-10"><?php echo e($user->nombre); ?></h4>
-                            <h6 class="card-subtitle">
-                                <?php echo e(_i('Rol')); ?>:
-                                <?php $__currentLoopData = $user->perfiles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $perfil): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <?php echo e($perfil->rol->name); ?>.
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                            </h6>
+                        <h6 class="card-subtitle">
+                            <?php echo e(_i('Rol')); ?>:
+                            <?php $__currentLoopData = $user->perfiles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $perfil): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <?php echo e($perfil->rol->name); ?>.
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </h6>
                         <div class="row text-center justify-content-md-center">
                             <div class="col-4">
                                 <a href="<?php echo e(route('estudios.index')); ?>" class="link">
@@ -148,57 +150,60 @@
                             </div>
 
 
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="telefono" class="mb-0"><b><?php echo e(_i('Telefono')); ?></b></label>
-                                <input id="telefono" name="telefono" type="text" class="form-control<?php echo e($errors->has('telefono') ? ' is-invalid' : ''); ?>" required value="<?php echo e(@old("telefono", $user->telefono)); ?>" value="<?php echo e(@old("telefono", $user->telefono)); ?>">
-                                <?php if($errors->has('telefono')): ?>
-                                    <span class="invalid-feedback" role="alert">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="telefono" class="mb-0"><b><?php echo e(_i('Telefono')); ?></b></label>
+                                    <input id="telefono" name="telefono" type="text" class="form-control<?php echo e($errors->has('telefono') ? ' is-invalid' : ''); ?>" required
+                                           value="<?php echo e(@old("telefono", $user->telefono)); ?>" value="<?php echo e(@old("telefono", $user->telefono)); ?>">
+                                    <?php if($errors->has('telefono')): ?>
+                                        <span class="invalid-feedback" role="alert">
                                         <strong><?php echo e($errors->first('telefono')); ?></strong>
                                     </span>
-                                <?php endif; ?>
+                                    <?php endif; ?>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="fax" class="mb-0"><b><?php echo e(_i('Fax')); ?></b></label>
-                                <input id="fax" name="fax" type="text" class="form-control" value="<?php echo e(@old("fax", $user->fax)); ?>">
-                                <?php if($errors->has('fax')): ?>
-                                    <span class="invalid-feedback" role="alert">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="fax" class="mb-0"><b><?php echo e(_i('Fax')); ?></b></label>
+                                    <input id="fax" name="fax" type="text" class="form-control" value="<?php echo e(@old("fax", $user->fax)); ?>">
+                                    <?php if($errors->has('fax')): ?>
+                                        <span class="invalid-feedback" role="alert">
                                         <strong><?php echo e($errors->first('fax')); ?></strong>
                                     </span>
-                                <?php endif; ?>
+                                    <?php endif; ?>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="password" class="mb-0"><b><?php echo e(_i('Clave')); ?></b></label>
-                                <input id="password" name="password" type="password" class="form-control<?php echo e($errors->has('password') ? ' is-invalid' : ''); ?>"
-                                       <?php if(!isset($user)): ?> required <?php endif; ?>>
-                                <?php if(isset($user)): ?>
-                                    <p class="small"><?php echo e(_i('Llene este campo solamente si desea cambiar la clave')); ?></p>
-                                <?php endif; ?>
-                                <?php if($errors->has('password')): ?>
-                                    <span class="invalid-feedback" role="alert">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="password" class="mb-0"><b><?php echo e(_i('Clave')); ?></b></label>
+                                    <input id="password" name="password" type="password" class="form-control<?php echo e($errors->has('password') ? ' is-invalid' : ''); ?>"
+                                           <?php if(!isset($user)): ?> required <?php endif; ?>>
+                                    <?php if(isset($user)): ?>
+                                        <p class="small"><?php echo e(_i('Llene este campo solamente si desea cambiar la clave')); ?></p>
+                                    <?php endif; ?>
+                                    <?php if($errors->has('password')): ?>
+                                        <span class="invalid-feedback" role="alert">
                                         <strong><?php echo e($errors->first('password')); ?></strong>
                                     </span>
-                                <?php endif; ?>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div>
+
+                        <input type="hidden" name="pais_select" id="pais_select" value="<?php echo e($user->pais_id); ?>">
+                        <input type="hidden" name="estado_select" id="estado_select" value="<?php echo e($user->estado_id); ?>">
+                        <input type="hidden" name="ciudad_select" id="ciudad_select" value="<?php echo e($user->ciudad_id); ?>">
+
+                        <button type="submit" class="btn btn-outline-success"><?php echo e(_i('Actualizar')); ?></button>
+                    </form>
                 </div>
-
-                <input type="hidden" name="pais_select" id="pais_select" value="<?php echo e($user->pais_id); ?>">
-                <input type="hidden" name="estado_select" id="estado_select" value="<?php echo e($user->estado_id); ?>">
-                <input type="hidden" name="ciudad_select" id="ciudad_select" value="<?php echo e($user->ciudad_id); ?>">
-
-                <button type="submit" class="btn btn-outline-success"><?php echo e(_i('Actualizar')); ?></button>
-                </form>
             </div>
         </div>
     </div>
-    </div>
     <!-- Column -->
+
+    <?php echo $__env->make('users.modalFoto', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
 <?php $__env->stopSection(); ?>
 

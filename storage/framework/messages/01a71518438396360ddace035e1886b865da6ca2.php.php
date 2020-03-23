@@ -38,8 +38,9 @@
                                     <div class="price-row"><i class="fas fa-piggy-bank"></i> <?php echo e(_i('Ud. Ahorra')); ?> US$ <?php echo e(number_format($promocion->ahorro,0,'','.')); ?></div>
                                     <div class="price-row"> <?php echo e(_i('Precio por Cŕedito')); ?> US$ <?php echo e(number_format($promocion->precioxc,2,',','.')); ?></div>
                                     <div class="price-row">
-                                        <a href="<?php echo e(route('payment', $promocion->id)); ?>" class="btn btn-warning">
-                                            <?php echo e(_i('Comprar')); ?> <i class="fab fa-cc-paypal fa-2x"></i>
+                                        <a href="<?php echo e(route('payment', $promocion->id)); ?>" class="btn btn-warning btn-sm">
+                                            <?php echo e(_i('Comprar')); ?>
+
                                         </a>
                                     </div>
                                 </div>
@@ -73,18 +74,19 @@
                                                 <div class="pricing-body <?php if(!$princing->etiqueta): ?> b-l <?php endif; ?>">
                                                     <div class="pricing-header">
                                                         <?php if($princing->etiqueta): ?>
-                                                            <h4 class="price-lable text-white bg-warning"> <?php echo e(_i($princing->etiqueta)); ?></h4>
+                                                            <h5 class="price-lable text-white bg-warning" style="width: 70px"> <?php echo e(_i($princing->etiqueta)); ?></h5>
                                                         <?php endif; ?>
-                                                        <h2 class="text-center"><?php echo e($princing->creditos); ?></h2>
+                                                        <h3 class="text-center"><?php echo e($princing->creditos); ?></h3>
                                                         <p class="uppercase"><?php echo e(_i('Crédito')); ?></p>
                                                     </div>
                                                     <div class="price-table-content">
-                                                        <div class="price-row"><h4>US$ <?php echo e(number_format($princing->costo,0,'','.')); ?></h4></div>
-                                                        <div class="price-row"><i class="fas fa-piggy-bank"></i> <?php echo e(_i('Ud. Ahorra')); ?> <h4><?php echo e(number_format($princing->ahorro,0,'','.')); ?></h4></div>
+                                                        <div class="price-row"><h5>US$ <?php echo e(number_format($princing->costo,0,'','.')); ?></h5></div>
+                                                        <div class="price-row"><?php echo e(_i('Ud. Ahorra')); ?> <h4><?php echo e(number_format($princing->ahorro,0,'','.')); ?></h4></div>
                                                         <div class="price-row"><?php echo e(_i('Precio por')); ?> <br><?php echo e(_i('Crédito')); ?> <h4>US$ <?php echo e(number_format($princing->precioxc,2,',','.')); ?></h4></div>
                                                         <div class="price-row">
-                                                            <a href="<?php echo e(route('payment', $princing->id)); ?>" class="btn btn-warning">
-                                                                <?php echo e(_i('Comprar')); ?> <i class="fab fa-cc-paypal fa-2x"></i>
+                                                            <a href="<?php echo e(route('payment', $princing->id)); ?>" class="btn btn-warning btn-sm">
+                                                                <?php echo e(_i('Comprar')); ?>
+
                                                             </a>
                                                         </div>
                                                     </div>

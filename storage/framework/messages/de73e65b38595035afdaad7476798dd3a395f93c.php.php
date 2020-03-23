@@ -48,6 +48,11 @@
             top: 5px !important;
             right: 5px !important;
         }
+
+        #cuadro td, #cuadro th{
+            border-left: 1px solid;
+            border-right: 1px solid;
+        }
     </style>
 
 <?php $__env->stopSection(); ?>
@@ -67,19 +72,22 @@
     
 
     <div class="row">
+        <input type="hidden" name="idioma" id="idioma" value="<?php echo e(LaravelGettext::getLocale()); ?>">
         <div class="col-sm-6">
             <?php echo $__env->make('estudios.show_fields', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         </div>
         <div class="col-sm-6">
             <?php echo $__env->make('estudios.show_barra', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             <div class="row mt-4">
-                <div class="col-sm-4">
-                    <a href="#ex2" rel="modal:open" class="btn btn-outline-info btn-block btnDoc1"><?php echo e(_i('Vea la Dinámica')); ?></a>
+                <div class="col-sm-6">
+                    <a href="#ex2" rel="modal:open" class="btn btn-outline-info btn-block btnDoc1" data-dinamica="<?=$result['general']['pregnancia']?>"><?php echo e(_i('Vea la Dinámica')); ?></a>
                 </div>
-                <div class="col-sm-4">
-                    <a href="#ex2" rel="modal:open" class="btn btn-outline-info btn-block btnDoc2"><?php echo e(_i('Interrogatorio Dirigido')); ?></a>
+                <div class="col-sm-6">
+                    <a href="#ex2" rel="modal:open" class="btn btn-outline-info btn-block btnDoc2" data-interrogatorio="<?=$result['general']['pregnancia']?>"><?php echo e(_i('Interrogatorio Dirigido')); ?></a>
                 </div>
-                <div class="col-sm-4">
+            </div>
+            <div class="row mt-3">
+                <div class="col-sm-12">
                     
                     <a class="btn btn-outline-info btn-block" target="_blank"
                        href="<?php echo e(url('estudioPDF', ['estudios'=>$estudios, 'clave'=>$result['general']['clave'], 'pregnancia'=>$result['general']['pregnancia'], 'vegetal'=>$result['reino']['vegetal'], 'mineral'=>$result['reino']['mineral'], 'animal'=>$result['reino']['animal'] ])); ?>">
@@ -97,7 +105,7 @@
         </div>
     </div>
 
-    <?php if($isAdmin): ?>
+    <?php if($isAdmin==9): ?>
 
         <div class="row mt-4">
             <div class="col-sm-12">
@@ -143,7 +151,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+    <script src="<?php echo e(asset('vendor/wrappixel/material-pro/4.2.1/assets/plugins/styleswitcher/jQuery.style.switcher.js')); ?>"></script>
     <script src="<?php echo e(asset('/vendor/wrappixel/material-pro/4.2.1/assets/plugins/switchery/dist/switchery.min.js')); ?>" type="text/javascript"></script>
+
+    <script src="<?php echo e(asset('js/cargarAnalisisC.js')); ?>"></script>
     <script src="<?php echo e(asset('js/cargarAnalisis.js')); ?>"></script>
     <script src="<?php echo e(asset('js/btnes_ordenacion_filtrado.js')); ?>"></script>
     <script src="<?php echo e(asset('js/guardar_nota.js')); ?>"></script>
@@ -152,8 +166,9 @@
 
     <script>
         $(document).ready(function () {
-            cargarAnalisis(1, 1, 1, 1, 1, 1);
-            let mostrar = 1;
+            cargarAnalisisC(1, 1, 1, 1, 1);
+            cargarAnalisis(0, 1, 0, 1, 1, 1, 1, 1);
+            let mostrar = 0;
             $('#btnVerAnalisisC').click(function () {
                if(mostrar){
                    mostrar = 0;

@@ -62,9 +62,24 @@ class HomeController extends Controller
             $user = '';
         }
 
-        $estudios = $this->estudiosRepository->orderBy('id', 'DESC')
-            ->limit(200)
-            ->get();
+        $isAdmin = 0;
+        foreach (Auth::user()->perfiles AS $perfil) {
+            if ($perfil->role_id == '1') {
+                $isAdmin = 1;
+            }
+        }
+
+        if($isAdmin) {
+            $estudios = $this->estudiosRepository->orderBy('id', 'DESC')
+                ->limit(200)
+                ->get();
+        }else{
+            $estudios = $this->estudiosRepository
+                ->where('id_usuario', auth()->user()->id_cliente)
+                ->orderBy('id', 'DESC')
+                ->limit(200)
+                ->get();
+        }
 
         $completeData = Auth::user()->completeData;
         $promocion = Pricing::where('promocion','=','1')->first();

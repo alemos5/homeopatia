@@ -5,29 +5,29 @@
 </h2>
 <hr>
 
+<div class="row mt-4">
+    <div class="col-sm-2" align="center"><?php echo e(_i('Variables consideradas para el Análisis Combinado')); ?>:</div>
+    <div class="col-sm-2">
+        <button class="btn btn-success btn-sm btn-round btn-block" id="btnRMS1" type="button"><?php echo e(_i('RSM')); ?></button>
+    </div>
+    <div class="col-sm-2">
+        <button class="btn btn-success btn-sm btn-round btn-block" id="btnImpregnancia1" type="button"><?php echo e(_i('Impregnancia')); ?></button>
+    </div>
+    <div class="col-sm-2">
+        <button class="btn btn-success btn-sm btn-round btn-block" id="btnSecuencia1" type="button"><?php echo e(_i('Secuencia')); ?></button>
+    </div>
+    <div class="col-sm-2">
+        <button class="btn btn-success btn-sm btn-round btn-block" id="btnConsonante1" type="button"><?php echo e(_i('Consonante')); ?></button>
+    </div>
+    <div class="col-sm-2">
+        <button class="btn btn-success btn-sm btn-round btn-block" id="btnClave1" type="button"><?php echo e(_i('Claves')); ?></button>
+    </div>
+</div>
 
-    
-    
-        
-    
-    
-        
-    
-    
-        
-    
-    
-        
-    
-    
-        
-    
-
-
-<div class="row" id="cuadroAnalisisC" style="display: none">
+<div class="row" id="cuadroAnalisisC">
     <div class="table-responsive">
     <table class="table table-striped table-bordered table-sm ml-3 mt-3" id="data-table-analisis-combinado">
-        <thead class="thead-light">
+        <thead style="background-color: #818181; color: #FFF">
             <tr>
                 <th>&nbsp;</th>
                 <?php $__currentLoopData = $AnalisisCombinados; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $AnalisisCombinado): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -35,44 +35,7 @@
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </tr>
         </thead>
-        <tbody>
-            <tr style="border-bottom: 5px #CCC solid;">
-            <th><?php echo e(_i('Suma')); ?></th>
-                <?php $__currentLoopData = $AnalisisCombinados; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $AnalisisCombinado): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <th style="text-align: center !important;"><?php echo e($AnalisisCombinado['suma']); ?></th>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </tr>
-            <tr id="divRSM">
-                <td>RSM</td>
-                <?php $__currentLoopData = $AnalisisCombinados; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $AnalisisCombinado): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <td style="text-align: center !important;"><?php echo e($AnalisisCombinado['rsm']); ?></td>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </tr>
-            <tr id="divImpregnancia">
-                <td>Impregnancia</td>
-                <?php $__currentLoopData = $AnalisisCombinados; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $AnalisisCombinado): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <td style="text-align: center !important;"><?php echo e($AnalisisCombinado['Impregnancia']); ?></td>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </tr>
-            <tr id="divSecuencia">
-                <td>Secuencia</td>
-                <?php $__currentLoopData = $AnalisisCombinados; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $AnalisisCombinado): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <td style="text-align: center !important;"><?php echo e($AnalisisCombinado['Secuencia']); ?></td>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </tr>
-            <tr id="divConsonantes">
-                <td>Consonantes</td>
-                <?php $__currentLoopData = $AnalisisCombinados; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $AnalisisCombinado): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <td style="text-align: center !important;"><?php echo e($AnalisisCombinado['Consonantes']); ?></td>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </tr>
-            <tr id="divClaves">
-                <td>Claves</td>
-                <?php $__currentLoopData = $AnalisisCombinados; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $AnalisisCombinado): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <td style="text-align: center !important;"><?php echo e($AnalisisCombinado['Claves']); ?></td>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-            </tr>
-        </tbody>
+        <tbody></tbody>
     </table>
     </div>
 </div>
