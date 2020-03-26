@@ -11,7 +11,13 @@ $(document).on('click', '.btnDescripcion', function () {
     $.getJSON(url, respuesta => {
 
         $('#tituloModal').html(respuesta.nombre_completo);
-        let descripcion = respuesta.descripcion.replace(new RegExp('\n','g'), '<br>');
+        let idioma = $('#idioma').val();
+        let descripcion = '';
+        if(idioma=='es_ES') {
+            descripcion = respuesta.descripcion.replace(new RegExp('\n', 'g'), '<br>');
+        }else{
+            descripcion = respuesta.descripcion_en.replace(new RegExp('\n', 'g'), '<br>');
+        }
         $('#descripcionRemedio').html(descripcion);
         $('#imagenRemedio').html(`<img src="/images/fotos_remedios/${respuesta.imagen}" class="img-responsive radius imagenRemedio" alt="">`);
 
@@ -21,10 +27,11 @@ $(document).on('click', '.btnDescripcion', function () {
 $(document).on('click', '.btnDoc1', function () {
     let idioma = $('#idioma').val();
     let dinamica = $(this).data('dinamica');
-    $('#tituloModal2').html('Dinámica');
     if(idioma=='es_ES') {
+        $('#tituloModal2').html('Dinámica');
         $('#iframeDoc').attr('src', '/html/es/orden-de-simetria-' + dinamica + '.html');
     }else{
+        $('#tituloModal2').html('Dynamic');
         $('#iframeDoc').attr('src', '/html/en/orden-de-simetria-' + dinamica + '.html');
     }
 
@@ -33,10 +40,11 @@ $(document).on('click', '.btnDoc1', function () {
 $(document).on('click', '.btnDoc2', function () {
     let idioma = $('#idioma').val();
     let interrogatorio = $(this).data('interrogatorio');
-    $('#tituloModal2').html('Interrogatorio Dirigido');
     if(idioma=='es_ES') {
         $('#iframeDoc').attr('src', '/html/es/interrogatorio-de-la-simetria-' + interrogatorio + '.html');
+        $('#tituloModal2').html('Interrogatorio Dirigido');
     }else{
+        $('#tituloModal2').html('Directed Interrogation');
         $('#iframeDoc').attr('src', '/html/en/interrogatorio-de-la-simetria-' + interrogatorio + '.html');
     }
 

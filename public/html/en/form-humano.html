@@ -1,3 +1,4 @@
+<link href="../template.css" rel="stylesheet" type="text/css">
 <?php
 # Levantamos usuario
 $user =& JFactory::getUser();
@@ -35,7 +36,7 @@ jQuery(document).ready( function(){
 			}
 		}
 	});
-	
+
 	var modal = jQuery('#modal').overlay({
 		top: 'center',
 		mask: {
@@ -46,14 +47,14 @@ jQuery(document).ready( function(){
 		closeOnEsc: false,
 		load: false
 	});
-	
+
 	/* Submit form */
 	jQuery.submitFormulario = function(){
 if( !formSubmited ){
 		if( checkLocal() ){
 			var msg = getModalMsg();
 			jQuery('#modal > #modal-content').html( msg );
-			modal.overlay().load();			
+			modal.overlay().load();
 		} else {
 formSubmited = false;
 }
@@ -126,9 +127,9 @@ var dayfield = val.split("/")[0];
 var monthfield = val.split("/")[1];
 var yearfield = val.split("/")[2];
 var dayobj = new Date( yearfield, monthfield-1, dayfield );
-if( 
+if(
 ( dayobj.getMonth() + 1 != monthfield ) ||
-( dayobj.getDate() != dayfield ) || 
+( dayobj.getDate() != dayfield ) ||
 ( dayobj.getFullYear() != yearfield )
 ){
 returnval = false;
@@ -142,9 +143,9 @@ return returnval;
 }
 
 
-	function checkLocal(){		
+	function checkLocal(){
 		var msg = "";
-		
+
 		if( document.getElementById('name').value == "" ){
 			msg +=  "Por favor completar el Nombre n";
 		}
@@ -168,11 +169,11 @@ if( mes < 10 ) mes = "0" + mes;
 //document.getElementById('month').value = mes;
 var anio = parseInt( document.getElementById('year').value );
 var fecha = dia + "/" + mes + "/" + anio;
-if( 
-document.getElementById('day').value == '' || 
-document.getElementById('month').value == '' || 
-document.getElementById('year').value == '' || 
-!checkdate( fecha ) 
+if(
+document.getElementById('day').value == '' ||
+document.getElementById('month').value == '' ||
+document.getElementById('year').value == '' ||
+!checkdate( fecha )
 ){
 	msg +=  "Por favor ingresa una fecha válida n";
 }
@@ -182,10 +183,10 @@ document.getElementById('year').value == '' ||
 		}
 		return true;
 	}
-	
+
 	function getModalMsg(){
 		var msg = "";
-		
+
 		msg = '<div class="favor">Por Favor Verificar la Información Ingresada:</div><br /><br />';
 		msg += '<div class="etiqueta">Nombre:</div> <div class="dato">' + document.getElementById('name').value + '</div><br />';
 		msg += '<div class="etiqueta">Apellido:</div> <div class="dato">' + document.getElementById('lastName').value + '</div><br />';
@@ -206,7 +207,7 @@ document.getElementById('year').value == '' ||
 <div id="formAlgo">
 
 <!-- form action START-->
-<form action="/index.php?option=com_content&view=article&id=5&Itemid=30&lang=<?=$lang?>" class="formulario" id="formAlgoritmo" method="post" name="formAlgoritmo" onsubmit="return submitFormulario();"> 
+<form action="/index.php?option=com_content&view=article&id=5&Itemid=30&lang=<?=$lang?>" class="formulario" id="formAlgoritmo" method="post" name="formAlgoritmo" onsubmit="return submitFormulario();">
 
 <!-- form action END -->
 
@@ -215,39 +216,39 @@ document.getElementById('year').value == '' ||
 {tip Nombre/s::Los datos deben ser cargados en la planilla de consulta sin acentos o simbolos. Debe ingresarse el texto con las letras puras correspondientes (no agregar letras con ´, ¨, ^, ', `, ~, etc.).}
 <label for="name">Nombre/s</label>
  <input  name="name" type="text" id="name" tabindex="1" size="30" />
-{/tip} 
+{/tip}
 </p>
 
-<p> 
+<p>
 {tip Apellido/s::Los datos deben ser cargados en la planilla de consulta sin acentos o simbolos. Debe ingresarse el texto con las letras puras correspondientes (no agregar letras con ´, ¨, ^, ', `, ~, etc.).}
 <label for="lastName">Apellido/s</label>
  <input name="lastName" type="text" id="lastName" tabindex="2" size="30" />
-{/tip}  
-</p>  
-  
+{/tip}
+</p>
+
 <p>{tip Apodo::en algunas ocasiones la persona se identifica, no con alguno de sus nombres propios, sino con un "apodo" que reemplaza en importancia a su propio nombre.}
 <label for="apodo" id="apodoLabel">Nombre por el <br />cual se identifica</label>
  <input name="apodo" type="text" id="apodo" tabindex="3" size="30" />
-{/tip}  
+{/tip}
 </p>
-  
+
 <p>
 {tip Iniciales::Los datos deben ser cargados en la planilla de consulta sin acentos o simbolos. Debe ingresarse el texto con las letras puras correspondientes (no agregar letras con ´, ¨, ^, ', `, ~, etc.).}
 <label for="iniciales">Iniciales</label>
  <input name="iniciales" type="text" id="iniciales" tabindex="4" size="30" />
-{/tip}  
+{/tip}
 </p>
-  
+
 <fieldset>
 <legend>Fecha de Nacimiento</legend>
 {tip Dia::Ingrese valores del 1 al 31}
-    <input name="day" type="text" id="day" tabindex="5" value="DD" size="2" maxlength="2" onfocus="if (this.value == 'DD') {this.value=''}"/>{/tip}  
+    <input name="day" type="text" id="day" tabindex="5" value="DD" size="2" maxlength="2" onfocus="if (this.value == 'DD') {this.value=''}"/>{/tip}
 
 {tip Mes::Ingrese valores del 1 al 12}
-    <input name="month" type="text" id="month" tabindex="6" value="MM" size="2" maxlength="2" onfocus="if (this.value == 'MM') {this.value=''}" />{/tip} 
+    <input name="month" type="text" id="month" tabindex="6" value="MM" size="2" maxlength="2" onfocus="if (this.value == 'MM') {this.value=''}" />{/tip}
 {tip Año::Ingrese los 4 digitos del año de nacimiento}
-    <input name="year" type="text" id="year" tabindex="7" value="AAAA" size="4" maxlength="4" onfocus="if (this.value == 'AAAA') {this.value=''}" />{/tip} 
-  </fieldset>  
+    <input name="year" type="text" id="year" tabindex="7" value="AAAA" size="4" maxlength="4" onfocus="if (this.value == 'AAAA') {this.value=''}" />{/tip}
+  </fieldset>
 <p>
 <label for="lug_nac">Lugar de Nacimiento</label><select id="lug_nac" name="lug_nac" tabindex="8">
    <option value="-" selected="selected">Seleccionar País</option>
@@ -498,8 +499,8 @@ document.getElementById('year').value == '' ||
     <option value="Zaire">Zaire</option>
     <option value="Zambia">Zambia</option>
     <option value="Zimbabwe">Zimbabwe</option>
-  </select> 
-  </p> 
+  </select>
+  </p>
  <p>
     <label for="submit" class="textoInvisible">enviar </label><input type="submit" tabindex="9" name="submit" id="submit" value="Realizar Consulta" />
   </p>
@@ -507,9 +508,9 @@ document.getElementById('year').value == '' ||
 
 <!-- FORMULARIO VIEJO START-->
 
-    
-    
-<!-- FORMULARIO VIEJO END -->    
+
+
+<!-- FORMULARIO VIEJO END -->
 </form></div> <!-- formAlgo-->
 
 
