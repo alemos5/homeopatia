@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MultilanguageLaravelApplication\n"
-"POT-Creation-Date: 2020-03-23 12:28-0400\n"
-"PO-Revision-Date: 2020-03-23 13:11-0400\n"
+"POT-Creation-Date: 2020-03-26 16:52-0400\n"
+"PO-Revision-Date: 2020-03-26 16:53-0400\n"
 "Last-Translator: James Translator <james@translations.colm>\n"
 "Language-Team: James Translator <james@translations.colm>\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.2.4\n"
 "X-Poedit-KeywordsList: _;__;_i;_s;gettext;_n:1,2;ngettext:1,2;dgettext:2\n"
 "X-Poedit-Basepath: ../../../../../app\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -132,6 +132,13 @@ msgstr "Make a New Study"
 msgid "Estudios Realizados"
 msgstr "Applied Studies"
 
+#: ../storage/framework/messages/01a71518438396360ddace035e1886b865da6ca2.php.php:5
+#: ../storage/framework/messages/01a71518438396360ddace035e1886b865da6ca2.php.php:9
+#: ../storage/framework/messages/5435612f2b16c6a2736cb940a718ef4dfe691fda.php.php:19
+#: ../storage/framework/messages/5843d7c93f31e8f9b20bb7074ef8504c4ec94378.php.php:8
+msgid "Obtenga su Abono"
+msgstr "Get your subscription"
+
 #: ../storage/framework/messages/01a71518438396360ddace035e1886b865da6ca2.php.php:7
 #: ../storage/framework/messages/0c80b5685d399703178132993944fdbc64878bb5.php.php:7
 #: ../storage/framework/messages/0f6b156e63a530bb64586591ab3f8063a6b48968.php.php:7
@@ -140,7 +147,7 @@ msgstr "Applied Studies"
 #: ../storage/framework/messages/275abfff4bbe52769552e401e3974c78c7f585ab.php.php:8
 #: ../storage/framework/messages/2c5724591e835e87b844eca029d859101ca59372.php.php:16
 #: ../storage/framework/messages/2ed22eaf6f3e6e17191ff7809d7e1494dc8aa32f.php.php:17
-#: ../storage/framework/messages/31c1efc337dff4cae44d0bc34674486e540e7c01.php.php:7
+#: ../storage/framework/messages/31c1efc337dff4cae44d0bc34674486e540e7c01.php.php:31
 #: ../storage/framework/messages/33b01e48a0579dac214630e8362975933347664f.php.php:7
 #: ../storage/framework/messages/36769b9cbacd8d61fb95db67e75d339e140236e6.php.php:7
 #: ../storage/framework/messages/41a1d64311d6f8f7be2551043632b7f2709c5217.php.php:7
@@ -175,12 +182,6 @@ msgstr "Home"
 #: ../storage/framework/messages/fa9e12954ba9a51ea93245616b79fe7f1c5369c1.php.php:47
 msgid "Créditos"
 msgstr "Credits"
-
-#: ../storage/framework/messages/01a71518438396360ddace035e1886b865da6ca2.php.php:9
-#: ../storage/framework/messages/5435612f2b16c6a2736cb940a718ef4dfe691fda.php.php:19
-#: ../storage/framework/messages/5843d7c93f31e8f9b20bb7074ef8504c4ec94378.php.php:8
-msgid "Obtenga su Abono"
-msgstr "Get your subscription"
 
 #: ../storage/framework/messages/01a71518438396360ddace035e1886b865da6ca2.php.php:32
 msgid "¡Abono Promocional"
@@ -252,6 +253,7 @@ msgid "Precio por"
 msgstr "Price for"
 
 #: ../storage/framework/messages/0379f21ab63f2e87cfd9f25368fcf68b9264f378.php.php:12
+#: ../storage/framework/messages/6981492dcfc20bb97877d8b22cc3aad6fdb312a6.php.php:82
 #: ../storage/framework/messages/b551534bbd58f45813df36c95e924f2b1a7dbb2c.php.php:11
 msgid "Cerrar"
 msgstr "Close"
@@ -268,13 +270,13 @@ msgstr "Sorry, your session has expired. Please refresh and try again."
 #: ../storage/framework/messages/14a22cc9a34709a023b43998595150c769e6d487.php.php:25
 #: ../storage/framework/messages/23435297abf4240feb6983fb217d76a0e2f57afd.php.php:24
 #: ../storage/framework/messages/2c5724591e835e87b844eca029d859101ca59372.php.php:24
-#: ../storage/framework/messages/31c1efc337dff4cae44d0bc34674486e540e7c01.php.php:9
+#: ../storage/framework/messages/31c1efc337dff4cae44d0bc34674486e540e7c01.php.php:33
 #: ../storage/framework/messages/33b01e48a0579dac214630e8362975933347664f.php.php:9
 #: ../storage/framework/messages/36769b9cbacd8d61fb95db67e75d339e140236e6.php.php:9
 #: ../storage/framework/messages/435a350f300112806d890ce5df1d03c3a2664258.php.php:25
 #: ../storage/framework/messages/60ea679ce909444b6859c5687b51d8b0ec3f5a07.php.php:18
 #: ../storage/framework/messages/82b04cd2f6c846176b576b8c58462dcb15762b77.php.php:26
-#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:164
+#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:163
 #: ../storage/framework/messages/8cd48dd70be890233da75489568ab330ea56100e.php.php:9
 #: ../storage/framework/messages/94059ceee8c5eec5838eb8a5509054bc741996bd.php.php:24
 #: ../storage/framework/messages/a22a52897d68d5dd2ab5e4382fe817f2829bfcb3.php.php:9
@@ -314,7 +316,7 @@ msgstr "Symmetry"
 #: ../storage/framework/messages/0cfee4caf4aa2681aeccaf563d08ac481e2519f1.php.php:62
 #: ../storage/framework/messages/0cfee4caf4aa2681aeccaf563d08ac481e2519f1.php.php:73
 #: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:142
-#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:8
+#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:9
 msgid "Animal"
 msgstr "Animal"
 
@@ -528,20 +530,25 @@ msgstr "Are you sure?"
 msgid "Cerrar sesión"
 msgstr "Logout"
 
-#: ../storage/framework/messages/31c1efc337dff4cae44d0bc34674486e540e7c01.php.php:5
-#: ../storage/framework/messages/31c1efc337dff4cae44d0bc34674486e540e7c01.php.php:8
-#: ../storage/framework/messages/31c1efc337dff4cae44d0bc34674486e540e7c01.php.php:14
+#: ../storage/framework/messages/31c1efc337dff4cae44d0bc34674486e540e7c01.php.php:29
+#: ../storage/framework/messages/31c1efc337dff4cae44d0bc34674486e540e7c01.php.php:32
+#: ../storage/framework/messages/31c1efc337dff4cae44d0bc34674486e540e7c01.php.php:38
 #: ../storage/framework/messages/7403d18ac18cca9c14ef6fffe224294e6ad258ab.php.php:5
 #: ../storage/framework/messages/7403d18ac18cca9c14ef6fffe224294e6ad258ab.php.php:8
 #: ../storage/framework/messages/7403d18ac18cca9c14ef6fffe224294e6ad258ab.php.php:14
 #: ../storage/framework/messages/82b04cd2f6c846176b576b8c58462dcb15762b77.php.php:14
 #: ../storage/framework/messages/82b04cd2f6c846176b576b8c58462dcb15762b77.php.php:17
-#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:118
+#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:133
 #: ../storage/framework/messages/de73e65b38595035afdaad7476798dd3a395f93c.php.php:62
 #: ../storage/framework/messages/de73e65b38595035afdaad7476798dd3a395f93c.php.php:65
 #: ../storage/framework/messages/fa9e12954ba9a51ea93245616b79fe7f1c5369c1.php.php:40
 msgid "Estudios"
 msgstr "Studies"
+
+#: ../storage/framework/messages/31c1efc337dff4cae44d0bc34674486e540e7c01.php.php:47
+#: ../storage/framework/messages/6981492dcfc20bb97877d8b22cc3aad6fdb312a6.php.php:5
+msgid "Instrucciones de Uso"
+msgstr "Instructions for use"
 
 #: ../storage/framework/messages/32ad6547ee5dad5e19535f774ef7fcbc8a640598.php.php:25
 #: ../storage/framework/messages/f808a4b41bf9f3a890df816ab3512b3527f6cb74.php.php:32
@@ -802,15 +809,82 @@ msgid "Deleted At:"
 msgstr "Deleted At:"
 
 #: ../storage/framework/messages/82b04cd2f6c846176b576b8c58462dcb15762b77.php.php:22
-#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:160
+#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:159
 msgid "Estudios Médicos"
 msgstr "Medical Studies"
 
 #: ../storage/framework/messages/82b04cd2f6c846176b576b8c58462dcb15762b77.php.php:32
-#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:170
+#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:169
 msgid "Debe abonar créditos a su cuenta para poder crear estudios médicos."
 msgstr ""
 "You must pay credits to your account in order to create medical studies."
+
+#: ../storage/framework/messages/82b04cd2f6c846176b576b8c58462dcb15762b77.php.php:68
+#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:211
+msgid "Procesando"
+msgstr "Processing"
+
+#: ../storage/framework/messages/82b04cd2f6c846176b576b8c58462dcb15762b77.php.php:69
+#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:212
+msgid "Ver"
+msgstr "See"
+
+#: ../storage/framework/messages/82b04cd2f6c846176b576b8c58462dcb15762b77.php.php:70
+#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:213
+msgid "No se encontraron resultados"
+msgstr "No results found"
+
+#: ../storage/framework/messages/82b04cd2f6c846176b576b8c58462dcb15762b77.php.php:71
+#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:214
+msgid "Ningún dato disponible en esta tabla"
+msgstr "No data available in this table"
+
+#: ../storage/framework/messages/82b04cd2f6c846176b576b8c58462dcb15762b77.php.php:72
+#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:215
+msgid "al"
+msgstr "to the"
+
+#: ../storage/framework/messages/82b04cd2f6c846176b576b8c58462dcb15762b77.php.php:72
+#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:215
+msgid "de"
+msgstr "from"
+
+#: ../storage/framework/messages/82b04cd2f6c846176b576b8c58462dcb15762b77.php.php:72
+#: ../storage/framework/messages/82b04cd2f6c846176b576b8c58462dcb15762b77.php.php:74
+#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:215
+#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:217
+msgid "registros"
+msgstr "Records"
+
+#: ../storage/framework/messages/82b04cd2f6c846176b576b8c58462dcb15762b77.php.php:73
+#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:216
+msgid "Mostrando registros del 0 al 0 de un total de 0 registros"
+msgstr "Showing records from 0 to 0 of a total of 0 records"
+
+#: ../storage/framework/messages/82b04cd2f6c846176b576b8c58462dcb15762b77.php.php:74
+#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:217
+msgid "filtrado de un total de"
+msgstr "filtering a total of"
+
+#: ../storage/framework/messages/82b04cd2f6c846176b576b8c58462dcb15762b77.php.php:76
+#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:219
+msgid "Buscar"
+msgstr "Search"
+
+#: ../storage/framework/messages/82b04cd2f6c846176b576b8c58462dcb15762b77.php.php:79
+#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:222
+msgid "Cargando"
+msgstr "Loading"
+
+#: ../storage/framework/messages/82b04cd2f6c846176b576b8c58462dcb15762b77.php.php:87
+#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:230
+msgid "Activar para ordenar la columna de manera ascendente"
+msgstr "Activate to sort the column in ascending order"
+
+#: ../storage/framework/messages/82b04cd2f6c846176b576b8c58462dcb15762b77.php.php:88
+#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:231
+msgid "Activar para ordenar la columna de manera descendente"
+msgstr "Activate to sort the column in descending order"
 
 #: ../storage/framework/messages/85210138ead75b448d5eb827cb9fda8ba0ca5771.php.php:21
 #: ../storage/framework/messages/af260763bbb771bb9535da9482b68e1998f59def.php.php:12
@@ -842,87 +916,22 @@ msgstr "Permissions List"
 msgid "Sin descripción"
 msgstr "Without Description"
 
-#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:121
+#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:136
 msgid "Crear Nuevo Estudio"
 msgstr "Create New Study"
 
-#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:131
+#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:146
 msgid "Instrucciones de"
 msgstr "Instructions of"
 
-#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:131
+#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:146
 msgid "Uso"
 msgstr "Use"
 
-#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:134
+#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:149
 #: ../storage/framework/messages/debbdbe4c95d61ae0350e52042cf8963a1ee6dfd.php.php:4
 msgid "Mostrar"
 msgstr "Show"
-
-#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:144
-msgid "Mis"
-msgstr "My"
-
-#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:144
-msgid "Abonos"
-msgstr "Subscription"
-
-#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:148
-msgid "Historial"
-msgstr "Historic"
-
-#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:205
-msgid "Procesando"
-msgstr "Processing"
-
-#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:206
-msgid "Ver"
-msgstr "See"
-
-#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:207
-msgid "No se encontraron resultados"
-msgstr "No results found"
-
-#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:208
-msgid "Ningún dato disponible en esta tabla"
-msgstr "No data available in this table"
-
-#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:209
-msgid "al"
-msgstr "to the"
-
-#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:209
-msgid "de"
-msgstr "from"
-
-#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:209
-#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:211
-msgid "registros"
-msgstr "Records"
-
-#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:210
-msgid "Mostrando registros del 0 al 0 de un total de 0 registros"
-msgstr "Showing records from 0 to 0 of a total of 0 records"
-
-#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:211
-msgid "filtrado de un total de"
-msgstr "filtering a total of"
-
-#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:213
-msgid "Buscar"
-msgstr "Search"
-
-#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:216
-msgid "Cargando"
-msgstr "Loading"
-
-#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:224
-msgid "Activar para ordenar la columna de manera ascendente"
-msgstr "Activate to sort the column in ascending order"
-
-#: ../storage/framework/messages/86b410b22d2e59da608faad4947b09f54402dd3f.php.php:225
-msgid "Activar para ordenar la columna de manera descendente"
-msgstr "Activate to sort the column in descending order"
 
 #: ../storage/framework/messages/898dc39513a886a1f33de7696abf2c1747cd54f8.php.php:49
 msgid "Confirmar contraseña"
@@ -980,7 +989,7 @@ msgstr "Last name"
 
 #: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:18
 #: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:91
-#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:38
+#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:39
 msgid "Apodo"
 msgstr "Nickname"
 
@@ -989,8 +998,8 @@ msgstr "Nickname"
 #: ../storage/framework/messages/bc6c3d93152689dbe1b8c9dd97b41124563f47b1.php.php:8
 #: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:95
 #: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:122
-#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:50
-#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:119
+#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:51
+#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:120
 msgid "Iniciales"
 msgstr "Initials"
 
@@ -998,7 +1007,7 @@ msgstr "Initials"
 #: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:52
 #: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:99
 #: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:126
-#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:127
+#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:128
 msgid "Fecha de Nacimiento"
 msgstr "Date of birth"
 
@@ -1009,19 +1018,19 @@ msgstr "Country of birth"
 
 #: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:36
 #: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:110
-#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:86
+#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:87
 msgid "Especie"
 msgstr "Species"
 
 #: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:40
 #: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:114
-#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:96
+#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:97
 msgid "Nombre del Dueño"
 msgstr "Owner's name"
 
 #: ../storage/framework/messages/93e74167981b8622e2ce1df68401a9fb4cfcd951.php.php:44
 #: ../storage/framework/messages/d8445be55f1be057e20603e04244cf4fe6c09b07.php.php:118
-#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:106
+#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:107
 msgid "Nombre del Animal"
 msgstr "Animal's Name"
 
@@ -1108,7 +1117,7 @@ msgid "User Agent"
 msgstr "User Agent"
 
 #: ../storage/framework/messages/95c2a9c74772b158471237d1ea5d72a58ff93c50.php.php:23
-#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:73
+#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:74
 msgid "Fecha"
 msgstr "Date"
 
@@ -1281,7 +1290,7 @@ msgid "E-Mail"
 msgstr "E-Mail"
 
 #: ../storage/framework/messages/c845a8afb47cae7c827a9154d92fc87d919b4f5c.php.php:24
-#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:60
+#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:61
 #: ../storage/framework/messages/fa9e12954ba9a51ea93245616b79fe7f1c5369c1.php.php:99
 msgid "País"
 msgstr "Country"
@@ -1425,22 +1434,76 @@ msgid "Consonante"
 msgstr "Consonant"
 
 #: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:7
+msgid ""
+"Nombre/s:Los datos deben ser cargados en la planilla de consulta sin acentos "
+"o simbolos. Debe ingresarse el texto con las letras puras correspondientes "
+"(no agregar letras con ´, ¨, ^, ', `, ~, etc.)."
+msgstr ""
+"Name / s: The data must be loaded in the query form without accents or "
+"symbols. You must enter the text with the corresponding letters (do not add "
+"letters with ´, ¨, ^, ', `, ~, etc.)."
+
+#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:8
 msgid "Humano"
 msgstr "Human"
 
-#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:20
+#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:21
 msgid "Nombre/s"
 msgstr "Name"
 
-#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:29
+#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:22
+msgid ""
+"Nombre/s:Los datos deben ser cargados en la planilla de consulta sin acentos "
+"o simbolos. Debe ingresarse el texto con las letras puras correspondientes "
+"(no agregar letras con ´, ¨, ^, \\', `, ~, etc.)."
+msgstr ""
+"Name / s: The data must be loaded in the query form without accents or "
+"symbols. The text must be entered with the corresponding pure letters (do "
+"not add letters with ´, ¨, ^, \\ ', `, ~, etc.)."
+
+#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:30
 msgid "Apellido/s"
 msgstr "Last name "
 
-#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:62
+#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:31
+msgid ""
+"Apellido/s::Los datos deben ser cargados en la planilla de consulta sin "
+"acentos o simbolos. Debe ingresarse el texto con las letras puras "
+"correspondientes (no agregar letras con ´, ¨, ^, \\', `, ~, etc.)."
+msgstr ""
+"Surname / s :: The data must be loaded in the query form without accents or "
+"symbols. The text must be entered with the corresponding pure letters (do "
+"not add letters with ´, ¨, ^, \\ ', `, ~, etc.)."
+
+#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:40
+msgid ""
+"Apodo::en algunas ocasiones la persona se identifica, no con alguno de sus "
+"nombres propios, sino con un &quot;apodo&quot; que reemplaza en importancia "
+"a su propio nombre."
+msgstr ""
+"Nickname :: sometimes the person identifies himself, not with any of his own "
+"names, but with a & quot; nickname & quot; which replaces in importance its "
+"own name."
+
+#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:52
+msgid ""
+"Iniciales::Los datos deben ser cargados en la planilla de consulta sin "
+"acentos o simbolos. Debe ingresarse el texto con las letras puras "
+"correspondientes (no agregar letras con ´, ¨, ^, \\', `, ~, etc.)"
+msgstr ""
+"Initials :: The data must be loaded in the query form without accents or "
+"symbols. The text must be entered with the corresponding pure letters (do "
+"not add letters with ´, ¨, ^, \\ ', `, ~, etc.)"
+
+#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:63
 msgid ":: Seleccione un País ::"
 msgstr ":: Select a Country ::"
 
-#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:142
+#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:143
+msgid "¿Esta Realmente seguro de crear este Estudio con estos Datos?"
+msgstr "Are you really sure to create this Study with this Data?"
+
+#: ../storage/framework/messages/e135dd75fe1011698130cf27343a6e3eff15c06c.php.php:143
 msgid "Realizar Estudio"
 msgstr "Make a Study "
 
@@ -1511,6 +1574,15 @@ msgstr "Edit Data"
 #: ../storage/framework/messages/fa9e12954ba9a51ea93245616b79fe7f1c5369c1.php.php:155
 msgid "Telefono"
 msgstr "Phone"
+
+#~ msgid "Mis"
+#~ msgstr "My"
+
+#~ msgid "Abonos"
+#~ msgstr "Subscription"
+
+#~ msgid "Historial"
+#~ msgstr "Historic"
 
 #~ msgid "Filtrar por"
 #~ msgstr "Filter by"

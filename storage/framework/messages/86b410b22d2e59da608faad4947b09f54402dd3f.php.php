@@ -72,6 +72,21 @@
             top: 15px;
             background-color: #26c6da;
         }
+
+        .modal {
+            max-width: 800px !important;
+            height: auto !important;
+        }
+
+        .blocker {
+            z-index: 99 !important;
+        }
+
+        .modal a.close-modal {
+            top: 5px !important;
+            right: 5px !important;
+        }
+
     </style>
 <?php $__env->stopSection(); ?>
 <?php $__env->startPush('before-scripts'); ?>
@@ -109,7 +124,7 @@
     <?php endif; ?>
 
     <div class="row">
-        <div class="col-lg-5 col-xlg-5 col-md-5">
+        <div class="col-lg-6 col-xlg-6 col-md-6">
             <div class="card blog-widget">
                 <div class="card-body text-center">
                     <div class="blog-image">
@@ -122,7 +137,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-5 col-xlg-5 col-md-5">
+        <div class="col-lg-6 col-xlg-6 col-md-6">
             <div class="card blog-widget">
                 <div class="card-body text-center">
                     <div class="blog-image">
@@ -131,23 +146,7 @@
                     <h3><?php echo e(_i('Instrucciones de')); ?> </br><?php echo e(_i('Uso')); ?></h3>
                 </div>
                 <div class="card-footer text-center">
-                    <a href="#" class="btn btn-warning"><?php echo e(_i('Mostrar')); ?></a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-2 col-xlg-2 col-md-2">
-            <div class="card blog-widget">
-                <div class="card-body text-center">
-                    <div class="blog-image">
-                        <i class="fas fa-wallet fa-3x"></i>
-                    </div>
-                    <h3><?php echo e(_i('Mis')); ?><br><?php echo e(_i('Abonos')); ?></h3>
-                </div>
-                <div class="card-footer text-center">
-                    <a href="<?php echo e(route('payment', $promocion->id)); ?>" class="btn btn-success">
-                        <?php echo e(_i('Historial')); ?>
-
-                    </a>
+                    <a href="#ex3" rel="modal:open" class="btn btn-warning"><?php echo e(_i('Mostrar')); ?></a>
                 </div>
             </div>
         </div>
@@ -186,6 +185,8 @@
     </div>
 <?php $__env->stopSection(); ?>
 
+<?php echo $__env->make('modal_instrucciones', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
 <?php $__env->startSection('js'); ?>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
@@ -196,6 +197,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-datetimepicker/2.7.1/js/bootstrap-material-datetimepicker.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <!-- jQuery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
 
     <script>
         $(document).ready(function() {

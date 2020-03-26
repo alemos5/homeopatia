@@ -62,16 +62,31 @@ class HomeController extends Controller
             $user = '';
         }
 
-        $estudios = $this->estudiosRepository->orderBy('id', 'DESC')
-            ->limit(200)
-            ->get();
+        $isAdmin = 0;
+        foreach (Auth::user()->perfiles AS $perfil) {
+            if ($perfil->role_id == '1') {
+                $isAdmin = 1;
+            }
+        }
+
+        if($isAdmin) {
+            $estudios = $this->estudiosRepository->orderBy('id', 'DESC')
+                ->limit(200)
+                ->get();
+        }else{
+            $estudios = $this->estudiosRepository
+                ->where('id_usuario', auth()->user()->id_cliente)
+                ->orderBy('id', 'DESC')
+                ->limit(200)
+                ->get();
+        }
 
         $completeData = Auth::user()->completeData;
         $promocion = Pricing::where('promocion','=','1')->first();
         $sincard = 1;
 
         return view('home-one', compact('password_admin', 'user', 'promocion', 'sincard', 'completeData', 'estudios'));
-        
+
     }
 
     public function invoicePayable($id_client)
@@ -161,7 +176,7 @@ class HomeController extends Controller
     public function perfil()
     {
         $paises = Pais::all();
-        $user = User::where('code_cliente',Auth::user()->code_cliente)->first();
+        $user = User::where('id_cliente',Auth::user()->id_cliente)->first();
         $sincard = 1;
 
         return view('perfil',compact('user','sincard','paises'));
