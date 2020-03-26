@@ -2,7 +2,7 @@
 <?php $__env->startPush('before-scripts'); ?>
     <script src="<?php echo e(mix('/js/home-one.js')); ?>"></script>
 <?php $__env->stopPush(); ?>
-<?php $__env->startSection('nombre_modulo', 'Obtenga su Abono'); ?>
+<?php $__env->startSection('nombre_modulo', _i('Obtenga su Abono')); ?>
 <?php $__env->startSection('breadcrumb'); ?>
     <li class="breadcrumb-item"><a href="<?php echo e(route('home-one')); ?>"><?php echo e(_i('Inicio')); ?></a></li>
     <li class="breadcrumb-item"><a href="<?php echo e(route('creditos.index')); ?>"><?php echo e(_i('Créditos')); ?></a></li>

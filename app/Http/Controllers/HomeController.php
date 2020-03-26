@@ -86,7 +86,7 @@ class HomeController extends Controller
         $sincard = 1;
 
         return view('home-one', compact('password_admin', 'user', 'promocion', 'sincard', 'completeData', 'estudios'));
-        
+
     }
 
     public function invoicePayable($id_client)
@@ -176,7 +176,7 @@ class HomeController extends Controller
     public function perfil()
     {
         $paises = Pais::all();
-        $user = User::where('code_cliente',Auth::user()->code_cliente)->first();
+        $user = User::where('id_cliente',Auth::user()->id_cliente)->first();
         $sincard = 1;
 
         return view('perfil',compact('user','sincard','paises'));

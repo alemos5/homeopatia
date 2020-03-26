@@ -3,7 +3,8 @@
     <div class="row">
         <div class="form-group col-sm-12">
             <label for=""><b>{{ _i('Tipo') }}:</b></label>
-            <select class="form-control" name="tipo" id="tipo" required>
+            <select class="form-control" name="tipo" id="tipo" required
+                    title="{{_i('Nombre/s:Los datos deben ser cargados en la planilla de consulta sin acentos o simbolos. Debe ingresarse el texto con las letras puras correspondientes (no agregar letras con ´, ¨, ^, \', `, ~, etc.).')}}">
                 <option value="97" @if(@old("tipo")==97) selected @endif>{{ _i('Humano') }}</option>
                 <option value="12" @if(@old("tipo")==12) selected @endif>{{ _i('Animal') }}</option>
             </select>
@@ -17,21 +18,21 @@
         <!-- H Nombre Field -->
         <div class="form-group col-sm-4">
             <label for=""><b>{{ _i('Nombre/s') }}:</b></label>
-            {!! Form::text('h_nombre', null, ['class' => 'form-control'. ( $errors->has('h_nombre') ? ' is-invalid' : '' )]) !!}
+            {!! Form::text('h_nombre', null, ['class' => 'form-control'. ( $errors->has('h_nombre') ? ' is-invalid' : '' ), "title"=>_i("Nombre/s:Los datos deben ser cargados en la planilla de consulta sin acentos o simbolos. Debe ingresarse el texto con las letras puras correspondientes (no agregar letras con ´, ¨, ^, \', `, ~, etc.).")]) !!}
             {!! $errors->first('h_nombre', '<span class="invalid-feedback"><strong>:message</strong></span>') !!}
         </div>
 
         <!-- H Apellido Field -->
         <div class="form-group col-sm-4">
             <label for=""><b>{{ _i('Apellido/s') }}:</b></label>
-            {!! Form::text('h_apellido', null, ['class' => 'form-control'. ( $errors->has('h_apellido') ? ' is-invalid' : '' )]) !!}
+            {!! Form::text('h_apellido', null, ["title"=>_i("Apellido/s::Los datos deben ser cargados en la planilla de consulta sin acentos o simbolos. Debe ingresarse el texto con las letras puras correspondientes (no agregar letras con ´, ¨, ^, \', `, ~, etc.)."), 'class' => 'form-control'. ( $errors->has('h_apellido') ? ' is-invalid' : '' )]) !!}
             {!! $errors->first('h_apellido', '<span class="invalid-feedback"><strong>:message</strong></span>') !!}
         </div>
 
         <!-- H Identifica Field -->
         <div class="form-group col-sm-4">
             <label for=""><b>{{ _i('Apodo') }}:</b></label>
-            {!! Form::text('h_identifica', null, ['class' => 'form-control'. ( $errors->has('h_identifica') ? ' is-invalid' : '' )]) !!}
+            {!! Form::text('h_identifica', null, ["title"=>_i("Apodo::en algunas ocasiones la persona se identifica, no con alguno de sus nombres propios, sino con un &quot;apodo&quot; que reemplaza en importancia a su propio nombre."),'class' => 'form-control'. ( $errors->has('h_identifica') ? ' is-invalid' : '' )]) !!}
             {!! $errors->first('h_identifica', '<span class="invalid-feedback"><strong>:message</strong></span>') !!}
         </div>
     </div>
@@ -41,7 +42,7 @@
         <!-- H Iniciales Field -->
         <div class="form-group col-sm-4">
             <label for=""><b>{{ _i('Iniciales') }}:</b></label>
-            {!! Form::text('h_iniciales', null, ['class' => 'form-control'. ( $errors->has('h_iniciales') ? ' is-invalid' : '' )]) !!}
+            {!! Form::text('h_iniciales', null, ["title"=>_i("Iniciales::Los datos deben ser cargados en la planilla de consulta sin acentos o simbolos. Debe ingresarse el texto con las letras puras correspondientes (no agregar letras con ´, ¨, ^, \', `, ~, etc.)"),'class' => 'form-control'. ( $errors->has('h_iniciales') ? ' is-invalid' : '' )]) !!}
             {!! $errors->first('h_iniciales', '<span class="invalid-feedback"><strong>:message</strong></span>') !!}
         </div>
     @if(!isset($estudios))
@@ -61,7 +62,7 @@
         <!-- Fecha Field -->
         <div class="form-group col-sm-4">
             <label for="fecha_humano"><b>{{ _i('Fecha') }}:</b></label>
-            <input class="form-control {{$errors->has('fecha_humano') ? ' is-invalid' : ''}}" id="fecha_humano" name="fecha_humano" type="date" value="{{($fecha)? $fecha : ''}}">
+            <input class="form-control {{$errors->has('fecha_humano') ? ' is-invalid' : ''}}" id="fecha_humano" name="fecha_humano" type="date" value="{{($fecha)? $fecha : ''}}"
             {!! $errors->first('fecha_humano', '<span class="invalid-feedback"><strong>:message</strong></span>') !!}
         </div>
     @endif
@@ -119,7 +120,7 @@
     <input type="hidden" id="ip" name="ip" value="127.0.0.1">
     <input type="hidden" id="user_agent" name="user_agent" value="Firefox">
 
-    {!! Form::submit(_i('Realizar Estudio'), ['class' => 'btn btn-success']) !!}
+    <button type="submit" class="btn btn-success" onclick="return confirm('{{_i('¿Esta Realmente seguro de crear este Estudio con estos Datos?')}}')">{{_i('Realizar Estudio')}}</button>
     <a href="{!! route('estudios.index') !!}" class="btn btn-success">{{ _i('Cancelar') }}</a>
 </div>
 
