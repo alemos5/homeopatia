@@ -1,7 +1,7 @@
 <!--/*************************************************************
 **      MODAL Instrucciones                                     **
 **************************************************************/-->
-<div id="ex3" class="modal">
+<div id="ex3" class="modal" style="display: none">
     <h2 class="modal-title">{{_i('Instrucciones de Uso')}}</h2>
     <hr>
     <div class="row">
