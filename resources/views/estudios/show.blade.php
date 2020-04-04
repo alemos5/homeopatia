@@ -32,7 +32,7 @@
         }
 
         .modal {
-            max-width: 800px !important;
+            max-width: 1350px !important;
             height: auto !important;
         }
 

@@ -45,7 +45,7 @@
         #tablaMedicamentos tr:nth-child(even) {
             background-color: #f2f4f8;
         }
-        
+
         .bgGris{
             background-color: rgba(15, 15, 20, 0.67);
             color: #FFF;
@@ -75,10 +75,10 @@
         <td>
             @if($estudios->tipo=='humano')
                 <table width="100%" style="font-size: 12px">
-                    <tr>
-                        <td><b>{{ _i('Tipo de Estudio') }}:</b></td>
-                        <td>{!! $estudios->tipo !!}</td>
-                    </tr>
+{{--                    <tr>--}}
+{{--                        <td><b>{{ _i('Tipo de Estudio') }}:</b></td>--}}
+{{--                        <td>{!! $estudios->tipo !!}</td>--}}
+{{--                    </tr>--}}
                     <tr>
                         <td><b>{{ _i('Nombre') }}:</b></td>
                         <td>{!! $estudios->h_nombre !!}</td>

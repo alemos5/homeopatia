@@ -777,7 +777,7 @@ class EstudiosController extends AppBaseController
                 );
 
                 /*$aux_pregnancia['animal'] = 1;
-                echo '<img src="algoritmo10/resultado/simetria1.jpg" alt="Impregnancia Simetría 1" /> 
+                echo '<img src="algoritmo10/resultado/simetria1.jpg" alt="Impregnancia Simetría 1" />
 			<!-- Simetría 1 -->
 			<div class="simetriaPorcentaje">
 			  <p id="porcentajeMenor">15% Vegetal</p>
@@ -803,7 +803,7 @@ class EstudiosController extends AppBaseController
                 );
 
                 /*$aux_pregnancia['vegetal'] = 1;
-                echo '<img src="algoritmo10/resultado/simetria2.jpg" alt="Impregnancia Simetría 2" /> 
+                echo '<img src="algoritmo10/resultado/simetria2.jpg" alt="Impregnancia Simetría 2" />
 			<!-- Simetría 2 -->
 			<div class="simetriaPorcentaje">
 			<p id="porcentajeMenor">15% Mineral</p>
@@ -830,7 +830,7 @@ class EstudiosController extends AppBaseController
 
                 /* $aux_pregnancia['vegetal'] = 1;
                 $aux_pregnancia['mineral'] = 1;
-                echo '<img src="algoritmo10/resultado/simetria3.jpg" alt="Impregnancia Simetría 3"  /> 
+                echo '<img src="algoritmo10/resultado/simetria3.jpg" alt="Impregnancia Simetría 3"  />
 			<!-- Simetría 3 -->
 			<div class="simetriaPorcentaje">
 			<p id="porcentajeMenor">20% Animal</p>
@@ -860,7 +860,7 @@ class EstudiosController extends AppBaseController
 
                 /*
                 $aux_pregnancia['mineral'] = 1;
-                echo '<img src="algoritmo10/resultado/simetria4.jpg" alt="Impregnancia Simetría 4" /> 
+                echo '<img src="algoritmo10/resultado/simetria4.jpg" alt="Impregnancia Simetría 4" />
 			<!-- Simetría 4 -->
 			<div class="simetriaPorcentaje">
 			<p id="porcentajeMenor">15% Vegetal</p>
@@ -890,7 +890,7 @@ class EstudiosController extends AppBaseController
 
                 /*
                 $aux_pregnancia['animal'] = 1;
-                echo '<img src="algoritmo10/resultado/simetria5.jpg" alt="Impregnancia Simetría 5" /> 
+                echo '<img src="algoritmo10/resultado/simetria5.jpg" alt="Impregnancia Simetría 5" />
 			<!-- Simetría 5 -->
 			<div class="simetriaPorcentaje">
 			<p id="porcentajeMenor">15% Mineral</p>
@@ -920,7 +920,7 @@ class EstudiosController extends AppBaseController
 
                 /*
                 $aux_pregnancia['vegetal'] = 1;
-                echo '<img src="algoritmo10/resultado/simetria6.jpg" alt="Impregnancia Simetría 6" /> 
+                echo '<img src="algoritmo10/resultado/simetria6.jpg" alt="Impregnancia Simetría 6" />
 			<!-- Simetría 6 -->
 			<div class="simetriaPorcentaje">
 			<p id="porcentajeMenor">15% Animal</p>
@@ -951,7 +951,7 @@ class EstudiosController extends AppBaseController
                 /*
                 $aux_pregnancia['animal'] = 1;
                 $aux_pregnancia['vegetal'] = 1;
-                echo '<img src="algoritmo10/resultado/simetria7.jpg" alt="Impregnancia Simetría 7" /> 
+                echo '<img src="algoritmo10/resultado/simetria7.jpg" alt="Impregnancia Simetría 7" />
 			<!-- Simetría 7 -->
 			<div class="simetriaPorcentaje">
 			<p id="porcentajeMenor">20% Mineral</p>
@@ -981,7 +981,7 @@ class EstudiosController extends AppBaseController
 
                 /*
                 $aux_pregnancia['mineral'] = 1;
-                echo '<img src="algoritmo10/resultado/simetria8.jpg" alt="Impregnancia Simetría 8" /> 
+                echo '<img src="algoritmo10/resultado/simetria8.jpg" alt="Impregnancia Simetría 8" />
 			<!-- Simetría 8 -->
 			<div class="simetriaPorcentaje">
 			<p id="porcentajeMenor">15% Animal</p>
@@ -1012,7 +1012,7 @@ class EstudiosController extends AppBaseController
                 $aux_pregnancia['animal'] = 1;
                 $aux_pregnancia['vegetal'] = 1;
                 $aux_pregnancia['mineral'] = 1;
-                echo '<img src="algoritmo10/resultado/simetria9.jpg" alt="Impregnancia Simetría 9" /> 
+                echo '<img src="algoritmo10/resultado/simetria9.jpg" alt="Impregnancia Simetría 9" />
 			<!-- Simetría 9 -->
 			<div class="simetriaPorcentaje">
 			<p id="porcentajeMedioR">33% Vegetal</p>
@@ -1893,6 +1893,7 @@ class EstudiosController extends AppBaseController
         $analisis = collect($analisis)->sortBy('remedio')->toArray();
 
         $htmltabla = '';
+        $count = 0;
         foreach ($analisis AS $item) {
 
             $clave = '';
@@ -1910,13 +1911,32 @@ class EstudiosController extends AppBaseController
                 $notavalue = $nota->nota;
             }
 
-            $htmltabla .= '<tr>';
+            $classColor = null;
+            if ($count == 0) {
+                $classColor = 'style="background-color: rgba(30, 136, 229, 0.35);"';
+            }
+//            echo $item['reino']; die();
+            switch ($item['reino']) {
+                case "Mineral":
+                    $classColor = 'style="background-color: rgba(30, 136, 229, 0.35);"';
+                    break;
+                case "Vegetal":
+                    $classColor = 'style="background-color: rgba(53, 210, 56, 0.35);"';
+                    break;
+                case "Animal":
+                    $classColor = 'style="background-color: rgba(255, 70, 95, 0.35);"';
+                    break;
+            }
+
+            $htmltabla .= '<tr '.$classColor.'>';
+//            $htmltabla .= '<tr>';
             $htmltabla .= '<td style="padding: 5px">' . $item['remedio'] . '</td >';
             $htmltabla .= '<td>' . $item['suma_analisis_combinado'] . '</td >';
             $htmltabla .= '<td>' . $item['reino'] . '</td >';
             $htmltabla .= '<td align="center"><span style="font-size: 20px; color: #0b67cd">' . $clave . '</span></td >';
             $htmltabla .= '<td>' . $notavalue . '</td>';
             $htmltabla .= '</tr>';
+            $count++;
         }
 
 
