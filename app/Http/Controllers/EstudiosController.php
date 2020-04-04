@@ -1464,7 +1464,7 @@ class EstudiosController extends AppBaseController
         return false;
     }
 
-    public function calcularAnalisisCombinadoXremedio($remedio, $data, $predominante, $rsm9, $filtro1, $filtro2, $filtro3, $filtro4, $filtro5)
+    public function calcularAnalisisCombinadoXremedio($remedio, $data, $predominante, $rsm9, $filtro1, $filtro2, $filtro3, $filtro4, $filtro5, $simetria=0)
     {
 
         $analisisCombinadoXremedio = array();
@@ -1506,17 +1506,23 @@ class EstudiosController extends AppBaseController
         $reinoRemedio = explode('/', $remedioReino['reino']);
 
         $res_Impregnancia = 0;
-        if (count($reinoRemedio) > 1) {
-            foreach ($reinoRemedio as $item) {
-                if ($predominante == $item) {
-                    $res_Impregnancia = 1;
+
+        $calculoImpregnancia = 0;
+        if ($simetria == 9) {
+            $res_Impregnancia = 1;
+        }else{
+            if (count($reinoRemedio) > 1) {
+                foreach ($reinoRemedio as $item) {
+                    if ($predominante == $item) {
+                        $res_Impregnancia = 1;
+                    }
                 }
-            }
-        } else {
-            if ($predominante == $reinoRemedio[0]) {
-                $res_Impregnancia = 1;
             } else {
-                $res_Impregnancia = 0;
+                if ($predominante == $reinoRemedio[0]) {
+                    $res_Impregnancia = 1;
+                } else {
+                    $res_Impregnancia = 0;
+                }
             }
         }
 
@@ -1553,7 +1559,7 @@ class EstudiosController extends AppBaseController
         return $analisisCombinadoXremedio;
     }
 
-    public function calcularAnalisisCombinado($remedios, $data, $predominante, $filtro1,$filtro2,$filtro3,$filtro4,$filtro5)
+    public function calcularAnalisisCombinado($remedios, $data, $predominante, $filtro1,$filtro2,$filtro3,$filtro4,$filtro5,$simetria=0)
     {
 
         $rsm9 = $this->existenRsm9($remedios, $data);
@@ -1561,7 +1567,7 @@ class EstudiosController extends AppBaseController
         $analisisCombinado = array();
 
         foreach ($remedios as $index => $remedio) {
-            $analisisCombinado[$index] = $this->calcularAnalisisCombinadoXremedio($remedio, $data, $predominante, $rsm9, $filtro1,$filtro2,$filtro3,$filtro4,$filtro5);
+            $analisisCombinado[$index] = $this->calcularAnalisisCombinadoXremedio($remedio, $data, $predominante, $rsm9, $filtro1,$filtro2,$filtro3,$filtro4,$filtro5,$simetria);
         }
 
         return $analisisCombinado;
@@ -1676,15 +1682,26 @@ class EstudiosController extends AppBaseController
             }
 
             $htmltabla .= '<tr '.$classColor.'>';
+            $htmltabla .= '<td align="center">' . $item['reino'] . '</td >';
             $htmltabla .= '<td><a href="#ex1" rel="modal:open" class="btnDescripcion" data-idremedio="' . $item['remedio_id'] . '">' . $item['remedio'] . '</a></td >';
             $htmltabla .= '<td class="font-weight-bold" align="center">' . $item['suma_analisis_combinado'] . '</td >';
-            $htmltabla .= '<td align="center">' . $item['reino'] . '</td >';
             $htmltabla .= '<td align="center">' . $clave . '</td >';
             $htmltabla .= '<td><div class="input-group" >';
             $htmltabla .= '<input id="nota' . $item['remedio_id'] . '" type = "text" class="form-control" placeholder = "" value="' . $notavalue . '" maxlength="20"><div class="input-group-append" >';
             $htmltabla .= '<button class="btn btn-success btnGuardarNota" data-remedioid="' . $item['remedio_id'] . '" type = "button" ><i class="fas fa-save" ></i ></button >';
             $htmltabla .= '&nbsp;<div id="msg' . $item['remedio_id'] . '"></div></div ></div></td>';
             $htmltabla .= '</tr>';
+
+//            $htmltabla .= '<tr '.$classColor.'>';
+//            $htmltabla .= '<td><a href="#ex1" rel="modal:open" class="btnDescripcion" data-idremedio="' . $item['remedio_id'] . '">' . $item['remedio'] . '</a></td >';
+//            $htmltabla .= '<td class="font-weight-bold" align="center">' . $item['suma_analisis_combinado'] . '</td >';
+//            $htmltabla .= '<td align="center">' . $item['reino'] . '</td >';
+//            $htmltabla .= '<td align="center">' . $clave . '</td >';
+//            $htmltabla .= '<td><div class="input-group" >';
+//            $htmltabla .= '<input id="nota' . $item['remedio_id'] . '" type = "text" class="form-control" placeholder = "" value="' . $notavalue . '" maxlength="20"><div class="input-group-append" >';
+//            $htmltabla .= '<button class="btn btn-success btnGuardarNota" data-remedioid="' . $item['remedio_id'] . '" type = "button" ><i class="fas fa-save" ></i ></button >';
+//            $htmltabla .= '&nbsp;<div id="msg' . $item['remedio_id'] . '"></div></div ></div></td>';
+//            $htmltabla .= '</tr>';
             $count++;
         }
 
@@ -1708,7 +1725,8 @@ class EstudiosController extends AppBaseController
             $input['filtro2'],
             $input['filtro3'],
             $input['filtro4'],
-            $input['filtro5']
+            $input['filtro5'],
+            $input['simetria']
         );
 
         $AnalisisCombinados = collect($AnalisisCombinados)->sortByDesc('suma')->toArray();
