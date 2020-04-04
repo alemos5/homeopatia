@@ -3,6 +3,7 @@
 <hr>
 <div class="row">
     <div style="width: 100%; height:55px;" class="progress">
+        <input type="hidden" id="simetriaEstudio" value="<?php echo $result['general']['pregnancia']; ?>">
         <?php
         $simetria = $result['general']['pregnancia'];
         $animal = $result['reino']["animal"];

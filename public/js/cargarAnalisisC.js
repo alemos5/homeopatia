@@ -8,6 +8,7 @@ function cargarAnalisisC (filtro1, filtro2, filtro3, filtro4, filtro5) {
     let data = $('#data').val();
     let predominante = $('#predominante').val();
     let estudio_id = $('#estudio_id').val();
+    let simetria = $('#simetriaEstudio').val();
 
     $.ajax({
         type:'POST',
@@ -21,7 +22,8 @@ function cargarAnalisisC (filtro1, filtro2, filtro3, filtro4, filtro5) {
             filtro2: filtro2,
             filtro3: filtro3,
             filtro4: filtro4,
-            filtro5: filtro5
+            filtro5: filtro5,
+            simetria: simetria
         },
         success:function(filas){
             $('#data-table-analisis-combinado tbody').html(filas);
