@@ -197,3 +197,8 @@ Route::group(['middleware' => array('auth', 'verified')], function () {
 //    })->name('promociones');
 //
 //});
+
+
+Route::resource('estudiosRemedios', 'EstudiosRemediosController');
+
+Route::resource('estudiosRemedios', 'EstudiosRemediosController');

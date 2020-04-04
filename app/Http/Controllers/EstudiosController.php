@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Creditos;
 use App\EstudioNota;
 use App\Models\Estudios;
+use App\Models\EstudiosRemedios;
 use App\Models\Remedios;
 use App\Repositories\EstudiosRepository;
 use App\Http\Controllers\AppBaseController;
@@ -1573,103 +1574,53 @@ class EstudiosController extends AppBaseController
         return $analisisCombinado;
     }
 
-    public function calcularAnalisis(Request $request)
+    public function getTableRemedioEstudio($estudio_id, $ordenSac = 0, $ordenAlfa = 0, $ordenReino = 0)
     {
 
-        $input = $request->all();
-
-        $estudio_id = $input['estudio_id'];
-        $remedios = json_decode($input['remedios']);
-        $data = (array)json_decode($input['data']);
-        $predominante = json_decode($input['predominante']);
-        $rsm9 = $this->existenRsm9($remedios, $data);
-        $analisis = array();
-
-        $filtro1 = $input['filtro1'];
-        $filtro2 = $input['filtro2'];
-        $filtro3 = $input['filtro3'];
-        $filtro4 = $input['filtro4'];
-        $filtro5 = $input['filtro5'];
-
-        foreach ($remedios as $index => $remedio) {
-
-            $analisisCombinado = $this->calcularAnalisisCombinadoXremedio($remedio, $data, $predominante, $rsm9, $filtro1, $filtro2, $filtro3, $filtro4, $filtro5);
-            $remedioReino = $this->getImgReino($remedio->pregnancia);
-
-            $analisis[$index]['remedio_id'] = $remedio->id;
-            $analisis[$index]['remedio'] = $remedio->nombre;
-            $analisis[$index]['suma_analisis_combinado'] = $analisisCombinado['suma'];
-            $analisis[$index]['reino'] = $remedioReino['reino'];
-            $analisis[$index]['clave'] = $remedio->tipoRemedioClave;
-            $analisis[$index]['pregnancia'] = $remedio->pregnancia;
-        }
-
-        foreach ($analisis as $clave => $fila) {
-            $ordenarSumas[$clave] = $fila['suma_analisis_combinado'];
-            $ordenarRemedio[$clave] = $fila['remedio'];
-            $ordenarReino[$clave] = $fila['reino'];
-        }
-
-        if ($input['orden1'] and $input['orden2'] and $input['orden3']) { //Todos
-            array_multisort($ordenarReino, SORT_ASC, $ordenarRemedio, SORT_ASC, $ordenarSumas, SORT_DESC, $analisis);
-        } elseif ($input['orden1'] and $input['orden2'] and !$input['orden3']) { //Todos menos el reino
-            array_multisort($ordenarSumas, SORT_DESC, $ordenarRemedio, SORT_ASC, $analisis);
-        } elseif ($input['orden1'] and !$input['orden2'] and !$input['orden3']) { //Solo las sumas
-            array_multisort($ordenarSumas, SORT_DESC, $analisis);
-
-        } elseif (!$input['orden1'] and $input['orden2'] and $input['orden3']) { //Todos menos suma
-            array_multisort($ordenarRemedio, SORT_ASC, $ordenarReino, SORT_ASC, $analisis);
-
-        } elseif (!$input['orden1'] and $input['orden2'] and !$input['orden3']) { //Solo Remedio
-            array_multisort($ordenarRemedio, SORT_ASC, $analisis);
-        } elseif ($input['orden1'] and !$input['orden2'] and $input['orden3']) { //Todos menos remedio
-            array_multisort($ordenarSumas, SORT_DESC, $ordenarReino, SORT_ASC, $analisis);
-        } elseif (!$input['orden1'] and !$input['orden2'] and $input['orden3']) { //Solo el reino
-            array_multisort($ordenarReino, SORT_ASC, $analisis);
-        }
-
-        $htmltabla = '';
-
-        if (isset($input['orden3']) && $input['orden3'] == "1") {
-
-            $sortArray = array();
-
-            foreach ($analisis as $person) {
-                foreach ($person as $key => $value) {
-                    if (!isset($sortArray[$key])) {
-                        $sortArray[$key] = array();
+        if ($ordenAlfa == 1 AND $ordenReino == 1) {
+            $estudioRemedios = EstudiosRemedios::where('estudio_id', $estudio_id)
+                ->orderBy('reino', 'ASC')
+                ->orderBy('medicamento', 'ASC')
+                ->get();
+        }else{
+            if ($ordenSac == 1 AND $ordenAlfa == 1) {
+//                die("aqui");
+                $estudioRemedios = EstudiosRemedios::where('estudio_id', $estudio_id)
+                    ->orderBy('medicamento', 'ASC')
+                    ->orderBy('sac', 'ASC')
+                    ->get();
+            }else{
+                if ($ordenSac == 1 AND $ordenReino == 1) {
+                    $estudioRemedios = EstudiosRemedios::where('estudio_id', $estudio_id)
+                        ->orderBy('reino', 'ASC')
+                        ->orderBy('sac', 'ASC')
+                        ->get();
+                }else{
+                    if ($ordenSac == 1 AND $ordenAlfa == 1 AND $ordenReino == 1) {
+                        $estudioRemedios = EstudiosRemedios::where('estudio_id', $estudio_id)
+                            ->orderBy('medicamento', 'ASC')
+                            ->orderBy('reino', 'ASC')
+                            ->orderBy('sac', 'ASC')
+                            ->get();
+                    }else{
+                        $estudioRemedios = EstudiosRemedios::where('estudio_id', $estudio_id)
+                            ->orderBy('medicamento', 'ASC')
+                            ->get();
                     }
-                    $sortArray[$key][] = $value;
                 }
             }
-
-
-            array_multisort($sortArray['pregnancia'], SORT_ASC, $analisis);
-
         }
+
         $count = 0;
-        foreach ($analisis AS $item) {
-
-            $clave = '';
-            if ($item['clave']) {
-                $clave = '<i class="fas fa-circle small text-success"></i>';
-            }
-
-            $nota = EstudioNota::select('nota')
-                ->where('estudio_id', '=', $estudio_id)
-                ->where('remedio_id', '=', $item['remedio_id'])
-                ->first();
-            $notavalue = '';
-            if ($nota) {
-                $notavalue = $nota->nota;
-            }
+        $htmltabla = null;
+        foreach ($estudioRemedios as $estudioRemedio) {
 
             $classColor = null;
             if ($count == 0) {
                 $classColor = 'style="background-color: rgba(30, 136, 229, 0.35);"';
             }
 //            echo $item['reino']; die();
-            switch ($item['reino']) {
+            switch ($estudioRemedio->reino) {
                 case "Mineral":
                     $classColor = 'style="background-color: rgba(30, 136, 229, 0.35);"';
                     break;
@@ -1682,15 +1633,168 @@ class EstudiosController extends AppBaseController
             }
 
             $htmltabla .= '<tr '.$classColor.'>';
-            $htmltabla .= '<td align="center">' . $item['reino'] . '</td >';
-            $htmltabla .= '<td><a href="#ex1" rel="modal:open" class="btnDescripcion" data-idremedio="' . $item['remedio_id'] . '">' . $item['remedio'] . '</a></td >';
-            $htmltabla .= '<td class="font-weight-bold" align="center">' . $item['suma_analisis_combinado'] . '</td >';
-            $htmltabla .= '<td align="center">' . $clave . '</td >';
+            $htmltabla .= '<td align="center">' . $estudioRemedio->reino . '</td >';
+            $htmltabla .= '<td><a href="#ex1" rel="modal:open" class="btnDescripcion" data-idremedio="' . $estudioRemedio->medicamento_id  . '">' . $estudioRemedio->medicamento . '</a></td >';
+            $htmltabla .= '<td class="font-weight-bold" align="center">' . $estudioRemedio->sac . '</td >';
+            $htmltabla .= '<td align="center">' . $estudioRemedio->clave . '</td >';
             $htmltabla .= '<td><div class="input-group" >';
-            $htmltabla .= '<input id="nota' . $item['remedio_id'] . '" type = "text" class="form-control" placeholder = "" value="' . $notavalue . '" maxlength="20"><div class="input-group-append" >';
-            $htmltabla .= '<button class="btn btn-success btnGuardarNota" data-remedioid="' . $item['remedio_id'] . '" type = "button" ><i class="fas fa-save" ></i ></button >';
-            $htmltabla .= '&nbsp;<div id="msg' . $item['remedio_id'] . '"></div></div ></div></td>';
+            $htmltabla .= '<input id="nota' . $estudioRemedio->medicamento_id . '" type = "text" class="form-control" placeholder = "" value="' . $estudioRemedio->nota . '" maxlength="20"><div class="input-group-append" >';
+            $htmltabla .= '<button class="btn btn-success btnGuardarNota" data-remedioid="' . $estudioRemedio->medicamento_id . '" type = "button" ><i class="fas fa-save" ></i ></button >';
+            $htmltabla .= '&nbsp;<div id="msg' . $estudioRemedio->medicamento_id . '"></div></div ></div></td>';
             $htmltabla .= '</tr>';
+            $count++;
+        }
+        return $htmltabla;
+    }
+
+
+    public function calcularAnalisis(Request $request)
+    {
+
+        $input = $request->all();
+
+        $estudio_id = $input['estudio_id'];
+        $filtro1 = $input['filtro1'];
+        $filtro2 = $input['filtro2'];
+        $filtro3 = $input['filtro3'];
+        $filtro4 = $input['filtro4'];
+        $filtro5 = $input['filtro5'];
+        $ordenSac = $input['orden1'];
+        $ordenAlfa = $input['orden2'];
+        $ordenReino = $input['orden3'];
+        $htmltabla = '';
+        $estudioRemedios = EstudiosRemedios::where('estudio_id', $estudio_id)->first();
+        if ($estudioRemedios) {
+            return $this->getTableRemedioEstudio($estudio_id, $ordenSac, $ordenAlfa, $ordenReino);
+        }else{
+            $remedios = json_decode($input['remedios']);
+            $data = (array)json_decode($input['data']);
+            $predominante = json_decode($input['predominante']);
+            $rsm9 = $this->existenRsm9($remedios, $data);
+            $analisis = array();
+
+            $filtro1 = $input['filtro1'];
+            $filtro2 = $input['filtro2'];
+            $filtro3 = $input['filtro3'];
+            $filtro4 = $input['filtro4'];
+            $filtro5 = $input['filtro5'];
+            $orden1 = $input['orden1'];
+            $orden2 = $input['orden2'];
+            $orden3 = $input['orden3'];
+
+
+
+            foreach ($remedios as $index => $remedio) {
+
+                $analisisCombinado = $this->calcularAnalisisCombinadoXremedio($remedio, $data, $predominante, $rsm9, $filtro1, $filtro2, $filtro3, $filtro4, $filtro5);
+                $remedioReino = $this->getImgReino($remedio->pregnancia);
+
+                $analisis[$index]['remedio_id'] = $remedio->id;
+                $analisis[$index]['remedio'] = $remedio->nombre;
+                $analisis[$index]['suma_analisis_combinado'] = $analisisCombinado['suma'];
+                $analisis[$index]['reino'] = $remedioReino['reino'];
+                $analisis[$index]['clave'] = $remedio->tipoRemedioClave;
+                $analisis[$index]['pregnancia'] = $remedio->pregnancia;
+            }
+
+            foreach ($analisis as $clave => $fila) {
+                $ordenarSumas[$clave] = $fila['suma_analisis_combinado'];
+                $ordenarRemedio[$clave] = $fila['remedio'];
+                $ordenarReino[$clave] = $fila['reino'];
+            }
+
+            if ($input['orden1'] and $input['orden2'] and $input['orden3']) { //Todos
+                array_multisort($ordenarReino, SORT_ASC, $ordenarRemedio, SORT_ASC, $ordenarSumas, SORT_DESC, $analisis);
+            } elseif ($input['orden1'] and $input['orden2'] and !$input['orden3']) { //Todos menos el reino
+                array_multisort($ordenarSumas, SORT_DESC, $ordenarRemedio, SORT_ASC, $analisis);
+            } elseif ($input['orden1'] and !$input['orden2'] and !$input['orden3']) { //Solo las sumas
+                array_multisort($ordenarSumas, SORT_DESC, $analisis);
+
+            } elseif (!$input['orden1'] and $input['orden2'] and $input['orden3']) { //Todos menos suma
+                array_multisort($ordenarRemedio, SORT_ASC, $ordenarReino, SORT_ASC, $analisis);
+
+            } elseif (!$input['orden1'] and $input['orden2'] and !$input['orden3']) { //Solo Remedio
+                array_multisort($ordenarRemedio, SORT_ASC, $analisis);
+            } elseif ($input['orden1'] and !$input['orden2'] and $input['orden3']) { //Todos menos remedio
+                array_multisort($ordenarSumas, SORT_DESC, $ordenarReino, SORT_ASC, $analisis);
+            } elseif (!$input['orden1'] and !$input['orden2'] and $input['orden3']) { //Solo el reino
+                array_multisort($ordenarReino, SORT_ASC, $analisis);
+            }
+
+            $htmltabla = '';
+
+            if (isset($input['orden3']) && $input['orden3'] == "1") {
+
+                $sortArray = array();
+
+                foreach ($analisis as $person) {
+                    foreach ($person as $key => $value) {
+                        if (!isset($sortArray[$key])) {
+                            $sortArray[$key] = array();
+                        }
+                        $sortArray[$key][] = $value;
+                    }
+                }
+
+
+                array_multisort($sortArray['pregnancia'], SORT_ASC, $analisis);
+
+            }
+            $count = 0;
+            foreach ($analisis AS $item) {
+
+                $clave = '';
+                if ($item['clave']) {
+                    $clave = '<i class="fas fa-circle small text-success"></i>';
+                }
+
+                $nota = EstudioNota::select('nota')
+                    ->where('estudio_id', '=', $estudio_id)
+                    ->where('remedio_id', '=', $item['remedio_id'])
+                    ->first();
+                $notavalue = '';
+                if ($nota) {
+                    $notavalue = $nota->nota;
+                }
+
+                $classColor = null;
+                if ($count == 0) {
+                    $classColor = 'style="background-color: rgba(30, 136, 229, 0.35);"';
+                }
+//            echo $item['reino']; die();
+                switch ($item['reino']) {
+                    case "Mineral":
+                        $classColor = 'style="background-color: rgba(30, 136, 229, 0.35);"';
+                        break;
+                    case "Vegetal":
+                        $classColor = 'style="background-color: rgba(53, 210, 56, 0.35);"';
+                        break;
+                    case "Animal":
+                        $classColor = 'style="background-color: rgba(255, 70, 95, 0.35);"';
+                        break;
+                }
+
+//                $htmltabla .= '<tr '.$classColor.'>';
+//                $htmltabla .= '<td align="center">' . $item['reino'] . '</td >';
+//                $htmltabla .= '<td><a href="#ex1" rel="modal:open" class="btnDescripcion" data-idremedio="' . $item['remedio_id'] . '">' . $item['remedio'] . '</a></td >';
+//                $htmltabla .= '<td class="font-weight-bold" align="center">' . $item['suma_analisis_combinado'] . '</td >';
+//                $htmltabla .= '<td align="center">' . $clave . '</td >';
+//                $htmltabla .= '<td><div class="input-group" >';
+//                $htmltabla .= '<input id="nota' . $item['remedio_id'] . '" type = "text" class="form-control" placeholder = "" value="' . $notavalue . '" maxlength="20"><div class="input-group-append" >';
+//                $htmltabla .= '<button class="btn btn-success btnGuardarNota" data-remedioid="' . $item['remedio_id'] . '" type = "button" ><i class="fas fa-save" ></i ></button >';
+//                $htmltabla .= '&nbsp;<div id="msg' . $item['remedio_id'] . '"></div></div ></div></td>';
+//                $htmltabla .= '</tr>';
+
+                $estudiosRemedio = new EstudiosRemedios;
+                $estudiosRemedio->estudio_id = $estudio_id;
+                $estudiosRemedio->medicamento = $item['remedio'];
+                $estudiosRemedio->medicamento_id = $item['remedio_id'];
+                $estudiosRemedio->sac = $item['suma_analisis_combinado'];
+                $estudiosRemedio->reino = $item['reino'];
+                $estudiosRemedio->clave = $clave;
+                $estudiosRemedio->nota = $notavalue;
+                $estudiosRemedio->save();
+
 
 //            $htmltabla .= '<tr '.$classColor.'>';
 //            $htmltabla .= '<td><a href="#ex1" rel="modal:open" class="btnDescripcion" data-idremedio="' . $item['remedio_id'] . '">' . $item['remedio'] . '</a></td >';
@@ -1702,10 +1806,12 @@ class EstudiosController extends AppBaseController
 //            $htmltabla .= '<button class="btn btn-success btnGuardarNota" data-remedioid="' . $item['remedio_id'] . '" type = "button" ><i class="fas fa-save" ></i ></button >';
 //            $htmltabla .= '&nbsp;<div id="msg' . $item['remedio_id'] . '"></div></div ></div></td>';
 //            $htmltabla .= '</tr>';
-            $count++;
+                $count++;
+            }
+            return $this->getTableRemedioEstudio($estudio_id, $ordenSac, $ordenAlfa, $ordenReino);
+//            return $htmltabla;
         }
 
-        return $htmltabla;
     }
 
     public function calcularAnalisisC(Request $request)
@@ -1780,6 +1886,13 @@ class EstudiosController extends AppBaseController
     public function guardarNota(Request $request)
     {
         $estudioNota = EstudioNota::create($request->all());
+
+        //==== Registrar Nota en estudio_remedio ====//
+        $estudioRemedio = EstudiosRemedios::where('estudio_id', $request->estudio_id)->where('medicamento_id', $request->remedio_id)->first();
+        $estudioRemedio->nota = $request->nota;
+        $estudioRemedio->save();
+        //============================================//
+
         return $estudioNota;
     }
 
