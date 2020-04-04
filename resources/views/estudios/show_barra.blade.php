@@ -1,77 +1,171 @@
+
 <h2>{{ _i('Impregnancia') }}</h2>
 <hr>
 <div class="row">
     <div style="width: 100%; height:55px;" class="progress">
-        <?php if($result['reino']["animal"]>$result['reino']["vegetal"]){
-                if($result['reino']["animal"]>$result['reino']["mineral"]){ ?>
-                    <div class="progress-bar" role="progressbar" style="background-color: #ff465f;width: <?php echo $result['reino']["animal"]; ?>%;" aria-valuenow="<?php echo $result['reino']["animal"]; ?>" aria-valuemin="0" aria-valuemax="100"><h5 class="font-weight-bold text-left text-white pl-3">{{ _i('Simetría') }}: <?=$result['general']['pregnancia']?></h5></div>
-                    <?php if($result['reino']["vegetal"]>$result['reino']["mineral"]){ ?>
-                        <div class="progress-bar" role="progressbar" style="background-color: #35d238 ;width: <?php echo $result['reino']["vegetal"]; ?>%; font-size: 30px; " aria-valuenow="<?php echo $result['reino']["vegetal"]; ?>" aria-valuemin="0" aria-valuemax="100"></div>
-                        <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $result['reino']["mineral"]; ?>%; font-size: 30px; " aria-valuenow="<?php echo $result['reino']["mineral"]; ?>" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
+        <?php
+        $simetria = $result['general']['pregnancia'];
+        $animal = $result['reino']["animal"];
+        $mineral = $result['reino']["mineral"];
+        $vegetal = $result['reino']["vegetal"];
+?>
+            <style>
+                .bganimal{
+                    background-color: #ff465f;
+                    width: <?php echo $animal; ?>%;
+                }
+                .bgmineral{
+                    background-color: #1e88e5;
+                    width: <?php echo $mineral; ?>%;
+                }
+                .bgvegetal{
+                    background-color: #35d238;
+                    width: <?php echo $vegetal; ?>%;
+                }
+                .textanimal{
+                    width: <?php echo $mineral; ?>%;
+                    color: #ff465f;
+                    font-weight: bold
+                }
+                .textmineral{
+                    width: <?php echo $mineral; ?>%;
+                    color: #1e88e5;
+                    font-weight: bold
+                }
+                .textvegetal{
+                    width: <?php echo $mineral; ?>%;
+                    color: #35d238;
+                    font-weight: bold
+                }
+            </style>
+        <?php
+            switch ($simetria) {
+                case "1":
+                    ?>
+                        <div class="progress-bar bganimal" role="progressbar" aria-valuenow="<?php echo $animal; ?>" aria-valuemin="0" aria-valuemax="100"><h5 class="font-weight-bold text-left text-white pl-3">{{ _i('Simetría') }}: <?php echo $simetria?></h5></div>
+                        <div class="progress-bar bgmineral" role="progressbar"  aria-valuenow="<?php echo $mineral; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="progress-bar bgvegetal" role="progressbar"  aria-valuenow="<?php echo $vegetal; ?>" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <div class="row">
-                            <div style="width: <?php echo $result['reino']["animal"]; ?>%; color: #ff465f; font-weight: bold"><?php echo $result['reino']["animal"]; ?>% <br>{{ _i('Animal') }}</div>
-                            <div style="width: <?php echo $result['reino']["vegetal"]; ?>%; color: #35d238; font-weight: bold"><?php echo $result['reino']["vegetal"]; ?>% <br>{{ _i('Vegetal') }}</div>
-                            <div class="text-info" style="width: <?php echo $result['reino']["mineral"]; ?>%; font-weight: bold"><?php echo $result['reino']["mineral"]; ?>% <br>{{ _i('Mineral') }}</div>
-                        </div>
-                    <?php }else{ ?>
-                        <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $result['reino']["mineral"]; ?>%; font-size: 30px; " aria-valuenow="<?php echo $result['reino']["mineral"]; ?>" aria-valuemin="0" aria-valuemax="100"></div>
-                        <div class="progress-bar" role="progressbar" style="background-color: #35d238 ;width: <?php echo $result['reino']["vegetal"]; ?>%; font-size: 30px; " aria-valuenow="<?php echo $result['reino']["vegetal"]; ?>" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        </div>
-                        <div class="row">
-                            <div style="width: <?php echo $result['reino']["animal"]; ?>%; color: #ff465f; font-weight: bold"><?php echo $result['reino']["animal"]; ?>% <br>{{ _i('Animal') }}</div>
-                            <div class="text-info" style="width: <?php echo $result['reino']["mineral"]; ?>%; font-weight: bold"><?php echo $result['reino']["mineral"]; ?>% <br>{{ _i('Mineral') }}</div>
-                            <div style="width: <?php echo $result['reino']["vegetal"]; ?>%; color: #35d238; font-weight: bold"><?php echo $result['reino']["vegetal"]; ?>% <br>{{ _i('Vegetal') }}</div>
-                        </div>
-                    <?php } ?>
-                <?php }else{ ?>
-                    <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $result['reino']["mineral"]; ?>%; font-size: 30px; " aria-valuenow="<?php echo $result['reino']["mineral"]; ?>" aria-valuemin="0" aria-valuemax="100"><h5 class="font-weight-bold text-left text-white pl-3">{{ _i('Simetría') }}: <?=$result['general']['pregnancia']?></h5></div>
-                    <div class="progress-bar" role="progressbar" style="background-color: #ff465f;width: <?php echo $result['reino']["animal"]; ?>%;" aria-valuenow="<?php echo $result['reino']["animal"]; ?>" aria-valuemin="0" aria-valuemax="100"></div>
-                    <div class="progress-bar" role="progressbar" style="background-color: #35d238 ;width: <?php echo $result['reino']["vegetal"]; ?>%; font-size: 30px; " aria-valuenow="<?php echo $result['reino']["vegetal"]; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="row">
+                        <div class="textanimal" ><?php echo $animal; ?>% <br>{{ _i('Animal') }}</div>
+                        <div class="textmineral"><?php echo $mineral; ?>% <br>{{ _i('Mineral') }}</div>
+                        <div class="textvegetal"><?php echo $vegetal; ?>% <br>{{ _i('Vegetal') }}</div>
+                    </div>
+                    <?php
+                    break;
+                case "2":
+                    ?>
+                    <div class="progress-bar bgvegetal" role="progressbar"  aria-valuenow="<?php echo $vegetal; ?>" aria-valuemin="0" aria-valuemax="100"><h5 class="font-weight-bold text-left text-white pl-3">{{ _i('Simetría') }}: <?php echo $simetria?></h5></div>
+                    <div class="progress-bar bganimal" role="progressbar"  aria-valuenow="<?php echo $animal; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bgmineral" role="progressbar" aria-valuenow="<?php echo $mineral; ?>" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     </div>
                     <div class="row">
-                        <div class="text-info" style="width: <?php echo $result['reino']["mineral"]; ?>%; font-weight: bold"><?php echo $result['reino']["mineral"]; ?>% <br>{{ _i('Mineral') }}</div>
-                        <div style="width: <?php echo $result['reino']["animal"]; ?>%; color: #ff465f; font-weight: bold"><?php echo $result['reino']["animal"]; ?>% <br>{{ _i('Animal') }}</div>
-                        <div style="width: <?php echo $result['reino']["vegetal"]; ?>%; color: #35d238; font-weight: bold"><?php echo $result['reino']["vegetal"]; ?>% <br>{{ _i('Vegetal') }}</div>
+                        <div class="textvegetal" ><?php echo $vegetal; ?>% <br>{{ _i('Vegetal') }}</div>
+                        <div class="textanimal"><?php echo $animal; ?>% <br>{{ _i('Animal') }}</div>
+                        <div class="textmineral"><?php echo $mineral; ?>% <br>{{ _i('Mineral') }}</div>
                     </div>
-                <?php }
-            }else{
-                if($result['reino']["vegetal"]>$result['reino']["mineral"]){ ?>
-                    <div class="progress-bar" role="progressbar" style="background-color: #35d238 ;width: <?php echo $result['reino']["vegetal"]; ?>%; font-size: 30px; " aria-valuenow="<?php echo $result['reino']["vegetal"]; ?>" aria-valuemin="0" aria-valuemax="100"><h5 class="font-weight-bold text-left text-white pl-3">{{ _i('Simetría') }}: <?=$result['general']['pregnancia']?></h5></div>
-                    <?php if($result['reino']["animal"]>$result['reino']["mineral"]){ ?>
-                            <div class="progress-bar" role="progressbar" style="background-color: #ff465f;width: <?php echo $result['reino']["animal"]; ?>%;" aria-valuenow="<?php echo $result['reino']["animal"]; ?>" aria-valuemin="0" aria-valuemax="100"></div>
-                            <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $result['reino']["mineral"]; ?>%; font-size: 30px; " aria-valuenow="<?php echo $result['reino']["mineral"]; ?>" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            </div>
-                            <div class="row">
-                                <div style="width: <?php echo $result['reino']["vegetal"]; ?>%; color: #35d238; font-weight: bold"><?php echo $result['reino']["vegetal"]; ?>% <br>{{ _i('Vegetal') }}</div>
-                                <div style="width: <?php echo $result['reino']["animal"]; ?>%; color: #ff465f; font-weight: bold"><?php echo $result['reino']["animal"]; ?>% <br>{{ _i('Animal') }}</div>
-                                <div class="text-info" style="width: <?php echo $result['reino']["mineral"]; ?>%; font-weight: bold"><?php echo $result['reino']["mineral"]; ?>% <br>{{ _i('Mineral') }}</div>
-                            </div>
-                    <?php }else{?>
-                            <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $result['reino']["mineral"]; ?>%; font-size: 30px; " aria-valuenow="<?php echo $result['reino']["mineral"]; ?>" aria-valuemin="0" aria-valuemax="100"></div>
-                            <div class="progress-bar" role="progressbar" style="background-color: #ff465f;width: <?php echo $result['reino']["animal"]; ?>%;" aria-valuenow="<?php echo $result['reino']["animal"]; ?>" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            </div>
-                            <div class="row">
-                                <div style="width: <?php echo $result['reino']["vegetal"]; ?>%; color: #35d238; font-weight: bold"><?php echo $result['reino']["vegetal"]; ?>% <br>{{ _i('Vegetal') }}</div>
-                                <div class="text-info" style="width: <?php echo $result['reino']["mineral"]; ?>%; font-weight: bold"><?php echo $result['reino']["mineral"]; ?>% <br>{{ _i('Mineral') }}</div>
-                                <div style="width: <?php echo $result['reino']["animal"]; ?>%; color: #ff465f; font-weight: bold"><?php echo $result['reino']["animal"]; ?>% <br>{{ _i('Animal') }}</div>
-                            </div>
-                    <?php } ?>
-                <?php }else{?>
-                        <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $result['reino']["mineral"]; ?>%; font-size: 30px; " aria-valuenow="<?php echo $result['reino']["mineral"]; ?>" aria-valuemin="0" aria-valuemax="100"><h5 class="font-weight-bold text-left text-white pl-3">{{ _i('Simetría') }}: <?=$result['general']['pregnancia']?></h5></div>
-                        <div class="progress-bar" role="progressbar" style="background-color: #ff465f;width: <?php echo $result['reino']["animal"]; ?>%;" aria-valuenow="<?php echo $result['reino']["animal"]; ?>" aria-valuemin="0" aria-valuemax="100"></div>
-                        <div class="progress-bar" role="progressbar" style="background-color: #35d238 ;width: <?php echo $result['reino']["vegetal"]; ?>%; font-size: 30px; " aria-valuenow="<?php echo $result['reino']["vegetal"]; ?>" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        </div>
-                        <div class="row">
-                            <div class="text-info" style="width: <?php echo $result['reino']["mineral"]; ?>%; font-weight: bold"><?php echo $result['reino']["mineral"]; ?>% <br>{{ _i('Mineral') }}</div>
-                            <div style="width: <?php echo $result['reino']["animal"]; ?>%; color: #ff465f; font-weight: bold"><?php echo $result['reino']["animal"]; ?>% <br>{{ _i('Animal') }}</div>
-                            <div style="width: <?php echo $result['reino']["vegetal"]; ?>%; color: #35d238; font-weight: bold"><?php echo $result['reino']["vegetal"]; ?>% <br>{{ _i('Vegetal') }}</div>
-                        </div>
-                <?php } ?>
-            <?php } ?>
+                    <?php
+                    break;
+                case "3":
+                    ?>
+                    <div class="progress-bar bgmineral" role="progressbar" aria-valuenow="<?php echo $mineral; ?>" aria-valuemin="0" aria-valuemax="100"><h5 class="font-weight-bold text-left text-white pl-3">{{ _i('Simetría') }}: <?php echo $simetria?></h5></div>
+                    <div class="progress-bar bgvegetal" role="progressbar"  aria-valuenow="<?php echo $vegetal; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bganimal" role="progressbar" aria-valuenow="<?php echo $animal; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="textmineral"><?php echo $mineral; ?>% <br>{{ _i('Mineral') }}</div>
+                        <div class="textvegetal"><?php echo $vegetal; ?>% <br>{{ _i('Vegetal') }}</div>
+                        <div class="textanimal"><?php echo $animal; ?>% <br>{{ _i('Animal') }}</div>
+                    </div>
+                    <?php
+                    break;
+                case "4":
+                    ?>
+                    <div class="progress-bar bgmineral" role="progressbar" aria-valuenow="<?php echo $mineral; ?>" aria-valuemin="0" aria-valuemax="100"><h5 class="font-weight-bold text-left text-white pl-3">{{ _i('Simetría') }}: <?php echo $simetria?></h5></div>
+                    <div class="progress-bar bganimal" role="progressbar"  aria-valuenow="<?php echo $animal; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bgvegetal" role="progressbar"  aria-valuenow="<?php echo $vegetal; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="textmineral"><?php echo $mineral; ?>% <br>{{ _i('Mineral') }}</div>
+                        <div class="textanimal"><?php echo $animal; ?>% <br>{{ _i('Animal') }}</div>
+                        <div class="textvegetal"><?php echo $vegetal; ?>% <br>{{ _i('Vegetal') }}</div>
+                    </div>
+                    <?php
+                    break;
+                case "5":
+                    ?>
+                    <div class="progress-bar bganimal" role="progressbar" aria-valuenow="<?php echo $animal; ?>" aria-valuemin="0" aria-valuemax="100"><h5 class="font-weight-bold text-left text-white pl-3">{{ _i('Simetría') }}: <?php echo $simetria?></h5></div>
+                    <div class="progress-bar bgvegetal" role="progressbar" aria-valuenow="<?php echo $vegetal; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bgmineral" role="progressbar" aria-valuenow="<?php echo $mineral; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="textanimal" ><?php echo $animal; ?>% <br>{{ _i('Animal') }}</div>
+                        <div class="textvegetal"><?php echo $vegetal; ?>% <br>{{ _i('Vegetal') }}</div>
+                        <div class="textmineral"><?php echo $mineral; ?>% <br>{{ _i('Mineral') }}</div>
+                    </div>
+                    <?php
+                    break;
+                case "6":
+                    ?>
+                    <div class="progress-bar bgvegetal" role="progressbar"  aria-valuenow="<?php echo $vegetal; ?>" aria-valuemin="0" aria-valuemax="100"><h5 class="font-weight-bold text-left text-white pl-3">{{ _i('Simetría') }}: <?php echo $simetria?></h5></div>
+                    <div class="progress-bar bgmineral" role="progressbar"  aria-valuenow="<?php echo $mineral; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bganimal" role="progressbar" aria-valuenow="<?php echo $animal; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="textvegetal" ><?php echo $vegetal; ?>% <br>{{ _i('Vegetal') }}</div>
+                        <div class="textmineral"><?php echo $mineral; ?>% <br>{{ _i('Mineral') }}</div>
+                        <div class="textanimal"><?php echo $animal; ?>% <br>{{ _i('Animal') }}</div>
+                    </div>
+                    <?php
+                    break;
+                case "7":
+                    ?>
+                    <div class="progress-bar bgvegetal" role="progressbar"  aria-valuenow="<?php echo $vegetal; ?>" aria-valuemin="0" aria-valuemax="100"><h5 class="font-weight-bold text-left text-white pl-3">{{ _i('Simetría') }}: <?php echo $simetria?></h5></div>
+                    <div class="progress-bar bganimal" role="progressbar"  aria-valuenow="<?php echo $animal; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bgmineral" role="progressbar" aria-valuenow="<?php echo $mineral; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="textvegetal" ><?php echo $vegetal; ?>% <br>{{ _i('Vegetal') }}</div>
+                        <div class="textanimal"><?php echo $animal; ?>% <br>{{ _i('Animal') }}</div>
+                        <div class="textmineral"><?php echo $mineral; ?>% <br>{{ _i('Mineral') }}</div>
+                    </div>
+                    <?php
+                    break;
+                case "8":
+                    ?>
+                    <div class="progress-bar bgmineral" role="progressbar" aria-valuenow="<?php echo $mineral; ?>" aria-valuemin="0" aria-valuemax="100"><h5 class="font-weight-bold text-left text-white pl-3">{{ _i('Simetría') }}: <?php echo $simetria?></h5></div>
+                    <div class="progress-bar bganimal" role="progressbar"  aria-valuenow="<?php echo $animal; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bgvegetal" role="progressbar"  aria-valuenow="<?php echo $vegetal; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="textmineral"><?php echo $mineral; ?>% <br>{{ _i('Mineral') }}</div>
+                        <div class="textanimal"><?php echo $animal; ?>% <br>{{ _i('Animal') }}</div>
+                        <div class="textvegetal"><?php echo $vegetal; ?>% <br>{{ _i('Vegetal') }}</div>
+                    </div>
+                    <?php
+                    break;
+                case "9":
+                    ?>
+                    <div class="progress-bar bganimal" role="progressbar" aria-valuenow="<?php echo $animal; ?>" aria-valuemin="0" aria-valuemax="100"><h5 class="font-weight-bold text-left text-white pl-3">{{ _i('Simetría') }}: <?php echo $simetria?></h5></div>
+                    <div class="progress-bar bgmineral" role="progressbar"  aria-valuenow="<?php echo $mineral; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bgvegetal" role="progressbar"  aria-valuenow="<?php echo $vegetal; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="textanimal" ><?php echo $animal; ?>% <br>{{ _i('Animal') }}</div>
+                        <div class="textmineral"><?php echo $mineral; ?>% <br>{{ _i('Mineral') }}</div>
+                        <div class="textvegetal"><?php echo $vegetal; ?>% <br>{{ _i('Vegetal') }}</div>
+                    </div>
+                    <?php
+                    break;
+            }
+            ?>
+
