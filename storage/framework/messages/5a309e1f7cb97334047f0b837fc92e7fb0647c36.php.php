@@ -42,10 +42,10 @@
             <table id="cuadro" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                 <thead style="background-color: #818181; color: #FFF">
                 <tr>
-                    <th class="text-center"><?php echo e(_i('Medicamento')); ?></th>
-                    <th class="text-center"><?php echo e(_i('SAC')); ?></th>
                     <th class="text-center"><?php echo e(_i('Reino')); ?></th>
+                    <th class="text-center"><?php echo e(_i('Medicamento')); ?></th>
                     <th style="display:none;" class="text-center"><?php echo e(_i('Pregnancia')); ?></th>
+                    <th class="text-center"><?php echo e(_i('SAC')); ?></th>
                     <th class="text-center"><?php echo e(_i('Claves')); ?></th>
                     <th class="text-center" style="width: 20em"><?php echo e(_i('Notas')); ?></th>
                 </tr>

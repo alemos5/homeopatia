@@ -45,7 +45,7 @@
         #tablaMedicamentos tr:nth-child(even) {
             background-color: #f2f4f8;
         }
-        
+
         .bgGris{
             background-color: rgba(15, 15, 20, 0.67);
             color: #FFF;
@@ -75,10 +75,10 @@
         <td>
             <?php if($estudios->tipo=='humano'): ?>
                 <table width="100%" style="font-size: 12px">
-                    <tr>
-                        <td><b><?php echo e(_i('Tipo de Estudio')); ?>:</b></td>
-                        <td><?php echo $estudios->tipo; ?></td>
-                    </tr>
+
+
+
+
                     <tr>
                         <td><b><?php echo e(_i('Nombre')); ?>:</b></td>
                         <td><?php echo $estudios->h_nombre; ?></td>

@@ -30,7 +30,11 @@
                             <img src="<?php echo e(asset('images/logo-web-casillero.jpg')); ?>" alt="Home" style="height: 7em"/>
                             <br/>
                         </a>
+                        <div class="alert alert-warning alert-dismissible fade show">
+                            <strong>¡<?php echo e(_i('Atención')); ?>!</strong> <?php echo e(_i('Si es primera vez que ingresa, su usuario y clave es su correo electrónico')); ?>
 
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        </div>
                         <div class="form-group m-t-40">
                             <?php if(Session::has('error')): ?>
                                 <div class="alert alert-danger">
