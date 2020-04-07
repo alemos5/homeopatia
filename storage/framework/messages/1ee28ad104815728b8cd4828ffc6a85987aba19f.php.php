@@ -31,8 +31,15 @@
                             <br/>
                         </a>
                         <div class="alert alert-warning alert-dismissible fade show">
-                            <strong>¡<?php echo e(_i('Atención')); ?>!</strong> <?php echo e(_i('Si es primera vez que ingresa, su usuario y clave es su correo electrónico')); ?>
+                            <p style="text-align: justify">
+                                <?php echo e(_i('Atención: si es la primera vez que ingresa al nuevo sistema le informamos que por única vez deberá cargar su nombre de usuario del sistema anterior tanto en el sector Usuario y Contraseña.')); ?>
 
+                            </p>
+                            <br>
+                            <p style="text-align: justify">
+                                <?php echo e(_i('Una vez hecho esto el nuevo sistema le pedirá que cargue una nueva clave que le servirá para ingresar de aquí en más al Algoritmo Candegabe')); ?>
+
+                            </p>
                             <button type="button" class="close" data-dismiss="alert">&times;</button>
                         </div>
                         <div class="form-group m-t-40">
