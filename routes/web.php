@@ -162,7 +162,7 @@ Route::group(['middleware' => array('auth', 'verified')], function () {
     #Estudios Medicos
     Route::resource('estudios', 'EstudiosController');
     //Route::get('estudioPDF/{estudios}/{remedios}/{clave}/{pregnancia}/{vegetal}/{mineral}/{animal}', 'EstudiosController@estudioPDF')->name('estudios.estudioPDF');
-    Route::get('estudioPDF/{estudios}/{clave}/{pregnancia}/{vegetal}/{mineral}/{animal}', 'EstudiosController@estudioPDF')->name('estudios.estudioPDF');
+    Route::get('estudioPDF/{estudios}/{clave}/{pregnancia}/{vegetal}/{mineral}/{animal}/{sac}/{alfabeto}/{reino}', 'EstudiosController@estudioPDF')->name('estudios.estudioPDF');
 
     #CRemedios
     Route::resource('cremedios', 'CremediosController');

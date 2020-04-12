@@ -1,6 +1,9 @@
 function cargarAnalisis (orden1,orden2,orden3, filtro1, filtro2, filtro3, filtro4, filtro5) {
 
-
+    // document.getElementById('print_report').href = 'http://www.briored.com/category/javascript/';
+    let url_origin = $('#url_origin').val();
+    url_origin += "/"+orden1+"/"+orden2+"/"+orden3;
+    $("#print_report").attr("href", url_origin);
     let espera = `<svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2"></circle></svg>`;
     $('#cuadro tbody').html(espera);
 
@@ -9,6 +12,8 @@ function cargarAnalisis (orden1,orden2,orden3, filtro1, filtro2, filtro3, filtro
     let data = $('#data').val();
     let predominante = $('#predominante').val();
     let estudio_id = $('#estudio_id').val();
+
+
 
     $.ajax({
         type:'POST',

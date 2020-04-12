@@ -1574,27 +1574,25 @@ class EstudiosController extends AppBaseController
         return $analisisCombinado;
     }
 
-    public function getTableRemedioEstudio($estudio_id, $ordenSac = 0, $ordenAlfa = 0, $ordenReino = 0)
+    public function getTableRemedioEstudio($estudio_id, $ordenSac = 0, $ordenAlfa = 0, $ordenReino = 0, $nota = 1)
     {
 
+        //Filtros “Alfabeticamente” + “Reino”
         if ($ordenAlfa == 1 AND $ordenReino == 1) {
             $estudioRemedios = EstudiosRemedios::where('estudio_id', $estudio_id)
-                ->orderBy('reino', 'ASC')
-                ->orderBy('medicamento', 'ASC')
-                ->get();
+                ->orderByRaw("FIELD (reino, 'Mineral', 'Vegetal', 'Animal', 'Mineral/Vegetal', 'Mineral/Animal', 'Vegetal/Animal', 'Imponderable') ASC, medicamento ASC")->get();
         }else{
+
+            //Filtros “Alfabéticamente” + “SAC”
             if ($ordenSac == 1 AND $ordenAlfa == 1) {
-//                die("aqui");
                 $estudioRemedios = EstudiosRemedios::where('estudio_id', $estudio_id)
-                    ->orderBy('medicamento', 'ASC')
-                    ->orderBy('sac', 'ASC')
-                    ->get();
+                    ->orderByRaw('sac DESC, medicamento ASC')->get();
             }else{
+
+                //Filtros “SAC” + “Reino”
                 if ($ordenSac == 1 AND $ordenReino == 1) {
                     $estudioRemedios = EstudiosRemedios::where('estudio_id', $estudio_id)
-                        ->orderBy('reino', 'ASC')
-                        ->orderBy('sac', 'ASC')
-                        ->get();
+                        ->orderByRaw("FIELD (reino, 'Mineral', 'Vegetal', 'Animal', 'Mineral/Vegetal', 'Mineral/Animal', 'Vegetal/Animal', 'Imponderable') ASC, sac DESC")->get();
                 }else{
                     if ($ordenSac == 1 AND $ordenAlfa == 1 AND $ordenReino == 1) {
                         $estudioRemedios = EstudiosRemedios::where('estudio_id', $estudio_id)
@@ -1603,9 +1601,27 @@ class EstudiosController extends AppBaseController
                             ->orderBy('sac', 'ASC')
                             ->get();
                     }else{
-                        $estudioRemedios = EstudiosRemedios::where('estudio_id', $estudio_id)
-                            ->orderBy('medicamento', 'ASC')
-                            ->get();
+                        //Sólo Filtro “Reino”
+                        if ($ordenReino == 1) {
+                            $estudioRemedios = EstudiosRemedios::where('estudio_id', $estudio_id)
+                                ->orderByRaw("FIELD (reino, 'Mineral', 'Vegetal', 'Animal', 'Mineral/Vegetal', 'Mineral/Animal', 'Vegetal/Animal', 'Imponderable') ASC, medicamento ASC")->get();
+                        }else{
+                            //Sólo filtro “SAC”
+                            if ($ordenSac == 1) {
+                                $estudioRemedios = EstudiosRemedios::where('estudio_id', $estudio_id)
+                                    ->orderByRaw("sac DESC, medicamento ASC")->get();
+                            }else{
+                                //Sólo filtro “Alfabeto”
+                                if ($ordenAlfa == 1) {
+                                    $estudioRemedios = EstudiosRemedios::where('estudio_id', $estudio_id)
+                                        ->orderByRaw("medicamento ASC")->get();
+                                }else{
+                                    $estudioRemedios = EstudiosRemedios::where('estudio_id', $estudio_id)
+                                        ->orderBy('medicamento', 'ASC')
+                                        ->get();
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -1630,17 +1646,42 @@ class EstudiosController extends AppBaseController
                 case "Animal":
                     $classColor = 'style="background-color: rgba(255, 70, 95, 0.35);"';
                     break;
+                case "Mineral/Animal":
+                    $classColor = 'style="background-color: #CDA1D4;"';
+                    break;
+                case "Mineral/Vegetal":
+                    $classColor = 'style="background-color: #B8F1F2;"';
+                    break;
+                case "Vegetal/Animal":
+                    $classColor = 'style="background-color: #E9F2B8;"';
+                    break;
+                case "Imponderable":
+                    $classColor = 'style="background-color: #D9D9D9;"';
+                    break;
             }
-
+            $clave = '<img src="./images/estrella.png" alt="">';
             $htmltabla .= '<tr '.$classColor.'>';
             $htmltabla .= '<td align="center">' . $estudioRemedio->reino . '</td >';
-            $htmltabla .= '<td><a href="#ex1" rel="modal:open" class="btnDescripcion" data-idremedio="' . $estudioRemedio->medicamento_id  . '">' . $estudioRemedio->medicamento . '</a></td >';
+            if ($nota == 1) {
+                $htmltabla .= '<td><a href="#ex1" rel="modal:open" class="btnDescripcion" data-idremedio="' . $estudioRemedio->medicamento_id . '">' . $estudioRemedio->medicamento . '</a></td >';
+            }else{
+                $htmltabla .= '<td>' . $estudioRemedio->medicamento . '</td >';
+            }
             $htmltabla .= '<td class="font-weight-bold" align="center">' . $estudioRemedio->sac . '</td >';
-            $htmltabla .= '<td align="center">' . $estudioRemedio->clave . '</td >';
-            $htmltabla .= '<td><div class="input-group" >';
-            $htmltabla .= '<input id="nota' . $estudioRemedio->medicamento_id . '" type = "text" class="form-control" placeholder = "" value="' . $estudioRemedio->nota . '" maxlength="20"><div class="input-group-append" >';
-            $htmltabla .= '<button class="btn btn-success btnGuardarNota" data-remedioid="' . $estudioRemedio->medicamento_id . '" type = "button" ><i class="fas fa-save" ></i ></button >';
-            $htmltabla .= '&nbsp;<div id="msg' . $estudioRemedio->medicamento_id . '"></div></div ></div></td>';
+            if ($nota == 1){
+                $htmltabla .= '<td align="center">' . $estudioRemedio->clave . '</td >';
+                $htmltabla .= '<td><div class="input-group" >';
+                $htmltabla .= '<input id="nota' . $estudioRemedio->medicamento_id . '" type = "text" class="form-control" placeholder = "" value="' . $estudioRemedio->nota . '" maxlength="20"><div class="input-group-append" >';
+                $htmltabla .= '<button class="btn btn-success btnGuardarNota" data-remedioid="' . $estudioRemedio->medicamento_id . '" type = "button" ><i class="fas fa-save" ></i ></button >';
+                $htmltabla .= '&nbsp;<div id="msg' . $estudioRemedio->medicamento_id . '"></div></div ></div></td>';
+            }else{
+                if($estudioRemedio->clave){
+                    $htmltabla .= '<td align="center"><span style="font-size: 20px; color: #0b67cd">'.$clave.'</span></td >';
+                }else{
+                    $htmltabla .= '<td align="center">' . $estudioRemedio->clave . '</td >';
+                }
+                $htmltabla .= '<td><center>'.$estudioRemedio->nota.'</center></td>';
+            }
             $htmltabla .= '</tr>';
             $count++;
         }
@@ -1762,6 +1803,7 @@ class EstudiosController extends AppBaseController
                     $classColor = 'style="background-color: rgba(30, 136, 229, 0.35);"';
                 }
 //            echo $item['reino']; die();
+//                switch ($item['reino']) {
                 switch ($item['reino']) {
                     case "Mineral":
                         $classColor = 'style="background-color: rgba(30, 136, 229, 0.35);"';
@@ -1771,6 +1813,18 @@ class EstudiosController extends AppBaseController
                         break;
                     case "Animal":
                         $classColor = 'style="background-color: rgba(255, 70, 95, 0.35);"';
+                        break;
+                    case "Mineral/Animal":
+                        $classColor = 'style="background-color: #CDA1D4;"';
+                        break;
+                    case "Mineral/Vegetal":
+                        $classColor = 'style="background-color: #B8F1F2;"';
+                        break;
+                    case "Vegetal/Animal":
+                        $classColor = 'style="background-color: #E9F2B8;"';
+                        break;
+                    case "Imponderable":
+                        $classColor = 'style="background-color: #D9D9D9;"';
                         break;
                 }
 
@@ -1970,7 +2024,7 @@ class EstudiosController extends AppBaseController
         return $secuenciaPaciente;
     }
 
-    public function estudioPDF(Estudios $estudios, $clave, $pregnancia, $vegetal, $mineral, $animal)
+    public function estudioPDF(Estudios $estudios, $clave, $pregnancia, $vegetal, $mineral, $animal, $sac = 0, $alfabeto = 0, $reino = 0)
     {
 
         if ($clave) {
@@ -2025,50 +2079,64 @@ class EstudiosController extends AppBaseController
 
         $htmltabla = '';
         $count = 0;
-        foreach ($analisis AS $item) {
-
-            $clave = '';
-            if ($item['clave']) {
-                $clave = '<img src="./images/estrella.png" alt="">';
-//                $clave = '*';
-            }
-
-            $nota = EstudioNota::select('nota')
-                ->where('estudio_id', '=', $estudio_id)
-                ->where('remedio_id', '=', $item['remedio_id'])
-                ->first();
-            $notavalue = '';
-            if ($nota) {
-                $notavalue = $nota->nota;
-            }
-
-            $classColor = null;
-            if ($count == 0) {
-                $classColor = 'style="background-color: rgba(30, 136, 229, 0.35);"';
-            }
-//            echo $item['reino']; die();
-            switch ($item['reino']) {
-                case "Mineral":
-                    $classColor = 'style="background-color: rgba(30, 136, 229, 0.35);"';
-                    break;
-                case "Vegetal":
-                    $classColor = 'style="background-color: rgba(53, 210, 56, 0.35);"';
-                    break;
-                case "Animal":
-                    $classColor = 'style="background-color: rgba(255, 70, 95, 0.35);"';
-                    break;
-            }
-
-            $htmltabla .= '<tr '.$classColor.'>';
-//            $htmltabla .= '<tr>';
-            $htmltabla .= '<td style="padding: 5px">' . $item['remedio'] . '</td >';
-            $htmltabla .= '<td>' . $item['suma_analisis_combinado'] . '</td >';
-            $htmltabla .= '<td>' . $item['reino'] . '</td >';
-            $htmltabla .= '<td align="center"><span style="font-size: 20px; color: #0b67cd">' . $clave . '</span></td >';
-            $htmltabla .= '<td>' . $notavalue . '</td>';
-            $htmltabla .= '</tr>';
-            $count++;
-        }
+//        foreach ($analisis AS $item) {
+//
+//            $clave = '';
+//            if ($item['clave']) {
+//                $clave = '<img src="./images/estrella.png" alt="">';
+////                $clave = '*';
+//            }
+//
+//            $nota = EstudioNota::select('nota')
+//                ->where('estudio_id', '=', $estudio_id)
+//                ->where('remedio_id', '=', $item['remedio_id'])
+//                ->first();
+//            $notavalue = '';
+//            if ($nota) {
+//                $notavalue = $nota->nota;
+//            }
+//
+//            $classColor = null;
+//            if ($count == 0) {
+//                $classColor = 'style="background-color: rgba(30, 136, 229, 0.35);"';
+//            }
+////            echo $item['reino']; die();
+//            switch ($item['reino']) {
+//                case "Mineral":
+//                    $classColor = 'style="background-color: rgba(30, 136, 229, 0.35);"';
+//                    break;
+//                case "Vegetal":
+//                    $classColor = 'style="background-color: rgba(53, 210, 56, 0.35);"';
+//                    break;
+//                case "Animal":
+//                    $classColor = 'style="background-color: rgba(255, 70, 95, 0.35);"';
+//                    break;
+//                case "Mineral/Animal":
+//                    $classColor = 'style="background-color: #CDA1D4;"';
+//                    break;
+//                case "Mineral/Vegetal":
+//                    $classColor = 'style="background-color: #B8F1F2;"';
+//                    break;
+//                case "Vegetal/Animal":
+//                    $classColor = 'style="background-color: #E9F2B8;"';
+//                    break;
+//                case "Imponderable":
+//                    $classColor = 'style="background-color: #D9D9D9;"';
+//                    break;
+//            }
+//
+//            $htmltabla .= '<tr '.$classColor.'>';
+////            $htmltabla .= '<tr>';
+//            $htmltabla .= '<td style="padding: 5px">' . $item['remedio'] . '</td >';
+//            $htmltabla .= '<td>' . $item['suma_analisis_combinado'] . '</td >';
+//            $htmltabla .= '<td>' . $item['reino'] . '</td >';
+//            $htmltabla .= '<td align="center"><span style="font-size: 20px; color: #0b67cd">' . $clave . '</span></td >';
+//            $htmltabla .= '<td>' . $notavalue . '</td>';
+//            $htmltabla .= '</tr>';
+//            $count++;
+//        }
+//        die("aqui");
+        $htmltabla = $this->getTableRemedioEstudio($estudio_id, $sac, $alfabeto, $reino, 0);
 
 
         $pdf = App::make('dompdf.wrapper');

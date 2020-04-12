@@ -149,15 +149,23 @@
 
 <h4 style="margin-bottom: 0px">{{ _i('Analisis') }}</h4>
 <hr>
-<table id="tablaMedicamentos" border="1" cellspacing="0" width="100%" style="font-size: 12px">
+<table id="tablaMedicamentos" border="1" cellspacing="0" width="100%" style="font-size: 11px">
     <thead>
-    <tr>
-        <th style="padding: 5px" class="bgGris">{{ _i('Medicamento') }}</th>
-        <th class="bgGris">{{ _i('SAC') }}</th>
-        <th class="bgGris">{{ _i('Reino') }}</th>
-        <th class="bgGris">{{ _i('Claves') }}</th>
-        <th class="bgGris">{{ _i('Notas') }}</th>
-    </tr>
+{{--    <tr>--}}
+{{--        <th style="padding: 5px" class="bgGris">{{ _i('Medicamento') }}</th>--}}
+{{--        <th class="bgGris">{{ _i('SAC') }}</th>--}}
+{{--        <th class="bgGris">{{ _i('Reino') }}</th>--}}
+{{--        <th class="bgGris">{{ _i('Claves') }}</th>--}}
+{{--        <th class="bgGris">{{ _i('Notas') }}</th>--}}
+{{--    </tr>--}}
+        <tr style="padding: 5px" class="bgGris">
+            <th class="text-center">{{ _i('Reino') }}</th>
+            <th class="text-center">{{ _i('Medicamento') }}</th>
+            <th style="display:none;" class="text-center">{{ _i('Pregnancia') }}</th>
+            <th class="text-center">{{ _i('SAC') }}</th>
+            <th class="text-center">{{ _i('Claves') }}</th>
+            <th class="text-center" style="width: 20em">{{ _i('Notas') }}</th>
+        </tr>
     </thead>
     <tbody>
         {!! $htmltabla !!}

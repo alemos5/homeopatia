@@ -3,11 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6a2bd743-8fee-48d5-ada6-a9713ae20ec1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/i18n/en_US/LC_MESSAGES/messages.mo" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/i18n/en_US/LC_MESSAGES/messages.mo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/i18n/en_US/LC_MESSAGES/messages.po" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/i18n/en_US/LC_MESSAGES/messages.po" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/i18n/es_ES/LC_MESSAGES/messages.po" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/i18n/es_ES/LC_MESSAGES/messages.po" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/messages/1ee28ad104815728b8cd4828ffc6a85987aba19f.php.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/messages/1ee28ad104815728b8cd4828ffc6a85987aba19f.php.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EstudiosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EstudiosController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/cargarAnalisis.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/cargarAnalisis.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/estudios/estudioPDF.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/estudios/estudioPDF.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/estudios/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/estudios/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,6 +197,9 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",ALPHA_COMPARATOR" />
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -222,14 +225,14 @@
       <screen x="50" y="27" width="1870" height="1053" />
     </state>
     <state x="641" y="381" key="com.intellij.ide.util.TipDialog/50.27.1870.1053@50.27.1870.1053" timestamp="1586216403251" />
-    <state x="608" y="279" width="704" height="522" key="find.popup" timestamp="1586188668387">
+    <state x="608" y="279" width="709" height="522" key="find.popup" timestamp="1586716674958">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="608" y="279" width="704" height="522" key="find.popup/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1586188668387" />
-    <state x="658" y="182" width="672" height="676" key="search.everywhere.popup" timestamp="1586216627160">
-      <screen x="50" y="27" width="1870" height="1053" />
+    <state x="608" y="279" width="709" height="522" key="find.popup/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1586716674958" />
+    <state x="624" y="182" width="672" height="676" key="search.everywhere.popup" timestamp="1586716394196">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
-    <state x="624" y="182" width="672" height="676" key="search.everywhere.popup/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1586040142828" />
+    <state x="624" y="182" width="672" height="676" key="search.everywhere.popup/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1586716394196" />
     <state x="658" y="182" width="672" height="676" key="search.everywhere.popup/50.27.1870.1053@50.27.1870.1053" timestamp="1586216627160" />
   </component>
 </project>
