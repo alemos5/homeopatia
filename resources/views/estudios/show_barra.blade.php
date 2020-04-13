@@ -24,7 +24,7 @@
                     width: <?php echo $vegetal; ?>%;
                 }
                 .textanimal{
-                    width: <?php echo $mineral; ?>%;
+                    width: <?php echo $animal; ?>%;
                     color: #ff465f;
                     font-weight: bold
                 }
@@ -34,7 +34,7 @@
                     font-weight: bold
                 }
                 .textvegetal{
-                    width: <?php echo $mineral; ?>%;
+                    width: <?php echo $vegetal; ?>%;
                     color: #35d238;
                     font-weight: bold
                 }
