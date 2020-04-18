@@ -4,6 +4,20 @@
 #-------------------------------------
 Auth::routes(['verify' => true]);
 
+Route::get('/cleareverything', function () {
+    $clearcache = Artisan::call('cache:clear');
+    echo "Cache cleared<br>";
+
+    $clearview = Artisan::call('view:clear');
+    echo "View cleared<br>";
+
+    $clearconfig = Artisan::call('config:cache');
+    echo "Config cleared<br>";
+
+//    $cleardebugbar = Artisan::call('debugbar:clear');
+    //  echo "Debug Bar cleared<br>";
+});
+
 #Login y Deslogueo
 Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('login.post');
