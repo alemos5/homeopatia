@@ -50,6 +50,34 @@
             background-color: rgba(15, 15, 20, 0.67);
             color: #FFF;
         }
+
+        .bganimal{
+            background-color: #ff465f;
+            width: <?php echo $animal; ?>%;
+        }
+        .bgmineral{
+            background-color: #1e88e5;
+            width: <?php echo $mineral; ?>%;
+        }
+        .bgvegetal{
+            background-color: #35d238;
+            width: <?php echo $vegetal; ?>%;
+        }
+        .textanimal{
+            width: <?php echo $animal; ?>%;
+            color: #ff465f;
+            font-weight: bold
+        }
+        .textmineral{
+            width: <?php echo $mineral; ?>%;
+            color: #1e88e5;
+            font-weight: bold
+        }
+        .textvegetal{
+            width: <?php echo $vegetal; ?>%;
+            color: #35d238;
+            font-weight: bold
+        }
     </style>
 </head>
 
@@ -131,18 +159,162 @@
         </td>
         <td style="vertical-align: top">
             <table width="100%">
-                <tr>
-                    <td width="<?php echo $animal; ?>%" style="background-color: #ff142b; height: 30px; color: #FFF; padding-left: 10px; font-weight: bold"><?php echo e(_i('Simetría')); ?>
 
-                        : <?=$pregnancia?></td>
-                    <td width="<?php echo $vegetal; ?>%" style="background-color: #72fe61; height: 30px"></td>
-                    <td width="<?php echo $mineral; ?>%" style="background-color: #396ac2; height: 30px"></td>
-                </tr>
-                <tr>
-                    <td style="width: <?php echo $animal; ?>%; color: #ff465f; font-weight: bold; font-size: 12px"><?php echo $animal; ?>% <br><?php echo e(_i('Animal')); ?></td>
-                    <td style="width: <?php echo $vegetal; ?>%; color: #2da630; font-weight: bold; font-size: 12px"><?php echo $vegetal; ?>% <br><?php echo e(_i('Vegetal')); ?></td>
-                    <td style="width: <?php echo $mineral; ?>%; color: #396AC2; font-weight: bold; font-size: 12px"><?php echo $mineral; ?>% <br><?php echo e(_i('Mineral')); ?></td>
-                </tr>
+                <?php
+                switch ($pregnancia) {
+                    case "1":
+                    ?>
+                        <tr>
+                            <td width="<?php echo $animal; ?>%" style="background-color: #ff142b; height: 30px; color: #FFF; padding-left: 10px; font-weight: bold">
+                                <?php echo e(_i('Simetría')); ?>: <?=$pregnancia?>
+                            </td>
+                            <td width="<?php echo $mineral; ?>%" style="background-color: #396ac2; height: 30px; color: #ffffff"></td>
+                            <td width="<?php echo $vegetal; ?>%" style="background-color: #72fe61; height: 30px"></td>
+                        </tr>
+                        <tr>
+                            <td style="width: <?php echo $animal; ?>%; color: #ff465f; font-weight: bold; font-size: 12px"><?php echo $animal; ?>% <br><?php echo e(_i('Animal')); ?></td>
+                            <td style="width: <?php echo $mineral; ?>%; color: #396AC2; font-weight: bold; font-size: 12px"><?php echo $mineral; ?>% <br><?php echo e(_i('Mineral')); ?></td>
+                            <td style="width: <?php echo $vegetal; ?>%; color: #2da630; font-weight: bold; font-size: 12px"><?php echo $vegetal; ?>% <br><?php echo e(_i('Vegetal')); ?></td>
+                        </tr>
+                        <?php
+                    break;
+                    case "2":
+                    ?>
+                        <tr>
+                            <td width="<?php echo $vegetal; ?>%" style="background-color: #72fe61; height: 30px">
+                                <?php echo e(_i('Simetría')); ?>: <?=$pregnancia?>
+                            </td>
+                            <td width="<?php echo $animal; ?>%" style="background-color: #ff142b; height: 30px; color: #FFF; padding-left: 10px; font-weight: bold"></td>
+                            <td width="<?php echo $mineral; ?>%" style="background-color: #396ac2; height: 30px; color: #ffffff"></td>
+                        </tr>
+                        <tr>
+                            <td style="width: <?php echo $vegetal; ?>%; color: #2da630; font-weight: bold; font-size: 12px"><?php echo $vegetal; ?>% <br><?php echo e(_i('Vegetal')); ?></td>
+                            <td style="width: <?php echo $animal; ?>%; color: #ff465f; font-weight: bold; font-size: 12px"><?php echo $animal; ?>% <br><?php echo e(_i('Animal')); ?></td>
+                            <td style="width: <?php echo $mineral; ?>%; color: #396AC2; font-weight: bold; font-size: 12px"><?php echo $mineral; ?>% <br><?php echo e(_i('Mineral')); ?></td>
+                        </tr>
+                        <?php
+                    break;
+                    case "3":
+                    ?>
+                        <tr>
+                            <td width="<?php echo $mineral; ?>%" style="background-color: #396ac2; height: 30px; color: #ffffff">
+                                <?php echo e(_i('Simetría')); ?>: <?=$pregnancia?>
+                            </td>
+                            <td width="<?php echo $vegetal; ?>%" style="background-color: #72fe61; height: 30px"></td>
+                            <td width="<?php echo $animal; ?>%" style="background-color: #ff142b; height: 30px; color: #FFF; padding-left: 10px; font-weight: bold"></td>
+
+                        </tr>
+                        <tr>
+                            <td style="width: <?php echo $mineral; ?>%; color: #396AC2; font-weight: bold; font-size: 12px"><?php echo $mineral; ?>% <br><?php echo e(_i('Mineral')); ?></td>
+                            <td style="width: <?php echo $vegetal; ?>%; color: #2da630; font-weight: bold; font-size: 12px"><?php echo $vegetal; ?>% <br><?php echo e(_i('Vegetal')); ?></td>
+                            <td style="width: <?php echo $animal; ?>%; color: #ff465f; font-weight: bold; font-size: 12px"><?php echo $animal; ?>% <br><?php echo e(_i('Animal')); ?></td>
+                        </tr>
+                        <?php
+                    break;
+                    case "4":
+                    ?>
+                        <tr>
+                            <td width="<?php echo $mineral; ?>%" style="background-color: #396ac2; height: 30px; color: #ffffff">
+                                <?php echo e(_i('Simetría')); ?>: <?=$pregnancia?>
+                            </td>
+                            <td width="<?php echo $animal; ?>%" style="background-color: #ff142b; height: 30px; color: #FFF; padding-left: 10px; font-weight: bold"></td>
+                            <td width="<?php echo $vegetal; ?>%" style="background-color: #72fe61; height: 30px"></td>
+
+                        </tr>
+                        <tr>
+                            <td style="width: <?php echo $mineral; ?>%; color: #396AC2; font-weight: bold; font-size: 12px"><?php echo $mineral; ?>% <br><?php echo e(_i('Mineral')); ?></td>
+                            <td style="width: <?php echo $animal; ?>%; color: #ff465f; font-weight: bold; font-size: 12px"><?php echo $animal; ?>% <br><?php echo e(_i('Animal')); ?></td>
+                            <td style="width: <?php echo $vegetal; ?>%; color: #2da630; font-weight: bold; font-size: 12px"><?php echo $vegetal; ?>% <br><?php echo e(_i('Vegetal')); ?></td>
+                        </tr>
+                        <?php
+                    break;
+                    case "5":
+                    ?>
+                        <tr>
+                            <td width="<?php echo $animal; ?>%" style="background-color: #ff142b; height: 30px; color: #FFF; padding-left: 10px; font-weight: bold">
+                                <?php echo e(_i('Simetría')); ?>: <?=$pregnancia?>
+                            </td>
+                            <td width="<?php echo $vegetal; ?>%" style="background-color: #72fe61; height: 30px"></td>
+                            <td width="<?php echo $mineral; ?>%" style="background-color: #396ac2; height: 30px; color: #ffffff"></td>
+
+                        </tr>
+                        <tr>
+                            <td style="width: <?php echo $animal; ?>%; color: #ff465f; font-weight: bold; font-size: 12px"><?php echo $animal; ?>% <br><?php echo e(_i('Animal')); ?></td>
+                            <td style="width: <?php echo $vegetal; ?>%; color: #2da630; font-weight: bold; font-size: 12px"><?php echo $vegetal; ?>% <br><?php echo e(_i('Vegetal')); ?></td>
+                            <td style="width: <?php echo $mineral; ?>%; color: #396AC2; font-weight: bold; font-size: 12px"><?php echo $mineral; ?>% <br><?php echo e(_i('Mineral')); ?></td>
+                        </tr>
+                        <?php
+                    break;
+                    case "6":
+                    ?>
+                        <tr>
+                            <td width="<?php echo $vegetal; ?>%" style="background-color: #72fe61; height: 30px">
+                                <?php echo e(_i('Simetría')); ?>: <?=$pregnancia?>
+                            </td>
+                            <td width="<?php echo $mineral; ?>%" style="background-color: #396ac2; height: 30px; color: #ffffff"></td>
+                            <td width="<?php echo $animal; ?>%" style="background-color: #ff142b; height: 30px; color: #FFF; padding-left: 10px; font-weight: bold"></td>
+
+                        </tr>
+                        <tr>
+                            <td style="width: <?php echo $vegetal; ?>%; color: #2da630; font-weight: bold; font-size: 12px"><?php echo $vegetal; ?>% <br><?php echo e(_i('Vegetal')); ?></td>
+                            <td style="width: <?php echo $mineral; ?>%; color: #396AC2; font-weight: bold; font-size: 12px"><?php echo $mineral; ?>% <br><?php echo e(_i('Mineral')); ?></td>
+                            <td style="width: <?php echo $animal; ?>%; color: #ff465f; font-weight: bold; font-size: 12px"><?php echo $animal; ?>% <br><?php echo e(_i('Animal')); ?></td>
+                        </tr>
+                        <?php
+                    break;
+                    case "7":
+                    ?>
+                        <tr>
+                            <td width="<?php echo $vegetal; ?>%" style="background-color: #72fe61; height: 30px">
+                                <?php echo e(_i('Simetría')); ?>: <?=$pregnancia?>
+                            </td>
+                            <td width="<?php echo $animal; ?>%" style="background-color: #ff142b; height: 30px; color: #FFF; padding-left: 10px; font-weight: bold"></td>
+                            <td width="<?php echo $mineral; ?>%" style="background-color: #396ac2; height: 30px; color: #ffffff"></td>
+
+                        </tr>
+                        <tr>
+                            <td style="width: <?php echo $vegetal; ?>%; color: #2da630; font-weight: bold; font-size: 12px"><?php echo $vegetal; ?>% <br><?php echo e(_i('Vegetal')); ?></td>
+                            <td style="width: <?php echo $animal; ?>%; color: #ff465f; font-weight: bold; font-size: 12px"><?php echo $animal; ?>% <br><?php echo e(_i('Animal')); ?></td>
+                            <td style="width: <?php echo $mineral; ?>%; color: #396AC2; font-weight: bold; font-size: 12px"><?php echo $mineral; ?>% <br><?php echo e(_i('Mineral')); ?></td>
+                        </tr>
+                        <?php
+                    break;
+                    case "8":
+                    ?>
+                        <tr>
+                            <td width="<?php echo $mineral; ?>%" style="background-color: #396ac2; height: 30px; color: #ffffff">
+                                <?php echo e(_i('Simetría')); ?>: <?=$pregnancia?>
+                            </td>
+                            <td width="<?php echo $vegetal; ?>%" style="background-color: #72fe61; height: 30px"></td>
+                            <td width="<?php echo $animal; ?>%" style="background-color: #ff142b; height: 30px; color: #FFF; padding-left: 10px; font-weight: bold"></td>
+
+                        </tr>
+                        <tr>
+                            <td style="width: <?php echo $mineral; ?>%; color: #396AC2; font-weight: bold; font-size: 12px"><?php echo $mineral; ?>% <br><?php echo e(_i('Mineral')); ?></td>
+                            <td style="width: <?php echo $vegetal; ?>%; color: #2da630; font-weight: bold; font-size: 12px"><?php echo $vegetal; ?>% <br><?php echo e(_i('Vegetal')); ?></td>
+                            <td style="width: <?php echo $animal; ?>%; color: #ff465f; font-weight: bold; font-size: 12px"><?php echo $animal; ?>% <br><?php echo e(_i('Animal')); ?></td>
+                        </tr>
+                    <?php
+                    break;
+                    case "9":
+                    ?>
+                        <tr>
+                            <td width="<?php echo $animal; ?>%" style="background-color: #ff142b; height: 30px; color: #FFF; padding-left: 10px; font-weight: bold">
+                                <?php echo e(_i('Simetría')); ?>: <?=$pregnancia?>
+                            </td>
+                            <td width="<?php echo $mineral; ?>%" style="background-color: #396ac2; height: 30px; color: #ffffff"></td>
+                            <td width="<?php echo $vegetal; ?>%" style="background-color: #72fe61; height: 30px"></td>
+
+                        </tr>
+                        <tr>
+                            <td style="width: <?php echo $animal; ?>%; color: #ff465f; font-weight: bold; font-size: 12px"><?php echo $animal; ?>% <br><?php echo e(_i('Animal')); ?></td>
+                            <td style="width: <?php echo $mineral; ?>%; color: #396AC2; font-weight: bold; font-size: 12px"><?php echo $mineral; ?>% <br><?php echo e(_i('Mineral')); ?></td>
+                            <td style="width: <?php echo $vegetal; ?>%; color: #2da630; font-weight: bold; font-size: 12px"><?php echo $vegetal; ?>% <br><?php echo e(_i('Vegetal')); ?></td>
+                        </tr>
+                    <?php
+                    break;
+                }
+                ?>
             </table>
         </td>
     </tr>
@@ -150,15 +322,23 @@
 
 <h4 style="margin-bottom: 0px"><?php echo e(_i('Analisis')); ?></h4>
 <hr>
-<table id="tablaMedicamentos" border="1" cellspacing="0" width="100%" style="font-size: 12px">
+<table id="tablaMedicamentos" border="1" cellspacing="0" width="100%" style="font-size: 18px">
     <thead>
-    <tr>
-        <th style="padding: 5px" class="bgGris"><?php echo e(_i('Medicamento')); ?></th>
-        <th class="bgGris"><?php echo e(_i('SAC')); ?></th>
-        <th class="bgGris"><?php echo e(_i('Reino')); ?></th>
-        <th class="bgGris"><?php echo e(_i('Claves')); ?></th>
-        <th class="bgGris"><?php echo e(_i('Notas')); ?></th>
-    </tr>
+
+
+
+
+
+
+
+        <tr style="padding: 5px" class="bgGris">
+            <th style="width: 5%" class="text-center"><?php echo e(_i('Reino')); ?></th>
+            <th style="width: 30%" class="text-center"><?php echo e(_i('Medicamento')); ?></th>
+
+            <th style="width: 10%" class="text-center"><?php echo e(_i('SAC')); ?></th>
+            <th style="width: 5%" class="text-center"><?php echo e(_i('Claves')); ?></th>
+            <th style="width: 20%" class="text-center"><?php echo e(_i('Notas')); ?></th>
+        </tr>
     </thead>
     <tbody>
         <?php echo $htmltabla; ?>

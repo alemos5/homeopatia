@@ -1,11 +1,13 @@
 <h2>
-    {{ _i('Análisis Combinado') }}
+{{--    {{ _i('Análisis Combinado') }}--}}
+    {{ _i('Análisis Combinado (SAC)') }}
     <button class="btn btn-success" type="button" id="btnVerAnalisisC">{{ _i('Mostrar') }}</button>
 </h2>
 <hr>
 
 <div class="row mt-4">
-    <div class="col-sm-2" align="center">{{ _i('Variables consideradas para el Análisis Combinado') }}:</div>
+{{--    <div class="col-sm-2" align="center">{{ _i('Variables consideradas para el Análisis Combinado') }}:</div>--}}
+    <div class="col-sm-2" align="center">{{ _i('Variables SAC') }}:</div>
     <div class="col-sm-2">
         <button class="btn btn-success btn-sm btn-round btn-block" id="btnRMS1" type="button">{{ _i('RSM') }}</button>
     </div>

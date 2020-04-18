@@ -1,4 +1,5 @@
-<h2>{{ _i('Análisis') }}</h2>
+{{--<h2>{{ _i('Análisis') }}</h2>--}}
+<h2>{{ _i('Análisis Principal') }}</h2>
 <hr>
 
 <div class="row">

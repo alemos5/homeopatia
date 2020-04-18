@@ -24,7 +24,7 @@
                     width: <?php echo $vegetal; ?>%;
                 }
                 .textanimal{
-                    width: <?php echo $mineral; ?>%;
+                    width: <?php echo $animal; ?>%;
                     color: #ff465f;
                     font-weight: bold
                 }
@@ -34,7 +34,7 @@
                     font-weight: bold
                 }
                 .textvegetal{
-                    width: <?php echo $mineral; ?>%;
+                    width: <?php echo $vegetal; ?>%;
                     color: #35d238;
                     font-weight: bold
                 }
@@ -142,14 +142,14 @@
                 case "8":
                     ?>
                     <div class="progress-bar bgmineral" role="progressbar" aria-valuenow="<?php echo $mineral; ?>" aria-valuemin="0" aria-valuemax="100"><h5 class="font-weight-bold text-left text-white pl-3"><?php echo e(_i('Simetría')); ?>: <?php echo $simetria?></h5></div>
-                    <div class="progress-bar bganimal" role="progressbar"  aria-valuenow="<?php echo $animal; ?>" aria-valuemin="0" aria-valuemax="100"></div>
                     <div class="progress-bar bgvegetal" role="progressbar"  aria-valuenow="<?php echo $vegetal; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bganimal" role="progressbar"  aria-valuenow="<?php echo $animal; ?>" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                     </div>
                     <div class="row">
                         <div class="textmineral"><?php echo $mineral; ?>% <br><?php echo e(_i('Mineral')); ?></div>
-                        <div class="textanimal"><?php echo $animal; ?>% <br><?php echo e(_i('Animal')); ?></div>
                         <div class="textvegetal"><?php echo $vegetal; ?>% <br><?php echo e(_i('Vegetal')); ?></div>
+                        <div class="textanimal"><?php echo $animal; ?>% <br><?php echo e(_i('Animal')); ?></div>
                     </div>
                     <?php
                     break;

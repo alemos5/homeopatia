@@ -1894,7 +1894,7 @@ class EstudiosController extends AppBaseController
         $htmltabla = '';
 
         $htmltabla .= '<tr style="border-bottom: 5px #CCC solid;">';
-        $htmltabla .= '<th>' . _i('Suma') . '</th>';
+        $htmltabla .= '<th>' . _i('Suma (SAC)') . '</th>';
         foreach ($AnalisisCombinados AS $AnalisisCombinado) {
             $htmltabla .= '<th style="text-align: center !important;">' . $AnalisisCombinado['suma'] . '</th>';
         }

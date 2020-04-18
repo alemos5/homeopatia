@@ -1,12 +1,14 @@
 <h2>
-    <?php echo e(_i('Análisis Combinado')); ?>
+
+    <?php echo e(_i('Análisis Combinado (SAC)')); ?>
 
     <button class="btn btn-success" type="button" id="btnVerAnalisisC"><?php echo e(_i('Mostrar')); ?></button>
 </h2>
 <hr>
 
 <div class="row mt-4">
-    <div class="col-sm-2" align="center"><?php echo e(_i('Variables consideradas para el Análisis Combinado')); ?>:</div>
+
+    <div class="col-sm-2" align="center"><?php echo e(_i('Variables SAC')); ?>:</div>
     <div class="col-sm-2">
         <button class="btn btn-success btn-sm btn-round btn-block" id="btnRMS1" type="button"><?php echo e(_i('RSM')); ?></button>
     </div>
