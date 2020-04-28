@@ -9,6 +9,7 @@ use App\Models\EstudiosRemedios;
 use App\Models\Remedios;
 use App\Repositories\EstudiosRepository;
 use App\Http\Controllers\AppBaseController;
+use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Http\Request;
 use Flash;
 use Illuminate\Support\Facades\App;
@@ -101,13 +102,13 @@ class EstudiosController extends AppBaseController
         if ($isAdmin) {
             $estudios = $this->estudiosRepository
                 ->orderBy('id', 'DESC')
-                ->limit(200)
+                ->limit(1000)
                 ->get();
         } else {
             $estudios = $this->estudiosRepository
                 ->where('id_usuario', Auth::user()->id_cliente)
                 ->orderBy('id', 'DESC')
-                ->limit(200)
+                ->limit(1000)
                 ->get();
         }
 

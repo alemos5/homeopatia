@@ -1,3 +1,7 @@
+<?php
+//die("Llegaste a la vista");
+//ini_set('memory_limit', '-1');
+?>
 @extends('templates.material.main')
 @section('jquery') {{-- Including this section to override it empty. Using jQuery from webpack build --}} @endsection
 @push('before-scripts')
@@ -44,7 +48,7 @@
             </div>
         </div>
         <div class="text-center">
-        
+
         </div>
     </div>
 @endsection

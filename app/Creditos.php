@@ -18,4 +18,12 @@ class Creditos extends Model
         'operacion',
         'json'
     ];
+
+//    public function cliente(){
+//        return $this->belongsTo('App\Clientes', 'cliente_id');
+//    }
+
+    public function cliente(){
+        return $this->belongsTo('\App\User', 'cliente_id', 'id_cliente');
+    }
 }

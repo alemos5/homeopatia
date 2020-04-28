@@ -216,3 +216,5 @@ Route::group(['middleware' => array('auth', 'verified')], function () {
 Route::resource('estudiosRemedios', 'EstudiosRemediosController');
 
 Route::resource('estudiosRemedios', 'EstudiosRemediosController');
+
+Route::resource('clientesCreditos', 'ClientesCreditosController');

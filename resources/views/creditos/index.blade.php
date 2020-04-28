@@ -1,3 +1,4 @@
+<?php //die("llegaste aqui vista"); ?>
 @extends('templates.material.main')
 @section('jquery') {{-- Including this section to override it empty. Using jQuery from webpack build --}} @endsection
 @push('before-scripts')
@@ -20,9 +21,9 @@
 @section('content')
     <section class="content-header">
         <h1 class="pull-left">
-            Estudios
-            @can('estudios.create')
-                <a href="{{route('estudios.create')}}" class="btn btn-outline-success float-right"> <i class="fas fa-plus"></i> {{ _i('Crear') }}</a>
+            Créditos de Clientes
+            @can('creditos.create')
+                <a href="{{route('creditos.create')}}" class="btn btn-outline-success float-right"> <i class="fas fa-plus"></i> {{ _i('Crear') }}</a>
             @endcan
         </h1>
     </section>
@@ -32,11 +33,11 @@
 
         <div class="box box-primary">
             <div class="box-body">
-                    @include('estudios.table')
+                @include('creditos.table')
             </div>
         </div>
         <div class="text-center">
-        
+
         </div>
     </div>
 @endsection
