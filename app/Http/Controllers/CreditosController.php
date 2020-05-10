@@ -24,6 +24,18 @@ class CreditosController extends Controller
         $creditos = Creditos::all();
         return view('creditos.index', compact(['creditos']));
     }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function consolidado()
+    {
+        $creditos = DB::select(
+            "SELECT cliente_id, SUM(cantidad) as cantidad FROM clientes_creditos GROUP BY cliente_id; "
+        );
+        return view('creditos.index_consolidado', compact(['creditos']));
+    }
 
     public function store(Request $request)
     {

@@ -1,7 +1,7 @@
 {{--<h2>{{ _i('Análisis') }}</h2>--}}
 <h2>{{ _i('Análisis Principal') }}</h2>
 <hr>
-
+<br>
 <div class="row">
     <div class="col-sm-2">{{ _i('Ordenar') }}:</div>
     <div class="col-sm-4">

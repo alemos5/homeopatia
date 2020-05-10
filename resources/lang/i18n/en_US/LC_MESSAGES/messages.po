@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: MultilanguageLaravelApplication\n"
-"POT-Creation-Date: 2020-05-04 17:35-0300\n"
-"PO-Revision-Date: 2020-05-04 17:35-0300\n"
+"POT-Creation-Date: 2020-05-10 13:50-0300\n"
+"PO-Revision-Date: 2020-05-10 13:50-0300\n"
 "Last-Translator: James Translator <james@translations.colm>\n"
 "Language-Team: James Translator <james@translations.colm>\n"
 "Language: en_US\n"
@@ -156,6 +156,7 @@ msgstr "Applied Studies"
 #: ../storage/framework/messages/7851774c27a8c10fd3170bfa217cd637f548a683.php.php:7
 #: ../storage/framework/messages/7f8609e37ccfea93b13b97f7e4dab2ed90a9ba78.php.php:3
 #: ../storage/framework/messages/8385dca2dbfce3de4307a8a7c9bea7e137c63362.php.php:7
+#: ../storage/framework/messages/8506a46c2b25a8a488de40b711d7e8c29a643874.php.php:18
 #: ../storage/framework/messages/875cb10c275780dd81b731c1a4fdaa5300fa06dd.php.php:7
 #: ../storage/framework/messages/883e47a0c565877a504a3d02f43426b3f00806c4.php.php:7
 #: ../storage/framework/messages/988626aee99ee3c4df5753abad1bac35f6361fa5.php.php:7
@@ -185,6 +186,7 @@ msgstr "Home"
 #: ../storage/framework/messages/774f32f7cc1a57626684a6968592192a15f22498.php.php:9
 #: ../storage/framework/messages/7cbe151f51e4d773046a11a8956f9b99e0026ef6.php.php:18
 #: ../storage/framework/messages/8385dca2dbfce3de4307a8a7c9bea7e137c63362.php.php:9
+#: ../storage/framework/messages/8506a46c2b25a8a488de40b711d7e8c29a643874.php.php:26
 #: ../storage/framework/messages/988626aee99ee3c4df5753abad1bac35f6361fa5.php.php:9
 #: ../storage/framework/messages/99a1dda5c3321082d97687fc1e39ffe3b1fe0a38.php.php:26
 #: ../storage/framework/messages/e6fe104fda4d6323c1ac25880c76d3afd9bc22fc.php.php:24
@@ -1031,6 +1033,28 @@ msgstr "Order"
 msgid "Por SAC"
 msgstr "By SAC"
 
+#: ../storage/framework/messages/5a309e1f7cb97334047f0b837fc92e7fb0647c36.php.php:16
+#: ../storage/framework/messages/9c65dec27cad7d1de1e6dd178cfec7daae50faef.php.php:177
+#: ../storage/framework/messages/9c65dec27cad7d1de1e6dd178cfec7daae50faef.php.php:191
+#: ../storage/framework/messages/9c65dec27cad7d1de1e6dd178cfec7daae50faef.php.php:209
+#: ../storage/framework/messages/9c65dec27cad7d1de1e6dd178cfec7daae50faef.php.php:227
+#: ../storage/framework/messages/9c65dec27cad7d1de1e6dd178cfec7daae50faef.php.php:243
+#: ../storage/framework/messages/9c65dec27cad7d1de1e6dd178cfec7daae50faef.php.php:259
+#: ../storage/framework/messages/9c65dec27cad7d1de1e6dd178cfec7daae50faef.php.php:276
+#: ../storage/framework/messages/9c65dec27cad7d1de1e6dd178cfec7daae50faef.php.php:294
+#: ../storage/framework/messages/9c65dec27cad7d1de1e6dd178cfec7daae50faef.php.php:312
+#: ../storage/framework/messages/d6f7840591ca611622521e24ddeea746a196586e.php.php:54
+#: ../storage/framework/messages/d6f7840591ca611622521e24ddeea746a196586e.php.php:66
+#: ../storage/framework/messages/d6f7840591ca611622521e24ddeea746a196586e.php.php:81
+#: ../storage/framework/messages/d6f7840591ca611622521e24ddeea746a196586e.php.php:96
+#: ../storage/framework/messages/d6f7840591ca611622521e24ddeea746a196586e.php.php:109
+#: ../storage/framework/messages/d6f7840591ca611622521e24ddeea746a196586e.php.php:122
+#: ../storage/framework/messages/d6f7840591ca611622521e24ddeea746a196586e.php.php:136
+#: ../storage/framework/messages/d6f7840591ca611622521e24ddeea746a196586e.php.php:151
+#: ../storage/framework/messages/d6f7840591ca611622521e24ddeea746a196586e.php.php:166
+msgid "Vegetal"
+msgstr "Vegetable"
+
 #: ../storage/framework/messages/5a309e1f7cb97334047f0b837fc92e7fb0647c36.php.php:20
 msgid "Alfabeticamente"
 msgstr "Alphabetically"
@@ -1397,27 +1421,6 @@ msgstr "Symmetry"
 #: ../storage/framework/messages/d6f7840591ca611622521e24ddeea746a196586e.php.php:165
 msgid "Mineral"
 msgstr "Mineral"
-
-#: ../storage/framework/messages/9c65dec27cad7d1de1e6dd178cfec7daae50faef.php.php:177
-#: ../storage/framework/messages/9c65dec27cad7d1de1e6dd178cfec7daae50faef.php.php:191
-#: ../storage/framework/messages/9c65dec27cad7d1de1e6dd178cfec7daae50faef.php.php:209
-#: ../storage/framework/messages/9c65dec27cad7d1de1e6dd178cfec7daae50faef.php.php:227
-#: ../storage/framework/messages/9c65dec27cad7d1de1e6dd178cfec7daae50faef.php.php:243
-#: ../storage/framework/messages/9c65dec27cad7d1de1e6dd178cfec7daae50faef.php.php:259
-#: ../storage/framework/messages/9c65dec27cad7d1de1e6dd178cfec7daae50faef.php.php:276
-#: ../storage/framework/messages/9c65dec27cad7d1de1e6dd178cfec7daae50faef.php.php:294
-#: ../storage/framework/messages/9c65dec27cad7d1de1e6dd178cfec7daae50faef.php.php:312
-#: ../storage/framework/messages/d6f7840591ca611622521e24ddeea746a196586e.php.php:54
-#: ../storage/framework/messages/d6f7840591ca611622521e24ddeea746a196586e.php.php:66
-#: ../storage/framework/messages/d6f7840591ca611622521e24ddeea746a196586e.php.php:81
-#: ../storage/framework/messages/d6f7840591ca611622521e24ddeea746a196586e.php.php:96
-#: ../storage/framework/messages/d6f7840591ca611622521e24ddeea746a196586e.php.php:109
-#: ../storage/framework/messages/d6f7840591ca611622521e24ddeea746a196586e.php.php:122
-#: ../storage/framework/messages/d6f7840591ca611622521e24ddeea746a196586e.php.php:136
-#: ../storage/framework/messages/d6f7840591ca611622521e24ddeea746a196586e.php.php:151
-#: ../storage/framework/messages/d6f7840591ca611622521e24ddeea746a196586e.php.php:166
-msgid "Vegetal"
-msgstr "Vegetable"
 
 #: ../storage/framework/messages/9c65dec27cad7d1de1e6dd178cfec7daae50faef.php.php:323
 msgid "Analisis"

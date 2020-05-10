@@ -18,6 +18,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use Auth;
 use Dompdf\Adapter\PDFLib;
+use Xinax\LaravelGettext\LaravelGettext;
 
 class EstudiosController extends AppBaseController
 {
@@ -1575,13 +1576,14 @@ class EstudiosController extends AppBaseController
         return $analisisCombinado;
     }
 
-    public function getTableRemedioEstudio($estudio_id, $ordenSac = 0, $ordenAlfa = 0, $ordenReino = 0, $nota = 1)
+    public function getTableRemedioEstudio($estudio_id, $ordenSac = 0, $ordenAlfa = 0, $ordenReino = 0, $nota = 1, $lang = "es_ES")
     {
 
         //Filtros “Alfabeticamente” + “Reino”
         if ($ordenAlfa == 1 AND $ordenReino == 1) {
             $estudioRemedios = EstudiosRemedios::where('estudio_id', $estudio_id)
-                ->orderByRaw("FIELD (reino, 'Mineral', 'Vegetal', 'Animal', 'Mineral/Vegetal', 'Mineral/Animal', 'Vegetal/Animal', 'Imponderable') ASC, medicamento ASC")->get();
+                ->orderByRaw("FIELD (reino, 'Mineral', 'Vegetal', 'Animal', 'Mineral/Vegetal', 'Mineral/Animal', 'Vegetal/Animal', 'Imponderable') ASC, medicamento ASC")
+                ->get();
         }else{
 
             //Filtros “Alfabéticamente” + “SAC”
@@ -1662,7 +1664,11 @@ class EstudiosController extends AppBaseController
             }
             $clave = '<img src="./images/estrella.png" alt="">';
             $htmltabla .= '<tr '.$classColor.'>';
-            $htmltabla .= '<td align="center">' . $estudioRemedio->reino . '</td >';
+            if ($lang != "es_ES") {
+                $htmltabla .= '<td align="center">' . $estudioRemedio->reino_en . '</td >';
+            }else{
+                $htmltabla .= '<td align="center">' . $estudioRemedio->reino . '</td >';
+            }
             if ($nota == 1) {
                 $htmltabla .= '<td><a href="#ex1" rel="modal:open" class="btnDescripcion" data-idremedio="' . $estudioRemedio->medicamento_id . '">' . $estudioRemedio->medicamento . '</a></td >';
             }else{
@@ -1689,6 +1695,24 @@ class EstudiosController extends AppBaseController
         return $htmltabla;
     }
 
+    public function getTranslation($reino) {
+        switch ($reino) {
+            case "Mineral":
+                return "Mineral";
+            case "Vegetal":
+                return "Vegetable";
+            case "Animal":
+                return "Animal";
+            case "Mineral/Animal":
+                return "Mineral/Animal";
+            case "Mineral/Vegetal":
+                return "Mineral/Vegetable";
+            case "Vegetal/Animal":
+                return "Vegetable/Animal";
+            case "Imponderable":
+                return "Imponderable";
+        }
+    }
 
     public function calcularAnalisis(Request $request)
     {
@@ -1849,9 +1873,11 @@ class EstudiosController extends AppBaseController
                     $estudiosRemedio->medicamento_id = $item['remedio_id'];
                     $estudiosRemedio->sac = $item['suma_analisis_combinado'];
                     $estudiosRemedio->reino = $item['reino'];
+                    $estudiosRemedio->reino_en = $this->getTranslation($item['reino']);
                     $estudiosRemedio->clave = $clave;
                     $estudiosRemedio->nota = $notavalue;
                     $estudiosRemedio->save();
+
                 }
                 catch(\Exception $e){
                     // do task when error
@@ -1871,7 +1897,7 @@ class EstudiosController extends AppBaseController
 //            $htmltabla .= '</tr>';
                 $count++;
             }
-            return $this->getTableRemedioEstudio($estudio_id, $ordenSac, $ordenAlfa, $ordenReino);
+            return $this->getTableRemedioEstudio($estudio_id, $ordenSac, $ordenAlfa, $ordenReino, null, $input['lang']);
 //            return $htmltabla;
 //        }
 
@@ -2033,7 +2059,7 @@ class EstudiosController extends AppBaseController
         return $secuenciaPaciente;
     }
 
-    public function estudioPDF(Estudios $estudios, $clave, $pregnancia, $vegetal, $mineral, $animal, $sac = 0, $alfabeto = 0, $reino = 0)
+    public function estudioPDF(Estudios $estudios, $clave, $pregnancia, $vegetal, $mineral, $animal, $sac = 0, $alfabeto = 0, $reino = 0, $lang = "es_ES")
     {
 
         if ($clave) {
@@ -2145,7 +2171,7 @@ class EstudiosController extends AppBaseController
 //            $count++;
 //        }
 //        die("aqui");
-        $htmltabla = $this->getTableRemedioEstudio($estudio_id, $sac, $alfabeto, $reino, 0);
+        $htmltabla = $this->getTableRemedioEstudio($estudio_id, $sac, $alfabeto, $reino, 0, $lang);
 
 
         $pdf = App::make('dompdf.wrapper');

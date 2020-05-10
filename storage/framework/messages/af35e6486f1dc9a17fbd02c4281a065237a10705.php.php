@@ -139,7 +139,7 @@ class PaypalController extends BaseController
         $token = request()->token;
 
         if (empty($payerId) || empty($token)) {
-            return \Redirect::route('creditos/create')
+            return \Redirect::route('creditos.pricing')
                 ->with('message', 'Hubo un problema al intentar pagar con Paypal');
         }
 

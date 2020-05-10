@@ -175,4 +175,10 @@ class UserController extends Controller
 
         return back()->with('info', 'Eliminado Correctamente');
     }
+
+    public static function getClient($client_id) {
+        $client = User::where('id_cliente', $client_id)->first();
+        return $client;
+    }
+
 }

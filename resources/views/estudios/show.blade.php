@@ -90,7 +90,15 @@
             <div class="row mt-3">
                 <div class="col-sm-12">
                     {{--href="{{route('estudios.estudioPDF', $estudios,$remedios,$result['general']['clave'],$result['general']['pregnancia'],$result['reino']['vegetal'],$result['reino']['mineral'],$result['reino']['animal']])}}">--}}
-                    <input type="hidden" id="url_origin" value="{{url('estudioPDF', ['estudios'=>$estudios, 'clave'=>$result['general']['clave'], 'pregnancia'=>$result['general']['pregnancia'], 'vegetal'=>$result['reino']['vegetal'], 'mineral'=>$result['reino']['mineral'], 'animal'=>$result['reino']['animal']])}}">
+                    <input type="hidden" id="url_origin" value="{{
+                                url('estudioPDF', [
+                                    'estudios'=>$estudios,
+                                    'clave'=>$result['general']['clave'],
+                                    'pregnancia'=>$result['general']['pregnancia'],
+                                    'vegetal'=>$result['reino']['vegetal'],
+                                    'mineral'=>$result['reino']['mineral'],
+                                    'animal'=>$result['reino']['animal']
+                                    ])}}">
                     <a id="print_report" class="btn btn-outline-info btn-block" target="_blank"
                        href="">
                         {{ _i('Imprimir Estudio') }}

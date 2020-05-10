@@ -13,7 +13,7 @@
                 <span class="lever"></span>
             </label>
         </div>
-    </div>
+    </div> <?php echo e(_i('Vegetal')); ?>}
     <div class="col-sm-3">
         <div class="switch">
             <label for="orden2">

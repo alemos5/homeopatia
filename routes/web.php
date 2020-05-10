@@ -176,7 +176,7 @@ Route::group(['middleware' => array('auth', 'verified')], function () {
     #Estudios Medicos
     Route::resource('estudios', 'EstudiosController');
     //Route::get('estudioPDF/{estudios}/{remedios}/{clave}/{pregnancia}/{vegetal}/{mineral}/{animal}', 'EstudiosController@estudioPDF')->name('estudios.estudioPDF');
-    Route::get('estudioPDF/{estudios}/{clave}/{pregnancia}/{vegetal}/{mineral}/{animal}/{sac}/{alfabeto}/{reino}', 'EstudiosController@estudioPDF')->name('estudios.estudioPDF');
+    Route::get('estudioPDF/{estudios}/{clave}/{pregnancia}/{vegetal}/{mineral}/{animal}/{sac}/{alfabeto}/{reino}/{lang}', 'EstudiosController@estudioPDF')->name('estudios.estudioPDF');
 
     #CRemedios
     Route::resource('cremedios', 'CremediosController');
@@ -187,6 +187,7 @@ Route::group(['middleware' => array('auth', 'verified')], function () {
 
     #Creditos
     Route::resource('creditos', 'CreditosController');
+    Route::get('creditosConsolidado', 'CreditosController@consolidado');
     Route::post('promociones', 'CreditosController@promociones')->name('creditos.promociones');
     Route::get('promociones', 'CreditosController@promociones')->name('creditos.pricing');
     Route::get('abonar/{cliente_id}', 'CreditosController@abonar')->name('creditos.abonar');

@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property integer medicamento_id
  * @property integer sac
  * @property string reino
+ * @property string reino_en
  * @property string clave
  * @property string nota
  */
@@ -23,7 +24,7 @@ class EstudiosRemedios extends Model
     use SoftDeletes;
 
     public $table = 'estudios_remedios';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -38,6 +39,7 @@ class EstudiosRemedios extends Model
         'medicamento_id',
         'sac',
         'reino',
+        'reino_en',
         'clave',
         'nota'
     ];
@@ -54,6 +56,7 @@ class EstudiosRemedios extends Model
         'medicamento_id' => 'integer',
         'sac' => 'integer',
         'reino' => 'string',
+        'reino_en' => 'string',
         'clave' => 'string',
         'nota' => 'string'
     ];
@@ -67,5 +70,5 @@ class EstudiosRemedios extends Model
         'estudio_id' => 'required'
     ];
 
-    
+
 }
