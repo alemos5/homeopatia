@@ -44,6 +44,7 @@
                         <th width="10px"><?php echo e(_i('ID')); ?></th>
                         <th><?php echo e(_i('Code Cliente')); ?></th>
                         <th><?php echo e(_i('Nombre')); ?></th>
+                        <th><?php echo e(_i('Usuario')); ?></th>
                         <th><?php echo e(_i('Email')); ?></th>
                         <th><?php echo e(_i('Teléfono')); ?></th>
                         <th>&nbsp;</th>
@@ -55,6 +56,7 @@
                             <td><?php echo e($item->id_cliente); ?></td>
                             <td><?php echo e($item->code_cliente); ?></td>
                             <td><?php echo e($item->nombre); ?></td>
+                            <td><?php echo e($item->username); ?></td>
                             <td><?php echo e($item->email); ?></td>
                             <td><?php echo e($item->telefono); ?></td>
                             <td class="td-actions text-right">

@@ -4,10 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Creditos;
 use App\Pricing;
+use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CreditosController extends Controller
 {
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+
+        //$creditos = Creditos::where('id', 1)->get();
+//        $creditos = Creditos::whereNotNull('cliente_id')->get();
+        $creditos = Creditos::all();
+        return view('creditos.index', compact(['creditos']));
+    }
 
     public function store(Request $request)
     {
@@ -48,4 +64,18 @@ class CreditosController extends Controller
     {
         return view('creditos.create', compact('cliente_id'));
     }
+
+    public function show($id)
+    {
+        $clientesCreditos = Creditos::where('id', $id)->firts();
+
+        if (empty($clientesCreditos)) {
+            Flash::error('Clientes Creditos not found');
+
+            return redirect(route('clientesCreditos.index'));
+        }
+
+        return view('clientes_creditos.show')->with('clientesCreditos', $clientesCreditos);
+    }
+
 }

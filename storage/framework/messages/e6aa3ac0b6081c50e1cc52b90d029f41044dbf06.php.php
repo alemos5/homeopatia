@@ -9,6 +9,7 @@ use App\Models\EstudiosRemedios;
 use App\Models\Remedios;
 use App\Repositories\EstudiosRepository;
 use App\Http\Controllers\AppBaseController;
+use Caffeinated\Shinobi\Models\Role;
 use Illuminate\Http\Request;
 use Flash;
 use Illuminate\Support\Facades\App;
@@ -101,13 +102,13 @@ class EstudiosController extends AppBaseController
         if ($isAdmin) {
             $estudios = $this->estudiosRepository
                 ->orderBy('id', 'DESC')
-                ->limit(200)
+                ->limit(1000)
                 ->get();
         } else {
             $estudios = $this->estudiosRepository
                 ->where('id_usuario', Auth::user()->id_cliente)
                 ->orderBy('id', 'DESC')
-                ->limit(200)
+                ->limit(1000)
                 ->get();
         }
 
@@ -1706,8 +1707,10 @@ class EstudiosController extends AppBaseController
         $htmltabla = '';
         $estudioRemedios = EstudiosRemedios::where('estudio_id', $estudio_id)->first();
         if ($estudioRemedios) {
-            return $this->getTableRemedioEstudio($estudio_id, $ordenSac, $ordenAlfa, $ordenReino);
-        }else{
+            EstudiosRemedios::where('estudio_id', $estudio_id)->delete();
+        }
+//            return $this->getTableRemedioEstudio($estudio_id, $ordenSac, $ordenAlfa, $ordenReino);
+//        }else{
             $remedios = json_decode($input['remedios']);
             $data = (array)json_decode($input['data']);
             $predominante = json_decode($input['predominante']);
@@ -1839,16 +1842,22 @@ class EstudiosController extends AppBaseController
 //                $htmltabla .= '&nbsp;<div id="msg' . $item['remedio_id'] . '"></div></div ></div></td>';
 //                $htmltabla .= '</tr>';
 
-                $estudiosRemedio = new EstudiosRemedios;
-                $estudiosRemedio->estudio_id = $estudio_id;
-                $estudiosRemedio->medicamento = $item['remedio'];
-                $estudiosRemedio->medicamento_id = $item['remedio_id'];
-                $estudiosRemedio->sac = $item['suma_analisis_combinado'];
-                $estudiosRemedio->reino = $item['reino'];
-                $estudiosRemedio->clave = $clave;
-                $estudiosRemedio->nota = $notavalue;
-                $estudiosRemedio->save();
-
+                try{
+                    $estudiosRemedio = new EstudiosRemedios;
+                    $estudiosRemedio->estudio_id = $estudio_id;
+                    $estudiosRemedio->medicamento = $item['remedio'];
+                    $estudiosRemedio->medicamento_id = $item['remedio_id'];
+                    $estudiosRemedio->sac = $item['suma_analisis_combinado'];
+                    $estudiosRemedio->reino = $item['reino'];
+                    $estudiosRemedio->clave = $clave;
+                    $estudiosRemedio->nota = $notavalue;
+                    $estudiosRemedio->save();
+                }
+                catch(\Exception $e){
+                    // do task when error
+                    echo $e->getMessage();   // insert query
+                    die();
+                }
 
 //            $htmltabla .= '<tr '.$classColor.'>';
 //            $htmltabla .= '<td><a href="#ex1" rel="modal:open" class="btnDescripcion" data-idremedio="' . $item['remedio_id'] . '">' . $item['remedio'] . '</a></td >';
@@ -1864,7 +1873,7 @@ class EstudiosController extends AppBaseController
             }
             return $this->getTableRemedioEstudio($estudio_id, $ordenSac, $ordenAlfa, $ordenReino);
 //            return $htmltabla;
-        }
+//        }
 
     }
 

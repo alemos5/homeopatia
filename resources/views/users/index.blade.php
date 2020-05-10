@@ -44,6 +44,7 @@
                         <th width="10px">{{ _i('ID') }}</th>
                         <th>{{ _i('Code Cliente') }}</th>
                         <th>{{ _i('Nombre') }}</th>
+                        <th>{{ _i('Usuario') }}</th>
                         <th>{{ _i('Email') }}</th>
                         <th>{{ _i('Teléfono') }}</th>
                         <th>&nbsp;</th>
@@ -55,6 +56,7 @@
                             <td>{{$item->id_cliente}}</td>
                             <td>{{$item->code_cliente}}</td>
                             <td>{{$item->nombre}}</td>
+                            <td>{{$item->username}}</td>
                             <td>{{$item->email}}</td>
                             <td>{{$item->telefono}}</td>
                             <td class="td-actions text-right">

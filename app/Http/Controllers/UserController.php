@@ -18,8 +18,10 @@ class UserController extends Controller
      */
     private function performValidation($request)
     {
+//        echo json_encode($request->all()); die();
         $rules = [
             'nombre' => 'required',
+            'username' => 'required',
             'email' => 'required',
             'pais_id' => 'required',
             'estado_id' => 'required',
@@ -28,6 +30,7 @@ class UserController extends Controller
             'telefono' => 'required',
             'fax' => 'nullable|min:5',
         ];
+
         $this->validate($request, $rules);
     }
 
@@ -117,6 +120,7 @@ class UserController extends Controller
 
         $data = $request->only(
             'nombre',
+            'username',
             'email',
             'code_cliente',
             'pais_id',

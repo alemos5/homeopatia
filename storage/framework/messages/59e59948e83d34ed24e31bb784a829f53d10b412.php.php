@@ -1,3 +1,5 @@
+<?php //die("llegaste aqui vista"); ?>
+
 <?php $__env->startSection('jquery'); ?>  <?php $__env->stopSection(); ?>
 <?php $__env->startPush('before-scripts'); ?>
     <script src="<?php echo e(mix('/js/home-one.js')); ?>"></script>
@@ -19,9 +21,9 @@
 <?php $__env->startSection('content'); ?>
     <section class="content-header">
         <h1 class="pull-left">
-            Estudios
-            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('estudios.create')): ?>
-                <a href="<?php echo e(route('estudios.create')); ?>" class="btn btn-outline-success float-right"> <i class="fas fa-plus"></i> <?php echo e(_i('Crear')); ?></a>
+            Créditos de Clientes
+            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('creditos.create')): ?>
+                <a href="<?php echo e(route('creditos.create')); ?>" class="btn btn-outline-success float-right"> <i class="fas fa-plus"></i> <?php echo e(_i('Crear')); ?></a>
             <?php endif; ?>
         </h1>
     </section>
@@ -31,11 +33,11 @@
 
         <div class="box box-primary">
             <div class="box-body">
-                    <?php echo $__env->make('estudios.table', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+                <?php echo $__env->make('creditos.table', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
             </div>
         </div>
         <div class="text-center">
-        
+
         </div>
     </div>
 <?php $__env->stopSection(); ?>

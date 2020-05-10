@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
         <label for="nombre" class="mb-0"><?php echo e(_i('Nombre')); ?></label>
         <input id="nombre" name="nombre" type="text" class="form-control <?php echo e($errors->has('nombre') ? ' is-invalid' : ''); ?>" required value="<?php echo e(@old("nombre", $user->nombre)); ?>">
         <?php if($errors->has('nombre')): ?>
@@ -8,13 +8,24 @@
                 </span>
         <?php endif; ?>
     </div>
-    <div class="col-sm-6">
+
+    <div class="col-sm-4">
         <label for="email" class="mb-0"><?php echo e(_i('E-Mail')); ?></label>
         <input id="email" name="email" type="email" class="form-control<?php echo e($errors->has('email') ? ' is-invalid' : ''); ?>" required value="<?php echo e(@old("email", $user->email)); ?>">
         <?php if($errors->has('email')): ?>
             <span class="invalid-feedback" role="alert">
                 <strong><?php echo e($errors->first('email')); ?></strong>
             </span>
+        <?php endif; ?>
+    </div>
+
+    <div class="col-md-4">
+        <label for="username" class="mb-0"><?php echo e(_i('Usuario')); ?></label>
+        <input id="username" name="username" type="text" class="form-control <?php echo e($errors->has('username') ? ' is-invalid' : ''); ?>" required value="<?php echo e(@old("username", $user->username)); ?>">
+        <?php if($errors->has('username')): ?>
+            <span class="invalid-feedback" role="alert">
+                    <strong><?php echo e($errors->first('username')); ?></strong>
+                </span>
         <?php endif; ?>
     </div>
 </div>

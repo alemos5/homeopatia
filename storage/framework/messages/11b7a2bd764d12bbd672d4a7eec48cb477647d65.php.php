@@ -1,3 +1,8 @@
+<?php
+//die("Llegaste a la vista");
+//ini_set('memory_limit', '-1');
+?>
+
 <?php $__env->startSection('jquery'); ?>  <?php $__env->stopSection(); ?>
 <?php $__env->startPush('before-scripts'); ?>
     <script src="<?php echo e(mix('/js/home-one.js')); ?>"></script>
@@ -44,7 +49,7 @@
             </div>
         </div>
         <div class="text-center">
-        
+
         </div>
     </div>
 <?php $__env->stopSection(); ?>

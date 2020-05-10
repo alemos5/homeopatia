@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
         <label for="nombre" class="mb-0">{{ _i('Nombre') }}</label>
         <input id="nombre" name="nombre" type="text" class="form-control {{ $errors->has('nombre') ? ' is-invalid' : '' }}" required value="{{ @old("nombre", $user->nombre) }}">
         @if ($errors->has('nombre'))
@@ -8,13 +8,24 @@
                 </span>
         @endif
     </div>
-    <div class="col-sm-6">
+
+    <div class="col-sm-4">
         <label for="email" class="mb-0">{{ _i('E-Mail') }}</label>
         <input id="email" name="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" required value="{{ @old("email", $user->email) }}">
         @if ($errors->has('email'))
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $errors->first('email') }}</strong>
             </span>
+        @endif
+    </div>
+
+    <div class="col-md-4">
+        <label for="username" class="mb-0">{{ _i('Usuario') }}</label>
+        <input id="username" name="username" type="text" class="form-control {{ $errors->has('username') ? ' is-invalid' : '' }}" required value="{{ @old("username", $user->username) }}">
+        @if ($errors->has('username'))
+            <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('username') }}</strong>
+                </span>
         @endif
     </div>
 </div>
