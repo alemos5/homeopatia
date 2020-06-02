@@ -43,19 +43,19 @@ return [
     'facebook' => [
         'client_id' => env('FACEBOOK_CLIENT_ID'),
         'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
-        'redirect' => 'https://homeopatia.smartbiosfera.com/login/facebook/callback',
+        'redirect' => 'https://app.algoritmocandegabe.com/login/facebook/callback',
     ],
 
     'twitter' => [
         'client_id' => env('TWITTER_CLIENT_ID'),
         'client_secret' => env('TWITTER_CLIENT_SECRET'),
-        'redirect' => 'https://homeopatia.smartbiosfera.com/login/twitter/callback',
+        'redirect' => 'https://app.algoritmocandegabe.com/login/twitter/callback',
     ],
 
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect' => 'https://homeopatia.smartbiosfera.com/login/google/callback',
+        'redirect' => 'https://app.algoritmocandegabe.com/login/google/callback',
     ],
 
 ];

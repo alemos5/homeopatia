@@ -2,25 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a2bd743-8fee-48d5-ada6-a9713ae20ec1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/creditos/index_consolidado.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/creditos/table_consolidado.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CreditosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CreditosController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EstudiosController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EstudiosController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/EstudiosRemedios.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/EstudiosRemedios.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/cargarAnalisis.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/cargarAnalisis.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/cargarAnalisisC.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/cargarAnalisisC.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/i18n/en_US/LC_MESSAGES/messages.mo" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/i18n/en_US/LC_MESSAGES/messages.mo" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/i18n/en_US/LC_MESSAGES/messages.po" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/i18n/en_US/LC_MESSAGES/messages.po" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/i18n/es_ES/LC_MESSAGES/messages.po" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/i18n/es_ES/LC_MESSAGES/messages.po" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/estudios/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/estudios/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/estudios/show_analisis.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/estudios/show_analisis.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/estudios/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/estudios/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/estudios/fields.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/estudios/fields.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/estudios/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/estudios/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/estudios/table.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/estudios/table.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home-one.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home-one.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/messages/57cf5cc0b7eba7d4197f31e3b669c37dd22891fb.php.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/messages/57cf5cc0b7eba7d4197f31e3b669c37dd22891fb.php.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/messages/11b7a2bd764d12bbd672d4a7eec48cb477647d65.php.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/messages/11b7a2bd764d12bbd672d4a7eec48cb477647d65.php.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/messages/25c14980aebcb775c261757a800d4525ad019776.php.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/messages/25c14980aebcb775c261757a800d4525ad019776.php.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/messages/4b828eae0d2d0c2a6528697d3bdb966466911b84.php.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/messages/4b828eae0d2d0c2a6528697d3bdb966466911b84.php.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/storage/framework/messages/5a309e1f7cb97334047f0b837fc92e7fb0647c36.php.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/messages/5a309e1f7cb97334047f0b837fc92e7fb0647c36.php.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/messages/7aaad04a27df812ecd481825df046fed6f3904fc.php.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/messages/7aaad04a27df812ecd481825df046fed6f3904fc.php.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/storage/framework/messages/af35e6486f1dc9a17fbd02c4281a065237a10705.php.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/messages/af35e6486f1dc9a17fbd02c4281a065237a10705.php.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/messages/e6aa3ac0b6081c50e1cc52b90d029f41044dbf06.php.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/messages/e6aa3ac0b6081c50e1cc52b90d029f41044dbf06.php.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/messages/e8bf78c93fe44451bef9edd64ed3956bc50b219f.php.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/messages/e8bf78c93fe44451bef9edd64ed3956bc50b219f.php.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +30,9 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
+    <execution>
+      <executable />
+    </execution>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -179,7 +182,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/creditos" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -232,12 +235,31 @@
       <workItem from="1588697935960" duration="15000" />
       <workItem from="1588785617120" duration="1283000" />
       <workItem from="1588792789294" duration="728000" />
-      <workItem from="1589125065754" duration="9241000" />
+      <workItem from="1589125065754" duration="10755000" />
+      <workItem from="1589201398136" duration="1411000" />
+      <workItem from="1589224305159" duration="3016000" />
+      <workItem from="1589231947392" duration="1461000" />
+      <workItem from="1589323651232" duration="9000" />
+      <workItem from="1589324119547" duration="7571000" />
+      <workItem from="1589386433577" duration="9313000" />
+      <workItem from="1589465978661" duration="2152000" />
+      <workItem from="1589545714621" duration="1891000" />
+      <workItem from="1589808820923" duration="70000" />
+      <workItem from="1589812077261" duration="791000" />
+      <workItem from="1589816549412" duration="1010000" />
+      <workItem from="1589823499373" duration="242000" />
+      <workItem from="1589826787327" duration="38000" />
+      <workItem from="1590772007940" duration="920000" />
+      <workItem from="1590773805289" duration="18000" />
+      <workItem from="1590948406674" duration="53000" />
+      <workItem from="1590966192659" duration="690000" />
+      <workItem from="1590970535026" duration="657000" />
+      <workItem from="1591110378537" duration="182000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
     <state x="725" y="278" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1587985742315">
@@ -245,26 +267,33 @@
     </state>
     <state x="725" y="278" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.1080.1920.1080/50.0.1870.1080@50.0.1870.1080" timestamp="1587985742315" />
     <state x="693" y="298" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1587774371996" />
-    <state x="2688" y="311" width="424" height="491" key="FileChooserDialogImpl" timestamp="1588547410452">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="768" y="330" width="424" height="491" key="FileChooserDialogImpl" timestamp="1589224352086">
+      <screen x="0" y="27" width="1920" height="1053" />
     </state>
+    <state x="768" y="330" key="FileChooserDialogImpl/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1589224352086" />
     <state x="2688" y="311" width="424" height="491" key="FileChooserDialogImpl/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1588547410452" />
     <state x="641" y="381" key="com.intellij.ide.util.TipDialog" timestamp="1586216403251">
       <screen x="50" y="27" width="1870" height="1053" />
     </state>
     <state x="641" y="381" key="com.intellij.ide.util.TipDialog/50.27.1870.1053@50.27.1870.1053" timestamp="1586216403251" />
-    <state x="608" y="279" width="709" height="522" key="find.popup" timestamp="1589135068077">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state x="595" y="167" width="770" height="780" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1589330241677">
+      <screen x="50" y="27" width="1870" height="1053" />
+    </state>
+    <state x="595" y="167" width="770" height="780" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1920.0.1920.1080/50.27.1870.1053@50.27.1870.1053" timestamp="1589330241677" />
+    <state x="440" y="265" width="709" height="723" key="find.popup" timestamp="1591110545021">
+      <screen x="50" y="27" width="1230" height="997" />
     </state>
     <state x="608" y="1338" width="709" height="536" key="find.popup/0.1080.1920.1080/50.0.1870.1080@0.1080.1920.1080" timestamp="1588009002675" />
-    <state x="608" y="279" width="709" height="522" key="find.popup/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1589135068077" />
-    <state x="2528" y="258" width="709" height="783" key="find.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1588787165434" />
-    <state x="624" y="182" width="672" height="676" key="search.everywhere.popup" timestamp="1589134834706">
-      <screen x="0" y="27" width="1920" height="1053" />
+    <state x="608" y="279" width="751" height="522" key="find.popup/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1589392123871" />
+    <state x="2528" y="258" width="709" height="783" key="find.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1589468672859" />
+    <state x="440" y="265" width="709" height="723" key="find.popup/50.27.1230.997@50.27.1230.997" timestamp="1591110545021" />
+    <state x="2544" y="159" width="672" height="694" key="search.everywhere.popup" timestamp="1589468649156">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="624" y="1239" width="690" height="694" key="search.everywhere.popup/0.1080.1920.1080/50.0.1870.1080@0.1080.1920.1080" timestamp="1588025292095" />
     <state x="658" y="159" width="672" height="694" key="search.everywhere.popup/0.1080.1920.1080/50.0.1870.1080@50.0.1870.1080" timestamp="1588008001747" />
-    <state x="624" y="182" width="672" height="676" key="search.everywhere.popup/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1589134834706" />
+    <state x="624" y="182" width="672" height="676" key="search.everywhere.popup/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1589468471871" />
+    <state x="2544" y="159" width="672" height="694" key="search.everywhere.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1589468649156" />
     <state x="658" y="182" width="672" height="676" key="search.everywhere.popup/50.27.1870.1053@50.27.1870.1053" timestamp="1586216627160" />
   </component>
 </project>

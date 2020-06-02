@@ -91,11 +91,6 @@ class EstudiosController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $limit = 200;
-        $tipo = null;
-        $nombre = null;
-        $apodo = null;
-        $apellido = null;
 
         $isAdmin = 0;
         foreach (Auth::user()->perfiles AS $perfil) {
@@ -103,70 +98,25 @@ class EstudiosController extends AppBaseController
                 $isAdmin = 1;
             }
         }
-//echo $isAdmin; die();
+
         $this->estudiosRepository->pushCriteria(new RequestCriteria($request));
 
-        $search = null;
-        $estudios = Estudios::query();
-
-        if($request->apellido) {
-            $apellido = $request->apellido;
-//            $estudios = $estudios->where('h_apellido', 'like', '%'.$request->apellido.'%')->oWhere('a_duenio', 'like', '%'.$request->apellido.'%');
-            if ($search){
-                $search .= " AND ( h_apellido  LIKE '%".$request->apellido."%'  OR a_duenio LIKE '%".$request->apellido."%')";
-            }else{
-                $search .= " WHERE (h_apellido  LIKE '%".$request->apellido."%'  OR a_duenio LIKE '%".$request->apellido."%')";
-            }
-        }
-        if($request->limit) {
-            $limit = $request->limit;
-        }
-        if($request->nombre) {
-            $nombre = $request->nombre;
-//            $estudios = $estudios->orWhere('h_nombre', 'like', '%'.$request->nombre.'%')->orWhere('a_especie', 'like', '%'.$request->nombre.'%');
-            if ($search){
-                $search .= " AND ( h_nombre  LIKE '%".$request->nombre."%'  OR a_especie LIKE '%".$request->nombre."%')";
-            }else{
-                $search .= " WHERE (h_nombre  LIKE '%".$request->nombre."%'  OR a_especie LIKE '%".$request->nombre."%')";
-            }
-        }
-        if($request->apodo) {
-            $apodo = $request->apodo;
-//            $estudios = $estudios->where('h_identifica', 'like', '%'.$request->apodo.'%')->where('a_animal', 'like', '%'.$request->apodo.'%');
-            if ($search){
-                $search .= " AND ( h_identifica  LIKE '%".$request->apodo."%'  OR a_animal LIKE '%".$request->apodo."%')";
-            }else{
-                $search .= " WHERE (h_identifica  LIKE '%".$request->apodo."%'  OR a_animal LIKE '%".$request->apodo."%')";
-            }
+        if ($isAdmin) {
+            $estudios = $this->estudiosRepository
+                ->orderBy('id', 'DESC')
+                ->limit(5000)
+                ->get();
+        } else {
+            $estudios = $this->estudiosRepository
+                ->where('id_usuario', Auth::user()->id_cliente)
+                ->orderBy('id', 'DESC')
+                ->limit(5000)
+                ->get();
         }
 
-        if ($isAdmin == 0) {
-            if ($search){
-                $search .= " AND id_usuario =".Auth::user()->id_cliente;
-            }else{
-                $search .= " WHERE id_usuario =".Auth::user()->id_cliente;
-            }
-        }
-
-//        $estudios = $estudios->orderBy('id', 'DESC');
-//        $estudios = $estudios->limit($limit);
-//        $estudios = $estudios->get();
-//        $estudios = $estudios->toSql();
-
-//        dd($estudios);
-//        die();
-        $estudios = DB::select(
-            "select * from `estudios_realizados` ".$search." ORDER BY id DESC LIMIT ".$limit
-        );
 
         return view('estudios.index')
-            ->with('estudios', $estudios)
-            ->with('limit', $limit)
-            ->with('tipo', $tipo)
-            ->with('nombre', $nombre)
-            ->with('apodo', $apodo)
-            ->with('apellido', $apellido)
-            ;
+            ->with('estudios', $estudios);
     }
 
     /**

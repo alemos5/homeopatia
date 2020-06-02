@@ -1,4 +1,4 @@
-@extends('templates.material.main')
+    @extends('templates.material.main')
 @section('css')
     <style>
 

@@ -89,7 +89,14 @@
             <div class="row mt-3">
                 <div class="col-sm-12">
                     
-                    <input type="hidden" id="url_origin" value="<?php echo e(url('estudioPDF', ['estudios'=>$estudios, 'clave'=>$result['general']['clave'], 'pregnancia'=>$result['general']['pregnancia'], 'vegetal'=>$result['reino']['vegetal'], 'mineral'=>$result['reino']['mineral'], 'animal'=>$result['reino']['animal']])); ?>">
+                    <input type="hidden" id="url_origin" value="<?php echo e(url('estudioPDF', [
+                                    'estudios'=>$estudios,
+                                    'clave'=>$result['general']['clave'],
+                                    'pregnancia'=>$result['general']['pregnancia'],
+                                    'vegetal'=>$result['reino']['vegetal'],
+                                    'mineral'=>$result['reino']['mineral'],
+                                    'animal'=>$result['reino']['animal']
+                                    ])); ?>">
                     <a id="print_report" class="btn btn-outline-info btn-block" target="_blank"
                        href="">
                         <?php echo e(_i('Imprimir Estudio')); ?>

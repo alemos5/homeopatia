@@ -22,9 +22,9 @@
     <li class="breadcrumb-item active"><a href="<?php echo e(route('estudios.index')); ?>"><?php echo e(_i('Estudios')); ?></a></li>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
-    <section class="content-header">
+    <form class="content-header">
         <h1 class="pull-left">
-            <?php echo e(_i('Estudios Médicos')); ?>
+            <?php echo e(_i('Historial completo de estudios')); ?>
 
             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('estudios.create')): ?>
                 <?php if(Auth::user()->creditos->sum('cantidad')>0): ?>
@@ -32,6 +32,43 @@
                 <?php endif; ?>
             <?php endif; ?>
         </h1>
+
+        <h4 style="margin-top: 50px"><?php echo e(_i('Filtro de búsquedas')); ?></h4><hr>
+        <form method="POST" action="<?php echo e(route('estudios.index')); ?>">
+            <?php echo csrf_field(); ?>
+        <div class="row">
+            <div class="form-group col-sm-3">
+                <label for=""><b><?php echo e(_i('Cantidad')); ?>:</b></label>
+                <select class="form-control" name="limit" id="limit">
+                        <option value="200" <?php if($limit==200){ ?> selected <?php } ?>>200</option>
+                        <option value="500" <?php if($limit==500){ ?> selected <?php } ?>>500</option>
+                        <option value="1000" <?php if($limit==1000){ ?> selected <?php } ?>>1.000</option>
+                        <option value="5000" <?php if($limit==5000){ ?> selected <?php } ?>>5.000</option>
+                        <option value="10000" <?php if($limit==10000){ ?> selected <?php } ?>>10.000</option>
+                </select>
+            </div>
+            <div class="form-group col-sm-3">
+                <label for=""><b><?php echo e(_i('Nombre/s')); ?>:</b></label>
+                <input class="form-control"  name="nombre" type="text" value="<?php if($nombre){ echo $nombre; } ?>">
+            </div>
+            <div class="form-group col-sm-3">
+                <label for=""><b><?php echo e(_i('Apellido/s')); ?>:</b></label>
+                <input class="form-control"  name="apellido" type="text" value="<?php if($apellido){ echo $apellido; } ?>">
+            </div>
+            <div class="form-group col-sm-3">
+                <label for=""><b><?php echo e(_i('Nombre por el cual se reconoce')); ?>:</b></label>
+                <input class="form-control"  name="apodo" type="text"  value="<?php if($apodo){ echo $apodo; } ?>">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <center>
+                    <button type="submit" class="btn btn-outline-success float-right"> <i class="fas fa-search"></i> <?php echo e(_i('Buscar')); ?></button>
+                </center>
+            </div>
+        </div>
+        </form>
+
         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('estudios.create')): ?>
             <?php if(Auth::user()->creditos->sum('cantidad')==0): ?>
                 <div class="alert alert-danger"><?php echo e(_i('Debe abonar créditos a su cuenta para poder crear estudios médicos.')); ?></div>
@@ -68,6 +105,43 @@
     <script>
         $(document).ready(function() {
             $('#data-table').DataTable({
+                "order": false,
+                "language":{
+                    "sProcessing":     "<?php echo e(_i('Procesando')); ?>...",
+                    "sLengthMenu":     "<?php echo e(_i('Ver')); ?> _MENU_",
+                    "sZeroRecords":    "<?php echo e(_i('No se encontraron resultados')); ?>",
+                    "sEmptyTable":     "<?php echo e(_i('Ningún dato disponible en esta tabla')); ?>",
+                    "sInfo":           "_START_ <?php echo e(_i('al')); ?> _END_ <?php echo e(_i('de')); ?>  _TOTAL_ <?php echo e(_i('registros')); ?>",
+                    "sInfoEmpty":      "<?php echo e(_i('Mostrando registros del 0 al 0 de un total de 0 registros')); ?>",
+                    "sInfoFiltered":   "(<?php echo e(_i('filtrado de un total de')); ?> _MAX_ <?php echo e(_i('registros')); ?>)",
+                    "sInfoPostFix":    "",
+                    "sSearch":         "<?php echo e(_i('Buscar')); ?>:",
+                    "sUrl":            "",
+                    "sInfoThousands":  ",",
+                    "sLoadingRecords": "<?php echo e(_i('Cargando')); ?>...",
+                    "oPaginate": {
+                        "sFirst":    "<<",
+                        "sLast":     ">>",
+                        "sNext":     ">",
+                        "sPrevious": "<"
+                    },
+                    "oAria": {
+                        "sSortAscending":  ": <?php echo e(_i('Activar para ordenar la columna de manera ascendente')); ?>",
+                        "sSortDescending": ": <?php echo e(_i('Activar para ordenar la columna de manera descendente')); ?>"
+                    }
+                },
+                "pageLength": 10,
+                "bDestroy": true
+            });
+        } );
+        $(document).ready(function() {
+            $('#data-table-2').DataTable({
+                //"bPaginate": false,
+                "bLengthChange": false,
+                // "bFilter": true,
+                // "bInfo": false,
+                //"bAutoWidth": false,
+                "searching": false,
                 "order": false,
                 "language":{
                     "sProcessing":     "<?php echo e(_i('Procesando')); ?>...",

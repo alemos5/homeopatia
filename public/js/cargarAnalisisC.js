@@ -23,7 +23,8 @@ function cargarAnalisisC (filtro1, filtro2, filtro3, filtro4, filtro5) {
             filtro3: filtro3,
             filtro4: filtro4,
             filtro5: filtro5,
-            simetria: simetria
+            simetria: simetria,
+            lang: $('#idioma').val()
         },
         success:function(filas){
             $('#data-table-analisis-combinado tbody').html(filas);

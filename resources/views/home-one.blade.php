@@ -157,7 +157,7 @@
         <div class="card-body">
             <section class="content-header">
                 <h1 class="pull-left">
-                    {{ _i('Estudios Médicos') }}
+                    {{ _i('Últimos estudios realizados') }}
                     @can('estudios.create')
                         @if (Auth::user()->creditos->sum('cantidad')>0)
                             <a href="{{route('estudios.create')}}" class="btn btn-outline-success float-right"> <i class="fas fa-plus"></i> {{ _i('Crear') }}</a>

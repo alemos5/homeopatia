@@ -1,7 +1,7 @@
 
 <h2><?php echo e(_i('Análisis Principal')); ?></h2>
 <hr>
-
+<br>
 <div class="row">
     <div class="col-sm-2"><?php echo e(_i('Ordenar')); ?>:</div>
     <div class="col-sm-4">
@@ -13,7 +13,7 @@
                 <span class="lever"></span>
             </label>
         </div>
-    </div> <?php echo e(_i('Vegetal')); ?>}
+    </div>
     <div class="col-sm-3">
         <div class="switch">
             <label for="orden2">

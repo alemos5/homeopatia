@@ -1,4 +1,4 @@
-<table style="width: 100%; font-size: 14px;" id="data-table" class="table table-striped table-bordered dt-responsive nowrap">
+<table style="width: 100%; font-size: 14px;" id="data-table-2" class="table table-striped table-bordered dt-responsive nowrap">
     <thead>
     <tr>
         <th>{{ _i('Tipo') }}</th>
@@ -61,3 +61,4 @@
     @endforeach
     </tbody>
 </table>
+

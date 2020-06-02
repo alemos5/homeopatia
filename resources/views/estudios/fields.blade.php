@@ -1,3 +1,8 @@
+@section('styles')
+    <link href="{{ asset('vendor/wrappixel/material-pro/4.2.1/assets/plugins/clockpicker/dist/jquery-clockpicker.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('vendor/wrappixel/material-pro/4.2.1/assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css')}}" rel="stylesheet">
+@endsection
+
 <!-- Tipo Field -->
 @if(!isset($estudios))
     <div class="row">
@@ -50,7 +55,7 @@
         @if(!isset($estudios))
             <div class="form-group col-sm-6">
                 <label for="fecha_animal"><b>{{ _i('Fecha de Nacimiento') }}:</b></label>
-                <input class="form-control {{$errors->has('fecha_animal') ? ' is-invalid' : ''}}" id="fecha_animal" name="fecha_animal" type="date" value="{{($fecha)? $fecha : ''}}">
+                <input type="text" name="fecha_animal" id="fecha_animal" class="form-control {{$errors->has('fecha_animal') ? ' is-invalid' : ''}}" value="{{ @old("fecha_animal", ($fecha)? $fecha : '') }}">
                 {!! $errors->first('fecha_animal', '<span class="invalid-feedback"><strong>:message</strong></span>') !!}
             </div>
         @endif
@@ -106,7 +111,7 @@
         <!-- Fecha Field -->
         <div class="form-group col-sm-4">
             <label for="fecha_humano"><b>{{ _i('Fecha') }}:</b></label>
-            <input class="form-control {{$errors->has('fecha_humano') ? ' is-invalid' : ''}}" id="fecha_humano" name="fecha_humano" type="date" value="{{($fecha)? $fecha : ''}}"
+            <input type="text" name="fecha_humano" id="fecha_humano" class="form-control {{$errors->has('fecha_humano') ? ' is-invalid' : ''}}" value="{{ @old("fecha_humano", ($fecha)? $fecha : '') }}">
             {!! $errors->first('fecha_humano', '<span class="invalid-feedback"><strong>:message</strong></span>') !!}
         </div>
     @endif
@@ -114,7 +119,7 @@
 </div>
 
 
-</div>
+
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     <input type="hidden" id="ip" name="ip" value="127.0.0.1">
@@ -124,8 +129,34 @@
     <a href="{!! route('estudios.index') !!}" class="btn btn-success">{{ _i('Cancelar') }}</a>
 </div>
 
+@section('js')
+    <!-- Plugin JavaScript -->
+    <script src="{{asset('vendor/wrappixel/material-pro/4.2.1/assets/plugins/moment/moment.js')}}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/es.js"></script>
+    <script src="{{asset('vendor/wrappixel/material-pro/4.2.1/assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js')}}"></script>
+    <!-- Clock Plugin JavaScript -->
+    <script src="{{asset('vendor/wrappixel/material-pro/4.2.1/assets/plugins/clockpicker/dist/jquery-clockpicker.min.js')}}"></script>
+@endsection
 @section('scripts')
     <script>
+        $('#fecha_animal').bootstrapMaterialDatePicker({
+            format: 'DD/MM/YYYY',
+            maxDate: new Date(),
+            lang: 'es',
+            cancelText: 'Cancelar',
+            okText: 'Siguiente',
+            'default': 'now',
+            time: false
+        });
+        $('#fecha_humano').bootstrapMaterialDatePicker({
+            format: 'DD/MM/YYYY',
+            maxDate: new Date(),
+            lang: 'es',
+            cancelText: 'Cancelar',
+            okText: 'Siguiente',
+            'default': 'now',
+            time: false
+        });
         $(document).ready(function () {
             let estudioTipo = '{!! (isset($estudios->tipo))? $estudios->tipo : 0 !!}';
 

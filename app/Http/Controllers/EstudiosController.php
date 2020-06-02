@@ -18,6 +18,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use Auth;
 use Dompdf\Adapter\PDFLib;
+use Sabberworm\CSS\Value\URL;
 use Xinax\LaravelGettext\LaravelGettext;
 
 class EstudiosController extends AppBaseController
@@ -90,6 +91,11 @@ class EstudiosController extends AppBaseController
      */
     public function index(Request $request)
     {
+        $limit = 200;
+        $tipo = null;
+        $nombre = null;
+        $apodo = null;
+        $apellido = null;
 
         $isAdmin = 0;
         foreach (Auth::user()->perfiles AS $perfil) {
@@ -97,25 +103,70 @@ class EstudiosController extends AppBaseController
                 $isAdmin = 1;
             }
         }
-
+//echo $isAdmin; die();
         $this->estudiosRepository->pushCriteria(new RequestCriteria($request));
 
-        if ($isAdmin) {
-            $estudios = $this->estudiosRepository
-                ->orderBy('id', 'DESC')
-                ->limit(1000)
-                ->get();
-        } else {
-            $estudios = $this->estudiosRepository
-                ->where('id_usuario', Auth::user()->id_cliente)
-                ->orderBy('id', 'DESC')
-                ->limit(1000)
-                ->get();
+        $search = null;
+        $estudios = Estudios::query();
+
+        if($request->apellido) {
+            $apellido = $request->apellido;
+//            $estudios = $estudios->where('h_apellido', 'like', '%'.$request->apellido.'%')->oWhere('a_duenio', 'like', '%'.$request->apellido.'%');
+            if ($search){
+                $search .= " AND ( h_apellido  LIKE '%".$request->apellido."%'  OR a_duenio LIKE '%".$request->apellido."%')";
+            }else{
+                $search .= " WHERE (h_apellido  LIKE '%".$request->apellido."%'  OR a_duenio LIKE '%".$request->apellido."%')";
+            }
+        }
+        if($request->limit) {
+            $limit = $request->limit;
+        }
+        if($request->nombre) {
+            $nombre = $request->nombre;
+//            $estudios = $estudios->orWhere('h_nombre', 'like', '%'.$request->nombre.'%')->orWhere('a_especie', 'like', '%'.$request->nombre.'%');
+            if ($search){
+                $search .= " AND ( h_nombre  LIKE '%".$request->nombre."%'  OR a_especie LIKE '%".$request->nombre."%')";
+            }else{
+                $search .= " WHERE (h_nombre  LIKE '%".$request->nombre."%'  OR a_especie LIKE '%".$request->nombre."%')";
+            }
+        }
+        if($request->apodo) {
+            $apodo = $request->apodo;
+//            $estudios = $estudios->where('h_identifica', 'like', '%'.$request->apodo.'%')->where('a_animal', 'like', '%'.$request->apodo.'%');
+            if ($search){
+                $search .= " AND ( h_identifica  LIKE '%".$request->apodo."%'  OR a_animal LIKE '%".$request->apodo."%')";
+            }else{
+                $search .= " WHERE (h_identifica  LIKE '%".$request->apodo."%'  OR a_animal LIKE '%".$request->apodo."%')";
+            }
         }
 
+        if ($isAdmin == 0) {
+            if ($search){
+                $search .= " AND id_usuario =".Auth::user()->id_cliente;
+            }else{
+                $search .= " WHERE id_usuario =".Auth::user()->id_cliente;
+            }
+        }
+
+//        $estudios = $estudios->orderBy('id', 'DESC');
+//        $estudios = $estudios->limit($limit);
+//        $estudios = $estudios->get();
+//        $estudios = $estudios->toSql();
+
+//        dd($estudios);
+//        die();
+        $estudios = DB::select(
+            "select * from `estudios_realizados` ".$search." ORDER BY id DESC LIMIT ".$limit
+        );
 
         return view('estudios.index')
-            ->with('estudios', $estudios);
+            ->with('estudios', $estudios)
+            ->with('limit', $limit)
+            ->with('tipo', $tipo)
+            ->with('nombre', $nombre)
+            ->with('apodo', $apodo)
+            ->with('apellido', $apellido)
+            ;
     }
 
     /**
@@ -237,7 +288,7 @@ class EstudiosController extends AppBaseController
         if ($result['general']['clave']) {
             $remedios = Remedios::where('id_cremedios', 'like', $result['general']['clave'] . "%")->get();
         }
-
+        //echo json_encode($remedios); die();
 ///////////////////        pruebas
 //        foreach ($remedios as $remedio){
 //            if($remedio->id==5653){ //Trombidium muscae domesticae
@@ -400,6 +451,10 @@ class EstudiosController extends AppBaseController
         $mes = intval($data['mes']);
         $anio = intval($data['anio']);
         $pais = strtoupper($data['pais']);
+
+//        echo $last." <br> ".$nombre." <br> ".$apodo." <br> ".$einiciales." <br> ".$dia." <br> ".$mes." <br> ".$anio." <br> ".$pais;
+//        die();
+
 
         ##################################
         $mineralTR = 1;
@@ -1576,7 +1631,7 @@ class EstudiosController extends AppBaseController
         return $analisisCombinado;
     }
 
-    public function getTableRemedioEstudio($estudio_id, $ordenSac = 0, $ordenAlfa = 0, $ordenReino = 0, $nota = 1, $lang = "es_ES")
+    public function getTableRemedioEstudio($estudio_id, $ordenSac = 0, $ordenAlfa = 0, $ordenReino = 0, $nota = 1, $lang = "es_ES", $enlace = 1)
     {
 
         //Filtros “Alfabeticamente” + “Reino”
@@ -1669,11 +1724,20 @@ class EstudiosController extends AppBaseController
             }else{
                 $htmltabla .= '<td align="center">' . $estudioRemedio->reino . '</td >';
             }
-            if ($nota == 1) {
-                $htmltabla .= '<td><a href="#ex1" rel="modal:open" class="btnDescripcion" data-idremedio="' . $estudioRemedio->medicamento_id . '">' . $estudioRemedio->medicamento . '</a></td >';
+            if($enlace ==1) {
+                if ($nota == 1) {
+                    $htmltabla .= '<td><a href="#ex1" rel="modal:open" class="btnDescripcion" data-idremedio="' . $estudioRemedio->medicamento_id . '">' . $estudioRemedio->medicamento . '</a></td >';
+                }else{
+                    $htmltabla .= '<td><a href="#ex1" rel="modal:open" class="btnDescripcion" data-idremedio="' . $estudioRemedio->medicamento_id . '">' . $estudioRemedio->medicamento . '</a></td >';
+                }
             }else{
-                $htmltabla .= '<td>' . $estudioRemedio->medicamento . '</td >';
+                if ($nota == 1) {
+                    $htmltabla .= '<td>' . $estudioRemedio->medicamento . '</td >';
+                }else{
+                    $htmltabla .= '<td>' . $estudioRemedio->medicamento . '</td >';
+                }
             }
+
             $htmltabla .= '<td class="font-weight-bold" align="center">' . $estudioRemedio->sac . '</td >';
             if ($nota == 1){
                 $htmltabla .= '<td align="center">' . $estudioRemedio->clave . '</td >';
@@ -1752,6 +1816,7 @@ class EstudiosController extends AppBaseController
 
 
 
+
             foreach ($remedios as $index => $remedio) {
 
                 $analisisCombinado = $this->calcularAnalisisCombinadoXremedio($remedio, $data, $predominante, $rsm9, $filtro1, $filtro2, $filtro3, $filtro4, $filtro5);
@@ -1764,6 +1829,7 @@ class EstudiosController extends AppBaseController
                 $analisis[$index]['clave'] = $remedio->tipoRemedioClave;
                 $analisis[$index]['pregnancia'] = $remedio->pregnancia;
             }
+
 
             foreach ($analisis as $clave => $fila) {
                 $ordenarSumas[$clave] = $fila['suma_analisis_combinado'];
@@ -1897,7 +1963,8 @@ class EstudiosController extends AppBaseController
 //            $htmltabla .= '</tr>';
                 $count++;
             }
-            return $this->getTableRemedioEstudio($estudio_id, $ordenSac, $ordenAlfa, $ordenReino, null, $input['lang']);
+//        getTableRemedioEstudio($estudio_id, $ordenSac = 0, $ordenAlfa = 0, $ordenReino = 0, $nota = 1, $lang = "es_ES", $enlace = 1)
+            return $this->getTableRemedioEstudio($estudio_id, $ordenSac, $ordenAlfa, $ordenReino, 1, $input['lang'], 1);
 //            return $htmltabla;
 //        }
 
@@ -1910,6 +1977,21 @@ class EstudiosController extends AppBaseController
         $remedios = json_decode($input['remedios']);
         $data = (array)json_decode($input['data']);
         $predominante = json_decode($input['predominante']);
+
+        if($input['lang'] == "es_ES") {
+            $thRSM = "RSM";
+            $thImpregnancia = "Impregnancia";
+            $thSecuencia = "Secuencia";
+            $thConsonantes = "Consonantes";
+            $thClaves = "Claves";
+        }else{
+            $thRSM = "RSM";
+            $thImpregnancia = "Impregnation";
+            $thSecuencia = "Sequence";
+            $thConsonantes = "Consonants";
+            $thClaves = "Keys";
+        }
+
 
 
         $AnalisisCombinados = $this->calcularAnalisisCombinado(
@@ -1935,40 +2017,41 @@ class EstudiosController extends AppBaseController
         }
         $htmltabla .= '</tr>';
         if($input['filtro1']) {
-            $htmltabla .= '<tr id="divRSM"><td>RSM</td>';
+            $htmltabla .= '<tr id="divRSM"><td>'.$thRSM.'</td>';
             foreach ($AnalisisCombinados AS $AnalisisCombinado) {
                 $htmltabla .= '<td style="text-align: center !important;">' . $AnalisisCombinado['rsm'] . '</td>';
             }
             $htmltabla .= '</tr>';
         }
         if($input['filtro2']) {
-            $htmltabla .= '<tr id = "divImpregnancia" ><td > Impregnancia</td >';
+            $htmltabla .= '<tr id = "divImpregnancia" ><td >'.$thImpregnancia.'</td >';
             foreach ($AnalisisCombinados AS $AnalisisCombinado) {
                 $htmltabla .= '<td style = "text-align: center !important;" > ' . $AnalisisCombinado['Impregnancia'] . ' </td > ';
             }
             $htmltabla .= '</tr>';
         }
         if($input['filtro3']) {
-            $htmltabla .= '<tr id="divSecuencia"><td>Secuencia</td>';
+            $htmltabla .= '<tr id="divSecuencia"><td>'.$thSecuencia.'</td>';
             foreach ($AnalisisCombinados AS $AnalisisCombinado) {
                 $htmltabla .= '<td style="text-align: center !important;">' . $AnalisisCombinado['Secuencia'] . '</td>';
             }
             $htmltabla .= '</tr>';
         }
         if($input['filtro4']) {
-            $htmltabla .= '<tr id = "divConsonantes"><td>Consonantes</td>';
+            $htmltabla .= '<tr id = "divConsonantes"><td>'.$thConsonantes.'</td>';
             foreach ($AnalisisCombinados AS $AnalisisCombinado) {
                 $htmltabla .= '<td style = "text-align: center !important;">' . $AnalisisCombinado['Consonantes'] . '</td>';
             }
             $htmltabla .= '</tr>';
         }
         if($input['filtro5']) {
-            $htmltabla .= '<tr id="divClaves"><td>Claves</td>';
+            $htmltabla .= '<tr id="divClaves"><td>'.$thClaves.'</td>';
             foreach ($AnalisisCombinados AS $AnalisisCombinado) {
                 $htmltabla .= '<td style="text-align: center !important;">' . $AnalisisCombinado['Claves'] . '</td>';
             }
             $htmltabla .= '</tr>';
         }
+
         return $htmltabla;
     }
 
@@ -2171,7 +2254,7 @@ class EstudiosController extends AppBaseController
 //            $count++;
 //        }
 //        die("aqui");
-        $htmltabla = $this->getTableRemedioEstudio($estudio_id, $sac, $alfabeto, $reino, 0, $lang);
+        $htmltabla = $this->getTableRemedioEstudio($estudio_id, $sac, $alfabeto, $reino, 0, $lang, 0);
 
 
         $pdf = App::make('dompdf.wrapper');

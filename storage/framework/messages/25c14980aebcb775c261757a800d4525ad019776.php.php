@@ -156,7 +156,7 @@
         <div class="card-body">
             <section class="content-header">
                 <h1 class="pull-left">
-                    <?php echo e(_i('Estudios Médicos')); ?>
+                    <?php echo e(_i('Últimos estudios realizados')); ?>
 
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('estudios.create')): ?>
                         <?php if(Auth::user()->creditos->sum('cantidad')>0): ?>
